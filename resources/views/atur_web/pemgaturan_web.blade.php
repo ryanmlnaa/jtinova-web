@@ -1,8 +1,8 @@
 @extends('templating.main')
 @section('title', $title)
 @section('menu', $title)
-@section('content')@section('menu', $title)
 @section('content')
+
     <div class="row">
 
         <div class="col-md-4">
