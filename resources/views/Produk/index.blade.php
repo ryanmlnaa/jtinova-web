@@ -17,12 +17,9 @@
                       <th>Judul</th>
                       <th>thumbnail</th>
                       <th>slug</th>
-                    <th>deskripsi</th>
+                      <th>deskripsi</th>
                       <th>Action</th>
                     </tr>
-                    @foreach ($ as $item)
-                        
-                 
                     <tr>
                       <td>1</td>
                       <td>Irwansyah Saputra</td>
@@ -30,7 +27,6 @@
                       <td><div class="badge badge-success">Active</div></td>
                       <td><a href="#" class="btn btn-secondary">Detail</a></td>
                     </tr>
-                    @endforeach
                   </table>
                 </div>
               </div>

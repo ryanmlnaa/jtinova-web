@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>{{ $title }}</title>
-
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
@@ -36,9 +36,9 @@
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <nav class="navbar navbar-expand-lg main-navbar">
+
         @include('templating.navbar')
-      </nav>
+  
       <div class="main-sidebar sidebar-style-2">
         @include('templating.sidebar')
       </div>
@@ -94,8 +94,8 @@
 
   <!-- Page Specific JS File -->
   <script src="{{ asset('assets/js/page/index-0.js') }}"></script>
-  @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
-
+  {{-- @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"]) --}}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <!-- Template JS File -->
   <script src="{{ asset('assets/js/scripts.js') }}"></script>
   <script src="{{ asset('assets/js/custom.js') }}"></script>

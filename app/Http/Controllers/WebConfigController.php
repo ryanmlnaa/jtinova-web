@@ -57,7 +57,7 @@ class WebConfigController extends Controller
 
             $fileName = time().'.'.$request->file('brand_logo')->getClientOriginalExtension();
  
-            $request->file('brand_logo')->move(public_path().'/logo', $fileName);
+            $request->file('brand_logo')->move(public_path().'/brand_logo', $fileName);
             $fileNamee = time().'.'.$request->file('video_preview')->getClientOriginalExtension();
  
             $request->file('video_preview')->move(public_path().'/video', $fileName);
@@ -201,7 +201,7 @@ class WebConfigController extends Controller
                 // Hapus gambar profil lama jika ada
                 if ($webcon->brand_logo) {
 
-                    $filee=(public_path('brand_logo/'.$webcon->brand_logo));
+                    $filee=(public_path('/brand_logo/'.$webcon->brand_logo));
                     @unlink($filee);
 
                     
@@ -218,7 +218,7 @@ class WebConfigController extends Controller
                 }
                 $fileNamee = time().'.'.$request->file('video_preview')->getClientOriginalExtension();
  
-                $request->file('video_preview')->move(public_path().'/video', $fileNamee);
+                $request->file('video_preview')->move(public_path().'/video/', $fileNamee);
             }
 
 
