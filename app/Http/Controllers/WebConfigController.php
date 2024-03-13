@@ -20,36 +20,36 @@ class WebConfigController extends Controller
     public function simpanwebconfig(Request $request) {
       
         if ($request->id == null) {
-        $validator = Validator::make($request->all(), [
+            $validator = Validator::make($request->all(), [
 
-            'name' => 'required',
-            'alias' => 'required',
-            
-            'video' => 'required',
-            'video_preview'=>'required',
-            'instagram'=>'required',
-            'facebook'=>'required',
-            'phone'=>'required',
-            'map'=>'required',
-            'location'=>'required',
-            'youtube'=>'required',
-            'open_hours'=>'required',
-            'manager'=>'required',
-            'nip'=>'required',
-            'profile_link'=>'required',
+                'name' => 'required',
+                'alias' => 'required',
+                
+                'video' => 'required',
+                'video_preview'=>'required',
+                'instagram'=>'required',
+                'facebook'=>'required',
+                'phone'=>'required',
+                'map'=>'required',
+                'location'=>'required',
+                'youtube'=>'required',
+                'open_hours'=>'required',
+                'manager'=>'required',
+                'nip'=>'required',
+                'profile_link'=>'required',
 
 
 
-            'brand_logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'brand_logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
 
-        ]);
+            ]);
 
-        if ($validator->fails()) {
-            $messages = $validator->errors()->all();
+            if ($validator->fails()) {
+                $messages = $validator->errors()->all();
 
-            Alert::error($messages[0])->flash();
-            return back()->withErrors($validator)->withInput();
-        }
+                Alert::error($messages[0])->flash();
+                return back()->withErrors($validator)->withInput();
+            }
 
 
      
