@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KedudukanController;
 use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,12 +33,19 @@ Route::get('/datapegawai', [App\Http\Controllers\PegawaiController::class, 'inde
 Route::post('/tambahdatapegawai', [App\Http\Controllers\PegawaiController::class, 'tambahdata_pegawai'])->name('tambahdatapegawai');
 Route::delete('/hapuspegawai/{id_pegawai}', [App\Http\Controllers\PegawaiController::class, 'hapuspegawai'])->name('hapuspegawai.destroy');
 Route::get('/edit_pegawai/{id}', [App\Http\Controllers\PegawaiController::class, 'edit'])->name('edit');
+
+
+
+Route::resource('Kedudukan', KedudukanController::class);
+
 // routes/web.php
 
-// Route::delete('/hapuspegawai/{id_pegawai}', 'PegawaiController@hapuspegawai');
+// Route::delete('/hapuskedudukan/{id_pegawai}', 'PegawaiController@hapuspegawai');
 
 
 
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kedudukan;
 use App\Models\Pegawai;
 use Exception;
 use Illuminate\Database\QueryException;
@@ -16,8 +17,12 @@ class PegawaiController extends Controller
     {
         $title = "Data Pegawai";
         $limit = $request->limit ?? 25;
-        $data = Pegawai::paginate($limit);
-        return view('Pegawai.index', compact("title", "limit", "data"));
+        $kedudukan = Kedudukan::get();
+        $data = DB::table('pegawai')
+        ->join("kedudukan", "pegawai.id_kedudukan", '=', 'kedudukan.id_kedudukan')
+        ->paginate($limit);
+        
+        return view('Pegawai.index', compact("title", "limit", "data", "kedudukan"));
     }
     public function tambahdata_pegawai(Request $request)
     {
@@ -45,12 +50,12 @@ class PegawaiController extends Controller
             $data = [
                 "nip" => $request->nip,
                 "nama_pegawai" => $request->nama_pegawai,
-                "kedudukan" => $request->kedudukan,
+                "id_kedudukan" => $request->kedudukan,
                 "link_linkdIn" => $request->link_linkdIn,
                 "instagram" => $request->instagram,
                 "foto_profile" => $fileName,
             ];
-    
+
             Pegawai::create($data);
     
             DB::commit();
