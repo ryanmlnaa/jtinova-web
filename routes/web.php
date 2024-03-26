@@ -32,9 +32,8 @@ Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'
 Route::get('/datapegawai', [App\Http\Controllers\PegawaiController::class, 'index'])->name('datapegawai');
 Route::post('/tambahdatapegawai', [App\Http\Controllers\PegawaiController::class, 'tambahdata_pegawai'])->name('tambahdatapegawai');
 Route::delete('/hapuspegawai/{id_pegawai}', [App\Http\Controllers\PegawaiController::class, 'hapuspegawai'])->name('hapuspegawai.destroy');
-Route::get('/edit_pegawai/{id}', [App\Http\Controllers\PegawaiController::class, 'edit'])->name('edit');
-
-
+Route::get('/edit_pegawai/{id}', [App\Http\Controllers\PegawaiController::class, 'edit'])->name('Pegawai.edit');
+Route::patch('/update_pegawai/{id}', [PegawaiController::class, "update"])->name("Pegawai.update");
 
 Route::resource('Kedudukan', KedudukanController::class);
 

@@ -32,8 +32,7 @@
                            <td>
                            
                             <form action="" method="post" class="delete-form">
-                                <a herf="{{route('Kedudukan.edit', $item->id_kedudukan)}}" class="btn btn-warning btn-sm m-0 edit-button" >
-                                    <i class="fa-solid fa-trash-can"></i> Edit</a>
+                                <a href="{{route('Kedudukan.edit', $item->id_kedudukan)}}" class="btn btn-warning btn-sm m-0 edit-button" > <i class="fa-solid fa-trash-can"></i> Edit</a>
                               @method('DELETE')
                               @csrf
                               <input type="hidden" name="id_kedudukan" value="{{ $item->id_kedudukan }}">

@@ -45,6 +45,7 @@
                                 </td>
                            <td>
                             <form action="/hapuspegawai/{{ $item->id_pegawai }}" method="post" class="delete-form">
+                              <a href="{{route('Pegawai.edit', $item->id_pegawai)}}" class="btn btn-warning btn-sm m-0 edit-button" > <i class="fa-solid fa-trash-can"></i> Edit</a>
                               @method('DELETE')
                               @csrf
                               <input type="hidden" name="id_pegawai" value="{{ $item->id_pegawai }}">
@@ -127,7 +128,6 @@
                       <option value="{{$data->id_kedudukan}}"> {{$data->nama_kedudukan}} </option>
                     @endforeach
                   </select>
-                  {{-- <select type="text" class="form-control" > --}}
                 </div>
                 <div class="form-group">
                   <label for="link_linkdIn" class="col-form-label">link linkdin</label>

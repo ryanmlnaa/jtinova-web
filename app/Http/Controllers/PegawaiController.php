@@ -97,10 +97,66 @@ class PegawaiController extends Controller
         return redirect()->back();
     }
     public function edit($id) {
-        $data=Pegawai::where('id_pegawai',$id)->get();
-        $title="Edit PEgawai";
-        return view("pegawai.edit_pegawai",compact('data','title'));
-        
+        $data = DB::table('pegawai')
+        ->where("id_pegawai", "=", $id)
+        ->join("kedudukan", "pegawai.id_kedudukan", '=', 'kedudukan.id_kedudukan')
+        ->first();
+        $kedudukan = Kedudukan::get();
+        $title="Edit Pegawai";
+        return view("pegawai.edit_pegawai",compact('data','title', 'kedudukan'));
     }
+    public function update(Request $req, $pegawai){
+        $data = Pegawai::findOrFail($pegawai);
+        $validator = Validator::make($req->all(), [
+            'nip' => 'required',
+            'nama_pegawai' => 'required',
+            'kedudukan' => 'required',
+            'link_linkdIn' => 'required',
+            'instagram' => 'required',
+            'foto_profile' => 'image|mimes:jpeg,jpg,png,gif|max:2048'
+        ]); 
+        if($validator->fails()){
+            $messages = $validator->errors()->all();
+            Alert::error($messages[0])->flash();
+            return back()->withErrors($validator)->withInput();
+        }
+        try{
+            $fileName = "";
+            if( $req->foto_profile != null){
+                $fileName = time() . '.' . $req->file('foto_profile')->getClientOriginalExtension();
+                $req->file('foto_profile')->move(public_path('/foto_pegawai'), $fileName); 
+            }else{
+                $fileName = $req->old_file;
+            }
+           
+            $data->update([
+                "nip" => $req->nip,
+                "nama_pegawai" => $req->nama_pegawai,
+                "id_kedudukan" => $req->kedudukan, 
+                "link_linkdIn"=> $req->link_linkdIn,
+                "instagram"  => $req->instagram,
+                "foto_profile" => $fileName
+            ]);
+           
+            if($data){
+                return redirect()->route("datapegawai");
+            }else{
+                return redirect()->back()->withInput();
+            } 
+       
+        }catch(QueryException $x){
+            
     
+            // Hapus file foto jika ada
+            if($fileName == $req->old_file){
+                $filePath = public_path('/foto_pegawai/' . $fileName);
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+            }
+           
+    
+            return back();
+        }
+    }
 }

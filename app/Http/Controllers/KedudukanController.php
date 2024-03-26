@@ -72,15 +72,24 @@ class KedudukanController extends Controller
     public function edit($Kedudukan)
     {
         $data = Kedudukan::findOrFail($Kedudukan);
-        return view('edit_kedudukan',compact('data'));
+        $title = "Edit Kedudukan";
+        return view('kedudukan/edit_kedudukan',compact('data', "title" ));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kedudukan $Kedudukan)
+    public function update(Request $request, $Kedudukan)
     {
-        //
+        $data = Kedudukan::findOrFail($Kedudukan);
+        $data->update([
+            "nama_kedudukan" => $request->nama_kedudukan
+        ]);
+        if($data){
+            return redirect()->route("Kedudukan.index");
+        }else{
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
