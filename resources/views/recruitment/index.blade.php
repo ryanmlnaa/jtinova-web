@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-               
+                
                 <div class="card-body">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
@@ -16,12 +16,12 @@
                         <table class="table table-bordered table-md">
                             <tr>
                                 <th>#</th>
-                                <th>Nip</th>
-                                <th>Nama Pegawai</th>
-                                <th>Kedudukan</th>
-                                <th>Link LinkdIn</th>
-                                <th>instagram</th>
-                                <th>foto Pegawai</th>
+                                <th>NIM</th>
+                                <th>Nama Mahasiswa</th>
+                                <th>Prodi</th>
+                                <th>Semester</th>
+                                <th>Keahlian Utama</th>
+                                <th>Keahlian Lain</th>
                                 <th>Action</th>
 
                                 @php
@@ -30,23 +30,18 @@
                                 @foreach ($data as $item)
                             <tr>
                                 <td>{{ $index }}</td>
-                                <td>{{ $item->nip }}</td>
-                                <td>{{ $item->nama_pegawai }}</td>
-                                <td>{{ $item->nama_kedudukan }}</td>
-                                <td>{{ $item->link_linkdIn }}</td>
-                                <td>{{ $item->instagram }}</td>
-                                <td>
-                                    <img src="{{ url('foto_pegawai/' . $item->foto_profile) }}"
-                                        style="width: 70px; height: 70px; object-fit: cover;" alt=""
-                                        class="rounded-circle">
-
-                                </td>
+                                <td>{{ $item->nim }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->prodi }}</td>
+                                <td>{{ $item->semester }}</td>
+                                <td>{{ $item->keahlian_utama }}</td>
+                                <td>{{ $item->keahlian_lain }}</td>
                            <td>
-                            <form action="/hapuspegawai/{{ $item->id_pegawai }}" method="post" class="delete-form">
-                              <a href="{{route('Pegawai.edit', $item->id_pegawai)}}" class="btn btn-warning btn-sm m-0 edit-button" > <i class="fa-solid fa-trash-can"></i> Edit</a>
+                            <form action="/hapusrecruitment/{{ $item->id_recruitment }}" method="post" class="delete-form">
+                              <a href="{{route('Recruitment.edit', $item->id_recruitment)}}" class="btn btn-warning btn-sm m-0 edit-button" > <i class="fa-solid fa-trash-can"></i> Edit</a>
                               @method('DELETE')
                               @csrf
-                              <input type="hidden" name="id_pegawai" value="{{ $item->id_pegawai }}">
+                              <input type="hidden" name="id_recruitment" value="{{ $item->id_recruitment }}">
                               <button class="btn btn-danger btn-sm m-0 delete-button" type="submit">
                                   <i class="fa-solid fa-trash-can"></i> Hapus</button>
                           </form>
@@ -72,7 +67,7 @@
           button.addEventListener('click', function(event) {
               event.preventDefault();
 
-              const id = this.parentNode.querySelector('input[name="id_pegawai"]').value;
+              const id = this.parentNode.querySelector('input[name="id_recruitment"]').value;
 
               Swal.fire({
                   title: 'Hapus Data?',
@@ -90,7 +85,7 @@
                   }
               }).then((result) => {
                   if (result.isConfirmed) {
-                      this.parentNode.action = '/hapuspegawai/' + id;
+                      this.parentNode.action = '/hapusrecruitment/' + id;
                       this.parentNode.submit();
                   }
               });
@@ -108,45 +103,65 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="/tambahdatapegawai" method="post" enctype="multipart/form-data">
+            <form action="{{Route('Recruitment.tambah')}}" method="post">
                 @csrf
                 <div class="form-group">
-                  <label for="nip" class="col-form-label">Nip</label>
-                  <input type="number" class="form-control" name="nip" id="nip">
+                  <label for="nip" class="col-form-label">NIM</label>
+                  <input type="text" class="form-control" name="nim" id="nip">
                 </div>
                 <div class="form-group">
-                  <label for="nama_pegawaai" class="col-form-label">Nama Pegawai</label>
-                  <input type="text" class="form-control" name="nama_pegawai" id="nama_pegawaai">
+                  <label for="nama_pegawaai" class="col-form-label">Nama Mahasiswa</label>
+                  <input type="text" class="form-control" name="nama" id="nama_pegawaai">
                 </div>
                 <div class="form-group">
-                  <label for="kedudukan" class="col-form-label">Kedudukan</label>
-                  <select class="form-control" name="kedudukan" id="kedudukan">
-                    <option value="0" hidden>-- Pilih Kedudukan --</option>
-                    @foreach($kedudukan as $data)
-                      <option value="{{$data->id_kedudukan}}"> {{$data->nama_kedudukan}} </option>
+                  <label for="prodi" class="col-form-label">Prodi</label>
+                  <select class="form-control" name="prodi" id="prodi">
+                    <option value="0" hidden>-- Pilih Prodi --</option>
+                    @foreach($smt as $s)
+                    <option>{{$s}}</option>
                     @endforeach
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="link_linkdIn" class="col-form-label">link linkdin</label>
-                  <input type="text" class="form-control" name="link_linkdIn" id="link_linkdIn">
+                  <label for="semester" class="col-form-label">Semester</label>
+                  <select class="form-control" name="semester" id="semester">
+                    <option value="0" hidden>-- Pilih Semester --</option>
+                    <option>2</option>
+                    <option>4</option>
+                    <option>6</option>
+                  </select>
                 </div>
                 <div class="form-group">
-                  <label for="instagram" class="col-form-label">Link Instagram</label>
-                  <input type="text" class="form-control" name="instagram" id="instagram">
-                </div>
+                  <label class="d-block">Keahlian Utama</label>
+                  <div class="form-check">
+                      <input class="form-check-input"
+                          type="radio"
+                          name="keahlian_utama"
+                          id="exampleRadios1"
+                          value="Laravel">
+                      <label class="form-check-label"
+                          for="exampleRadios1">
+                          Laravel
+                      </label>
+                  </div>
+              </div>
                 <div class="form-group">
-                  <label for="foto_profile" class="col-form-label">Foto Pegawai</label>
-                  <input type="file" class="form-control" name="foto_profile" id="foto_profile" onchange="previewImage(this);">
-                  <img id="gambar-preview" src="#" alt="Gambar Pratinjau"
-                  style="max-width: 50%; display: none;">
-                </div>
-               
-            
+                  <label class="d-block">Keahlian Lain</label>
+                  <div class="form-check">
+                      <input class="form-check-input"
+                          name="keahlian_lain"
+                          type="checkbox"
+                          value="Desain">
+                      <label class="form-check-label"
+                          for="defaultCheck1">
+                          Desain
+                      </label>
+                  </div>
+              </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
         </div>
       </div>

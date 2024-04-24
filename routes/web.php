@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\KedudukanController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PelatihanController;
+use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\Recruitment;
+use App\Http\Controllers\RecruitmentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +40,26 @@ Route::get('/edit_pegawai/{id}', [App\Http\Controllers\PegawaiController::class,
 Route::patch('/update_pegawai/{id}', [PegawaiController::class, "update"])->name("Pegawai.update");
 
 Route::resource('Kedudukan', KedudukanController::class);
+
+Route::get("/datarecruitment", [RecruitmentController::class, 'index'])->name("Recruitment.index");
+Route::post("/tambahrecruitment", [RecruitmentController::class, 'tambah'])->name("Recruitment.tambah");
+Route::get("/editrecruitment/{id}", [RecruitmentController::class, 'edit'])->name("Recruitment.edit");
+Route::patch("/updaterecruitment/{id}", [RecruitmentController::class, 'update'])->name("Recruitment.update");
+Route::delete("/hapusrecruitment/{id}", [RecruitmentController::class, 'delete'])->name("Recruitment.delete");
+
+
+
+Route::get("/dataportofolio", [PortofolioController::class, 'index'])->name("Portofolio.index");
+Route::post("/tambahportofolio", [PortofolioController::class, 'tambah'])->name("Portofolio.tambah");
+Route::get("/editportofolio/{id}", [PortofolioController::class, 'edit'])->name("Portofolio.edit");
+Route::patch("/updateportofolio/{id}", [PortofolioController::class, 'update'])->name("Portofolio.update");
+Route::delete("/hapusportofolio/{id}", [PortofolioController::class, 'delete'])->name("Portofolio.delete");
+
+Route::get("/datapelatihan", [PelatihanController::class, 'index'])->name("Pelatihan.index");
+Route::post("/tambahpelatihan", [PelatihanController::class, 'tambah'])->name("Pelatihan.tambah");
+Route::get("/editpelatihan/{id}", [PelatihanController::class, 'edit'])->name("Pelatihan.edit");
+Route::patch("/updatepelatihan/{id}", [PelatihanController::class, 'update'])->name("Pelatihan.update");
+Route::delete("/hapuspelatihan/{id}", [PelatihanController::class, 'delete'])->name("Pelatihan.delete");
 
 // routes/web.php
 

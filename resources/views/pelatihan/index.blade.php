@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-               
+              
                 <div class="card-body">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
@@ -16,7 +16,11 @@
                         <table class="table table-bordered table-md">
                             <tr>
                                 <th>#</th>
-                                <th>Nama Kedudukan</th>
+                                <th>Nama Pelatihan</th>
+                                <th>Deskripsi</th>
+                                <th>Kategori</th>
+                                <th>Benefit</th>
+                                <th>Harga</th>
                                 <th>Action</th>
 
                                 @php
@@ -25,15 +29,18 @@
                                 @foreach ($data as $item)
                             <tr>
                                 <td>{{ $index }}</td>
-                                <td>{{ $item->nama_kedudukan }}</td>
-                              
+                                <td>{{ $item->nama_pelatihan }}</td>
+                                <td>{{ $item->deskripsi }}</td>
+                                <td>{{ $item->kategori }}</td>
+                                <td>{{ $item->benefit }}</td>
+                                <td>{{ $item->harga }}</td>
+                               
                            <td>
-                           
-                            <form action="" method="post" class="delete-form">
-                                <a href="{{route('Kedudukan.edit', $item->id_kedudukan)}}" class="btn btn-warning btn-sm m-0 edit-button" > <i class="fa-solid fa-trash-can"></i> Edit</a>
+                            <form action="/hapuspelatihan/{{ $item->id_pelatihan }}" method="post" class="delete-form">
+                              <a href="{{route('Pelatihan.edit', $item->id_pelatihan)}}" class="btn btn-warning btn-sm m-0 edit-button" > <i class="fa-solid fa-trash-can"></i> Edit</a>
                               @method('DELETE')
                               @csrf
-                              <input type="hidden" name="id_kedudukan" value="{{ $item->id_kedudukan }}">
+                              <input type="hidden" name="id_pelatihan" value="{{ $item->id_pelatihan }}">
                               <button class="btn btn-danger btn-sm m-0 delete-button" type="submit">
                                   <i class="fa-solid fa-trash-can"></i> Hapus</button>
                           </form>
@@ -59,7 +66,7 @@
           button.addEventListener('click', function(event) {
               event.preventDefault();
 
-              const id = this.parentNode.querySelector('input[name="id_kedudukan"]').value;
+              const id = this.parentNode.querySelector('input[name="id_pelatihan"]').value;
 
               Swal.fire({
                   title: 'Hapus Data?',
@@ -77,7 +84,7 @@
                   }
               }).then((result) => {
                   if (result.isConfirmed) {
-                      this.parentNode.action = '/hapuskedudukan/' + id;
+                      this.parentNode.action = '/hapuspelatihan/' + id;
                       this.parentNode.submit();
                   }
               });
@@ -89,17 +96,38 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Tambah {{ $title }}</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Tambah Data title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <form action="{{route('Kedudukan.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{Route('Pelatihan.tambah')}}" method="post">
                 @csrf
                 <div class="form-group">
-                  <label for="nama_kedudukan" class="col-form-label">Nama Kedudukan</label>
-                  <input type="text" class="form-control" name="nama_kedudukan" id="nama_kedudukan">
+                  <label for="nip" class="col-form-label">Nama Pelatihan</label>
+                  <input type="text" class="form-control" name="nama_pelatihan" id="nip">
+                </div>
+                <div class="form-group">
+                  <label for="nip" class="col-form-label">Deskripsi</label>
+                  <textarea type="number" class="form-control" name="deskripsi" id="nip"></textarea>
+              </div>
+                <div class="form-group">
+                  <label for="kedudukan" class="col-form-label">Kategori</label>
+                  <select class="form-control" name="kategori" id="kedudukan">
+                      <option value="0" hidden>-- Pilih Kategori --</option>
+                      @foreach($kat as $k)
+                      <option>{{$k}}</option>
+                      @endforeach
+                  </select>
+              </div>  
+              <div class="form-group">
+                <label for="nip" class="col-form-label">Benefit</label>
+                <input type="text" class="form-control" name="benefit" id="nip">
+              </div>
+                <div class="form-group">
+                  <label for="instagram" class="col-form-label">Harga</label>
+                  <input type="text" class="form-control" name="harga" id="instagram">
                 </div>
         </div>
         <div class="modal-footer">
@@ -110,5 +138,26 @@
       </div>
     </div>
   </div>
- 
+  <script>
+    function previewImage(input) {
+      var preview = document.getElementById('gambar-preview');
+      var file = input.files[0];
+      var reader = new FileReader();
+
+      reader.onloadend = function () {
+        preview.src = reader.result;
+        preview.style.display = 'block';
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        preview.src = '#';
+        preview.style.display = 'none';
+      }
+    }
+
+
+  </script>
+
   

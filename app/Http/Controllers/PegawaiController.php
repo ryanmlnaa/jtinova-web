@@ -123,6 +123,10 @@ class PegawaiController extends Controller
         try{
             $fileName = "";
             if( $req->foto_profile != null){
+                $oldPath = public_path('foto_pegawai/' . $req->foto_profile);
+                if (file_exists($oldPath)) {
+                    @unlink($oldPath);
+                }
                 $fileName = time() . '.' . $req->file('foto_profile')->getClientOriginalExtension();
                 $req->file('foto_profile')->move(public_path('/foto_pegawai'), $fileName); 
             }else{
