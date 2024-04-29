@@ -16,13 +16,9 @@
                         <table class="table table-bordered table-md">
                             <tr>
                                 <th>#</th>
-                                <th>Judul</th>
-                                <th>Deskripsi</th>
-                                <th>Nama Klien</th>
-                                <th>Kategori</th>
-                                <th>Tanggal Mulai</th>
-                                <th>Tanggal Selesai</th>
-                                <th>Foto</th>
+                                <th>Nama User</th>
+                                <th>Email</th>
+                                <th>Role</th>
                                 <th>Action</th>
 
                                 @php
@@ -31,27 +27,17 @@
                                 @foreach ($data as $item)
                             <tr>
                                 <td>{{ $index }}</td>
-                                <td>{{ $item->judul }}</td>
-                                <td>{{ $item->deskripsi }}</td>
-                                <td>{{ $item->klien }}</td>
-                                <td>{{ $item->kategori }}</td>
-                                <td>{{ $item->start_date }}</td>
-                                <td>{{ $item->end_date }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->role }}</td>
                                 <td>
-                                    <img src="{{ url('foto_portofolio/' . $item->foto) }}"
-                                        style="width: 120px; height: 80px; object-fit: cover;" alt=""
-                                        class="rounded">
-
-                                </td>
-                                <td>
-                                    <form action="/hapusportofolio/{{ $item->id_portofolio }}" method="post"
-                                        class="delete-form">
-                                        <a href="{{ route('Portofolio.edit', $item->id_portofolio) }}"
+                                    <form action="/hapususer/{{ $item->id }}" method="post" class="delete-form">
+                                        <a href="{{ route('User.edit', $item->id) }}"
                                             class="btn btn-warning btn-sm m-0 edit-button"> <i
                                                 class="fa-solid fa-trash-can"></i> Edit</a>
                                         @method('DELETE')
                                         @csrf
-                                        <input type="hidden" name="id_portofolio" value="{{ $item->id_portofolio }}">
+                                        <input type="hidden" name="id" value="{{ $item->id }}">
                                         <button class="btn btn-danger btn-sm m-0 delete-button" type="submit">
                                             <i class="fa-solid fa-trash-can"></i> Hapus</button>
                                     </form>
@@ -77,7 +63,7 @@
             button.addEventListener('click', function(event) {
                 event.preventDefault();
 
-                const id = this.parentNode.querySelector('input[name="id_portofolio"]').value;
+                const id = this.parentNode.querySelector('input[name="id"]').value;
 
                 Swal.fire({
                     title: 'Hapus Data?',
@@ -95,7 +81,7 @@
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        this.parentNode.action = '/hapusportofolio/' + id;
+                        this.parentNode.action = '/hapususer/' + id;
                         this.parentNode.submit();
                     }
                 });
@@ -107,52 +93,42 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah {{$title}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Data title</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{Route('Portofolio.tambah')}}" method="post" enctype="multipart/form-data">
+                <form action="{{ Route('User.tambah') }}" method="post">
                     @csrf
                     <div class="form-group">
-                        <label for="nip" class="col-form-label">Judul<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="judul" id="nip">
+                        <label for="nip" class="col-form-label">Nama User <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="name" id="nip">
                     </div>
                     <div class="form-group">
-                      <label for="nip" class="col-form-label">Deskripsi<span class="text-danger">*</span></label>
-                      <textarea type="number" class="form-control" name="deskripsi" id="nip"></textarea>
-                  </div>
-                    <div class="form-group">
-                        <label for="nama_pegawaai" class="col-form-label">Nama Klien<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="klien" id="nama_pegawaai">
+                        <label for="nip" class="col-form-label">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" name="email" id="nip">
                     </div>
                     <div class="form-group">
-                        <label for="kedudukan" class="col-form-label">Kategori<span class="text-danger">*</span></label>
-                        <select class="form-control" name="kategori" id="kedudukan">
-                            <option value="0" hidden>-- Pilih Kategori --</option>
-                            @foreach($kat as $k)
-                            <option>{{$k}}</option>
-                            @endforeach
+                        <label for="nip" class="col-form-label">Password <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" name="password" id="nip">
+                    </div>
+                    <div class="form-group">
+                        <label for="nip" class="col-form-label">Confirm Password <span
+                                class="text-danger">*</span></label>
+                        <input type="password" class="form-control" name="confirm_password" id="nip">
+                    </div>
+                    <div class="form-group">
+                        <label for="kedudukan" class="col-form-label">Role <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="role" id="kedudukan">
+                            <option value="0" hidden>-- Pilih Role --</option>
+                            <option>user</option>
+                            <option>admin</option>
+
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>Tanggal Mulai<span class="text-danger">*</span></label>
-                        <input type="date" name="start_date" class="form-control datepicker">
-                    </div>
-                    <div class="form-group">
-                        <label>Tanggal Selesai<span class="text-danger">*</span></label>
-                        <input type="date" name="end_date" class="form-control datepicker">
-                    </div>
-                    <div class="form-group">
-                        <label for="foto_profile" class="col-form-label">Foto Portofolio<span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" name="foto" id="foto_profile"
-                            onchange="previewImage(this);">
-                        <img id="gambar-preview" src="#" alt="Gambar Pratinjau"
-                            style="max-width: 50%; display: none;">
-                    </div>
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

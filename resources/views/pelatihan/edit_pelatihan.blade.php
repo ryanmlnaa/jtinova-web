@@ -10,15 +10,15 @@
                 @csrf
                 @method('patch')
                 <div class="form-group">
-                  <label for="nip" class="col-form-label">Nama Pelatihan</label>
+                  <label for="nip" class="col-form-label">Nama Pelatihan <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="nama_pelatihan" value="{{$data->nama_pelatihan}}" id="nip">
               </div>
               <div class="form-group">
-                <label for="nip" class="col-form-label">Deskripsi</label>
+                <label for="nip" class="col-form-label">Deskripsi <span class="text-danger">*</span></label>
                 <textarea type="number" class="form-control" name="deskripsi" id="nip">{{$data->deskripsi}}</textarea>
             </div>
               <div class="form-group">
-                  <label for="kedudukan" class="col-form-label">Kategori</label>
+                  <label for="kedudukan" class="col-form-label">Kategori <span class="text-danger">*</span></label>
                   <select class="form-control" name="kategori" id="kedudukan">
                       <option value="0" hidden>-- Pilih Kategori --</option>
                       @foreach($kat as $k)
@@ -27,12 +27,12 @@
                   </select>
               </div>
                 <div class="form-group">
-                    <label for="instagram" class="control-label">Benefit</label>
+                    <label for="instagram" class="control-label">Benefit <span class="text-danger">*</span></label>
                     <input type="text" id="instagram" name="benefit" class="form-control"
                         value="{{$data->benefit}}" autofocus>
                 </div>
                 <div class="form-group">
-                  <label for="instagram" class="control-label">Harga</label>
+                  <label for="instagram" class="control-label">Harga <span class="text-danger">*</span></label>
                   <input type="text" id="instagram" name="harga" class="form-control"
                       value="{{$data->harga}}" autofocus>
               </div>

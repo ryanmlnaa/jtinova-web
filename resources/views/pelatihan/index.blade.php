@@ -2,6 +2,8 @@
 @section('title', $title)
 @section('menu', $title)
 @section('content')
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -96,7 +98,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Tambah Data title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Tambah {{$title}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -105,15 +107,15 @@
             <form action="{{Route('Pelatihan.tambah')}}" method="post">
                 @csrf
                 <div class="form-group">
-                  <label for="nip" class="col-form-label">Nama Pelatihan</label>
+                  <label for="nip" class="col-form-label">Nama Pelatihan <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="nama_pelatihan" id="nip">
                 </div>
                 <div class="form-group">
-                  <label for="nip" class="col-form-label">Deskripsi</label>
+                  <label for="nip" class="col-form-label">Deskripsi <span class="text-danger">*</span></label>
                   <textarea type="number" class="form-control" name="deskripsi" id="nip"></textarea>
               </div>
                 <div class="form-group">
-                  <label for="kedudukan" class="col-form-label">Kategori</label>
+                  <label for="kedudukan" class="col-form-label">Kategori <span class="text-danger">*</span></label>
                   <select class="form-control" name="kategori" id="kedudukan">
                       <option value="0" hidden>-- Pilih Kategori --</option>
                       @foreach($kat as $k)
@@ -122,12 +124,12 @@
                   </select>
               </div>  
               <div class="form-group">
-                <label for="nip" class="col-form-label">Benefit</label>
+                <label for="nip" class="col-form-label">Benefit <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" name="benefit" id="nip">
               </div>
                 <div class="form-group">
-                  <label for="instagram" class="col-form-label">Harga</label>
-                  <input type="text" class="form-control" name="harga" id="instagram">
+                  <label for="harga_pelatihan" class="col-form-label">Harga <span class="text-danger">*</span></label>
+                  <input type="number" class="form-control" name="harga" id="harga_pelatihan">
                 </div>
         </div>
         <div class="modal-footer">
@@ -156,8 +158,20 @@
         preview.style.display = 'none';
       }
     }
-
+    
+   
 
   </script>
 
-  
+  <script>
+    $(document).ready(function(){
+    $('#harga_pelatihan').change(function(){
+        let num = $(this).val();
+        let format = new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR"
+        }).format(num);
+        $('#formattedNumber').val(format);
+    });
+});
+  </script>

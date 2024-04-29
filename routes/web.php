@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\BenefitController;
+use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KeahlianController;
 use App\Http\Controllers\KedudukanController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PelatihanController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\Recruitment;
 use App\Http\Controllers\RecruitmentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,7 +43,7 @@ Route::delete('/hapuspegawai/{id_pegawai}', [App\Http\Controllers\PegawaiControl
 Route::get('/edit_pegawai/{id}', [App\Http\Controllers\PegawaiController::class, 'edit'])->name('Pegawai.edit');
 Route::patch('/update_pegawai/{id}', [PegawaiController::class, "update"])->name("Pegawai.update");
 
-Route::resource('Kedudukan', KedudukanController::class);
+Route::resource('Jabatan', JabatanController::class);
 
 Route::get("/datarecruitment", [RecruitmentController::class, 'index'])->name("Recruitment.index");
 Route::post("/tambahrecruitment", [RecruitmentController::class, 'tambah'])->name("Recruitment.tambah");
@@ -60,6 +64,24 @@ Route::post("/tambahpelatihan", [PelatihanController::class, 'tambah'])->name("P
 Route::get("/editpelatihan/{id}", [PelatihanController::class, 'edit'])->name("Pelatihan.edit");
 Route::patch("/updatepelatihan/{id}", [PelatihanController::class, 'update'])->name("Pelatihan.update");
 Route::delete("/hapuspelatihan/{id}", [PelatihanController::class, 'delete'])->name("Pelatihan.delete");
+
+Route::get("/databenefit", [BenefitController::class, 'index'])->name("Benefit.index");
+Route::post("/tambahbenefit", [BenefitController::class, 'tambah'])->name("Benefit.tambah");
+Route::get("/editbenefit/{id}", [BenefitController::class, 'edit'])->name("Benefit.edit");
+Route::patch("/updatebenefit/{id}", [BenefitController::class, 'update'])->name("Benefit.update");
+Route::delete("/hapusbenefit/{id}", [BenefitController::class, 'delete'])->name("Benefit.delete");
+
+Route::get("/datakeahlian", [KeahlianController::class, 'index'])->name("Keahlian.index");
+Route::post("/tambahkeahlian", [keahlianController::class, 'tambah'])->name("Keahlian.tambah");
+Route::get("/editkeahlian/{id}", [keahlianController::class, 'edit'])->name("Keahlian.edit");
+Route::patch("/updatekeahlian/{id}", [keahlianController::class, 'update'])->name("Keahlian.update");
+Route::delete("/hapuskeahlian/{id}", [keahlianController::class, 'delete'])->name("Keahlian.delete");
+
+Route::get("/datauser", [UserController::class, 'index'])->name("User.index");
+Route::post("/tambahuser", [UserController::class, 'tambah'])->name("User.tambah");
+Route::get("/edituser/{id}", [UserController::class, 'edit'])->name("User.edit");
+Route::patch("/updateuser/{id}", [UserController::class, 'update'])->name("User.update");
+Route::delete("/hapususer/{id}", [UserController::class, 'delete'])->name("User.delete");
 
 // routes/web.php
 

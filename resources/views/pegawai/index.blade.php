@@ -18,7 +18,7 @@
                                 <th>#</th>
                                 <th>Nip</th>
                                 <th>Nama Pegawai</th>
-                                <th>Kedudukan</th>
+                                <th>Jabatan</th>
                                 <th>Link LinkdIn</th>
                                 <th>instagram</th>
                                 <th>foto Pegawai</th>
@@ -32,7 +32,7 @@
                                 <td>{{ $index }}</td>
                                 <td>{{ $item->nip }}</td>
                                 <td>{{ $item->nama_pegawai }}</td>
-                                <td>{{ $item->nama_kedudukan }}</td>
+                                <td>{{ $item->nama_jabatan }}</td>
                                 <td>{{ $item->link_linkdIn }}</td>
                                 <td>{{ $item->instagram }}</td>
                                 <td>
@@ -102,7 +102,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Tambah Data title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Tambah {{$title}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -111,19 +111,19 @@
             <form action="/tambahdatapegawai" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                  <label for="nip" class="col-form-label">Nip</label>
+                  <label for="nip" class="col-form-label">NIP / NIK / No KTP <span class="text-danger">*</span> </label>
                   <input type="number" class="form-control" name="nip" id="nip">
                 </div>
                 <div class="form-group">
-                  <label for="nama_pegawaai" class="col-form-label">Nama Pegawai</label>
+                  <label for="nama_pegawaai" class="col-form-label">Nama Pegawai <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="nama_pegawai" id="nama_pegawaai">
                 </div>
                 <div class="form-group">
-                  <label for="kedudukan" class="col-form-label">Kedudukan</label>
-                  <select class="form-control" name="kedudukan" id="kedudukan">
-                    <option value="0" hidden>-- Pilih Kedudukan --</option>
-                    @foreach($kedudukan as $data)
-                      <option value="{{$data->id_kedudukan}}"> {{$data->nama_kedudukan}} </option>
+                  <label for="kedudukan" class="col-form-label">Jabatan  <span class="text-danger">*</span></label>
+                  <select class="form-control" name="jabatan" id="kedudukan">
+                    <option value="0" hidden>-- Pilih Jabatan --</option>
+                    @foreach($jabatan as $data)
+                      <option value="{{$data->id_jabatan}}"> {{$data->nama_jabatan}} </option>
                     @endforeach
                   </select>
                 </div>
@@ -136,7 +136,7 @@
                   <input type="text" class="form-control" name="instagram" id="instagram">
                 </div>
                 <div class="form-group">
-                  <label for="foto_profile" class="col-form-label">Foto Pegawai</label>
+                  <label for="foto_profile" class="col-form-label">Foto Pegawai  <span class="text-danger">*</span></label>
                   <input type="file" class="form-control" name="foto_profile" id="foto_profile" onchange="previewImage(this);">
                   <img id="gambar-preview" src="#" alt="Gambar Pratinjau"
                   style="max-width: 50%; display: none;">

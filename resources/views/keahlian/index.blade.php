@@ -16,7 +16,8 @@
                         <table class="table table-bordered table-md">
                             <tr>
                                 <th>#</th>
-                                <th>Nama Kedudukan</th>
+                                <th>Nama Keahlian</th>
+                                <th>Tipe Keahlian</th>
                                 <th>Action</th>
 
                                 @php
@@ -25,15 +26,15 @@
                                 @foreach ($data as $item)
                             <tr>
                                 <td>{{ $index }}</td>
-                                <td>{{ $item->nama_kedudukan }}</td>
-                              
+                                <td>{{ $item->nama_keahlian }}</td>
+                                <td>{{ $item->tipe_keahlian }}</td>
                            <td>
                            
                             <form action="" method="post" class="delete-form">
-                                <a href="{{route('Kedudukan.edit', $item->id_kedudukan)}}" class="btn btn-warning btn-sm m-0 edit-button" > <i class="fa-solid fa-trash-can"></i> Edit</a>
+                                <a href="{{route('Keahlian.edit', $item->id_keahlian)}}" class="btn btn-warning btn-sm m-0 edit-button" > <i class="fa-solid fa-trash-can"></i> Edit</a>
                               @method('DELETE')
                               @csrf
-                              <input type="hidden" name="id_kedudukan" value="{{ $item->id_kedudukan }}">
+                              <input type="hidden" name="id_keahlian" value="{{ $item->id_keahlian }}">
                               <button class="btn btn-danger btn-sm m-0 delete-button" type="submit">
                                   <i class="fa-solid fa-trash-can"></i> Hapus</button>
                           </form>
@@ -59,7 +60,7 @@
           button.addEventListener('click', function(event) {
               event.preventDefault();
 
-              const id = this.parentNode.querySelector('input[name="id_kedudukan"]').value;
+              const id = this.parentNode.querySelector('input[name="id_keahlian"]').value;
 
               Swal.fire({
                   title: 'Hapus Data?',
@@ -77,7 +78,7 @@
                   }
               }).then((result) => {
                   if (result.isConfirmed) {
-                      this.parentNode.action = '/hapuskedudukan/' + id;
+                      this.parentNode.action = '/hapuskeahlian/' + id;
                       this.parentNode.submit();
                   }
               });
@@ -95,11 +96,19 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="{{route('Kedudukan.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('Keahlian.tambah')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                  <label for="nama_kedudukan" class="col-form-label">Nama Kedudukan</label>
-                  <input type="text" class="form-control" name="nama_kedudukan" id="nama_kedudukan">
+                  <label for="nama_kedudukan" class="col-form-label">Nama Keahlian  <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="nama_keahlian" id="nama_kedudukan">
+                </div>
+                <div class="form-group">
+                    <label for="kedudukan" class="col-form-label">Tipe Keahlian</label>
+                    <select class="form-control" name="tipe_keahlian" id="kedudukan">
+                        <option value="0" hidden>-- Pilih Tipe --</option>
+                        <option>utama</option>
+                        <option>lain</option>
+                    </select>
                 </div>
         </div>
         <div class="modal-footer">

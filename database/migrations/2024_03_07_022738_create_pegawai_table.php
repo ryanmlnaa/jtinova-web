@@ -15,8 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id_pegawai');
             $table->string('nip', 50)->unique();
             $table->string('nama_pegawai');
-            $table->integer('id_kedudukan');
-            $table->foreign('id_kedudukan')->references('id_kedudukan')->on('kedudukan');
+            $table->integer('id_jabatan');
+            $table->foreign('id_jabatan')->references('id_jabatan')->on('jabatan');
             $table->text('link_linkdIn')->nullable();
             $table->text('instagram')->nullable();
             $table->string('foto_profile');

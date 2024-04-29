@@ -97,7 +97,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Tambah Data title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Tambah {{$title}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -106,7 +106,7 @@
             <form action="{{Route('Recruitment.tambah')}}" method="post">
                 @csrf
                 <div class="form-group">
-                  <label for="nip" class="col-form-label">NIM</label>
+                  <label for="nip" class="col-form-label">NIM </label>
                   <input type="text" class="form-control" name="nim" id="nip">
                 </div>
                 <div class="form-group">
@@ -117,8 +117,8 @@
                   <label for="prodi" class="col-form-label">Prodi</label>
                   <select class="form-control" name="prodi" id="prodi">
                     <option value="0" hidden>-- Pilih Prodi --</option>
-                    @foreach($smt as $s)
-                    <option>{{$s}}</option>
+                    @foreach($prodi as $p)
+                    <option>{{$p}}</option>
                     @endforeach
                   </select>
                 </div>
@@ -126,13 +126,15 @@
                   <label for="semester" class="col-form-label">Semester</label>
                   <select class="form-control" name="semester" id="semester">
                     <option value="0" hidden>-- Pilih Semester --</option>
-                    <option>2</option>
-                    <option>4</option>
-                    <option>6</option>
+                    @foreach($smt as $s)
+                    <option>{{$s}}</option>
+                    @endforeach
                   </select>
                 </div>
                 <div class="form-group">
                   <label class="d-block">Keahlian Utama</label>
+                  @foreach($keahlian as $data)
+                  @if($data->tipe_keahlian == "utama")
                   <div class="form-check">
                       <input class="form-check-input"
                           type="radio"
@@ -141,12 +143,16 @@
                           value="Laravel">
                       <label class="form-check-label"
                           for="exampleRadios1">
-                          Laravel
+                          {{$data->nama_keahlian}}
                       </label>
                   </div>
+                  @endif
+                  @endforeach
               </div>
                 <div class="form-group">
                   <label class="d-block">Keahlian Lain</label>
+                  @foreach($keahlian as $data)
+                  @if($data->tipe_keahlian == "lain")
                   <div class="form-check">
                       <input class="form-check-input"
                           name="keahlian_lain"
@@ -157,6 +163,8 @@
                           Desain
                       </label>
                   </div>
+                  @endif
+                  @endforeach
               </div>
         </div>
         <div class="modal-footer">

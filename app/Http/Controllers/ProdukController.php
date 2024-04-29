@@ -12,7 +12,5 @@ class ProdukController extends Controller
         $data=Produk::paginate(20);
         $title="Data Produk";
         return view("Produk.index",compact('data','title'));
-
-        
     }
 }
