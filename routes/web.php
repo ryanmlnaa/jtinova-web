@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\KedudukanController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PelatihanController;
+use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\Recruitment;
 use App\Http\Controllers\RecruitmentController;
@@ -20,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LandingPageController::class, 'index'])->name('lading.page');
 
 Auth::routes();
 
@@ -48,13 +48,14 @@ Route::patch("/updaterecruitment/{id}", [RecruitmentController::class, 'update']
 Route::delete("/hapusrecruitment/{id}", [RecruitmentController::class, 'delete'])->name("Recruitment.delete");
 
 
-
+// portofolio
 Route::get("/dataportofolio", [PortofolioController::class, 'index'])->name("Portofolio.index");
 Route::post("/tambahportofolio", [PortofolioController::class, 'tambah'])->name("Portofolio.tambah");
 Route::get("/editportofolio/{id}", [PortofolioController::class, 'edit'])->name("Portofolio.edit");
 Route::patch("/updateportofolio/{id}", [PortofolioController::class, 'update'])->name("Portofolio.update");
 Route::delete("/hapusportofolio/{id}", [PortofolioController::class, 'delete'])->name("Portofolio.delete");
 
+// pelatihan
 Route::get("/datapelatihan", [PelatihanController::class, 'index'])->name("Pelatihan.index");
 Route::post("/tambahpelatihan", [PelatihanController::class, 'tambah'])->name("Pelatihan.tambah");
 Route::get("/editpelatihan/{id}", [PelatihanController::class, 'edit'])->name("Pelatihan.edit");
@@ -72,3 +73,9 @@ Route::delete("/hapuspelatihan/{id}", [PelatihanController::class, 'delete'])->n
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+// Route::post('/', [PendaftaranController::class, 'store'])->name('store');
+// routes/web.php
+
+Route::get('/pendaftaran', function () {
+    return view('pendaftaran_ta.index');
+})->name('pendaftaran');

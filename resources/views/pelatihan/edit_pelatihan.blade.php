@@ -36,6 +36,13 @@
                   <input type="text" id="instagram" name="harga" class="form-control"
                       value="{{$data->harga}}" autofocus>
               </div>
+                <div class="form-group">
+                    <label for="foto_profile" class="col-form-label">Foto Pelatihan</label>
+                    <input type="hidden" name="old_file" value="{{ $data->foto }}">
+                    <input type="file" class="form-control" name="foto"  id="foto_profile" onchange="previewImage(this);">
+                    <img id="gambar-preview" src="{{ url("foto_portofolio/". $data->foto)}}" alt="Gambar Pratinjau"
+                    style="max-width: 50%; margin-top:20px; display: block;">
+                </div>
                 <button type="submit" class="btn btn-primary float-right">Save changes</button>
             </form>
         </div>

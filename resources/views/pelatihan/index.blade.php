@@ -21,6 +21,7 @@
                                 <th>Kategori</th>
                                 <th>Benefit</th>
                                 <th>Harga</th>
+                                <th>Foto</th>
                                 <th>Action</th>
 
                                 @php
@@ -34,7 +35,11 @@
                                 <td>{{ $item->kategori }}</td>
                                 <td>{{ $item->benefit }}</td>
                                 <td>{{ $item->harga }}</td>
-                               
+                                <td>
+                                  <img src="{{ url('foto_pelatihan/' . $item->foto) }}"
+                                      style="width: 120px; height: 80px; object-fit: cover;" alt=""
+                                      class="rounded">
+                              </td>  
                            <td>
                             <form action="/hapuspelatihan/{{ $item->id_pelatihan }}" method="post" class="delete-form">
                               <a href="{{route('Pelatihan.edit', $item->id_pelatihan)}}" class="btn btn-warning btn-sm m-0 edit-button" > <i class="fa-solid fa-trash-can"></i> Edit</a>
@@ -102,7 +107,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="{{Route('Pelatihan.tambah')}}" method="post">
+            <form action="{{Route('Pelatihan.tambah')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                   <label for="nip" class="col-form-label">Nama Pelatihan</label>
@@ -128,7 +133,11 @@
                 <div class="form-group">
                   <label for="instagram" class="col-form-label">Harga</label>
                   <input type="text" class="form-control" name="harga" id="instagram">
-                </div>
+              </div>
+              <div class="form-group">
+                <label for="foto">Foto</label>
+                <input type="file" class="form-control-file" id="foto" name="foto" accept="image/*">
+              </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
