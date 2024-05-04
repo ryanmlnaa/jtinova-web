@@ -47,6 +47,11 @@
             flex-grow: 1; /* Menyesuaikan input untuk mengisi sisa ruang */
             max-width: calc(100% - 50px); /* Menyesuaikan lebar maksimum input */
         }
+
+        /* Tambahkan jarak antara form dan footer */
+        #mu-footer {
+            margin-top: 50px;
+        }
     </style>
 </head>
 
@@ -139,6 +144,105 @@
         </div>
     </section>
     <!-- End Form Pendaftaran -->
+
+    <!-- Start footer -->
+    <footer id="mu-footer">
+        <div class="mu-footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="mu-single-footer">
+                            <img class="mu-footer-logo" src="{{ asset('jti/assets/images/logo.png') }}"
+                                alt="logo">
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                                dolor. Aenean massa. Cum sociis natoque penatibus. </p>
+                            <div class="mu-social-media">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a class="mu-twitter" href="#"><i class="fa fa-twitter"></i></a>
+                                <a class="mu-pinterest" href="#"><i class="fa fa-pinterest-p"></i></a>
+                                <a class="mu-google-plus" href="#"><i class="fa fa-google-plus"></i></a>
+                                <a class="mu-youtube" href="#"><i class="fa fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mu-single-footer">
+                            <h3>Twitter feed</h3>
+                            <ul class="list-unstyled">
+                                <li class="media">
+                                    <span class="fa fa-twitter"></span>
+                                    <div class="media-body">
+                                        <p><strong>@b_jtinova</strong> Lorem ipsum dolor sit amet, consectetuer
+                                            adipiscing
+                                            elit.</p>
+                                        <a href="#">2 hours ago</a>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <span class="fa fa-twitter"></span>
+                                    <div class="media-body">
+                                        <p><strong>@_jtinov</strong> Lorem ipsum dolor sit amet, consectetuer adipiscing
+                                            elit.</p>
+                                        <a href="#">2 hours ago</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mu-single-footer">
+                            <h3>Company</h3>
+                            <ul class="mu-useful-links">
+                                <li><a href="#">News</a></li>
+                                <li><a href="#">Training</a></li>
+                                <li><a href="#">Portfolio</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mu-single-footer">
+                            <h3>Contact Information</h3>
+                            <ul class="list-unstyled">
+                                <li class="media">
+                                    <span class="fa fa-home"></span>
+                                    <div class="media-body">
+                                        <p>Jln. Mastrip, Jember State Polytechnic</p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <span class="fa fa-phone"></span>
+                                    <div class="media-body">
+                                        <p>+62 8123 6753 8976</p>
+                                        <p>+62 8213 4562 9876</p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <span class="fa fa-envelope"></span>
+                                    <div class="media-body">
+                                        <p>jtinova@gmail.com</p>
+                                        <p>jtinoa@polije.ac.id</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mu-footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mu-footer-bottom-area">
+                            <p class="mu-copy-right">&copy; Copyright <a rel="nofollow" href="http://markups.io">jti
+                                    nova</a>. All right reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End footer -->
 
     <!-- JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
