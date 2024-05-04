@@ -17,8 +17,8 @@
     <link href="{{ asset('jti/style.css') }}" rel="stylesheet">
 
     <style>
-        /* Custom CSS untuk form pendaftaran */
-        #form-pendaftaran {
+        /* Custom CSS untuk form bukti pembayaran */
+        #form-bukti-pembayaran {
             margin-top: 100px; /* Jarak antara header navbar dan form */
             padding: 20px;
             background-color: #f9f9f9;
@@ -29,23 +29,32 @@
             font-family: Arial, sans-serif; /* Mengubah font menjadi Arial atau font sans-serif lainnya */
         }
 
-        #form-pendaftaran .form-group {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
+        #form-bukti-pembayaran .form-group {
+            margin-bottom: 20px;
         }
 
-
-        #form-pendaftaran .form-group label {
+        #form-bukti-pembayaran label {
             font-weight: bold;
-            width: 200px; /* Menentukan lebar label */
-            flex-shrink: 0; /* Tetapkan lebar label agar tidak menyusut */
         }
 
-        #form-pendaftaran .form-control {
-            flex-grow: 1; /* Menyesuaikan input untuk mengisi sisa ruang */
-            max-width: calc(100% - 50px); /* Menyesuaikan lebar maksimum input */
+        #form-bukti-pembayaran p.form-control-static {
+            padding-top: 7px;
+            padding-bottom: 7px;
+            margin-top: 7px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            background-color: #e9ecef;
+        }
+
+        #form-bukti-pembayaran input[type="file"] {
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            background-color: #ffffff;
+            padding: 10px;
+        }
+
+        #form-bukti-pembayaran button[type="submit"] {
+            padding: 10px 20px;
         }
     </style>
 </head>
@@ -82,63 +91,31 @@
     </header>
     <!-- End Header -->
 
-    <!-- Start Form Pendaftaran -->
-    <section id="form-pendaftaran">
+    <!-- Start Form Bukti Pembayaran -->
+    <section id="form-bukti-pembayaran">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <h2 class="text-center mb-4">Biodata Pendampingan TA</h2>
-                    <form action="{{ route('bukti_bayar') }}" method="GET">
+                    <h2 class="text-center mb-4">Form Bukti Pembayaran</h2>
+                    <form>
+                        <!-- Nomor Rekening (Statis) -->
                         <div class="form-group">
-                            <label for="nama">Nama:</label>
-                            <input type="text" class="form-control" id="nama" name="nama" required>
+                            <label for="nomor_rekening">Nomor Rekening:</label>
+                            <p class="form-control-static">1234567890</p>
                         </div>
+                        <!-- Upload Bukti Pembayaran -->
                         <div class="form-group">
-                            <label for="ttl">Tempat Tanggal Lahir:</label>
-                            <input type="text" class="form-control" id="ttl" name="ttl" required>
+                            <label for="bukti_pembayaran">Upload Bukti Pembayaran:</label>
+                            <input type="file" class="form-control-file" id="bukti_pembayaran" name="bukti_pembayaran" required>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat">Alamat:</label>
-                            <textarea class="form-control" id="alamat" name="alamat" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="telepon">No. Telepon:</label>
-                            <input type="tel" class="form-control" id="telepon" name="telepon" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="agama">Agama:</label>
-                            <input type="text" class="form-control" id="agama" name="agama" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="jenis_kelamin">Jenis Kelamin:</label>
-                            <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
-                                <option value="L">Laki-laki</option>
-                                <option value="P">Perempuan</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="pendidikan">Pendidikan Terakhir:</label>
-                            <input type="text" class="form-control" id="pendidikan" name="pendidikan" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="pekerjaan">Pekerjaan:</label>
-                            <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="ktp">Upload KTP (opsional):</label>
-                            <input type="file" class="form-control-file" id="ktp" name="ktp">
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+                        <!-- Button Simpan -->
+                        <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End Form Pendaftaran -->
+    <!-- End Form Bukti Pembayaran -->
 
     <!-- JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -149,6 +126,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous">
     </script>
+    <script>
+        $(document).ready(function(){
+            $('form').submit(function(){
+                window.location.href = "{{ route('bukti_bayar') }}";
+            });
+        });
+    </script>
+    
 </body>
 
 </html>

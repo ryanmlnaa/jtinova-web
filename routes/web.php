@@ -79,3 +79,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/pendaftaran', function () {
     return view('pendaftaran_ta.index');
 })->name('pendaftaran');
+
+Route::get('/bukti_bayar', function () {
+    return view('bukti_bayar.index');
+})->name('bukti_bayar');
