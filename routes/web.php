@@ -1,6 +1,13 @@
 <?php
 
+use App\Http\Controllers\KedudukanController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PelatihanController;
+use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\Recruitment;
+use App\Http\Controllers\RecruitmentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LandingPageController::class, 'index'])->name('lading.page');
 
 Auth::routes();
 
@@ -31,13 +36,50 @@ Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'
 Route::get('/datapegawai', [App\Http\Controllers\PegawaiController::class, 'index'])->name('datapegawai');
 Route::post('/tambahdatapegawai', [App\Http\Controllers\PegawaiController::class, 'tambahdata_pegawai'])->name('tambahdatapegawai');
 Route::delete('/hapuspegawai/{id_pegawai}', [App\Http\Controllers\PegawaiController::class, 'hapuspegawai'])->name('hapuspegawai.destroy');
-Route::get('/edit_pegawai/{id}', [App\Http\Controllers\PegawaiController::class, 'edit'])->name('edit');
+Route::get('/edit_pegawai/{id}', [App\Http\Controllers\PegawaiController::class, 'edit'])->name('Pegawai.edit');
+Route::patch('/update_pegawai/{id}', [PegawaiController::class, "update"])->name("Pegawai.update");
+
+Route::resource('Kedudukan', KedudukanController::class);
+
+Route::get("/datarecruitment", [RecruitmentController::class, 'index'])->name("Recruitment.index");
+Route::post("/tambahrecruitment", [RecruitmentController::class, 'tambah'])->name("Recruitment.tambah");
+Route::get("/editrecruitment/{id}", [RecruitmentController::class, 'edit'])->name("Recruitment.edit");
+Route::patch("/updaterecruitment/{id}", [RecruitmentController::class, 'update'])->name("Recruitment.update");
+Route::delete("/hapusrecruitment/{id}", [RecruitmentController::class, 'delete'])->name("Recruitment.delete");
+
+
+// portofolio
+Route::get("/dataportofolio", [PortofolioController::class, 'index'])->name("Portofolio.index");
+Route::post("/tambahportofolio", [PortofolioController::class, 'tambah'])->name("Portofolio.tambah");
+Route::get("/editportofolio/{id}", [PortofolioController::class, 'edit'])->name("Portofolio.edit");
+Route::patch("/updateportofolio/{id}", [PortofolioController::class, 'update'])->name("Portofolio.update");
+Route::delete("/hapusportofolio/{id}", [PortofolioController::class, 'delete'])->name("Portofolio.delete");
+
+// pelatihan
+Route::get("/datapelatihan", [PelatihanController::class, 'index'])->name("Pelatihan.index");
+Route::post("/tambahpelatihan", [PelatihanController::class, 'tambah'])->name("Pelatihan.tambah");
+Route::get("/editpelatihan/{id}", [PelatihanController::class, 'edit'])->name("Pelatihan.edit");
+Route::patch("/updatepelatihan/{id}", [PelatihanController::class, 'update'])->name("Pelatihan.update");
+Route::delete("/hapuspelatihan/{id}", [PelatihanController::class, 'delete'])->name("Pelatihan.delete");
+
 // routes/web.php
 
-// Route::delete('/hapuspegawai/{id_pegawai}', 'PegawaiController@hapuspegawai');
+// Route::delete('/hapuskedudukan/{id_pegawai}', 'PegawaiController@hapuspegawai');
 
 
 
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Route::post('/', [PendaftaranController::class, 'store'])->name('store');
+// routes/web.php
+
+Route::get('/pendaftaran', function () {
+    return view('pendaftaran_ta.index');
+})->name('pendaftaran');
+
+Route::get('/bukti_bayar', function () {
+    return view('bukti_bayar.index');
+})->name('bukti_bayar');

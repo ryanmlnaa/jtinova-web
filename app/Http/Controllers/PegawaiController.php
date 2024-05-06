@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kedudukan;
 use App\Models\Pegawai;
 use Exception;
 use Illuminate\Database\QueryException;
@@ -16,8 +17,12 @@ class PegawaiController extends Controller
     {
         $title = "Data Pegawai";
         $limit = $request->limit ?? 25;
-        $data = Pegawai::paginate($limit);
-        return view('Pegawai.index', compact("title", "limit", "data"));
+        $kedudukan = Kedudukan::get();
+        $data = DB::table('pegawai')
+        ->join("kedudukan", "pegawai.id_kedudukan", '=', 'kedudukan.id_kedudukan')
+        ->paginate($limit);
+        
+        return view('Pegawai.index', compact("title", "limit", "data", "kedudukan"));
     }
     public function tambahdata_pegawai(Request $request)
     {
@@ -45,12 +50,12 @@ class PegawaiController extends Controller
             $data = [
                 "nip" => $request->nip,
                 "nama_pegawai" => $request->nama_pegawai,
-                "kedudukan" => $request->kedudukan,
+                "id_kedudukan" => $request->kedudukan,
                 "link_linkdIn" => $request->link_linkdIn,
                 "instagram" => $request->instagram,
                 "foto_profile" => $fileName,
             ];
-    
+
             Pegawai::create($data);
     
             DB::commit();
@@ -92,10 +97,70 @@ class PegawaiController extends Controller
         return redirect()->back();
     }
     public function edit($id) {
-        $data=Pegawai::where('id_pegawai',$id)->get();
-        $title="Edit PEgawai";
-        return view("pegawai.edit_pegawai",compact('data','title'));
-        
+        $data = DB::table('pegawai')
+        ->where("id_pegawai", "=", $id)
+        ->join("kedudukan", "pegawai.id_kedudukan", '=', 'kedudukan.id_kedudukan')
+        ->first();
+        $kedudukan = Kedudukan::get();
+        $title="Edit Pegawai";
+        return view("pegawai.edit_pegawai",compact('data','title', 'kedudukan'));
     }
+    public function update(Request $req, $pegawai){
+        $data = Pegawai::findOrFail($pegawai);
+        $validator = Validator::make($req->all(), [
+            'nip' => 'required',
+            'nama_pegawai' => 'required',
+            'kedudukan' => 'required',
+            'link_linkdIn' => 'required',
+            'instagram' => 'required',
+            'foto_profile' => 'image|mimes:jpeg,jpg,png,gif|max:2048'
+        ]); 
+        if($validator->fails()){
+            $messages = $validator->errors()->all();
+            Alert::error($messages[0])->flash();
+            return back()->withErrors($validator)->withInput();
+        }
+        try{
+            $fileName = "";
+            if( $req->foto_profile != null){
+                $oldPath = public_path('foto_pegawai/' . $req->foto_profile);
+                if (file_exists($oldPath)) {
+                    @unlink($oldPath);
+                }
+                $fileName = time() . '.' . $req->file('foto_profile')->getClientOriginalExtension();
+                $req->file('foto_profile')->move(public_path('/foto_pegawai'), $fileName); 
+            }else{
+                $fileName = $req->old_file;
+            }
+           
+            $data->update([
+                "nip" => $req->nip,
+                "nama_pegawai" => $req->nama_pegawai,
+                "id_kedudukan" => $req->kedudukan, 
+                "link_linkdIn"=> $req->link_linkdIn,
+                "instagram"  => $req->instagram,
+                "foto_profile" => $fileName
+            ]);
+           
+            if($data){
+                return redirect()->route("datapegawai");
+            }else{
+                return redirect()->back()->withInput();
+            } 
+       
+        }catch(QueryException $x){
+            
     
+            // Hapus file foto jika ada
+            if($fileName == $req->old_file){
+                $filePath = public_path('/foto_pegawai/' . $fileName);
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+            }
+           
+    
+            return back();
+        }
+    }
 }

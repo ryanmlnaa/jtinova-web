@@ -5,9 +5,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
-                    <h4>Simple Table</h4>
-                </div>
+               
                 <div class="card-body">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
@@ -34,7 +32,7 @@
                                 <td>{{ $index }}</td>
                                 <td>{{ $item->nip }}</td>
                                 <td>{{ $item->nama_pegawai }}</td>
-                                <td>{{ $item->kedudukan }}</td>
+                                <td>{{ $item->nama_kedudukan }}</td>
                                 <td>{{ $item->link_linkdIn }}</td>
                                 <td>{{ $item->instagram }}</td>
                                 <td>
@@ -45,6 +43,7 @@
                                 </td>
                            <td>
                             <form action="/hapuspegawai/{{ $item->id_pegawai }}" method="post" class="delete-form">
+                              <a href="{{route('Pegawai.edit', $item->id_pegawai)}}" class="btn btn-warning btn-sm m-0 edit-button" > <i class="fa-solid fa-trash-can"></i> Edit</a>
                               @method('DELETE')
                               @csrf
                               <input type="hidden" name="id_pegawai" value="{{ $item->id_pegawai }}">
@@ -121,7 +120,12 @@
                 </div>
                 <div class="form-group">
                   <label for="kedudukan" class="col-form-label">Kedudukan</label>
-                  <input type="text" class="form-control" name="kedudukan" id="kedudukan">
+                  <select class="form-control" name="kedudukan" id="kedudukan">
+                    <option value="0" hidden>-- Pilih Kedudukan --</option>
+                    @foreach($kedudukan as $data)
+                      <option value="{{$data->id_kedudukan}}"> {{$data->nama_kedudukan}} </option>
+                    @endforeach
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="link_linkdIn" class="col-form-label">link linkdin</label>
