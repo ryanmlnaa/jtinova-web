@@ -16,7 +16,7 @@ class PelatihanController extends Controller
     {
         $title = "Data Pelatihan";
         $kat = $this->kategori;
-        $data = Pelatihan::getData();
+        $data = Pelatihan::getData(); 
         return view('Pelatihan.index', compact('title', 'data', 'kat'));
     }
     public function tambah(Request $req)
@@ -25,29 +25,41 @@ class PelatihanController extends Controller
             "nama_pelatihan" => "required",
             "kategori" => "required",
             "deskripsi" => "required",
-            "harga" => "required",
-            "benefit" => "required"
+            "harga" => "numeric|required",
+            "benefit" => "required",
+            "foto" => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
         ]);
         if ($validator->fails()) {
             $message = $validator->errors()->all();
             Alert::error($message[0])->flash();
             return back()->withErrors($validator)->withInput();
         }
-        try {
+        try{
+            $fileName = time() . '.' . $req->file('foto')->getClientOriginalExtension();
+            $req->file('foto')->move(public_path('/foto_pelatihan'), $fileName);
+            
             DB::beginTransaction();
             $data = [
                 "nama_pelatihan" => $req->nama_pelatihan,
                 "kategori" => $req->kategori,
                 "deskripsi" => $req->deskripsi,
-                "harga" => preg_replace('/[^0-9]/', '',$req->harga),
-                "benefit" => $req->benefit
+                "harga" => $req->harga,
+                "benefit" => $req->benefit,
+                "foto" => $fileName
             ];
             Pelatihan::create($data);
+
             DB::commit();
             Alert("Success", "Berhasil menambahkan data");
             return back();
         } catch (QueryException $e) {
             DB::rollBack();
+
+            $filePath = public_path('/foto_pelatihan' . $fileName);
+            if(file_exists($filePath)){
+                unlink($filePath);
+            }
+
             return back();
         }
     }
@@ -73,14 +85,28 @@ class PelatihanController extends Controller
             Alert::error($message[0])->flash();
             return back()->withErrors($validator)->withInput();
         }
-        try {
+        try{
+            $fileName = "";
+            if( $req->foto !=null){
+                $oldPath = public_path('foto_pelatihan/' . $req->old_file);
+                if(file_exists($oldPath)){
+                    @unlink($oldPath);
+                }
+
+                $fileName = time() . "." . $req->file('foto')->getClientOriginalExtension();
+                $req->file('foto')->move(public_path('/foto_pelatihan'), $fileName);
+
+            }else{
+                $fileName = $req->old_file;
+            }
             DB::beginTransaction();
             $data->update([
                 "nama_pelatihan" => $req->nama_pelatihan,
                 "kategori" => $req->kategori,
                 "deskripsi" => $req->deskripsi,
-                "harga" => preg_replace('/[^0-9]/', '',$req->harga),
-                "benefit" => $req->benefit
+                "harga" => $req->harga,
+                "benefit" => $req->benefit,
+                "foto" => $fileName
             ]);
             DB::commit();
             Alert("Success", "Berhasil mengubah data");

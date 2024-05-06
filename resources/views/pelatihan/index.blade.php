@@ -22,6 +22,7 @@
                                 <th>Kategori</th>
                                 <th>Benefit</th>
                                 <th>Harga</th>
+                                <th>Foto</th>
                                 <th>Action</th>
 
                                 @php
@@ -143,6 +144,50 @@
                 <button type="submit" class="btn btn-primary">Save changes</button>
                 </form>
             </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tambah Data title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form action="{{Route('Pelatihan.tambah')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                  <label for="nip" class="col-form-label">Nama Pelatihan</label>
+                  <input type="text" class="form-control" name="nama_pelatihan" id="nip">
+                </div>
+                <div class="form-group">
+                  <label for="nip" class="col-form-label">Deskripsi</label>
+                  <textarea type="number" class="form-control" name="deskripsi" id="nip"></textarea>
+              </div>
+                <div class="form-group">
+                  <label for="kedudukan" class="col-form-label">Kategori</label>
+                  <select class="form-control" name="kategori" id="kedudukan">
+                      <option value="0" hidden>-- Pilih Kategori --</option>
+                      @foreach($kat as $k)
+                      <option>{{$k}}</option>
+                      @endforeach
+                  </select>
+              </div>  
+              <div class="form-group">
+                <label for="nip" class="col-form-label">Benefit</label>
+                <input type="text" class="form-control" name="benefit" id="nip">
+              </div>
+                <div class="form-group">
+                  <label for="instagram" class="col-form-label">Harga</label>
+                  <input type="text" class="form-control" name="harga" id="instagram">
+              </div>
+              <div class="form-group">
+                <label for="foto">Foto</label>
+                <input type="file" class="form-control-file" id="foto" name="foto" accept="image/*">
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
         </div>
     </div>
 </div>

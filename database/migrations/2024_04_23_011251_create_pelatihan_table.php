@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("deskripsi", 100);
             $table->string("benefit", 50);
             $table->integer("harga");
+            $table->string("foto");
             $table->timestamps();
         });
     }

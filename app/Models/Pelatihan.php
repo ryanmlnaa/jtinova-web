@@ -16,7 +16,8 @@ class Pelatihan extends Model
         'kategori',
         'deskripsi',
         'benefit',
-        'harga'  
+        'harga',
+        'foto'
     ];
     public static function getData(){
         return self::all();
