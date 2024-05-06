@@ -14,12 +14,12 @@ class Pegawai extends Model
     protected $fillable = [
         'nip',
         'nama_pegawai',
-        'id_kedudukan',
+        'id_jabatan',
         'link_linkdIn',
         'instagram',
         'foto_profile'
     ];
-    public function Kedudukan(){
-        return $this->hasOne(Kedudukan::class, 'kedudukan_id');
+    public function Jabatan(){
+        return $this->hasOne(Jabatan::class, 'id_jabatan');
     }
 }

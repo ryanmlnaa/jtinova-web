@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                   <label for="instagram" class="control-label">Harga <span class="text-danger">*</span></label>
-                  <input type="text" id="instagram" name="harga" class="form-control"
+                  <input type="text" id="instagram" name="harga" class="form-control currency"
                       value="{{$data->harga}}" autofocus>
               </div>
                 <button type="submit" class="btn btn-primary float-right">Save changes</button>
@@ -41,4 +41,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var cleave = new Cleave('.currency', {
+          numeral: true,
+          numeralDecimalMark: ',',
+          delimiter: '.'
+        });
+    });
+</script>
 @endsection
