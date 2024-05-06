@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kedudukan;
+use App\Models\Jabatan;
 use App\Models\Pegawai;
 use Exception;
 use Illuminate\Database\QueryException;
@@ -17,20 +17,19 @@ class PegawaiController extends Controller
     {
         $title = "Data Pegawai";
         $limit = $request->limit ?? 25;
-        $kedudukan = Kedudukan::get();
+        $jabatan = Jabatan::get();
         $data = DB::table('pegawai')
-        ->join("kedudukan", "pegawai.id_kedudukan", '=', 'kedudukan.id_kedudukan')
+        ->join("jabatan", "pegawai.id_jabatan", '=', 'jabatan.id_jabatan')
         ->paginate($limit);
         
-        return view('Pegawai.index', compact("title", "limit", "data", "kedudukan"));
+        return view('Pegawai.index', compact("title", "limit", "data", "jabatan"));
     }
     public function tambahdata_pegawai(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'nip' => 'required|numeric|unique:pegawai', // Tambahkan aturan unik di sini
             'nama_pegawai' => 'required',
-            'kedudukan' => 'required',
-            'link_linkdIn' => 'required',
+            'jabatan' => 'required',
             'foto_profile' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
@@ -50,7 +49,7 @@ class PegawaiController extends Controller
             $data = [
                 "nip" => $request->nip,
                 "nama_pegawai" => $request->nama_pegawai,
-                "id_kedudukan" => $request->kedudukan,
+                "id_jabatan" => $request->jabatan,
                 "link_linkdIn" => $request->link_linkdIn,
                 "instagram" => $request->instagram,
                 "foto_profile" => $fileName,
@@ -99,20 +98,18 @@ class PegawaiController extends Controller
     public function edit($id) {
         $data = DB::table('pegawai')
         ->where("id_pegawai", "=", $id)
-        ->join("kedudukan", "pegawai.id_kedudukan", '=', 'kedudukan.id_kedudukan')
+        ->join("jabatan", "pegawai.id_jabatan", '=', 'jabatan.id_jabatan')
         ->first();
-        $kedudukan = Kedudukan::get();
+        $jabatan = Jabatan::get();
         $title="Edit Pegawai";
-        return view("pegawai.edit_pegawai",compact('data','title', 'kedudukan'));
+        return view("pegawai.edit_pegawai",compact('data','title', 'jabatan'));
     }
     public function update(Request $req, $pegawai){
         $data = Pegawai::findOrFail($pegawai);
         $validator = Validator::make($req->all(), [
             'nip' => 'required',
             'nama_pegawai' => 'required',
-            'kedudukan' => 'required',
-            'link_linkdIn' => 'required',
-            'instagram' => 'required',
+            'jabatan' => 'required',
             'foto_profile' => 'image|mimes:jpeg,jpg,png,gif|max:2048'
         ]); 
         if($validator->fails()){
@@ -136,7 +133,7 @@ class PegawaiController extends Controller
             $data->update([
                 "nip" => $req->nip,
                 "nama_pegawai" => $req->nama_pegawai,
-                "id_kedudukan" => $req->kedudukan, 
+                "id_jabatan" => $req->jabatan, 
                 "link_linkdIn"=> $req->link_linkdIn,
                 "instagram"  => $req->instagram,
                 "foto_profile" => $fileName

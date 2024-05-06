@@ -10,21 +10,21 @@
                 @csrf
                 @method('patch')
                 <div class="form-group">
-                    <label for="nip" class="control-label">Nip</label>
+                    <label for="nip" class="control-label">Nip <span class="text-danger">*</span></label>
                     <input type="number" id="nip" name="nip" class="form-control"
                         value="{{$data->nip}}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="nama_pegawai" class="control-label">Nama Pegawai</label>
+                    <label for="nama_pegawai" class="control-label">Nama Pegawai  <span class="text-danger">*</span></label>
                     <input type="text" id="nama_pegawai" name="nama_pegawai" class="form-control"
                         value="{{$data->nama_pegawai}}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="kedudukan" class="col-form-label">Kedudukan</label>
-                    <select class="form-control" name="kedudukan" id="kedudukan">
+                    <label for="kedudukan" class="col-form-label">Jabatan <span class="text-danger">*</span></label>
+                    <select class="form-control" name="jabatan" id="kedudukan">
                       <option value="0" hidden>-- Pilih Kedudukan --</option>
-                      @foreach($kedudukan as $ked)
-                        <option value="{{$ked->id_kedudukan}}" {{ ($data->id_kedudukan == $ked->id_kedudukan) ? "selected" : ""}}> {{$ked->nama_kedudukan}} </option>
+                      @foreach($jabatan as $ked)
+                        <option value="{{$ked->id_jabatan}}" {{ ($data->id_jabatan == $ked->id_jabatan) ? "selected" : ""}}> {{$ked->nama_jabatan}} </option>
                       @endforeach
                     </select>
                   </div>
@@ -39,7 +39,7 @@
                         value="{{$data->instagram}}" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="foto_profile" class="col-form-label">Foto Pegawai</label>
+                    <label for="foto_profile" class="col-form-label">Foto Pegawai <span class="text-danger">*</span></label>
                     <input type="hidden" name="old_file" value="{{ $data->foto_profile }}">
                     <input type="file" class="form-control" name="foto_profile"  id="foto_profile" onchange="previewImage(this);">
                     <img id="gambar-preview" src="{{ url("foto_pegawai/". $data->foto_profile)}}" alt="Gambar Pratinjau"

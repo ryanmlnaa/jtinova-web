@@ -107,7 +107,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Data title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah {{$title}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -116,19 +116,19 @@
                 <form action="{{Route('Portofolio.tambah')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="nip" class="col-form-label">Judul</label>
+                        <label for="nip" class="col-form-label">Judul<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="judul" id="nip">
                     </div>
                     <div class="form-group">
-                      <label for="nip" class="col-form-label">Deskripsi</label>
+                      <label for="nip" class="col-form-label">Deskripsi<span class="text-danger">*</span></label>
                       <textarea type="number" class="form-control" name="deskripsi" id="nip"></textarea>
                   </div>
                     <div class="form-group">
-                        <label for="nama_pegawaai" class="col-form-label">Nama Klien</label>
+                        <label for="nama_pegawaai" class="col-form-label">Nama Klien<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="klien" id="nama_pegawaai">
                     </div>
                     <div class="form-group">
-                        <label for="kedudukan" class="col-form-label">Kategori</label>
+                        <label for="kedudukan" class="col-form-label">Kategori<span class="text-danger">*</span></label>
                         <select class="form-control" name="kategori" id="kedudukan">
                             <option value="0" hidden>-- Pilih Kategori --</option>
                             @foreach($kat as $k)
@@ -137,15 +137,15 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Tanggal Mulai</label>
+                        <label>Tanggal Mulai<span class="text-danger">*</span></label>
                         <input type="date" name="start_date" class="form-control datepicker">
                     </div>
                     <div class="form-group">
-                        <label>Tanggal Selesai</label>
+                        <label>Tanggal Selesai<span class="text-danger">*</span></label>
                         <input type="date" name="end_date" class="form-control datepicker">
                     </div>
                     <div class="form-group">
-                        <label for="foto_profile" class="col-form-label">Foto Portofolio</label>
+                        <label for="foto_profile" class="col-form-label">Foto Portofolio<span class="text-danger">*</span></label>
                         <input type="file" class="form-control" name="foto" id="foto_profile"
                             onchange="previewImage(this);">
                         <img id="gambar-preview" src="#" alt="Gambar Pratinjau"

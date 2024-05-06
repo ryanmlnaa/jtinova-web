@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Keahlian;
 use App\Models\Recruitment;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
@@ -20,8 +21,10 @@ class RecruitmentController extends Controller
     {
         $title = "Data Recruitment";
         $data = Recruitment::getData(); 
+        $keahlian = Keahlian::getData();
         $smt = $this->semester;
-        return view('recruitment.index', compact('title', 'data', 'smt'));
+        $prodi = $this->prodi;
+        return view('recruitment.index', compact('title', 'data', 'smt', 'keahlian', 'prodi'));
     }
     public function tambah(Request $req){
         $validator = Validator::make($req->all(), [
@@ -47,6 +50,7 @@ class RecruitmentController extends Controller
                 "keahlian_utama" => $req->keahlian_utama,
                 "keahlian_lain" => $req->keahlian_lain
             ];
+            dd($data);
             Recruitment::create($data);
             DB::commit();
             Alert("Success Title", "Berhasil menambahkan data");

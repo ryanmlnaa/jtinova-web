@@ -17,10 +17,10 @@ class PelatihanController extends Controller
         $title = "Data Pelatihan";
         $kat = $this->kategori;
         $data = Pelatihan::getData(); 
-        // dd($data);
         return view('Pelatihan.index', compact('title', 'data', 'kat'));
     }
-    public function tambah(Request $req){
+    public function tambah(Request $req)
+    {
         $validator = Validator::make($req->all(), [
             "nama_pelatihan" => "required",
             "kategori" => "required",
@@ -29,7 +29,7 @@ class PelatihanController extends Controller
             "benefit" => "required",
             "foto" => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
         ]);
-        if($validator->fails()){
+        if ($validator->fails()) {
             $message = $validator->errors()->all();
             Alert::error($message[0])->flash();
             return back()->withErrors($validator)->withInput();
@@ -52,8 +52,7 @@ class PelatihanController extends Controller
             DB::commit();
             Alert("Success", "Berhasil menambahkan data");
             return back();
-        }
-        catch(QueryException $e){
+        } catch (QueryException $e) {
             DB::rollBack();
 
             $filePath = public_path('/foto_pelatihan' . $fileName);
@@ -64,22 +63,24 @@ class PelatihanController extends Controller
             return back();
         }
     }
-    public function edit($id){
+    public function edit($id)
+    {
         $data = Pelatihan::findOrFail($id);
         $title = "Edit Pelatihan";
         $kat = $this->kategori;
         return view("Pelatihan.edit_pelatihan", compact("data", "title", "kat"));
     }
-    public function update($id, Request $req){
+    public function update($id, Request $req)
+    {
         $data = Pelatihan::findOrFail($id);
         $validator = Validator::make($req->all(), [
             "nama_pelatihan" => "required",
             "kategori" => "required",
             "deskripsi" => "required",
-            "harga" => "numeric|required",
+            "harga" => "required",
             "benefit" => "required"
         ]);
-        if($validator->fails()){
+        if ($validator->fails()) {
             $message = $validator->errors()->all();
             Alert::error($message[0])->flash();
             return back()->withErrors($validator)->withInput();
@@ -110,13 +111,13 @@ class PelatihanController extends Controller
             DB::commit();
             Alert("Success", "Berhasil mengubah data");
             return redirect()->route("Pelatihan.index");
-        }
-        catch(QueryException $e){
+        } catch (QueryException $e) {
             DB::rollBack();
             return back();
         }
     }
-    public function delete($id){
+    public function delete($id)
+    {
         $data = Pelatihan::findOrFail($id);
         $data->delete();
         Alert("Success", "Berhasil menghapus data");
