@@ -10,6 +10,9 @@ use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\Recruitment;
 use App\Http\Controllers\RecruitmentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\UserDashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -83,14 +86,22 @@ Route::get("/edituser/{id}", [UserController::class, 'edit'])->name("User.edit")
 Route::patch("/updateuser/{id}", [UserController::class, 'update'])->name("User.update");
 Route::delete("/hapususer/{id}", [UserController::class, 'delete'])->name("User.delete");
 
+// route regsiter
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
 // routes/web.php
 
 // Route::delete('/hapuskedudukan/{id_pegawai}', 'PegawaiController@hapuspegawai');
 
+//route dashboard user
+Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
 
+
+//route profile user
+Route::get('/user/profile', [UserProfileController::class, 'show'])->name('user.profile.show')->middleware('auth');
+Route::post('/user/profile', [UserProfileController::class, 'update'])->name('user.profile.update')->middleware('auth');
 
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-

@@ -4,18 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pelatihan;
+use App\Models\Portofolio;
 
-class DashboardController extends Controller
+class UserDashboardController extends Controller
 {
+    // Metode untuk menampilkan data di dashboard
     public function index()
     {
-        // Ambil data pelatihan dari database
+        // Ambil semua data dari database
         $pelatihans = Pelatihan::all();
+        $portofolios = Portofolio::all();
 
         // Kirim data ke view dashboard
-        return view('dashboard.index', [
+        return view('user.dashboard', [
             'title' => 'Dashboard',
             'pelatihans' => $pelatihans,
+            'portofolios' => $portofolios,
         ]);
     }
 }
