@@ -95,7 +95,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="{{route('Benefit.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('Jabatan.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                   <label for="nama_kedudukan" class="col-form-label">Nama Jabatan  <span class="text-danger">*</span></label>

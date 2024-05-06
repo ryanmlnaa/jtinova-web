@@ -24,7 +24,7 @@ class PelatihanController extends Controller
             "nama_pelatihan" => "required",
             "kategori" => "required",
             "deskripsi" => "required",
-            "harga" => "numeric|required",
+            "harga" => "required",
             "benefit" => "required"
         ]);
         if($validator->fails()){
@@ -38,7 +38,7 @@ class PelatihanController extends Controller
                 "nama_pelatihan" => $req->nama_pelatihan,
                 "kategori" => $req->kategori,
                 "deskripsi" => $req->deskripsi,
-                "harga" => $req->harga,
+                "harga" => preg_replace('/[^0-9]/', '',$req->harga),
                 "benefit" => $req->benefit
             ];
             Pelatihan::create($data);
@@ -63,7 +63,7 @@ class PelatihanController extends Controller
             "nama_pelatihan" => "required",
             "kategori" => "required",
             "deskripsi" => "required",
-            "harga" => "numeric|required",
+            "harga" => "required",
             "benefit" => "required"
         ]);
         if($validator->fails()){
@@ -77,7 +77,7 @@ class PelatihanController extends Controller
                 "nama_pelatihan" => $req->nama_pelatihan,
                 "kategori" => $req->kategori,
                 "deskripsi" => $req->deskripsi,
-                "harga" => $req->harga,
+                "harga" => preg_replace('/[^0-9]/', '',$req->harga),
                 "benefit" => $req->benefit
             ]);
             DB::commit();

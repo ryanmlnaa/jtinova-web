@@ -15,12 +15,16 @@
       <li class=" {{ Request::is('databenefit') ? 'active' : '' }} "><a class="nav-link" href="{{ route('Benefit.index') }}"><i class="far fa-square"></i> <span>Data Benefit</span></a></li>
       <li class=" {{ Request::is('datauser') ? 'active' : '' }} "><a class="nav-link" href="{{ route('User.index') }}"><i class="far fa-square"></i> <span>Data User</span></a></li>
       <li class=" {{ Request::is('datajabatan') ? 'active' : '' }} "><a class="nav-link" href="{{ route('Jabatan.index') }}"><i class="far fa-square"></i> <span>Data Jabatan</span></a></li>
+      <li class=" {{ Request::is('datapeserta') ? 'active' : '' }} "><a class="nav-link" href="{{ route('Peserta.index') }}"><i class="far fa-square"></i> <span>Data Peserta</span></a></li>
+      <li class=" {{ Request::is('datainstruktur') ? 'active' : '' }} "><a class="nav-link" href="{{ route('Instruktur.index') }}"><i class="far fa-square"></i> <span>Data Instruktur</span></a></li>
+
       <li class="menu-header">Data CRUD</li>      
       <li class=" {{ Request::is('dataproduk') ? 'active' : '' }} "><a class="nav-link" href="{{ route('dataproduk') }}"><i class="far fa-square"></i> <span>Data Produk</span></a></li>
       <li class=" {{ Request::is('datapegawai') ? 'active' : '' }} "><a class="nav-link" href="{{ route('datapegawai') }}"><i class="far fa-square"></i> <span>Data Pegawai</span></a></li>
       <li class=" {{ Request::is('datapelatihan') ? 'active' : '' }} "><a class="nav-link" href="{{ route('Pelatihan.index') }}"><i class="far fa-square"></i> <span>Data Pelatihan</span></a></li>
       <li class=" {{ Request::is('datarecruitment') ? 'active' : '' }} "><a class="nav-link" href="{{ route('Recruitment.index') }}"><i class="far fa-square"></i> <span>Data Recruitment MBKM</span></a></li>
-      <li class=" {{ Request::is('dataportofolio') ? 'active' : '' }} "><a class="nav-link" href="{{ route('Portofolio.index') }}"><i class="far fa-square"></i> <span>Data Proyek  </span></a></li>
+      <li class=" {{ Request::is('dataportofolio') ? 'active' : '' }} "><a class="nav-link" href="{{ route('Portofolio.index') }}"><i class="far fa-square"></i> <span>Data Proyek</span></a></li>
+      <li class=" {{ Request::is('datapembayaran') ? 'active' : '' }} "><a class="nav-link" href="{{ route('Pembayaran.index') }}"><i class="far fa-square"></i> <span>Data Pembayaran</span></a></li>
       {{-- <li class="dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
         <ul class="dropdown-menu">

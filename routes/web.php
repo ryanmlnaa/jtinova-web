@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\BenefitController;
+use App\Http\Controllers\InstrukturController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KeahlianController;
 use App\Http\Controllers\KedudukanController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PelatihanController;
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\Recruitment;
 use App\Http\Controllers\RecruitmentController;
@@ -83,7 +86,26 @@ Route::get("/edituser/{id}", [UserController::class, 'edit'])->name("User.edit")
 Route::patch("/updateuser/{id}", [UserController::class, 'update'])->name("User.update");
 Route::delete("/hapususer/{id}", [UserController::class, 'delete'])->name("User.delete");
 
-// routes/web.php
+
+Route::get("/datapeserta", [PesertaController::class, 'index'])->name("Peserta.index");
+Route::post("/tambahpeserta", [PesertaController::class, 'tambah'])->name("Peserta.tambah");
+Route::get("/editpeserta/{id}", [PesertaController::class, 'edit'])->name("Peserta.edit");
+Route::patch("/updatepeserta/{id}", [PesertaController::class, 'update'])->name("Peserta.update");
+Route::delete("/hapuspeserta/{id}", [PesertaController::class, 'delete'])->name("Peserta.delete");
+
+Route::get("/datainstruktur", [InstrukturController::class, 'index'])->name("Instruktur.index");
+Route::post("/tambahinstruktur", [InstrukturController::class, 'tambah'])->name("Instruktur.tambah");
+Route::get("/editinstruktur/{id}", [InstrukturController::class, 'edit'])->name("Instruktur.edit");
+Route::patch("/updateinstruktur/{id}", [InstrukturController::class, 'update'])->name("Instruktur.update");
+Route::delete("/hapusinstruktur/{id}", [InstrukturController::class, 'delete'])->name("Instruktur.delete");
+
+Route::get("/datapembayaran", [PembayaranController::class, 'index'])->name("Pembayaran.index");
+Route::post("/tambahpembayaran", [PembayaranController::class, 'tambah'])->name("Pembayaran.tambah");
+Route::get("/editpembayaran/{id}", [PembayaranController::class, 'edit'])->name("Pembayaran.edit");
+Route::patch("/updatepembayaran/{id}", [PembayaranController::class, 'update'])->name("Pembayaran.update");
+Route::delete("/hapuspembayaran/{id}", [PembayaranController::class, 'delete'])->name("Pembayaran.delete");
+
+// routes/web.php   
 
 // Route::delete('/hapuskedudukan/{id_pegawai}', 'PegawaiController@hapuspegawai');
 
