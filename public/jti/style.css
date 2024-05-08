@@ -41,6 +41,7 @@ Version: 1.0
 body,
 html {
 	overflow-x:hidden;
+	scroll-behavior: smooth;
 }
 
 body {
@@ -140,7 +141,7 @@ kbd {
 	background-color: #ddd;
 	padding: 4px 6px;
 	border-radius: 2px;
-	color: ;
+	color: white;
 }
 
 address {
@@ -1202,7 +1203,7 @@ a:focus,
 	padding: 50px 0 40px;
 }
 
-.mu-standard-pricing .mu-single-pricebox {;
+.mu-standard-pricing .mu-single-pricebox {
 	padding: 5px 0 40px;
 }
 
@@ -3762,11 +3763,22 @@ a:focus,
 	color: #0078ff;
 } */
 
-.work-box {
+
+/* .work-box {
 	margin-bottom: 3rem;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: #fff;
+    max-width: 100%; 
+    overflow: hidden;
+} */
+
+#work-form {
 	background-color: #fff;
+	float: left;
+	padding: 100px 0;
+	display: inline;
+	width: 100%;
 }
   
 .work-box:hover img {
@@ -3819,5 +3831,15 @@ a:focus,
 	color: #323232;
 	font-size: 40px;
 	margin-top: 50px;
+}
+
+/* training */
+
+#mu-training {
+	background-color: #fff;
+	float: left;
+	padding: 100px 0;
+	display: inline;
+	width: 100%;
 }
   

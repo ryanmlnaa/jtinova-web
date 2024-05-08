@@ -116,7 +116,13 @@
                         </div>
                         <div class="form-group">
                             <label for="agama">Agama:</label>
-                            <input type="text" class="form-control" id="agama" name="agama" required>
+                            <select class="form-control" id="agama" name="agama" required>
+                                <option value="I">Islam</option>
+                                <option value="K">Kristen</option>
+                                <option value="B">Budha</option>
+                                <option value="KH">Khatholik</option>
+                                <option value="H">Hindhu</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="jenis_kelamin">Jenis Kelamin:</label>
@@ -127,7 +133,14 @@
                         </div>
                         <div class="form-group">
                             <label for="pendidikan">Pendidikan Terakhir:</label>
-                            <input type="text" class="form-control" id="pendidikan" name="pendidikan" required>
+                            <select class="form-control" id="pendidikan_terakhir" name="pendidikan_terakhir" required>
+                                <option value="select">Select</option>
+                                <option value="sd">SD</option>
+                                <option value="smp">SMP</option>
+                                <option value="sma">SMA</option>
+                                <option value="d">D-IV / S1</option>
+                                <option value="s">S2</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="pekerjaan">Pekerjaan:</label>
