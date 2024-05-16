@@ -10,6 +10,7 @@
         <li class=" {{ Request::is('dashboard') ? 'active' : '' }}  "><a class="nav-link"
                 href="{{ route('dashboard') }}"><i class="far fa-square"></i> <span>Dashboard</span></a></li>
 
+        @role(['admin', 'pegawai'])
         <li class="menu-header">Data Master</li>
         <li class=" {{ Request::is('webconfig') ? 'active' : '' }} "><a class="nav-link"
                 href="{{ route('webconfig') }}"><i class="far fa-square"></i> <span>Config Web</span></a></li>
@@ -43,6 +44,7 @@
         <li class=" {{ Request::is('datapembayaran') ? 'active' : '' }} "><a class="nav-link"
                 href="{{ route('Pembayaran.index') }}"><i class="far fa-square"></i> <span>Data Pembayaran</span></a>
         </li>
+        @endrole
         {{-- <li class="dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
         <ul class="dropdown-menu">
