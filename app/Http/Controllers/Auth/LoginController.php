@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -26,19 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = '/dashboard';
-    protected function authenticated(Request $request, $user)
-{
-    // Cek peran pengguna
-    if ($user->role == 'admin') {
-        // Redirect ke dashboard admin
-        return redirect()->route('admin.dashboard');
-    } else {
-        // Redirect ke dashboard user
-        return redirect()->route('user.dashboard');
-    }
-}
-
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
