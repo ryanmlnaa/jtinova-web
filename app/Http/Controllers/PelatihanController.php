@@ -16,8 +16,8 @@ class PelatihanController extends Controller
     {
         $title = "Data Pelatihan";
         $kat = $this->kategori;
-        $data = Pelatihan::getData(); 
-        return view('Pelatihan.index', compact('title', 'data', 'kat'));
+        $data = Pelatihan::getData();
+        return view('pelatihan.index', compact('title', 'data', 'kat'));
     }
     public function tambah(Request $req)
     {
@@ -34,10 +34,10 @@ class PelatihanController extends Controller
             Alert::error($message[0])->flash();
             return back()->withErrors($validator)->withInput();
         }
-        try{
+        try {
             $fileName = time() . '.' . $req->file('foto')->getClientOriginalExtension();
             $req->file('foto')->move(public_path('/foto_pelatihan'), $fileName);
-            
+
             DB::beginTransaction();
             $data = [
                 "nama_pelatihan" => $req->nama_pelatihan,
@@ -56,7 +56,7 @@ class PelatihanController extends Controller
             DB::rollBack();
 
             $filePath = public_path('/foto_pelatihan' . $fileName);
-            if(file_exists($filePath)){
+            if (file_exists($filePath)) {
                 unlink($filePath);
             }
 
@@ -85,18 +85,17 @@ class PelatihanController extends Controller
             Alert::error($message[0])->flash();
             return back()->withErrors($validator)->withInput();
         }
-        try{
+        try {
             $fileName = "";
-            if( $req->foto !=null){
+            if ($req->foto != null) {
                 $oldPath = public_path('foto_pelatihan/' . $req->old_file);
-                if(file_exists($oldPath)){
+                if (file_exists($oldPath)) {
                     @unlink($oldPath);
                 }
 
                 $fileName = time() . "." . $req->file('foto')->getClientOriginalExtension();
                 $req->file('foto')->move(public_path('/foto_pelatihan'), $fileName);
-
-            }else{
+            } else {
                 $fileName = $req->old_file;
             }
             DB::beginTransaction();

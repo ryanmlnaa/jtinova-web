@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>JtiNova</title>
+    <title>JTI Innovation</title>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/icon" href="{{ asset('jti/assets/images/logopolije.png') }}" />
     <!-- Font Awesome -->
@@ -37,23 +37,6 @@
 
 
 
-    {{-- Portofolio --}}
-    {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet">  --}}
-
-    <!-- Icon Font Stylesheet -->
-    {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"> --}}
-
-    <!-- Libraries Stylesheet -->
-    {{-- <link href="{{ asset ('belajar/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-        <link href="{{ asset ('belajar/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet"> --}}
-
-
-    {{-- <!-- Customized Bootstrap Stylesheet -->
-        <link href="{{ asset ('belajar/css/bootstrap.min.css') }}" rel="stylesheet"> --}}
-
     <!-- Template Stylesheet -->
     <link href="{{ asset('belajar/css/style.css') }}" rel="stylesheet">
 
@@ -63,9 +46,26 @@
 <body>
 
     <!--START SCROLL TOP BUTTON -->
-    <a class="scrollToTop" href="#">
+    <!-- Tambahkan script jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Tambahkan script JavaScript untuk pengguliran halaman -->
+    <script>
+        $(document).ready(function(){
+            // Smooth scrolling when clicking on nav links
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if( target.length ) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                }
+            });
+        });
+    </script>
+    {{-- <a class="scrollToTop" href="#">
         <i class="fa fa-angle-up"></i>
-    </a>
+    </a> --}}
     <!-- END SCROLL TOP BUTTON -->
 
     <!-- Start Header -->
@@ -86,11 +86,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto mu-navbar-nav">
                         <li class="nav-item active">
-                            <a href="index.html">News</a>
+                            <a href="index.html">Home</a>
                         </li>
-                        <li class="nav-item"><a href="#mu-portfolio">Portfolio</a></li>
-                        <li class="nav-item"><a href="#mu-training">Training</a></li>
-                        <li class="nav-item"><a href="#mu-training">Pendampingan TA</a></li>
+                        <li class="nav-item"><a href="#work-form">Portofolio</a></li>
+                        <li class="nav-item"><a href="#mu-training">Pelatihan</a></li>
+                        <li class="nav-item"><a href="#mu-pricing">Pendampingan TA</a></li>
                         <li class="nav-item dropdown">
                             {{-- <a class="dropdown-toggle" href="blog.html" role="button" id="navbarDropdown"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
@@ -253,7 +253,7 @@
                         <div class="col-md-12">
                             <div class="mu-call-to-action-area">
                                 <div class="mu-call-to-action-left">
-                                    <h2>Let's join us</h2>
+                                    <h2>Ayo Bergabung Dengan Kami</h2>
                                     <p>Kami mengundang Anda semua untuk bergabung dan bekerja sama di JTI Innovation
                                         Teaching Factory untuk mewujudkan hubungan simbiosis mutualisme. Mari berbagi
                                         pengalaman dan pengetahuan agar tercipta inovasi-inovasi yang berdaya saing di
@@ -410,8 +410,8 @@
         <!-- End Video --> --}}
 
         <!-- Start Portfolio -->
-        <!--/ Section Portfolio Star /-->
-        <section id="work" class="portfolio-mf sect-pt4 route">
+        {{-- <!--/ Section Portfolio Star /-->
+        <section id="work-form" class="portfolio-mf sect-pt4 route">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -450,15 +450,62 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
             </div>
         </section>
-        <!--/ Section Portfolio End /-->
-        \<!-- End Portfolio -->
+        <!--/ Section Portfolio End /--> --}}
+        <!-- End Portfolio -->
+
+        <!-- Start Pricing Table -->
+        <section id="work-form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title-box text-center">
+                            <h3 class="title-a">
+                                Portofolio
+                            </h3>
+                            <p class="subtitle-a">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                            </p>
+                            <div class="line-mf"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @foreach ($portofolio as $item)
+                            <div class="work-box">
+                                <img src="{{ url('foto_portofolio/' . $item->foto) }}" data-lightbox="gallery-mf">
+                                <div class="work-content">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <h2 class="w-title">{{ $item->judul }}</h2>
+                                            <p>{{ $item->deskripsi }}</p>
+                                            <h2 class="w-title">{{ $item->klien }}</h2>
+                                            <div class="w-more">
+                                                <span class="w-ctegory">{{ $item->kategori }}</span> / <span
+                                                    class="w-date">{{ $item->start_date }}</span> - <span
+                                                    class="w-date">{{ $item->end_date }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="w-like">
+                                                <span class="ion-ios-plus-outline"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Pricing Table -->
 
         {{-- <!-- Start Counter -->
         <section id="mu-counter">
@@ -527,7 +574,7 @@
         <!-- End Counter --> --}}
 
         <!-- Start Pricing Table -->
-        <section id="mu-pricing">
+        {{-- <section id="mu-pricing">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -536,7 +583,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mu-title">
-                                        <h2>Our Pricing Table</h2>
+                                        <h2>Pendampingan TA</h2>
                                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
                                             ligula eget dolor. Aenean massa cum sociis.</p>
                                     </div>
@@ -618,62 +665,106 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- End Pricing Table -->
+        </section> --}}
 
-        {{-- <!-- Start Client Testimonials -->
-        <section id="mu-testimonials">
+        <!-- Start Pricing Table -->
+        <section id="mu-pricing">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="mu-testimonials-area">
-                            <h2>What Our Client Says</h2>
-
-                            <div class="mu-testimonials-block">
-                                <ul class="mu-testimonial-slide">
-
-                                    <li>
-                                        <img class="mu-rt-img"
-                                            src="{{ asset('jti/assets/images/traveler-1.jpg') }}" alt="img">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                                            pellentesque eu, pretium quis, sem. Nulla consequat massa</p>
-                                        <h5 class="mu-rt-name">Emma Marshall</h5>
-                                        <span class="mu-rt-title">Web Developer </span>
-                                    </li>
-
-                                    <li>
-                                        <img class="mu-rt-img"
-                                            src="{{ asset('jti/assets/images/traveler-2.jpg') }}" alt="img">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                                            pellentesque eu, pretium quis, sem. Nulla consequat massa</p>
-                                        <h5 class="mu-rt-name">Jhon Doe</h5>
-                                        <span class="mu-rt-title">UI/UX Designer</span>
-                                    </li>
-
-                                    <li>
-                                        <img class="mu-rt-img"
-                                            src="{{ asset('jti/assets/images/traveler-3.jpg') }}" alt="img">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                                            pellentesque eu, pretium quis, sem. Nulla consequat massa</p>
-                                        <h5 class="mu-rt-name">Jessica Doe</h5>
-                                        <span class="mu-rt-title">Web Designer </span>
-                                    </li>
-
-                                </ul>
+                        <div class="mu-pricing-area">
+                            <!-- Title -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mu-title">
+                                        <h2>Pendampingan TA</h2>
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mu-pricing-content">
+                                        <div class="mu-pricing-table-wrapper">
+                                            <ul class="mu-pricing-table">
+                                                <li>
+                                                    <div class="mu-pricing-single">
+                                                        <div class="mu-pricing-single-icon">
+                                                            <span class="fa fa-user"></span>
+                                                        </div>
+                                                        <div class="mu-pricing-single-title">
+                                                            <h3>Pendampingan TI</h3>
+                                                        </div>
+                                                        <div class="mu-pricing-single-content">
+                                                            <ul>
+                                                                <li>Lorem ipsum dolor sit amet.</li>
+                                                                <li>Consectetuer elit aeneaneget dolor.</li>
+                                                                <li>Aenean massa cum sociis natoque.</li>
+                                                                <li>Penatibus.</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="mu-single-pricebox">
+                                                            <h4>29$<span>/month</span></h4>
+                                                        </div>
+                                                        <a class="mu-buy-now-btn" href="{{ route('pendaftaran') }}">Daftar</a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="mu-pricing-single">
+                                                        <div class="mu-pricing-single-icon">
+                                                            <span class="fa fa-user"></span>
+                                                        </div>
+                                                        <div class="mu-pricing-single-title">
+                                                            <h3>Pendampingan TI</h3>
+                                                        </div>
+                                                        <div class="mu-pricing-single-content">
+                                                            <ul>
+                                                                <li>Lorem ipsum dolor sit amet.</li>
+                                                                <li>Consectetuer elit aeneaneget dolor.</li>
+                                                                <li>Aenean massa cum sociis natoque.</li>
+                                                                <li>Penatibus.</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="mu-single-pricebox">
+                                                            <h4>29$<span>/month</span></h4>
+                                                        </div>
+                                                        <a class="mu-buy-now-btn" href="{{ route('pendaftaran') }}">Daftar</a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="mu-pricing-single">
+                                                        <div class="mu-pricing-single-icon">
+                                                            <span class="fa fa-paper-plane"></span>
+                                                        </div>
+                                                        <div class="mu-pricing-single-title">
+                                                            <h3>Pendampingan TA</h3>
+                                                        </div>
+                                                        <div class="mu-pricing-single-content">
+                                                            <ul>
+                                                                <li>Lorem ipsum dolor sit amet.</li>
+                                                                <li>Consectetuer elit aeneaneget dolor.</li>
+                                                                <li>Aenean massa cum sociis natoque.</li>
+                                                                <li>Penatibus.</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="mu-single-pricebox">
+                                                            <h4>229$<span>/month</span></h4>
+                                                        </div>
+                                                        <a class="mu-buy-now-btn" href="#">Daftar</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- End Client Testimonials --> --}}
+        <!-- End Pricing Table -->
+
+
+        <!-- End Pricing Table -->
 
 
         <!-- Start Newsletter -->
@@ -717,7 +808,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mu-title">
-                                        <h2 style="margin-top : 30px">Training Information from Us</h2>
+                                        <h2 style="margin-top : 30px">Informasi Tentang Pelatihan</h2>
                                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
                                             ligula eget dolor. Aenean massa cum sociis.</p>
                                     </div>
@@ -795,112 +886,230 @@
 
         <!-- start tim kami -->
         <!-- Travel Guide Start -->
-        <div class="container-fluid guide py-5">
-            <div class="container py-5">
-                <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-                    <h1 class="mb-0" style="color: #323232">Tim Kami</h1>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="guide-item">
-                            <div class="guide-img">
-                                <div class="guide-img-efects">
-                                    <img src="{{ asset('belajar/img/guide-1.jpg') }}"
-                                        class="img-fluid w-100 rounded-top" alt="Image">
-                                </div>
-                                <div class="guide-icon rounded-pill p-2">
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                            <div class="guide-title text-center rounded-bottom p-4">
-                                <div class="guide-title-inner">
-                                    <h4 class="mt-3">Full Name</h4>
-                                    <p class="mb-0">Designation</p>
-                                </div>
-                            </div>
-                        </div>
+        <div id="mu-guide">
+            <div class="container-fluid guide py-5">
+                <div class="container py-5">
+                    <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                        <h1 class="mb-0" style="color: #323232">Tim Kami</h1>
                     </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="guide-item">
-                            <div class="guide-img">
-                                <div class="guide-img-efects">
-                                    <img src="{{ asset('belajar/img/guide-2.jpg') }}"
-                                        class="img-fluid w-100 rounded-top" alt="Image">
-                                </div>
-                                <div class="guide-icon rounded-pill p-2">
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-linkedin-in"></i></a>
+                    <div id="teamCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row g-4">
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="guide-item">
+                                            <div class="guide-img">
+                                                <div class="guide-img-efects">
+                                                    <img src="{{ asset('belajar/img/guide-1.jpg') }}"
+                                                        class="img-fluid w-100 rounded-top" alt="Image">
+                                                </div>
+                                                <div class="guide-icon rounded-pill p-2">
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-facebook-f"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-twitter"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-instagram"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="guide-title text-center rounded-bottom p-4">
+                                                <div class="guide-title-inner">
+                                                    <h4 class="mt-3">Full Name</h4>
+                                                    <p class="mb-0">Designation</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="guide-item">
+                                            <div class="guide-img">
+                                                <div class="guide-img-efects">
+                                                    <img src="{{ asset('belajar/img/guide-1.jpg') }}"
+                                                        class="img-fluid w-100 rounded-top" alt="Image">
+                                                </div>
+                                                <div class="guide-icon rounded-pill p-2">
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-facebook-f"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-twitter"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-instagram"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="guide-title text-center rounded-bottom p-4">
+                                                <div class="guide-title-inner">
+                                                    <h4 class="mt-3">Full Name</h4>
+                                                    <p class="mb-0">Designation</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="guide-item">
+                                            <div class="guide-img">
+                                                <div class="guide-img-efects">
+                                                    <img src="{{ asset('belajar/img/guide-1.jpg') }}"
+                                                        class="img-fluid w-100 rounded-top" alt="Image">
+                                                </div>
+                                                <div class="guide-icon rounded-pill p-2">
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-facebook-f"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-twitter"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-instagram"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="guide-title text-center rounded-bottom p-4">
+                                                <div class="guide-title-inner">
+                                                    <h4 class="mt-3">Full Name</h4>
+                                                    <p class="mb-0">Designation</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="guide-item">
+                                            <div class="guide-img">
+                                                <div class="guide-img-efects">
+                                                    <img src="{{ asset('belajar/img/guide-1.jpg') }}"
+                                                        class="img-fluid w-100 rounded-top" alt="Image">
+                                                </div>
+                                                <div class="guide-icon rounded-pill p-2">
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-facebook-f"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-twitter"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-instagram"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="guide-title text-center rounded-bottom p-4">
+                                                <div class="guide-title-inner">
+                                                    <h4 class="mt-3">Full Name</h4>
+                                                    <p class="mb-0">Designation</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Duplicate and customize the other 3 items here -->
                                 </div>
                             </div>
-                            <div class="guide-title text-center rounded-bottom p-4">
-                                <div class="guide-title-inner">
-                                    <h4 class="mt-3">Full Name</h4>
-                                    <p class="mb-0">Designation</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="guide-item">
-                            <div class="guide-img">
-                                <div class="guide-img-efects">
-                                    <img src="{{ asset('belajar/img/guide-3.jpg') }}"
-                                        class="img-fluid w-100 rounded-top" alt="Image">
-                                </div>
-                                <div class="guide-icon rounded-pill p-2">
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                            <div class="guide-title text-center rounded-bottom p-4">
-                                <div class="guide-title-inner">
-                                    <h4 class="mt-3">Full Name</h4>
-                                    <p class="mb-0">Designation</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="guide-item">
-                            <div class="guide-img">
-                                <div class="guide-img-efects">
-                                    <img src="{{ asset('belajar/img/guide-3.jpg') }}"
-                                        class="img-fluid w-100 rounded-top" alt="Image">
-                                </div>
-                                <div class="guide-icon rounded-pill p-2">
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                            class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                            <div class="guide-title text-center rounded-bottom p-4">
-                                <div class="guide-title-inner">
-                                    <h4 class="mt-3">Full Name</h4>
-                                    <p class="mb-0">Designation</p>
+                            <div class="carousel-item">
+                                <div class="row g-4">
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="guide-item">
+                                            <div class="guide-img">
+                                                <div class="guide-img-efects">
+                                                    <img src="{{ asset('belajar/img/guide-2.jpg') }}"
+                                                        class="img-fluid w-100 rounded-top" alt="Image">
+                                                </div>
+                                                <div class="guide-icon rounded-pill p-2">
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-facebook-f"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-twitter"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-instagram"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="guide-title text-center rounded-bottom p-4">
+                                                <div class="guide-title-inner">
+                                                    <h4 class="mt-3">Full Name</h4>
+                                                    <p class="mb-0">Designation</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="guide-item">
+                                            <div class="guide-img">
+                                                <div class="guide-img-efects">
+                                                    <img src="{{ asset('belajar/img/guide-2.jpg') }}"
+                                                        class="img-fluid w-100 rounded-top" alt="Image">
+                                                </div>
+                                                <div class="guide-icon rounded-pill p-2">
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-facebook-f"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-twitter"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-instagram"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="guide-title text-center rounded-bottom p-4">
+                                                <div class="guide-title-inner">
+                                                    <h4 class="mt-3">Full Name</h4>
+                                                    <p class="mb-0">Designation</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="guide-item">
+                                            <div class="guide-img">
+                                                <div class="guide-img-efects">
+                                                    <img src="{{ asset('belajar/img/guide-2.jpg') }}"
+                                                        class="img-fluid w-100 rounded-top" alt="Image">
+                                                </div>
+                                                <div class="guide-icon rounded-pill p-2">
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-facebook-f"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-twitter"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-instagram"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="guide-title text-center rounded-bottom p-4">
+                                                <div class="guide-title-inner">
+                                                    <h4 class="mt-3">Full Name</h4>
+                                                    <p class="mb-0">Designation</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="guide-item">
+                                            <div class="guide-img">
+                                                <div class="guide-img-efects">
+                                                    <img src="{{ asset('belajar/img/guide-2.jpg') }}"
+                                                        class="img-fluid w-100 rounded-top" alt="Image">
+                                                </div>
+                                                <div class="guide-icon rounded-pill p-2">
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-facebook-f"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-twitter"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-instagram"></i></a>
+                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
+                                                            class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="guide-title text-center rounded-bottom p-4">
+                                                <div class="guide-title-inner">
+                                                    <h4 class="mt-3">Full Name</h4>
+                                                    <p class="mb-0">Designation</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Duplicate and customize the other 3 items here -->
                                 </div>
                             </div>
                         </div>
@@ -1042,19 +1251,7 @@
     <!-- Custom js -->
     <script type="text/javascript" src="{{ asset('jti/assets/js/custom.js') }}"></script>
 
-
-    {{-- Portofolio --}}
-    <!-- JavaScript Libraries -->
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset ('belajar/lib/easing/easing.min.js') }}') }}"></script>
-    <script src="{{ asset ('belajar/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset ('belajar/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset ('belajar/lib/lightbox/js/lightbox.min.js') }}"></script>
-    
-
-    <!-- Template Javascript -->
-    <script src="{{ asset ('belajar/js/main.js') }}"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- About us Skills Circle progress  -->
     <script>

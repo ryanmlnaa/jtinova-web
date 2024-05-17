@@ -41,6 +41,7 @@ Version: 1.0
 body,
 html {
 	overflow-x:hidden;
+	scroll-behavior: smooth;
 }
 
 body {
@@ -140,7 +141,7 @@ kbd {
 	background-color: #ddd;
 	padding: 4px 6px;
 	border-radius: 2px;
-	color: ;
+	color: white;
 }
 
 address {
@@ -1202,7 +1203,7 @@ a:focus,
 	padding: 50px 0 40px;
 }
 
-.mu-standard-pricing .mu-single-pricebox {;
+.mu-standard-pricing .mu-single-pricebox {
 	padding: 5px 0 40px;
 }
 
@@ -1216,6 +1217,52 @@ a:focus,
 	text-transform: uppercase;
 	margin-bottom: 35px;
 }
+
+.mu-pricing-content {
+    overflow-x: auto; 
+    padding: 20px; 
+}
+
+.mu-pricing-table-wrapper {
+    display: flex; 
+    flex-wrap: nowrap;
+	justify-content: center;
+}
+
+.mu-pricing-table {
+    display: flex; 
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
+	justify-content: center;
+	width: 100%;
+}
+
+.mu-pricing-table > li {
+    flex: 1 0 300px; 
+    margin: 0 10px;
+	max-width: 300px;
+}
+
+.mu-pricing-single {
+    border: 1px solid #ddd; 
+    padding: 20px; 
+    background: #fff; 
+    text-align: center; 
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.mu-pricing-single-title {
+	background-color: #0078ff;
+	padding: 20px;
+	width: 100%;
+	box-sizing: border-box;
+	text-align: center;
+}
+
 
 
 /*--------------------*/
@@ -3762,11 +3809,22 @@ a:focus,
 	color: #0078ff;
 } */
 
-.work-box {
+
+/* .work-box {
 	margin-bottom: 3rem;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: #fff;
+    max-width: 100%; 
+    overflow: hidden;
+} */
+
+#work-form {
 	background-color: #fff;
+	float: left;
+	padding: 100px 0;
+	display: inline;
+	width: 100%;
 }
   
 .work-box:hover img {
@@ -3819,5 +3877,23 @@ a:focus,
 	color: #323232;
 	font-size: 40px;
 	margin-top: 50px;
+}
+
+/* training */
+
+#mu-training {
+	background-color: #fff;
+	float: left;
+	padding: 100px 0;
+	display: inline;
+	width: 100%;
+}
+
+#mu-guide {
+	background-color: #fff;
+	float: left;
+	padding: 100px 0;
+	display: inline;
+	width: 100%;
 }
   
