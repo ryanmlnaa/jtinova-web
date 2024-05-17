@@ -1218,6 +1218,52 @@ a:focus,
 	margin-bottom: 35px;
 }
 
+.mu-pricing-content {
+    overflow-x: auto; 
+    padding: 20px; 
+}
+
+.mu-pricing-table-wrapper {
+    display: flex; 
+    flex-wrap: nowrap;
+	justify-content: center;
+}
+
+.mu-pricing-table {
+    display: flex; 
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
+	justify-content: center;
+	width: 100%;
+}
+
+.mu-pricing-table > li {
+    flex: 1 0 300px; 
+    margin: 0 10px;
+	max-width: 300px;
+}
+
+.mu-pricing-single {
+    border: 1px solid #ddd; 
+    padding: 20px; 
+    background: #fff; 
+    text-align: center; 
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.mu-pricing-single-title {
+	background-color: #0078ff;
+	padding: 20px;
+	width: 100%;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+
 
 /*--------------------*/
 /* TESTIMONIALS */
@@ -3836,6 +3882,14 @@ a:focus,
 /* training */
 
 #mu-training {
+	background-color: #fff;
+	float: left;
+	padding: 100px 0;
+	display: inline;
+	width: 100%;
+}
+
+#mu-guide {
 	background-color: #fff;
 	float: left;
 	padding: 100px 0;
