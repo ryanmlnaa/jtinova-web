@@ -29,8 +29,6 @@ return new class extends Migration
             $table->text('twitter')->nullable();
             $table->text('instagram');
             $table->text('youtube');
-            // $table->text('stamp');
-            // $table->text('signature');
             $table->string('manager', 100)->nullable();
             $table->string('nip', 100)->nullable();
             $table->timestamps();
