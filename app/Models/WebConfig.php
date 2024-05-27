@@ -26,8 +26,6 @@ class WebConfig extends Model
         'twitter',
         'instagram',
         'youtube',
-        'stamp',
-        'signature',
         'manager',
         'nip',
     ];
