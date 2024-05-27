@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             UserSeeder::class,
             WebConfigSeeder::class,
+            KeahlianSeeder::class,
         ]);
     }
 }

@@ -8,15 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Keahlian extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'id_keahlian';
     protected $table = 'keahlian';
     protected $fillable = [
-        'id_keahlian', 
-        'nama_keahlian',  
-        'tipe_keahlian'
+        'nama',  
     ];
-
-    public static function getData(){
-        return self::get();
-    }
 }
