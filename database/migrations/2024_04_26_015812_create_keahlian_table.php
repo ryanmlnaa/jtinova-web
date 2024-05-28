@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('keahlian', function (Blueprint $table) {
-            $table->increments("id_keahlian");
-            $table->string("nama_keahlian");
-            $table->enum("tipe_keahlian", ["utama", "lain"])->default("utama");
+            $table->id();
+            $table->string("nama");
             $table->timestamps();
         });
     }

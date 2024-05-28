@@ -15,7 +15,7 @@
             <li class=" {{ Request::is('webconfig') ? 'active' : '' }} "><a class="nav-link"
                     href="{{ route('webconfig') }}"><i class="fas fa-cog"></i> <span>Config Web</span></a></li>
             <li class=" {{ Request::is('datakeahlian') ? 'active' : '' }} "><a class="nav-link"
-                    href="{{ route('Keahlian.index') }}"><i class="far fa-square"></i> <span>Data Keahlian</span></a></li>
+                    href="{{ route('keahlian.index') }}"><i class="fas fa-tasks"></i> <span>Data Keahlian</span></a></li>
             <li class=" {{ Request::is('databenefit') ? 'active' : '' }} "><a class="nav-link"
                     href="{{ route('Benefit.index') }}"><i class="far fa-square"></i> <span>Data Benefit</span></a></li>
             <li class=" {{ Request::is('datauser') ? 'active' : '' }} "><a class="nav-link"

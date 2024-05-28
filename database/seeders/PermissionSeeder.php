@@ -29,6 +29,11 @@ class PermissionSeeder extends Seeder
             'produk-create',
             'produk-edit',
             'produk-delete',
+
+            'keahlian-list',
+            'keahlian-create',
+            'keahlian-edit',
+            'keahlian-delete',
         ];
 
         foreach ($permissions as $permission) {

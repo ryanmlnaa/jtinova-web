@@ -88,11 +88,10 @@ Route::group(['middleware' => ['auth']], function(){
         Route::delete("/hapusbenefit/{id}", [BenefitController::class, 'delete'])->name("Benefit.delete");
 
         // keahlian
-        Route::get("/datakeahlian", [KeahlianController::class, 'index'])->name("Keahlian.index");
-        Route::post("/tambahkeahlian", [keahlianController::class, 'tambah'])->name("Keahlian.tambah");
-        Route::get("/editkeahlian/{id}", [keahlianController::class, 'edit'])->name("Keahlian.edit");
-        Route::patch("/updatekeahlian/{id}", [keahlianController::class, 'update'])->name("Keahlian.update");
-        Route::delete("/hapuskeahlian/{id}", [keahlianController::class, 'delete'])->name("Keahlian.delete");
+        Route::get("/datakeahlian", [KeahlianController::class, 'index'])->name("keahlian.index");
+        Route::post("/keahlian", [keahlianController::class, 'store'])->name("keahlian.store");
+        Route::patch("/keahlian/{id}", [keahlianController::class, 'update'])->name("keahlian.update");
+        Route::delete("/keahlian/{id}", [keahlianController::class, 'destroy'])->name("keahlian.destroy");
 
         // user
         Route::get("/datauser", [UserController::class, 'index'])->name("User.index");
