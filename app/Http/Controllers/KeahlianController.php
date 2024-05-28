@@ -46,7 +46,7 @@ class KeahlianController extends Controller
         if($validator->fails()){
             $messages = $validator->errors()->all();
             Alert::error($messages[0])->flash();
-            return redirect()->route('keahlian.index', $id)->withErrors($validator)->withInput();
+            return redirect()->route('keahlian.index')->withErrors($validator)->withInput();
         }
 
         $data->update([
