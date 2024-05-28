@@ -82,7 +82,7 @@ class UserSeeder extends Seeder
 
         $role3 = Role::create(['name' => 'mahasiswa-mbkm', 'guard_name' => 'web']);
         $permission = Permission::whereIn('name', [
-            'produk-list',
+            'produk-list', 'fill-profile'
         ])->pluck('id', 'id')->all();
         $role3->syncPermissions($permission);
         $user3 = User::find(4);

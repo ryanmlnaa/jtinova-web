@@ -15,6 +15,8 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
+            'fill-profile',
+            
             'user-list',
             'user-create',
             'user-edit',

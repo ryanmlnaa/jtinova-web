@@ -34,11 +34,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('lading.page');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
+Route::get('register-mbkm', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.mbkm');
+Route::get('register-pelatihan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pelatihan');
 
 Route::group(['middleware' => ['auth']], function(){
     // home or dashboard
-    Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->middleware('verified')->name('dashboard');
 
     // middleware role admin and pegawai
     Route::group(['middleware' => ['role:admin|pegawai']], function(){
