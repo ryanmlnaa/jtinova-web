@@ -85,8 +85,10 @@ class UserSeeder extends Seeder
             'produk-list',
         ])->pluck('id', 'id')->all();
         $role3->syncPermissions($permission);
-        $user3 = User::find(3);
+        $user3 = User::find(4);
         $user3->assignRole($role3->id);
+        $user3_1 = User::find(5);
+        $user3_1->assignRole($role3->id);
         
         $role4 = Role::create(['name' => 'user-pelatihan', 'guard_name' => 'web']);
         $permission = Permission::whereIn('name', [

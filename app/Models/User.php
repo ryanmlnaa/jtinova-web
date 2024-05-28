@@ -22,4 +22,9 @@ class User extends Authenticatable
     public static function getData(){
         return self::get();
     }
+
+    public function mbkmUser()
+    {
+        return $this->hasOne(MbkmUser::class);
+    }
 }
