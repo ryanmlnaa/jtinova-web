@@ -19,6 +19,9 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <input type="hidden" name="requrlname" value="{{ request()->route()->getName() }}">
+                        @if (request()->get('kodeskema') != '')
+                            <input type="hidden" name="kodeskema" value="{{ request()->get('kodeskema') }}">
+                        @endif
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"

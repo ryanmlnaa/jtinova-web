@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->increments("id_pembayaran");
-            $table->foreignId("id_peserta")->references('id_peserta')->on('peserta');
+            // $table->foreignId("id_peserta")->references('id_peserta')->on('peserta');
             $table->integer("nominal");
             $table->string("no_rekening");
             $table->string("bukti_pembayaran");

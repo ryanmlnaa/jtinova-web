@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             KeahlianSeeder::class,
             ProdiSeeder::class,
             MbkmUserSeeder::class,
+            SkemaPendampinganSeeder::class,
+            PendampinganUserSeeder::class,
         ]);
     }
 }

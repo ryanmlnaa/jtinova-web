@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\MbkmUser;
+use App\Models\PendampinganUser;
+use App\Models\SkemaPendampingan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -77,8 +79,11 @@ class RegisterController extends Controller
             $user->assignRole('mahasiswa-mbkm');
             $user->givePermissionTo('fill-profile');
             MbkmUser::create(['user_id' => $user->id]);
-        } else {
-            $user->assignRole('pelatihan');
+        } else if ($data['requrlname'] == 'register.pendampingan'){
+            $user->assignRole('user-pendampingan');
+            $user->givePermissionTo('fill-profile');
+            $skemaPendampinganId = SkemaPendampingan::where('kode', $data['kodeskema'])->where('status', 'Aktif')->first()->id;
+            PendampinganUser::create(['user_id' => $user->id, 'skema_pendampingan_id' => $skemaPendampinganId]);
         }
 
         return $user;

@@ -16,6 +16,9 @@ use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\MbkmUser;
 use App\Http\Controllers\MbkmUserController;
 use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
+use App\Http\Controllers\Pendampingan\PendampinganUserController as PendampinganPendampinganUserController;
+use App\Http\Controllers\PendampinganUserController;
+use App\Http\Controllers\SkemaPendampinganController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\UserDashboardController;
@@ -38,7 +41,7 @@ Route::get('/', [LandingPageController::class, 'index'])->name('lading.page');
 Auth::routes(['verify' => true]);
 
 Route::get('register-mbkm', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.mbkm');
-Route::get('register-pelatihan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pelatihan');
+Route::get('register-pendampingan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pendampingan');
 
 Route::group(['middleware' => ['auth']], function(){
     // home or dashboard
@@ -104,6 +107,14 @@ Route::group(['middleware' => ['auth']], function(){
         Route::put("/prodi/{prodi}", [ProdiController::class, 'update'])->name("prodi.update");
         Route::delete("/prodi/{prodi}", [ProdiController::class, 'destroy'])->name("prodi.destroy");
 
+        // skemaPendampingan
+        Route::get("/skemaPendampingan", [SkemaPendampinganController::class, 'index'])->name("skemaPendampingan.index");
+        Route::get("/skemaPendampingan/create", [SkemaPendampinganController::class, 'create'])->name("skemaPendampingan.create");
+        Route::post("/skemaPendampingan", [SkemaPendampinganController::class, 'store'])->name("skemaPendampingan.store");
+        Route::get("/skemaPendampingan/{skemaPendampingan}/edit", [SkemaPendampinganController::class, 'edit'])->name("skemaPendampingan.edit");
+        Route::put("/skemaPendampingan/{skemaPendampingan}", [SkemaPendampinganController::class, 'update'])->name("skemaPendampingan.update");
+        Route::delete("/skemaPendampingan/{skemaPendampingan}", [SkemaPendampinganController::class, 'destroy'])->name("skemaPendampingan.destroy");
+
         // user
         Route::get("/datauser", [UserController::class, 'index'])->name("User.index");
         Route::post("/tambahuser", [UserController::class, 'tambah'])->name("User.tambah");
@@ -112,11 +123,8 @@ Route::group(['middleware' => ['auth']], function(){
         Route::delete("/hapususer/{id}", [UserController::class, 'delete'])->name("User.delete");
 
         // peserta
-        Route::get("/datapeserta", [PesertaController::class, 'index'])->name("Peserta.index");
-        Route::post("/tambahpeserta", [PesertaController::class, 'tambah'])->name("Peserta.tambah");
-        Route::get("/editpeserta/{id}", [PesertaController::class, 'edit'])->name("Peserta.edit");
-        Route::patch("/updatepeserta/{id}", [PesertaController::class, 'update'])->name("Peserta.update");
-        Route::delete("/hapuspeserta/{id}", [PesertaController::class, 'delete'])->name("Peserta.delete");
+        Route::get("/pendampingan-user", [PendampinganUserController::class, 'index'])->name("pendampinganUser.index");
+        Route::delete("/pendampingan-user/{pendampinganUser}", [PendampinganUserController::class, 'destroy'])->name("pendampinganUser.destroy");
 
         // instruktur
         Route::get("/datainstruktur", [InstrukturController::class, 'index'])->name("Instruktur.index");
@@ -137,6 +145,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::group(['middleware' => ['can:fill-profile']], function(){
         // route mbkm
         Route::put('/mahasiswa-mbkm/{mbkmUser}', [MbkmMbkmUserController::class, 'update'])->name('mbkm.mbkmuser.update');
+        Route::put('/pendampingan-user/{pendampinganUser}', [PendampinganPendampinganUserController::class, 'update'])->name('pendampingan.pendampinganuser.update');
     });
 });
 

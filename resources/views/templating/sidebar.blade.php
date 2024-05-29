@@ -24,8 +24,6 @@
               href="{{ route('User.index') }}"><i class="far fa-square"></i> <span>Data User</span></a></li>
       <li class=" {{ Request::is('datajabatan') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('Jabatan.index') }}"><i class="far fa-square"></i> <span>Data Jabatan</span></a></li>
-      <li class=" {{ Request::is('datapeserta') ? 'active' : '' }} "><a class="nav-link"
-              href="{{ route('Peserta.index') }}"><i class="far fa-square"></i> <span>Data Peserta</span></a></li>
       <li class=" {{ Request::is('datainstruktur') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('Instruktur.index') }}"><i class="far fa-square"></i> <span>Data Instruktur</span></a>
       </li>
@@ -33,6 +31,8 @@
       <li class="menu-header">Data CRUD</li>
       <li class=" {{ Request::is('dataproduk') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('dataproduk') }}"><i class="far fa-square"></i> <span>Data Produk</span></a></li>
+      <li class=" {{ Request::is('skemaPendampingan') ? 'active' : '' }} "><a class="nav-link"
+      href="{{ route('skemaPendampingan.index') }}"><i class="fas fa-database"></i> <span>Data Skema Pendampingan</span></a></li>
       <li class=" {{ Request::is('datapegawai') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('datapegawai') }}"><i class="far fa-square"></i> <span>Data Pegawai</span></a></li>
       <li class=" {{ Request::is('datapelatihan') ? 'active' : '' }} "><a class="nav-link"
@@ -40,6 +40,8 @@
       </li>
       <li class=" {{ Request::is('mbkmuser') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('mbkmuser.index') }}"><i class="fas fa-users"></i> <span>Data Mahasiswa MBKM</span></a></li>
+      <li class=" {{ Request::is('pendampingan-user') ? 'active' : '' }} "><a class="nav-link"
+      href="{{ route('pendampinganUser.index') }}"><i class="fas fa-users"></i> <span>Data User Pendampingan</span></a></li>
       <li class=" {{ Request::is('dataportofolio') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('Portofolio.index') }}"><i class="far fa-square"></i> <span>Data Proyek</span></a></li>
       <li class=" {{ Request::is('datapembayaran') ? 'active' : '' }} "><a class="nav-link"

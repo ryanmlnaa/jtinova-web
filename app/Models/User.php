@@ -27,4 +27,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(MbkmUser::class);
     }
+
+    public function pendampinganUser()
+    {
+        return $this->hasOne(PendampinganUser::class);
+    }
 }
