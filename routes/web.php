@@ -15,6 +15,7 @@ use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\MbkmUser;
 use App\Http\Controllers\MbkmUserController;
+use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\UserDashboardController;
@@ -130,6 +131,12 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get("/editpembayaran/{id}", [PembayaranController::class, 'edit'])->name("Pembayaran.edit");
         Route::patch("/updatepembayaran/{id}", [PembayaranController::class, 'update'])->name("Pembayaran.update");
         Route::delete("/hapuspembayaran/{id}", [PembayaranController::class, 'delete'])->name("Pembayaran.delete");
+    });
+
+    // route with middleware mahasiswa-mbkm
+    Route::group(['middleware' => ['can:fill-profile']], function(){
+        // route mbkm
+        Route::put('/mahasiswa-mbkm/{mbkmUser}', [MbkmMbkmUserController::class, 'update'])->name('mbkm.mbkmuser.update');
     });
 });
 

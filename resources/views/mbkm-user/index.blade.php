@@ -31,7 +31,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nim }}</td>
                                     <td>{{ $item->user->name }}</td>
-                                    <td>{{ $item->prodi->code }}</td>
+                                    <td>{{ isset($item->prodi->code) ? $item->prodi->code : '' }}</td>
                                     <td>{{ $item->semester }}</td>
                                     <td>{{ $item->golongan }}</td>
                                     {{-- many to many keahlian --}}

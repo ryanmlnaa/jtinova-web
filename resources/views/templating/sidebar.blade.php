@@ -8,7 +8,7 @@
   <ul class="sidebar-menu">
     <li class="menu-header">Dashboard</li>
     <li class=" {{ Request::is('dashboard') ? 'active' : '' }}  "><a class="nav-link"
-            href="{{ route('dashboard') }}"><i class="far fa-square"></i> <span>Dashboard</span></a></li>
+            href="{{ route('dashboard') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
 
     @role(['admin', 'pegawai'])
       <li class="menu-header">Data Master</li>

@@ -75,6 +75,7 @@ class RegisterController extends Controller
 
         if ($data['requrlname'] == 'register.mbkm') {
             $user->assignRole('mahasiswa-mbkm');
+            $user->givePermissionTo('fill-profile');
             MbkmUser::create(['user_id' => $user->id]);
         } else {
             $user->assignRole('pelatihan');

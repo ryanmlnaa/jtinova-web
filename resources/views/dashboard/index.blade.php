@@ -5,12 +5,16 @@
 <div class="section-body">
     <div class="row">
         <div class="col-lg-12">
+            @role('mahasiswa-mbkm')
+            @can('fill-profile')
             <div class="card">
+                <div class="card-header">
+                    <h4>Silakan Lengkapi Data Diri Berikut</h4>
+                </div>
                 <div class="card-body">
-                    @role('mahasiswa-mbkm')
-                    @can('fill-profile')
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('mbkm.mbkmuser.update', $dataUser) }}" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="form-group col-6">
                                 <label for="nim">NIM</label>
@@ -57,7 +61,7 @@
                                 @enderror
                             </div>
                             <div class="form-group col-6">
-                                <label for="golongan">Tahun Masuk Politeknik</label>
+                                <label for="golongan">Golongan</label>
                                 <select name="golongan" id="golongan" class="form-control @error('golongan') is-invalid @enderror">
                                 <option value="A">A</option>
                                 <option value="B">B</option>
@@ -98,13 +102,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="keahlian">Keahlian</label>
+                            <label for="keahlian">Skill / Library / Framework / Tools yang dikuasi</label>
                             <div class="row">
                                 @foreach ($keahlians as $keahlian)
                                 <div class="col-4">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="keahlian-{{ $keahlian->id }}"
-                                            name="keahlian_id[]" value="{{ $keahlian->id }}">
+                                            name="keahlian_id[]" value="{{ $keahlian->id }}" @if (is_array(old('keahlian_id')) && in_array($keahlian->id, old('keahlian_id'))) checked @endif>
                                         <label class="custom-control-label" for="keahlian-{{ $keahlian->id }}">
                                             {{ $keahlian->nama }}
                                         </label>
@@ -114,16 +118,40 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="khs">Upload KHS dari semester awal - terakhir</label>
+                                <input id="khs" type="file" class="form-control @error('khs') is-invalid @enderror" name="khs"
+                                    value="{{ old('khs') }}" autofocus>
+                                @error('khs')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label for="photo">Upload Foto Terbaru</label>
+                                <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo"
+                                    value="{{ old('photo') }}">
+                                @error('photo')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                Daftar
+                                Simpan
                             </button>
                         </div>
                     </form>
-                    @endcan
-                    @endrole
                 </div>
             </div>
+            @endcan
+            @endrole
         </div>
     </div>
 </div>
