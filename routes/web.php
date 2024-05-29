@@ -85,11 +85,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::delete("/hapusportofolio/{id}", [PortofolioController::class, 'delete'])->name("Portofolio.delete");
 
         // pelatihan
-        Route::get("/datapelatihan", [PelatihanController::class, 'index'])->name("pelatihan.index");
-        Route::post("/tambahpelatihan", [PelatihanController::class, 'tambah'])->name("Pelatihan.tambah");
-        Route::get("/editpelatihan/{id}", [PelatihanController::class, 'edit'])->name("Pelatihan.edit");
-        Route::patch("/updatepelatihan/{id}", [PelatihanController::class, 'update'])->name("Pelatihan.update");
-        Route::delete("/hapuspelatihan/{id}", [PelatihanController::class, 'delete'])->name("Pelatihan.delete");
+        Route::resource("/pelatihan", PelatihanController::class);
 
         // benefit
         Route::get("/databenefit", [BenefitController::class, 'index'])->name("Benefit.index");

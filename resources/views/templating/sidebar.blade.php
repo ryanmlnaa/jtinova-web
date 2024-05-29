@@ -37,8 +37,8 @@
       href="{{ route('skemaPendampingan.index') }}"><i class="fas fa-database"></i> <span>Data Skema Pendampingan</span></a></li>
       <li class=" {{ Request::is('datapegawai') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('datapegawai') }}"><i class="far fa-square"></i> <span>Data Pegawai</span></a></li>
-      <li class=" {{ Request::is('datapelatihan') ? 'active' : '' }} "><a class="nav-link"
-              href="{{ route('pelatihan.index') }}"><i class="far fa-square"></i> <span>Data Pelatihan</span></a>
+      <li class=" {{ Request::is('pelatihan') ? 'active' : '' }} "><a class="nav-link"
+              href="{{ route('pelatihan.index') }}"><i class="fas fa-book"></i> <span>Data Pelatihan</span></a>
       </li>
       <li class=" {{ Request::is('mbkmuser') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('mbkmuser.index') }}"><i class="fas fa-users"></i> <span>Data Mahasiswa MBKM</span></a></li>

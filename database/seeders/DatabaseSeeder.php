@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             MbkmUserSeeder::class,
             SkemaPendampinganSeeder::class,
             PendampinganUserSeeder::class,
+            PelatihanSeeder::class,
         ]);
     }
 }

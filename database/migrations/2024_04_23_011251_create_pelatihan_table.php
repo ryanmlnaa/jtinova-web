@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pelatihan', function (Blueprint $table) {
-            $table->increments("id_pelatihan");
-            $table->string("nama_pelatihan", 50);
-            $table->string("kategori", 50);
-            $table->string("deskripsi", 100);
-            $table->string("benefit", 50);
+            $table->id();
+            $table->foreignId("id_kategori")->constrained("categories")->onDelete("cascade");
+            $table->string("nama");
+            $table->text("deskripsi");
+            $table->text("benefit");
             $table->integer("harga");
             $table->string("foto");
             $table->timestamps();
