@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BenefitController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InstrukturController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KeahlianController;
@@ -73,6 +74,8 @@ Route::group(['middleware' => ['auth']], function(){
         Route::patch("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'update'])->name("mbkmuser.update");
         Route::delete("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'destroy'])->name("mbkmuser.destroy");
 
+        // Category
+        Route::resource('category', CategoryController::class);
 
         // portofolio
         Route::get("/dataportofolio", [PortofolioController::class, 'index'])->name("Portofolio.index");
