@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             ProdiSeeder::class,
             MbkmUserSeeder::class,
             SkemaPendampinganSeeder::class,
+            PendampinganUserSeeder::class,
         ]);
     }
 }

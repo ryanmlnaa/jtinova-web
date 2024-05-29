@@ -3,7 +3,7 @@
       <h4>Silakan Lengkapi Data Diri Berikut</h4>
   </div>
   <div class="card-body">
-      <form method="POST" action="{{ route('mbkm.mbkmuser.update', $dataUser) }}" enctype="multipart/form-data">
+      <form method="POST" action="{{ route('mbkm.mbkmuser.update', auth()->user()->mbkmUser) }}" enctype="multipart/form-data">
           @csrf
           @method('PUT')
           <div class="row">

@@ -16,7 +16,8 @@ use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\MbkmUser;
 use App\Http\Controllers\MbkmUserController;
 use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
-use App\Http\Controllers\Pendampingan\PendampinganUserController;
+use App\Http\Controllers\Pendampingan\PendampinganUserController as PendampinganPendampinganUserController;
+use App\Http\Controllers\PendampinganUserController;
 use App\Http\Controllers\SkemaPendampinganController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
@@ -122,11 +123,8 @@ Route::group(['middleware' => ['auth']], function(){
         Route::delete("/hapususer/{id}", [UserController::class, 'delete'])->name("User.delete");
 
         // peserta
-        Route::get("/datapeserta", [PesertaController::class, 'index'])->name("Peserta.index");
-        Route::post("/tambahpeserta", [PesertaController::class, 'tambah'])->name("Peserta.tambah");
-        Route::get("/editpeserta/{id}", [PesertaController::class, 'edit'])->name("Peserta.edit");
-        Route::patch("/updatepeserta/{id}", [PesertaController::class, 'update'])->name("Peserta.update");
-        Route::delete("/hapuspeserta/{id}", [PesertaController::class, 'delete'])->name("Peserta.delete");
+        Route::get("/pendampingan-user", [PendampinganUserController::class, 'index'])->name("pendampinganUser.index");
+        Route::delete("/pendampingan-user/{pendampinganUser}", [PendampinganUserController::class, 'destroy'])->name("pendampinganUser.destroy");
 
         // instruktur
         Route::get("/datainstruktur", [InstrukturController::class, 'index'])->name("Instruktur.index");
@@ -147,7 +145,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::group(['middleware' => ['can:fill-profile']], function(){
         // route mbkm
         Route::put('/mahasiswa-mbkm/{mbkmUser}', [MbkmMbkmUserController::class, 'update'])->name('mbkm.mbkmuser.update');
-        Route::put('/pendampingan-user/{pendampinganUser}', [PendampinganUserController::class, 'update'])->name('pendampingan.pendampinganuser.update');
+        Route::put('/pendampingan-user/{pendampinganUser}', [PendampinganPendampinganUserController::class, 'update'])->name('pendampingan.pendampinganuser.update');
     });
 });
 
