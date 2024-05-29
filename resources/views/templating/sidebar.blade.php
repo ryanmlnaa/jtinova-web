@@ -33,6 +33,8 @@
       <li class="menu-header">Data CRUD</li>
       <li class=" {{ Request::is('dataproduk') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('dataproduk') }}"><i class="far fa-square"></i> <span>Data Produk</span></a></li>
+      <li class=" {{ Request::is('skemaPendampingan') ? 'active' : '' }} "><a class="nav-link"
+      href="{{ route('skemaPendampingan.index') }}"><i class="fas fa-database"></i> <span>Data Skema Pendampingan</span></a></li>
       <li class=" {{ Request::is('datapegawai') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('datapegawai') }}"><i class="far fa-square"></i> <span>Data Pegawai</span></a></li>
       <li class=" {{ Request::is('datapelatihan') ? 'active' : '' }} "><a class="nav-link"

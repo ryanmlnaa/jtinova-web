@@ -16,6 +16,7 @@ use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\MbkmUser;
 use App\Http\Controllers\MbkmUserController;
 use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
+use App\Http\Controllers\SkemaPendampinganController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\UserDashboardController;
@@ -103,6 +104,14 @@ Route::group(['middleware' => ['auth']], function(){
         Route::post("/prodi", [ProdiController::class, 'store'])->name("prodi.store");
         Route::put("/prodi/{prodi}", [ProdiController::class, 'update'])->name("prodi.update");
         Route::delete("/prodi/{prodi}", [ProdiController::class, 'destroy'])->name("prodi.destroy");
+
+        // skemaPendampingan
+        Route::get("/skemaPendampingan", [SkemaPendampinganController::class, 'index'])->name("skemaPendampingan.index");
+        Route::get("/skemaPendampingan/create", [SkemaPendampinganController::class, 'create'])->name("skemaPendampingan.create");
+        Route::post("/skemaPendampingan", [SkemaPendampinganController::class, 'store'])->name("skemaPendampingan.store");
+        Route::get("/skemaPendampingan/{skemaPendampingan}/edit", [SkemaPendampinganController::class, 'edit'])->name("skemaPendampingan.edit");
+        Route::put("/skemaPendampingan/{skemaPendampingan}", [SkemaPendampinganController::class, 'update'])->name("skemaPendampingan.update");
+        Route::delete("/skemaPendampingan/{skemaPendampingan}", [SkemaPendampinganController::class, 'destroy'])->name("skemaPendampingan.destroy");
 
         // user
         Route::get("/datauser", [UserController::class, 'index'])->name("User.index");
