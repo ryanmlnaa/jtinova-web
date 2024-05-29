@@ -63,6 +63,15 @@ class KeahlianSeeder extends Seeder
             ['nama' => 'GitHub'],
             ['nama' => 'GitLab'],
             ['nama' => 'Bitbucket'],
+            ['nama' => 'Adobe Photoshop'],
+            ['nama' => 'Adobe Illustrator'],
+            ['nama' => 'Adobe Premiere'],
+            ['nama' => 'Adobe After Effect'],
+            ['nama' => 'Corel Draw'],
+            ['nama' => 'Inkscape'],
+            ['nama' => 'GIMP'],
+            ['nama' => 'Blender'],
+            ['nama' => 'Autodesk'],
         ];
 
         Keahlian::insert($data);

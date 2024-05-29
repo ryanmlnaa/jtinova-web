@@ -12,8 +12,10 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PortofolioController;
-use App\Http\Controllers\Recruitment;
-use App\Http\Controllers\RecruitmentController;
+use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\MbkmUser;
+use App\Http\Controllers\MbkmUserController;
+use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\UserDashboardController;
@@ -33,11 +35,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('lading.page');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
+Route::get('register-mbkm', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.mbkm');
+Route::get('register-pelatihan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pelatihan');
 
 Route::group(['middleware' => ['auth']], function(){
     // home or dashboard
-    Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->middleware('verified')->name('dashboard');
 
     // middleware role admin and pegawai
     Route::group(['middleware' => ['role:admin|pegawai']], function(){
@@ -58,12 +63,12 @@ Route::group(['middleware' => ['auth']], function(){
         // jabatan
         Route::resource('Jabatan', JabatanController::class);
 
-        // recruitment
-        Route::get("/datarecruitment", [RecruitmentController::class, 'index'])->name("Recruitment.index");
-        Route::post("/tambahrecruitment", [RecruitmentController::class, 'tambah'])->name("Recruitment.tambah");
-        Route::get("/editrecruitment/{id}", [RecruitmentController::class, 'edit'])->name("Recruitment.edit");
-        Route::patch("/updaterecruitment/{id}", [RecruitmentController::class, 'update'])->name("Recruitment.update");
-        Route::delete("/hapusrecruitment/{id}", [RecruitmentController::class, 'delete'])->name("Recruitment.delete");
+        // mbkm
+        Route::get("/mbkmuser", [MbkmUserController::class, 'index'])->name("mbkmuser.index");
+        Route::post("/mbkmuser", [MbkmUserController::class, 'store'])->name("mbkmuser.store");
+        Route::get("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'edit'])->name("mbkmuser.edit");
+        Route::patch("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'update'])->name("mbkmuser.update");
+        Route::delete("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'destroy'])->name("mbkmuser.destroy");
 
 
         // portofolio
@@ -93,6 +98,12 @@ Route::group(['middleware' => ['auth']], function(){
         Route::patch("/keahlian/{id}", [keahlianController::class, 'update'])->name("keahlian.update");
         Route::delete("/keahlian/{id}", [keahlianController::class, 'destroy'])->name("keahlian.destroy");
 
+        // prodi
+        Route::get("/prodi", [ProdiController::class, 'index'])->name("prodi.index");
+        Route::post("/prodi", [ProdiController::class, 'store'])->name("prodi.store");
+        Route::put("/prodi/{prodi}", [ProdiController::class, 'update'])->name("prodi.update");
+        Route::delete("/prodi/{prodi}", [ProdiController::class, 'destroy'])->name("prodi.destroy");
+
         // user
         Route::get("/datauser", [UserController::class, 'index'])->name("User.index");
         Route::post("/tambahuser", [UserController::class, 'tambah'])->name("User.tambah");
@@ -120,6 +131,12 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get("/editpembayaran/{id}", [PembayaranController::class, 'edit'])->name("Pembayaran.edit");
         Route::patch("/updatepembayaran/{id}", [PembayaranController::class, 'update'])->name("Pembayaran.update");
         Route::delete("/hapuspembayaran/{id}", [PembayaranController::class, 'delete'])->name("Pembayaran.delete");
+    });
+
+    // route with middleware mahasiswa-mbkm
+    Route::group(['middleware' => ['can:fill-profile']], function(){
+        // route mbkm
+        Route::put('/mahasiswa-mbkm/{mbkmUser}', [MbkmMbkmUserController::class, 'update'])->name('mbkm.mbkmuser.update');
     });
 });
 

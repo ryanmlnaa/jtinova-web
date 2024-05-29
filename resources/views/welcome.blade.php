@@ -100,7 +100,7 @@
                             </div> --}}
                         </li>
                         <li class="nav-item"><a href="{{ route('login') }}">Login</a></li>
-                        <li class="nav-item"><a href="{{route ('register')}}">Register</a></li>
+                        <li class="nav-item"><a href="{{route ('register.mbkm')}}">Daftar MBKM</a></li>
                     </ul>
                 </div>
             </nav>

@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             WebConfigSeeder::class,
             KeahlianSeeder::class,
+            ProdiSeeder::class,
+            MbkmUserSeeder::class,
         ]);
     }
 }

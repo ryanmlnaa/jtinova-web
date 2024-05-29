@@ -1,26 +1,41 @@
-@extends('layouts.app')
-
+@extends('layouts.auth.app')
+@section('title', 'Verifikasi Email')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+<div class="container mt-5">
+    <div class="row">
+        <div
+            class="col-12">
+            <div class="login-brand">
+                <img src="{{asset('images/logo-jtinnovation.png')}}" alt="logo" width="500"
+                    class="shadow-light">
+            </div>
+
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4>Verifikasi Email Telah Dikirim</h4>
+                </div>
 
                 <div class="card-body">
+                    <h6>Jika Anda tidak menerima email verifikasi, klik tombol di bawah ini untuk mengirim ulang email verifikasi.</h6>
                     @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
+                    <div class="alert alert-info">
+                        Email verifikasi telah dikirim ke alamat email Anda.
+                    </div>
                     @endif
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                    <form method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+
+                        <div class="form-group mb-0">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                Kirim Ulang Email Verifikasi
+                            </button>
+                        </div>
                     </form>
                 </div>
+            </div>
+            <div class="simple-footer">
+                Copyright &copy; JTI Innovation @php echo date('Y'); @endphp
             </div>
         </div>
     </div>
