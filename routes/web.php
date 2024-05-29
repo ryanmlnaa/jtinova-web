@@ -16,6 +16,7 @@ use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\MbkmUser;
 use App\Http\Controllers\MbkmUserController;
 use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
+use App\Http\Controllers\Pendampingan\PendampinganUserController;
 use App\Http\Controllers\SkemaPendampinganController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
@@ -39,7 +40,7 @@ Route::get('/', [LandingPageController::class, 'index'])->name('lading.page');
 Auth::routes(['verify' => true]);
 
 Route::get('register-mbkm', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.mbkm');
-Route::get('register-pelatihan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pelatihan');
+Route::get('register-pendampingan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pendampingan');
 
 Route::group(['middleware' => ['auth']], function(){
     // home or dashboard
@@ -146,6 +147,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::group(['middleware' => ['can:fill-profile']], function(){
         // route mbkm
         Route::put('/mahasiswa-mbkm/{mbkmUser}', [MbkmMbkmUserController::class, 'update'])->name('mbkm.mbkmuser.update');
+        Route::put('/pendampingan-user/{pendampinganUser}', [PendampinganUserController::class, 'update'])->name('pendampingan.pendampinganuser.update');
     });
 });
 

@@ -99,7 +99,6 @@
                                 <a class="dropdown-item" href="blog-single.html">Blog Single</a>
                             </div> --}}
                         </li>
-                        <li class="nav-item"><a href="{{ route('login') }}">Login</a></li>
                         <li class="nav-item"><a href="{{route ('register.mbkm')}}">Daftar MBKM</a></li>
                     </ul>
                 </div>
@@ -678,79 +677,35 @@
                                 <div class="col-md-12">
                                     <div class="mu-title">
                                         <h2>Pendampingan TA</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis.</p>
+                                        <p>Mau Skripsi / Tugas Akhir kamu cepat selesai? Daftar sekarang juga!</p>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mu-pricing-content">
                                         <div class="mu-pricing-table-wrapper">
                                             <ul class="mu-pricing-table">
-                                                <li>
-                                                    <div class="mu-pricing-single">
-                                                        <div class="mu-pricing-single-icon">
-                                                            <span class="fa fa-user"></span>
+                                                @foreach ($skemaPendampingans as $skemaPendampingan)
+                                                    <li>
+                                                        <div class="mu-pricing-single">
+                                                            <div class="mu-pricing-single-icon">
+                                                                <span class="fa fa-user"></span>
+                                                            </div>
+                                                            <div class="mu-pricing-single-title">
+                                                                <h3>{{ $skemaPendampingan->nama }}</h3>
+                                                            </div>
+                                                            <div class="mu-pricing-single-content">
+                                                                <ul>
+                                                                    <li>{{ $skemaPendampingan->deskripsi }}</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="mu-single-pricebox">
+                                                                <h4>{{ $skemaPendampingan->harga }}</h4>
+                                                            </div>
+                                                            {{-- route register pendampingan with parse query param $skemaPendampingan->code --}}
+                                                            <a class="mu-buy-now-btn" href="{{ route('register.pendampingan')}}?kodeskema={{ $skemaPendampingan->kode }}">Daftar</a>
                                                         </div>
-                                                        <div class="mu-pricing-single-title">
-                                                            <h3>Pendampingan TI</h3>
-                                                        </div>
-                                                        <div class="mu-pricing-single-content">
-                                                            <ul>
-                                                                <li>Lorem ipsum dolor sit amet.</li>
-                                                                <li>Consectetuer elit aeneaneget dolor.</li>
-                                                                <li>Aenean massa cum sociis natoque.</li>
-                                                                <li>Penatibus.</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="mu-single-pricebox">
-                                                            <h4>29$<span>/month</span></h4>
-                                                        </div>
-                                                        <a class="mu-buy-now-btn" href="{{ route('pendaftaran') }}">Daftar</a>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="mu-pricing-single">
-                                                        <div class="mu-pricing-single-icon">
-                                                            <span class="fa fa-user"></span>
-                                                        </div>
-                                                        <div class="mu-pricing-single-title">
-                                                            <h3>Pendampingan TI</h3>
-                                                        </div>
-                                                        <div class="mu-pricing-single-content">
-                                                            <ul>
-                                                                <li>Lorem ipsum dolor sit amet.</li>
-                                                                <li>Consectetuer elit aeneaneget dolor.</li>
-                                                                <li>Aenean massa cum sociis natoque.</li>
-                                                                <li>Penatibus.</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="mu-single-pricebox">
-                                                            <h4>29$<span>/month</span></h4>
-                                                        </div>
-                                                        <a class="mu-buy-now-btn" href="{{ route('pendaftaran') }}">Daftar</a>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="mu-pricing-single">
-                                                        <div class="mu-pricing-single-icon">
-                                                            <span class="fa fa-paper-plane"></span>
-                                                        </div>
-                                                        <div class="mu-pricing-single-title">
-                                                            <h3>Pendampingan TA</h3>
-                                                        </div>
-                                                        <div class="mu-pricing-single-content">
-                                                            <ul>
-                                                                <li>Lorem ipsum dolor sit amet.</li>
-                                                                <li>Consectetuer elit aeneaneget dolor.</li>
-                                                                <li>Aenean massa cum sociis natoque.</li>
-                                                                <li>Penatibus.</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="mu-single-pricebox">
-                                                            <h4>229$<span>/month</span></h4>
-                                                        </div>
-                                                        <a class="mu-buy-now-btn" href="#">Daftar</a>
-                                                    </div>
-                                                </li>
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>
