@@ -8,18 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Pegawai extends Model
 {
     use HasFactory;
-    protected $guarded = ['id_pegawai'];
-    protected $primaryKey = 'id_pegawai';
+    
     protected $table = 'pegawai';
+
     protected $fillable = [
+        'user_id',
         'nip',
-        'nama_pegawai',
-        'id_jabatan',
-        'link_linkdIn',
-        'instagram',
-        'foto_profile'
+        'nama',
+        'jabatan_id',
+        'foto',
     ];
-    public function Jabatan(){
-        return $this->hasOne(Jabatan::class, 'id_jabatan');
+
+    public function jabatan()
+    {
+        return $this->belongsTo(Jabatan::class);
     }
 }

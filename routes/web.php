@@ -5,8 +5,8 @@ use App\Http\Controllers\Instruktur\InstrukturUserController as InstrukturInstru
 use App\Http\Controllers\InstrukturUserController;
 use App\Http\Controllers\Admin\JabatanController;
 use App\Http\Controllers\Admin\KeahlianController;
+use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\Admin\PelatihanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PortofolioController;
@@ -75,11 +75,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('user', UserController::class)->except(['show', 'edit']);
 
         // pegawai
-        Route::get('/datapegawai', [App\Http\Controllers\PegawaiController::class, 'index'])->name('datapegawai');
-        Route::post('/tambahdatapegawai', [App\Http\Controllers\PegawaiController::class, 'tambahdata_pegawai'])->name('tambahdatapegawai');
-        Route::delete('/hapuspegawai/{id_pegawai}', [App\Http\Controllers\PegawaiController::class, 'hapuspegawai'])->name('hapuspegawai.destroy');
-        Route::get('/edit_pegawai/{id}', [App\Http\Controllers\PegawaiController::class, 'edit'])->name('Pegawai.edit');
-        Route::patch('/update_pegawai/{id}', [PegawaiController::class, "update"])->name("Pegawai.update");
+        Route::resource('pegawai', PegawaiController::class);
         
         // mbkm
         Route::get("/mbkmuser", [MbkmUserController::class, 'index'])->name("mbkmuser.index");
