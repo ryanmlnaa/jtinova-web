@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             PendampinganUserSeeder::class,
             PelatihanSeeder::class,
             PelatihanUserSeeder::class,
+            InstrukturUserSeeder::class,
         ]);
     }
 }

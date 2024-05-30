@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\BenefitController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Instruktur\InstrukturUserController as InstrukturInstrukturUserController;
 use App\Http\Controllers\InstrukturController;
+use App\Http\Controllers\InstrukturUserController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KeahlianController;
 use App\Http\Controllers\KedudukanController;
@@ -46,6 +48,7 @@ Auth::routes(['verify' => true]);
 Route::get('register-mbkm', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.mbkm');
 Route::get('register-pendampingan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pendampingan');
 Route::get('register-pelatihan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pelatihan');
+Route::get('register-instruktur', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.instruktur');
 
 Route::group(['middleware' => ['auth']], function(){
     // home or dashboard
@@ -133,11 +136,8 @@ Route::group(['middleware' => ['auth']], function(){
         Route::delete("/pelatihan-user/{pelatihanUser}", [PelatihanUserController::class, 'destroy'])->name("pelatihanUser.destroy");
 
         // instruktur
-        Route::get("/datainstruktur", [InstrukturController::class, 'index'])->name("Instruktur.index");
-        Route::post("/tambahinstruktur", [InstrukturController::class, 'tambah'])->name("Instruktur.tambah");
-        Route::get("/editinstruktur/{id}", [InstrukturController::class, 'edit'])->name("Instruktur.edit");
-        Route::patch("/updateinstruktur/{id}", [InstrukturController::class, 'update'])->name("Instruktur.update");
-        Route::delete("/hapusinstruktur/{id}", [InstrukturController::class, 'delete'])->name("Instruktur.delete");
+        Route::get("/instruktur", [InstrukturUserController::class, 'index'])->name("instruktur.index");
+        Route::delete("/instruktur/{instrukturUser}", [InstrukturUserController::class, 'destroy'])->name("instruktur.destroy");
 
         // pembayaran
         Route::get("/datapembayaran", [PembayaranController::class, 'index'])->name("Pembayaran.index");
@@ -154,6 +154,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::put('/pendampingan-user/{pendampinganUser}', [PendampinganPendampinganUserController::class, 'update'])->name('pendampingan.pendampinganuser.update');
         Route::put('/pelatihan-user/{pelatihanUser}', [PelatihanPelatihanUserController::class, 'update'])->name('pelatihan.pelatihanuser.update');
     });
+    Route::put('/instruktur-user/{instrukturUser}', [InstrukturInstrukturUserController::class, 'update'])->name('instruktur.instrukturuser.update');
 });
 
 //route dashboard user

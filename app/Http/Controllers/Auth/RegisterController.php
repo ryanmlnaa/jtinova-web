@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\InstrukturUser;
 use App\Models\MbkmUser;
 use App\Models\Pelatihan;
 use App\Models\PelatihanUser;
@@ -99,6 +100,10 @@ class RegisterController extends Controller
             } else {
                 PelatihanUser::create(['user_id' => $user->id, 'pelatihan_id' => $pelatihan->id]);
             }
+        } else if ($data['requrlname'] == 'register.instruktur'){
+            $user->assignRole('instruktur');
+            $user->givePermissionTo('fill-profile');
+            InstrukturUser::create(['user_id' => $user->id]);
         }
 
         return $user;
