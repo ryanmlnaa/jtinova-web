@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Instruktur\InstrukturUserController as InstrukturInstrukturUserController;
 use App\Http\Controllers\InstrukturUserController;
 use App\Http\Controllers\Admin\JabatanController;
