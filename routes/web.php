@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::put('/web-config', [WebConfigController::class, 'update'])->name('webconfig.update');
 
         // jabatan
-        Route::resource('Jabatan', JabatanController::class);
+        Route::resource('jabatan', JabatanController::class)->except(['show', 'edit']);
 
         // keahlian
         Route::get("/keahlian", [KeahlianController::class, 'index'])->name("keahlian.index");

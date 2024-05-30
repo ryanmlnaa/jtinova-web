@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jabatan;
-use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -17,14 +15,9 @@ class JabatanController extends Controller
     public function index(Request $request)
     {
         $title = "Data Jabatan";
-        $limit = $request->limit ?? 25;
-        $data = Jabatan::paginate($limit);
-        return view('jabatan.index', compact('title', 'limit','data'));   
+        $data = Jabatan::all();
+        return view('jabatan.index', compact('title','data'));   
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
 
     /**
      * Store a newly created resource in storage.
@@ -32,75 +25,53 @@ class JabatanController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama_jabatan' => 'required|unique:jabatan'
+            'nama' => 'required|string|max:255',
         ]);
+
         if($validator->fails()){
             $messages = $validator->errors()->all();
             Alert::error($messages[0])->flash();
             return back()->withErrors($validator)->withInput();
         }
-        try{
-            DB::beginTransaction();
-    
-            $data = [
-                "nama_jabatan" => $request->nama_jabatan,
-            ];
-    
-            Jabatan::create($data);
-    
-            DB::commit();
-            Alert::success('Success Title', 'Berhasil Tambah Data');
-            return back();
-        }catch(QueryException $e){
-            // DB::rollBack();
-            // return back();
-            Alert::success($e->getMessage());
-        }
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Jabatan $Jabatan)
-    {
-        //
-    }
+        Jabatan::create([
+            'nama' => $request->nama,
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($Jabatan)
-    {
-        $data = Jabatan::findOrFail($Jabatan);
-        $title = "Edit Jabatan";
-        return view('jabatan/edit_jabatan',compact('data', "title" ));
+        Alert::success("Success Title", "Berhasil Menambahkan Data");
+        return redirect()->route('jabatan.index');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $Jabatan)
+    public function update(Request $request, Jabatan $jabatan)
     {
-        $data = Jabatan::findOrFail($Jabatan);
-        $data->update([
-            "nama_jabatan" => $request->nama_jabatan
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string|max:255',
         ]);
-        if($data){
-            return redirect()->route("jabatan.index");
-        }else{
-            return redirect()->back()->withInput();
+
+        if($validator->fails()){
+            $messages = $validator->errors()->all();
+            Alert::error($messages[0])->flash();
+            return back()->withErrors($validator)->withInput();
         }
+
+        $jabatan->update([
+            'nama' => $request->nama,
+        ]);
+
+        Alert::success("Success Title", "Berhasil Mengubah Data");
+        return redirect()->route('jabatan.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destory($Jabatan)
+    public function destroy(Jabatan $jabatan)
     {
-        $data = Jabatan::findOrFail($Jabatan);
-        if($data == null){abort(404);}
-        $data->delete();
+        $jabatan->delete();
         Alert::success("Success Title", "Berhasil Menghapus Data");
-        return redirect()->back();
+        return redirect()->route('jabatan.index');
     }
 }
