@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\MbkmUser;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -15,7 +15,7 @@ class MbkmUserController extends Controller
     {
         $title = 'Data Mahasiswa MBKM';
         $data = MbkmUser::with('user', 'prodi', 'keahlian')->get();
-        return view('mbkm-user.index', compact('data', 'title'));
+        return view('admin.mbkm-user.index', compact('data', 'title'));
     }
 
     public function update(Request $request)

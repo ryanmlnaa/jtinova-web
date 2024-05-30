@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\PelatihanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\Admin\ProdiController;
-use App\Http\Controllers\MbkmUserController;
+use App\Http\Controllers\Admin\MbkmUserController;
 use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
 use App\Http\Controllers\PelatihanUserController;
 use App\Http\Controllers\Pelatihan\PelatihanUserController as PelatihanPelatihanUserController;
@@ -78,11 +78,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('pegawai', PegawaiController::class);
         
         // mbkm
-        Route::get("/mbkmuser", [MbkmUserController::class, 'index'])->name("mbkmuser.index");
-        Route::post("/mbkmuser", [MbkmUserController::class, 'store'])->name("mbkmuser.store");
-        Route::get("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'edit'])->name("mbkmuser.edit");
-        Route::patch("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'update'])->name("mbkmuser.update");
-        Route::delete("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'destroy'])->name("mbkmuser.destroy");
+        Route::resource('mbkmuser', MbkmUserController::class)->except(['create', 'show', 'edit']);
 
         // instruktur
         Route::get("/instruktur", [InstrukturUserController::class, 'index'])->name("instruktur.index");
