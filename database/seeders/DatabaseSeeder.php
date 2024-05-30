@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             PelatihanUserSeeder::class,
             InstrukturUserSeeder::class,
             JabatanSeeder::class,
+            PegawaiSeeder::class,
         ]);
     }
 }

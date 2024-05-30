@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\PelatihanUser;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class PelatihanUserController extends Controller
     {
         $title = "Data Peserta";
         $data = PelatihanUser::all();
-        return view('pelatihan-user.index', compact("title", "data"));
+        return view('admin.pelatihan-user.index', compact("title", "data"));
     }
     public function destroy(PelatihanUser $pelatihanUser) {
         Storage::disk('public')->delete($pelatihanUser->foto);

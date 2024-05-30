@@ -2,23 +2,23 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Instruktur\InstrukturUserController as InstrukturInstrukturUserController;
-use App\Http\Controllers\InstrukturUserController;
+use App\Http\Controllers\Admin\InstrukturUserController;
 use App\Http\Controllers\Admin\JabatanController;
 use App\Http\Controllers\Admin\KeahlianController;
+use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\Admin\PelatihanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\Admin\ProdiController;
-use App\Http\Controllers\MbkmUserController;
+use App\Http\Controllers\Admin\MbkmUserController;
 use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
-use App\Http\Controllers\PelatihanUserController;
+use App\Http\Controllers\Admin\PelatihanUserController;
 use App\Http\Controllers\Pelatihan\PelatihanUserController as PelatihanPelatihanUserController;
 use App\Http\Controllers\Pendampingan\PendampinganUserController as PendampinganPendampinganUserController;
-use App\Http\Controllers\PendampinganUserController;
+use App\Http\Controllers\Admin\PendampinganUserController;
 use App\Http\Controllers\Admin\SkemaPendampinganController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WebConfigController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -72,37 +72,22 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource("pelatihan", PelatihanController::class)->except(['show']);
 
         // user
-        Route::get("/datauser", [UserController::class, 'index'])->name("User.index");
-        Route::post("/tambahuser", [UserController::class, 'tambah'])->name("User.tambah");
-        Route::get("/edituser/{id}", [UserController::class, 'edit'])->name("User.edit");
-        Route::patch("/updateuser/{id}", [UserController::class, 'update'])->name("User.update");
-        Route::delete("/hapususer/{id}", [UserController::class, 'delete'])->name("User.delete");
+        Route::resource('user', UserController::class)->except(['show', 'edit']);
 
         // pegawai
-        Route::get('/datapegawai', [App\Http\Controllers\PegawaiController::class, 'index'])->name('datapegawai');
-        Route::post('/tambahdatapegawai', [App\Http\Controllers\PegawaiController::class, 'tambahdata_pegawai'])->name('tambahdatapegawai');
-        Route::delete('/hapuspegawai/{id_pegawai}', [App\Http\Controllers\PegawaiController::class, 'hapuspegawai'])->name('hapuspegawai.destroy');
-        Route::get('/edit_pegawai/{id}', [App\Http\Controllers\PegawaiController::class, 'edit'])->name('Pegawai.edit');
-        Route::patch('/update_pegawai/{id}', [PegawaiController::class, "update"])->name("Pegawai.update");
+        Route::resource('pegawai', PegawaiController::class);
         
         // mbkm
-        Route::get("/mbkmuser", [MbkmUserController::class, 'index'])->name("mbkmuser.index");
-        Route::post("/mbkmuser", [MbkmUserController::class, 'store'])->name("mbkmuser.store");
-        Route::get("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'edit'])->name("mbkmuser.edit");
-        Route::patch("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'update'])->name("mbkmuser.update");
-        Route::delete("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'destroy'])->name("mbkmuser.destroy");
+        Route::resource('mbkmuser', MbkmUserController::class)->except(['create', 'show', 'edit']);
 
         // instruktur
-        Route::get("/instruktur", [InstrukturUserController::class, 'index'])->name("instruktur.index");
-        Route::delete("/instruktur/{instrukturUser}", [InstrukturUserController::class, 'destroy'])->name("instruktur.destroy");
+        Route::resource("instruktur", InstrukturUserController::class)->except(['create', 'show', 'edit']);
 
         // peserta pendampingan
-        Route::get("/pendampingan-user", [PendampinganUserController::class, 'index'])->name("pendampinganUser.index");
-        Route::delete("/pendampingan-user/{pendampinganUser}", [PendampinganUserController::class, 'destroy'])->name("pendampinganUser.destroy");
+        Route::resource("/pendampinganuser", PendampinganUserController::class)->except(['create', 'show', 'edit']);
 
         // peserta pelatihan
-        Route::get("/pelatihan-user", [PelatihanUserController::class, 'index'])->name("pelatihanUser.index");
-        Route::delete("/pelatihan-user/{pelatihanUser}", [PelatihanUserController::class, 'destroy'])->name("pelatihanUser.destroy");
+        Route::resource("/pelatihanuser", PelatihanUserController::class)->except(['create', 'show', 'edit']);
 
         // produk
         Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'])->name('dataproduk');

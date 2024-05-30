@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\PendampinganUser;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class PendampinganUserController extends Controller
     {
         $title = "Data Peserta";
         $data = PendampinganUser::all();
-        return view('pendampingan-user.index', compact("title", "data"));
+        return view('admin.pendampingan-user.index', compact("title", "data"));
     }
     public function destroy(PendampinganUser $pendampinganUser) {
         
