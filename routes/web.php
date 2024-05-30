@@ -1,22 +1,16 @@
 <?php
 
-use App\Http\Controllers\BenefitController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Instruktur\InstrukturUserController as InstrukturInstrukturUserController;
-use App\Http\Controllers\InstrukturController;
 use App\Http\Controllers\InstrukturUserController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KeahlianController;
-use App\Http\Controllers\KedudukanController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PelatihanController;
 use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\PesertaController;
-use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ProdiController;
-use App\Http\Controllers\MbkmUser;
 use App\Http\Controllers\MbkmUserController;
 use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
 use App\Http\Controllers\PelatihanUserController;
@@ -25,8 +19,7 @@ use App\Http\Controllers\Pendampingan\PendampinganUserController as Pendampingan
 use App\Http\Controllers\PendampinganUserController;
 use App\Http\Controllers\SkemaPendampinganController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\WebConfigController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -57,8 +50,8 @@ Route::group(['middleware' => ['auth']], function(){
     // middleware role admin and pegawai
     Route::group(['middleware' => ['role:admin|pegawai']], function(){
         // web config
-        Route::get('/webconfig', [App\Http\Controllers\WebConfigController::class, 'index'])->name('webconfig');
-        Route::post('/simpanwebconfig', [App\Http\Controllers\WebConfigController::class, 'simpanwebconfig'])->name('simpanwebconfig');
+        Route::get('/web-config', [WebConfigController::class, 'index'])->name('webconfig.index');
+        Route::put('/web-config', [WebConfigController::class, 'update'])->name('webconfig.update');
 
         // jabatan
         Route::resource('Jabatan', JabatanController::class);

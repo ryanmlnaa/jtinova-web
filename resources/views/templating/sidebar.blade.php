@@ -11,7 +11,7 @@
 
     @role(['admin', 'pegawai'])
       <li class="menu-header">Konfigurasi Web</li>
-      <li class=" {{ Request::is('webconfig') ? 'active' : '' }} "><a class="nav-link" href="{{ route('webconfig') }}"><i class="fas fa-cog"></i> <span>Config Web</span></a></li>
+      <li class=" {{ Request::is('web-config') ? 'active' : '' }} "><a class="nav-link" href="{{ route('webconfig.index') }}"><i class="fas fa-cog"></i> <span>Konfigurasi Web</span></a></li>
       <li class="menu-header">Data Master</li>
       <li class=" {{ Request::is('Jabatan') ? 'active' : '' }} "><a class="nav-link" href="{{ route('Jabatan.index') }}"><i class="fas fa-user-tie"></i> <span>Data Jabatan</span></a></li>
       <li class=" {{ Request::is('keahlian') ? 'active' : '' }} "><a class="nav-link" href="{{ route('keahlian.index') }}"><i class="fas fa-tasks"></i> <span>Keahlian / Skill</span></a></li>

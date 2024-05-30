@@ -3,8 +3,9 @@
 @section('menu', $title)
 @section('content')
 <div class="section-body">
-    <form action="simpanwebconfig" method="post"enctype="multipart/form-data">
+    <form action="{{route('webconfig.update')}}" method="post"enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="row">
 
             <div class="col-md-4">
@@ -96,7 +97,7 @@
                             <input type="file" id="brand_logo" name="brand_logo" class="form-control"
                                 value="{{ $data['brand_logo'] ?? '' }}">
                             @if (isset($data['brand_logo']) && $data['brand_logo'] !== null)
-                                <img src="{{ asset($data['brand_logo']) }}" alt="{{ $data['brand_logo'] }}" class="img-fluid bg-dark mt-2">
+                                <img src="{{ asset('storage/'.$data['brand_logo']) }}" alt="{{ $data['brand_logo'] }}" class="img-fluid bg-dark mt-2">
                             @else
                                 <img src="" alt="" class="img-fluid bg-dark mt-2">
                             @endif
@@ -121,7 +122,7 @@
                                 value="{{ $data['video_preview'] ?? '' }}">
                             @if (isset($data['video_preview']) && $data['video_preview'] !== null)
                                 <video controls class="img-fluid bg-dark mt-2">
-                                    <source src="{{ url('video/' . $data['video_preview']) }}" type="video/mp4">
+                                    <source src="{{ asset('storage/' . $data['video_preview']) }}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             @else
