@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\InstrukturUser;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class InstrukturUserController extends Controller
@@ -13,7 +13,7 @@ class InstrukturUserController extends Controller
     {
         $title = "Data Instruktur";
         $data = InstrukturUser::all();
-        return view('instruktur-user.index', compact("title", "data"));
+        return view('admin.instruktur-user.index', compact("title", "data"));
     }
 
     public function destroy(InstrukturUser $instrukturUser)

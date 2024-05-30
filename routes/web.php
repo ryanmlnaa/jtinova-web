@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Instruktur\InstrukturUserController as InstrukturInstrukturUserController;
-use App\Http\Controllers\InstrukturUserController;
+use App\Http\Controllers\Admin\InstrukturUserController;
 use App\Http\Controllers\Admin\JabatanController;
 use App\Http\Controllers\Admin\KeahlianController;
 use App\Http\Controllers\Admin\PegawaiController;
@@ -81,8 +81,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('mbkmuser', MbkmUserController::class)->except(['create', 'show', 'edit']);
 
         // instruktur
-        Route::get("/instruktur", [InstrukturUserController::class, 'index'])->name("instruktur.index");
-        Route::delete("/instruktur/{instrukturUser}", [InstrukturUserController::class, 'destroy'])->name("instruktur.destroy");
+        Route::resource("instruktur", InstrukturUserController::class)->except(['create', 'show', 'edit']);
 
         // peserta pendampingan
         Route::get("/pendampingan-user", [PendampinganUserController::class, 'index'])->name("pendampinganUser.index");
