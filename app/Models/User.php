@@ -19,10 +19,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at',
     ];
 
-    public static function getData(){
-        return self::get();
-    }
-
     public function mbkmUser()
     {
         return $this->hasOne(MbkmUser::class);

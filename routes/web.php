@@ -18,7 +18,7 @@ use App\Http\Controllers\Pelatihan\PelatihanUserController as PelatihanPelatihan
 use App\Http\Controllers\Pendampingan\PendampinganUserController as PendampinganPendampinganUserController;
 use App\Http\Controllers\PendampinganUserController;
 use App\Http\Controllers\Admin\SkemaPendampinganController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WebConfigController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -72,11 +72,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource("pelatihan", PelatihanController::class)->except(['show']);
 
         // user
-        Route::get("/datauser", [UserController::class, 'index'])->name("User.index");
-        Route::post("/tambahuser", [UserController::class, 'tambah'])->name("User.tambah");
-        Route::get("/edituser/{id}", [UserController::class, 'edit'])->name("User.edit");
-        Route::patch("/updateuser/{id}", [UserController::class, 'update'])->name("User.update");
-        Route::delete("/hapususer/{id}", [UserController::class, 'delete'])->name("User.delete");
+        Route::resource('user', UserController::class)->except(['show', 'edit']);
 
         // pegawai
         Route::get('/datapegawai', [App\Http\Controllers\PegawaiController::class, 'index'])->name('datapegawai');

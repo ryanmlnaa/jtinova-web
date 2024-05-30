@@ -23,7 +23,7 @@
       <li class=" {{ Request::is('pelatihan') ? 'active' : '' }} "><a class="nav-link" href="{{ route('pelatihan.index') }}"><i class="fas fa-book"></i> <span>Data Pelatihan</span></a></li>
       
       <li class="menu-header">Data Pengguna</li>
-      <li class=" {{ Request::is('datauser') ? 'active' : '' }} "><a class="nav-link" href="{{ route('User.index') }}"><i class="fas fa-users"></i> <span>User</span></a></li>
+      <li class=" {{ Request::is('user') ? 'active' : '' }} "><a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-users"></i> <span>User</span></a></li>
       <li class=" {{ Request::is('datapegawai') ? 'active' : '' }} "><a class="nav-link" href="{{ route('datapegawai') }}"><i class="fas fa-users"></i> <span>Pegawai</span></a></li>
       <li class=" {{ Request::is('mbkmuser') ? 'active' : '' }} "><a class="nav-link" href="{{ route('mbkmuser.index') }}"><i class="fas fa-users"></i> <span>Mahasiswa MBKM</span></a></li>
       <li class=" {{ Request::is('instruktur') ? 'active' : '' }} "><a class="nav-link" href="{{ route('instruktur.index') }}"><i class="fas fa-users"></i> <span>Instruktur</span></a></li>
