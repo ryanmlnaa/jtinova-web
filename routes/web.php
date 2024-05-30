@@ -4,7 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Instruktur\InstrukturUserController as InstrukturInstrukturUserController;
 use App\Http\Controllers\InstrukturUserController;
 use App\Http\Controllers\Admin\JabatanController;
-use App\Http\Controllers\KeahlianController;
+use App\Http\Controllers\Admin\KeahlianController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PelatihanController;
@@ -57,10 +57,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('jabatan', JabatanController::class)->except(['show', 'edit']);
 
         // keahlian
-        Route::get("/keahlian", [KeahlianController::class, 'index'])->name("keahlian.index");
-        Route::post("/keahlian", [keahlianController::class, 'store'])->name("keahlian.store");
-        Route::patch("/keahlian/{id}", [keahlianController::class, 'update'])->name("keahlian.update");
-        Route::delete("/keahlian/{id}", [keahlianController::class, 'destroy'])->name("keahlian.destroy");
+        Route::resource('keahlian', KeahlianController::class)->except(['show', 'edit']);
 
         // prodi
         Route::get("/prodi", [ProdiController::class, 'index'])->name("prodi.index");

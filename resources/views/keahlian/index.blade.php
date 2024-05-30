@@ -29,7 +29,7 @@
                                     <td>
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$item->id}}"><i class="fas fa-edit"></i></button>
                                         <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>
-                                        <form action="{{route('keahlian.destroy', $item->id)}}" method="post" id="form-{{$item->id}}">
+                                        <form action="{{route('keahlian.destroy', $item)}}" method="post" id="form-{{$item->id}}">
                                             @csrf
                                             @method('delete')
                                         </form>
@@ -77,7 +77,7 @@
 @foreach ($data as $item)
 <div class="modal fade" id="editModal{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog">
-        <form action="{{route('keahlian.update', $item->id)}}" method="post">
+        <form action="{{route('keahlian.update', $item)}}" method="post">
             @csrf
             @method('patch')
             <div class="modal-content">

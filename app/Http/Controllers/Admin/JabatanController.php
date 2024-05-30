@@ -16,7 +16,7 @@ class JabatanController extends Controller
     public function index(Request $request)
     {
         $title = "Data Jabatan";
-        $data = Jabatan::all();
+        $data = Jabatan::latest()->get();
         return view('jabatan.index', compact('title','data'));   
     }
 

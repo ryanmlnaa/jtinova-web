@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Keahlian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -36,9 +37,8 @@ class KeahlianController extends Controller
         return redirect()->route('keahlian.index');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Keahlian $keahlian)
     {
-        $data = Keahlian::findOrFail($id);
         $validator = Validator::make($request->all(), [
             'nama' => 'required|max:255',
         ]);
@@ -49,8 +49,8 @@ class KeahlianController extends Controller
             return redirect()->route('keahlian.index')->withErrors($validator)->withInput();
         }
 
-        $data->update([
-            "nama" => $request->nama,
+        $keahlian->update([
+            'nama' => $request->nama,
         ]);
 
         Alert::success("Success", "Berhasil Mengubah Data");
@@ -58,9 +58,9 @@ class KeahlianController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Keahlian $keahlian)
     {
-        Keahlian::findOrFail($id)->delete();
+        $keahlian->delete();
         Alert::success("Success", "Berhasil Menghapus Data");
         return redirect()->route('keahlian.index');
     }
