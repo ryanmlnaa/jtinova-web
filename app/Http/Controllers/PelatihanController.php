@@ -29,11 +29,13 @@ class PelatihanController extends Controller
     {
         $validator = Validator::make($req->all(), [
             "nama" => "required|string|max:255",
+            "kode" => "required|string|max:255",
             "id_kategori" => "required",
             "deskripsi" => "required|string",
             "benefit" => "required|string",
             "harga" => "required|numeric",
             "foto" => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
+            "status" => "required|in:Aktif,Tidak Aktif"
         ]);
         if ($validator->fails()) {
             $message = $validator->errors()->all();
@@ -44,11 +46,13 @@ class PelatihanController extends Controller
 
         Pelatihan::create([
             "nama" => $req->nama,
+            "kode" => $req->kode,
             "id_kategori" => $req->id_kategori,
             "deskripsi" => $req->deskripsi,
             "benefit" => $req->benefit,
             "harga" => $req->harga,
-            "foto" => $req->file('foto')->store('images/pelatihan', 'public')
+            "foto" => $req->file('foto')->store('images/pelatihan', 'public'),
+            "status" => $req->status
         ]);
 
         Alert::success("Success", "Berhasil menambahkan data");
@@ -66,11 +70,13 @@ class PelatihanController extends Controller
     {
         $validator = Validator::make($req->all(), [
             "nama" => "required|string|max:255",
+            "kode" => "required|string|max:255",
             "id_kategori" => "required",
             "deskripsi" => "required|string",
             "benefit" => "required|string",
             "harga" => "required|numeric",
             "foto" => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
+            "status" => "required|in:Aktif,Tidak Aktif"
         ]);
 
         if ($validator->fails()) {

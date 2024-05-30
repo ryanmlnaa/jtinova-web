@@ -44,6 +44,8 @@
               href="{{ route('mbkmuser.index') }}"><i class="fas fa-users"></i> <span>Data Mahasiswa MBKM</span></a></li>
       <li class=" {{ Request::is('pendampingan-user') ? 'active' : '' }} "><a class="nav-link"
       href="{{ route('pendampinganUser.index') }}"><i class="fas fa-users"></i> <span>Data User Pendampingan</span></a></li>
+      <li class=" {{ Request::is('pelatihan-user') ? 'active' : '' }} "><a class="nav-link"
+        href="{{ route('pelatihanUser.index') }}"><i class="fas fa-users"></i> <span>Data User Pelatihan</span></a></li>
       <li class=" {{ Request::is('dataportofolio') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('Portofolio.index') }}"><i class="far fa-square"></i> <span>Data Proyek</span></a></li>
       <li class=" {{ Request::is('datapembayaran') ? 'active' : '' }} "><a class="nav-link"

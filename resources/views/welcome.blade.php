@@ -702,7 +702,7 @@
                                                                 <h4>{{ $skemaPendampingan->harga }}</h4>
                                                             </div>
                                                             {{-- route register pendampingan with parse query param $skemaPendampingan->code --}}
-                                                            <a class="mu-buy-now-btn" href="{{ route('register.pendampingan')}}?kodeskema={{ $skemaPendampingan->kode }}">Daftar</a>
+                                                            <a class="mu-buy-now-btn" href="{{ route('register.pendampingan')}}?pendampingan={{ $skemaPendampingan->kode }}">Daftar</a>
                                                         </div>
                                                     </li>
                                                 @endforeach
@@ -771,20 +771,22 @@
                                 <div class="col-md-12">
                                     <div class="mu-from-blog-content">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                @foreach ($pelatihan as $item)
-                                                <article class="mu-blog-item">
-                                                    <img src="{{ url('foto_pelatihan/' . $item->foto) }}" data-lightbox="gallery-mf">
-                                                    <div class="mu-blog-item-content">
-                                                        <h2 class="mu-blog-item-title"><a href="#">{{ $item->nama_pelatihan }}</a></h2>
-                                                        <p>{{ $item->deskripsi }}</p>
-                                                        <h1>{{ $item->kategori }}</h1>
-                                                        <p>{{ $item->benefit }}</p>
-                                                        <h1>Rp.{{ $item->harga }}</h1>
-                                                    </div>
-                                                </article>
-                                                @endforeach
-                                            </div>
+                                            @foreach ($pelatihan as $item)
+                                                <div class="col-md-4">
+                                                    <a href="{{route('register.pelatihan')}}?pelatihan={{$item->kode}}">
+                                                    <article class="mu-blog-item">
+                                                        <img src="{{ asset('storage/'. $item->foto) }}" data-lightbox="gallery-mf">
+                                                        <div class="mu-blog-item-content">
+                                                            <h2 class="mu-blog-item-title">{{ $item->nama }}</h2>
+                                                            <p>{{ $item->deskripsi }}</p>
+                                                            <h1>{{ $item->kategori->name }}</h1>
+                                                            <p>{{ $item->benefit }}</p>
+                                                            <h1>Rp.{{ $item->harga }}</h1>
+                                                        </div>
+                                                    </article>
+                                                    </a>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('pelatihan', function (Blueprint $table) {
             $table->id();
             $table->foreignId("id_kategori")->constrained("categories")->onDelete("cascade");
+            $table->string("kode");
             $table->string("nama");
             $table->text("deskripsi");
             $table->text("benefit");
             $table->integer("harga");
             $table->string("foto");
+            $table->enum("status", ["Aktif", "Tidak Aktif"])->default("Aktif");
             $table->timestamps();
         });
     }

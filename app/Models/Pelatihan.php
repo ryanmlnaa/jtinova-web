@@ -11,11 +11,13 @@ class Pelatihan extends Model
     protected $table = 'pelatihan';
     protected $fillable = [
         'id_kategori',
+        'kode',
         'nama',
         'deskripsi',
         'benefit',
         'harga',
-        'foto'
+        'foto',
+        'status',
     ];
 
     public function kategori()

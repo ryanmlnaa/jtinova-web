@@ -36,6 +36,15 @@
                       @enderror
                     </div>
                     <div class="form-group">
+                      <label for="kode" class="col-form-label">Kode</label> <span class="text-danger">*</span>
+                      <input type="text" class="form-control @error('kode') is-invalid @enderror" name="kode" id="kode" value="{{old('kode')}}">
+                      @error('kode')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                      @enderror
+                    </div>
+                    <div class="form-group">
                       <label for="harga" class="col-form-label">Harga</label> <span class="text-danger">*</span>
                       <input type="number" class="form-control @error('harga') is-invalid @enderror" name="harga" id="harga" value="{{old('harga')}}">
                       @error('harga')
@@ -57,6 +66,19 @@
                       <label for="benefit" class="col-form-label">Benefit</label> <span class="text-danger">*</span>
                       <textarea class="form-control @error('benefit') is-invalid @enderror" name="benefit" id="benefit">{{old('benefit')}}</textarea>
                       @error('benefit')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <label for="status" class="col-form-label">Status</label> <span class="text-danger">*</span>
+                      <select class="form-control @error('status') is-invalid @enderror" name="status" id="status">
+                        <option value="">Pilih Status</option>
+                        <option value="Aktif" {{old('status') == 'Aktif' ? 'selected' : ''}}>Aktif</option>
+                        <option value="Tidak Aktif" {{old('status') == 'Tidak Aktif' ? 'selected' : ''}}>Tidak Aktif</option>
+                      </select>
+                      @error('status')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
