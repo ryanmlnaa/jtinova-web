@@ -1082,7 +1082,19 @@
             </div>
         </div>
         <!-- Travel Guide End -->
-
+        <!-- Map Start -->
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                    <h1 class="mb-0" style="color: #323232">Lokasi Kami</h1>
+                </div>
+                <div style="width: 100%; height: 700%;">
+                    <iframe src="{{ $webConfig->map }}" width="100%" height="500" style="border:0;"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <!-- Map End -->
     </main>
 
     <!-- End main content -->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pelatihan;
 use App\Models\Portofolio;
 use App\Models\SkemaPendampingan;
+use App\Models\WebConfig;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -13,6 +14,7 @@ class LandingPageController extends Controller
         $portofolio = Portofolio::getData();
         $pelatihan = Pelatihan::where('status', 'Aktif')->get();
         $skemaPendampingans = SkemaPendampingan::where('status', 'Aktif')->get();
-        return view('welcome', compact('portofolio', 'pelatihan', 'skemaPendampingans'));
+        $webConfig = WebConfig::first();
+        return view('welcome', compact('portofolio', 'pelatihan', 'skemaPendampingans', 'webConfig'));
     }
 }
