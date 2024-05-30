@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\SkemaPendampingan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,7 @@ class SkemaPendampinganController extends Controller
     {
         $title = "Data SkemaPendampingan";
         $data = SkemaPendampingan::all();
-        return view('skema-pendampingan.index', compact('data', 'title'));
+        return view('admin.skema-pendampingan.index', compact('data', 'title'));
     }
 
     /**
@@ -26,7 +27,7 @@ class SkemaPendampinganController extends Controller
     public function create()
     {
         $title = "Tambah Data SkemaPendampingan";
-        return view('skema-pendampingan.create', compact('title'));
+        return view('admin.skema-pendampingan.create', compact('title'));
     }
 
     /**
@@ -67,7 +68,7 @@ class SkemaPendampinganController extends Controller
     public function edit(SkemaPendampingan $skemaPendampingan)
     {
         $title = "Detail Data SkemaPendampingan";
-        return view('skema-pendampingan.edit', compact('skemaPendampingan', 'title'));
+        return view('admin.skema-pendampingan.edit', compact('skemaPendampingan', 'title'));
     }
 
     /**
@@ -114,6 +115,7 @@ class SkemaPendampinganController extends Controller
      */
     public function destroy(SkemaPendampingan $skemaPendampingan)
     {
+        Storage::disk('public')->delete($skemaPendampingan->foto);
         $skemaPendampingan->delete();
         Alert::success("Success", "Berhasil Menghapus Data");
         return redirect()->route('skemaPendampingan.index');

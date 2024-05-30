@@ -17,7 +17,7 @@ use App\Http\Controllers\PelatihanUserController;
 use App\Http\Controllers\Pelatihan\PelatihanUserController as PelatihanPelatihanUserController;
 use App\Http\Controllers\Pendampingan\PendampinganUserController as PendampinganPendampinganUserController;
 use App\Http\Controllers\PendampinganUserController;
-use App\Http\Controllers\SkemaPendampinganController;
+use App\Http\Controllers\Admin\SkemaPendampinganController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\WebConfigController;
 use Illuminate\Support\Facades\Auth;

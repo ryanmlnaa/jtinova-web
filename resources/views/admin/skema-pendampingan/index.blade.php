@@ -7,9 +7,9 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                  <a href="{{route('skemaPendampingan.create')}}" class="btn btn-primary mb-3">
-                    Tambah Data
-                  </a>
+                    <a href="{{route('skemaPendampingan.create')}}" class="btn btn-primary mb-3">
+                        Tambah Data
+                    </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -32,7 +32,7 @@
                                     <td>{{ $item->kode }}</td>
                                     <td>{{ $item->nama }}</td>
                                     <td>{{ $item->deskripsi }}</td>
-                                    <td>{{ $item->harga }}</td>
+                                    <td>@currency($item->harga)</td>
                                     <td>{{ $item->status }}</td>
                                     <td>
                                         <a href="{{route('skemaPendampingan.edit', $item)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
