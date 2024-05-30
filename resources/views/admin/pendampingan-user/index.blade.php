@@ -33,7 +33,7 @@
                                     <td>
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$item->id}}"><i class="fas fa-edit"></i></button>
                                         <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>
-                                        <form action="{{route('pendampinganUser.destroy', $item->id)}}" method="post" id="form-{{$item->id}}">
+                                        <form action="{{route('pendampinganuser.destroy', $item->id)}}" method="post" id="form-{{$item->id}}">
                                             @csrf
                                             @method('delete')
                                         </form>
