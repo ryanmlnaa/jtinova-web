@@ -37,4 +37,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(PelatihanUser::class);
     }
+
+    public function instrukturUser()
+    {
+        return $this->hasOne(InstrukturUser::class);
+    }
 }

@@ -24,9 +24,6 @@
               href="{{ route('User.index') }}"><i class="far fa-square"></i> <span>Data User</span></a></li>
       <li class=" {{ Request::is('datajabatan') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('Jabatan.index') }}"><i class="far fa-square"></i> <span>Data Jabatan</span></a></li>
-      <li class=" {{ Request::is('datainstruktur') ? 'active' : '' }} "><a class="nav-link"
-              href="{{ route('Instruktur.index') }}"><i class="far fa-square"></i> <span>Data Instruktur</span></a>
-      </li>
 
       <li class="menu-header">Data CRUD</li>
       <li class=" {{ Request::is('dataproduk') ? 'active' : '' }} "><a class="nav-link"
@@ -42,6 +39,9 @@
       </li>
       <li class=" {{ Request::is('mbkmuser') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('mbkmuser.index') }}"><i class="fas fa-users"></i> <span>Data Mahasiswa MBKM</span></a></li>
+        <li class=" {{ Request::is('instruktur') ? 'active' : '' }} "><a class="nav-link"
+                href="{{ route('instruktur.index') }}"><i class="fas fa-users"></i> <span>Data Instruktur</span></a>
+        </li>
       <li class=" {{ Request::is('pendampingan-user') ? 'active' : '' }} "><a class="nav-link"
       href="{{ route('pendampinganUser.index') }}"><i class="fas fa-users"></i> <span>Data User Pendampingan</span></a></li>
       <li class=" {{ Request::is('pelatihan-user') ? 'active' : '' }} "><a class="nav-link"

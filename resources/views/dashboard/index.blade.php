@@ -20,6 +20,11 @@
                 @include('dashboard.pelatihan-user-form')
             @endcan
             @endrole
+            @role('instruktur')
+            @can('fill-profile')
+                @include('dashboard.instruktur-form')
+            @endcan
+            @endrole
         </div>
     </div>
 </div>
