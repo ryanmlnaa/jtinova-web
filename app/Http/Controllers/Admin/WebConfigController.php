@@ -16,7 +16,7 @@ class WebConfigController extends Controller
         $title = "Konfigurasi Website";
         $data = WebConfig::first();
 
-        return view('web-config.index', compact('title', 'data'));
+        return view('admin.web-config.index', compact('title', 'data'));
     }
 
     public function update(Request $request) 

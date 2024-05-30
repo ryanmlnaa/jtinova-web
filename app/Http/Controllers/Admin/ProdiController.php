@@ -17,7 +17,7 @@ class ProdiController extends Controller
     {
         $title = "Data Prodi";
         $data = Prodi::latest()->get();
-        return view('prodi.index', compact('data', 'title'));
+        return view('admin.prodi.index', compact('data', 'title'));
     }
 
     /**

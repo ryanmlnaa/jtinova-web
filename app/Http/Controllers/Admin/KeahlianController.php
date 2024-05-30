@@ -15,7 +15,7 @@ class KeahlianController extends Controller
         $title = "Data Keahlian";
         $data = Keahlian::latest()->get();
 
-        return view('keahlian.index', compact('title', 'data'));   
+        return view('admin.keahlian.index', compact('title', 'data'));   
     }
 
     public function store(Request $request)
