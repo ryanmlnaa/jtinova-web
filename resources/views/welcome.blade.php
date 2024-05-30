@@ -118,13 +118,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mu-single-slide-content">
-                                    <h1>Inovasi Teaching Factory JTI</h1>
-                                    <p>Teaching Factory (TEFA) merupakan sarana unggulan yang dimiliki Politeknik untuk
-                                        mewujudkansistem
-                                        vokasi berbasis kompetensi, disiplin, terampil, dan mandiri. Tefa memiliki
-                                        konsep pembelajaran
-                                        vokasi berbasis produksi atau jasa yang mengacu pada standar dan prosedur yang
-                                        berlaku di industri.</p>
+                                    <h1>{{ $webConfig->name }}</h1>
+                                    <p>{{ $webConfig->introduction }}</p>
                                 </div>
                             </div>
                         </div>
@@ -141,10 +136,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mu-single-slide-content">
-                                    <h1>Inovasi Teaching Factory JTI</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
-                                        eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-                                        montes, nascetur ridiculus mus. Donec quam felis,</p>
+                                    <h1>{{ $webConfig->name }}</h1>
+                                    <p>{{ $webConfig->introduction }}</p>
                                 </div>
                             </div>
                         </div>
@@ -161,10 +154,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mu-single-slide-content">
-                                    <h1>Inovasi Teaching Factory JTI</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
-                                        eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-                                        montes, nascetur ridiculus mus. Donec quam felis,</p>
+                                    <h1>{{ $webConfig->name }}</h1>
+                                    <p>{{ $webConfig->introduction }}</p>
 
                                 </div>
                             </div>
