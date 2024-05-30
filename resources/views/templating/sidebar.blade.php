@@ -18,8 +18,6 @@
               href="{{ route('keahlian.index') }}"><i class="fas fa-tasks"></i> <span>Data Keahlian</span></a></li>
           <li class=" {{ Request::is('prodi') ? 'active' : '' }} "><a class="nav-link"
           href="{{ route('prodi.index') }}"><i class="fas fa-graduation-cap"></i> <span>Data Prodi</span></a></li>
-      <li class=" {{ Request::is('databenefit') ? 'active' : '' }} "><a class="nav-link"
-              href="{{ route('Benefit.index') }}"><i class="far fa-square"></i> <span>Data Benefit</span></a></li>
       <li class=" {{ Request::is('datauser') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('User.index') }}"><i class="far fa-square"></i> <span>Data User</span></a></li>
       <li class=" {{ Request::is('datajabatan') ? 'active' : '' }} "><a class="nav-link"

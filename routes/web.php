@@ -93,13 +93,6 @@ Route::group(['middleware' => ['auth']], function(){
         // pelatihan
         Route::resource("/pelatihan", PelatihanController::class);
 
-        // benefit
-        Route::get("/databenefit", [BenefitController::class, 'index'])->name("Benefit.index");
-        Route::post("/tambahbenefit", [BenefitController::class, 'tambah'])->name("Benefit.tambah");
-        Route::get("/editbenefit/{id}", [BenefitController::class, 'edit'])->name("Benefit.edit");
-        Route::patch("/updatebenefit/{id}", [BenefitController::class, 'update'])->name("Benefit.update");
-        Route::delete("/hapusbenefit/{id}", [BenefitController::class, 'delete'])->name("Benefit.delete");
-
         // keahlian
         Route::get("/datakeahlian", [KeahlianController::class, 'index'])->name("keahlian.index");
         Route::post("/keahlian", [keahlianController::class, 'store'])->name("keahlian.store");
