@@ -12,6 +12,7 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\Admin\MbkmUserController;
+use App\Http\Controllers\Admin\PelatihanTeamController;
 use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
 use App\Http\Controllers\Admin\PelatihanUserController;
 use App\Http\Controllers\Pelatihan\PelatihanUserController as PelatihanPelatihanUserController;
@@ -88,6 +89,9 @@ Route::group(['middleware' => ['auth']], function(){
 
         // peserta pelatihan
         Route::resource("/pelatihanuser", PelatihanUserController::class)->except(['create', 'show', 'edit']);
+
+        // peserta pelatihan team
+        Route::resource("/pelatihanteam", PelatihanTeamController::class)->except(['create', 'edit']);
 
         // produk
         Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'])->name('dataproduk');

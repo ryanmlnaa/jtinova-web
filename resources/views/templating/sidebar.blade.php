@@ -28,6 +28,7 @@
       <li class=" {{ Request::is('mbkmuser') ? 'active' : '' }} "><a class="nav-link" href="{{ route('mbkmuser.index') }}"><i class="fas fa-users"></i> <span>Mahasiswa MBKM</span></a></li>
       <li class=" {{ Request::is('instruktur') ? 'active' : '' }} "><a class="nav-link" href="{{ route('instruktur.index') }}"><i class="fas fa-users"></i> <span>Instruktur</span></a></li>
       <li class=" {{ Request::is('pendampinganuser') ? 'active' : '' }} "><a class="nav-link" href="{{ route('pendampinganuser.index') }}"><i class="fas fa-users"></i> <span>Pendampingan</span></a></li>
+      <li class=" {{ Request::is('pelatihanteam') ? 'active' : '' }} "><a class="nav-link" href="{{ route('pelatihanteam.index') }}"><i class="fas fa-users"></i> <span>Tim Pelatihan</span></a></li>
       <li class=" {{ Request::is('pelatihanuser') ? 'active' : '' }} "><a class="nav-link" href="{{ route('pelatihanuser.index') }}"><i class="fas fa-users"></i> <span>Pelatihan</span></a></li>
     @endrole
   </ul>

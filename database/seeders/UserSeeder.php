@@ -142,5 +142,8 @@ class UserSeeder extends Seeder
         $user6->assignRole($role6->id);
         $user6_1 = User::find(11);
         $user6_1->assignRole($role6->id);
+
+        // seed user factory
+        User::factory(10)->userPelatihan()->create();
     }
 }

@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             SkemaPendampinganSeeder::class,
             PendampinganUserSeeder::class,
             PelatihanSeeder::class,
+            PelatihanTeamsSeeder::class,
             PelatihanUserSeeder::class,
             InstrukturUserSeeder::class,
             JabatanSeeder::class,
