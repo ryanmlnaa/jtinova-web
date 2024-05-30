@@ -10,7 +10,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PelatihanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PortofolioController;
-use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\MbkmUserController;
 use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
 use App\Http\Controllers\PelatihanUserController;
@@ -60,10 +60,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('keahlian', KeahlianController::class)->except(['show', 'edit']);
 
         // prodi
-        Route::get("/prodi", [ProdiController::class, 'index'])->name("prodi.index");
-        Route::post("/prodi", [ProdiController::class, 'store'])->name("prodi.store");
-        Route::put("/prodi/{prodi}", [ProdiController::class, 'update'])->name("prodi.update");
-        Route::delete("/prodi/{prodi}", [ProdiController::class, 'destroy'])->name("prodi.destroy");
+        Route::resource('prodi', ProdiController::class)->except(['show', 'edit']);
 
         // Category
         Route::resource('category', CategoryController::class);

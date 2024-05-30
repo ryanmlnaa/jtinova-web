@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -15,7 +16,7 @@ class ProdiController extends Controller
     public function index()
     {
         $title = "Data Prodi";
-        $data = Prodi::all();
+        $data = Prodi::latest()->get();
         return view('prodi.index', compact('data', 'title'));
     }
 
