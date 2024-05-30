@@ -13,7 +13,7 @@ use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\Admin\MbkmUserController;
 use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
-use App\Http\Controllers\PelatihanUserController;
+use App\Http\Controllers\Admin\PelatihanUserController;
 use App\Http\Controllers\Pelatihan\PelatihanUserController as PelatihanPelatihanUserController;
 use App\Http\Controllers\Pendampingan\PendampinganUserController as PendampinganPendampinganUserController;
 use App\Http\Controllers\Admin\PendampinganUserController;
@@ -87,8 +87,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource("/pendampinganuser", PendampinganUserController::class)->except(['create', 'show', 'edit']);
 
         // peserta pelatihan
-        Route::get("/pelatihan-user", [PelatihanUserController::class, 'index'])->name("pelatihanUser.index");
-        Route::delete("/pelatihan-user/{pelatihanUser}", [PelatihanUserController::class, 'destroy'])->name("pelatihanUser.destroy");
+        Route::resource("/pelatihanuser", PelatihanUserController::class)->except(['create', 'show', 'edit']);
 
         // produk
         Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'])->name('dataproduk');
