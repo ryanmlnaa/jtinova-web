@@ -718,11 +718,6 @@
         </section>
         <!-- End Pricing Table -->
 
-
-        <!-- End Pricing Table -->
-
-
-        <!-- Start Newsletter -->
         <section id="mu-newsletter">
             <div class="container">
                 <div class="row">
@@ -732,26 +727,38 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mu-title">
-                                        <h2>Subscribe Our JtiNova</h2>
+                                        <h2>Pengumuman</h2>
                                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
                                             ligula eget dolor. Aenean massa cum sociis.</p>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="mu-newsletter-content">
-                                        <form class="mu-subscribe-form">
-                                            <input type="email" placeholder="Write your e-mail here">
-                                            <button class="mu-subscribe-btn">Subscribe</button>
-                                        </form>
-                                    </div>
-                                </div>
+                                <table class="table table-bordered">
+                                    <!-- Tambahkan baris dan kolom sesuai kebutuhan -->
+                                    <thead class="bg-light text-center" style="text-align: center">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3 text-center">Date</th>
+                                            <th scope="col" class="px-6 py-3 text-center">Topic</th>
+                                            <th scope="col" class="px-6 py-3 text-center">File</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white" style="text-align: start">
+                                        <tr class="align-middle">
+                                            <td class="text-center">2024-05-14</td>
+                                            <td>Jadwal Acara Kegiatan OAV-SNAV 2024 Update (share)</td>
+                                            <td class="text-center"><a
+                                                    href="http://10.10.0.148/storage/pengumuman_files/S50OyHfkYpXbMrh4GmxrlQS4qRwoKwHSPy0eA319.pdf"
+                                                    class="btn btn-sm btn-primary" type="button"><i
+                                                        class="nav-icon bx bx-download"></i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- End Newsletter -->
 
         <!-- Start from blog -->
         <section id="mu-training">
