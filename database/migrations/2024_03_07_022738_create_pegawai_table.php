@@ -15,8 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id_pegawai');
             $table->string('nip', 50)->unique();
             $table->string('nama_pegawai');
-            $table->integer('id_jabatan');
-            $table->foreign('id_jabatan')->references('id_jabatan')->on('jabatan');
+            $table->foreignId('id_jabatan')->constrained('jabatan')->onDelete('cascade');
             $table->text('link_linkdIn')->nullable();
             $table->text('instagram')->nullable();
             $table->string('foto_profile');

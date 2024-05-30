@@ -1,32 +1,25 @@
 <?php
 
-use App\Http\Controllers\BenefitController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Instruktur\InstrukturUserController as InstrukturInstrukturUserController;
-use App\Http\Controllers\InstrukturController;
 use App\Http\Controllers\InstrukturUserController;
-use App\Http\Controllers\JabatanController;
-use App\Http\Controllers\KeahlianController;
-use App\Http\Controllers\KedudukanController;
+use App\Http\Controllers\Admin\JabatanController;
+use App\Http\Controllers\Admin\KeahlianController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PegawaiController;
-use App\Http\Controllers\PelatihanController;
+use App\Http\Controllers\Admin\PelatihanController;
 use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\PesertaController;
-use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PortofolioController;
-use App\Http\Controllers\ProdiController;
-use App\Http\Controllers\MbkmUser;
+use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\MbkmUserController;
 use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
 use App\Http\Controllers\PelatihanUserController;
 use App\Http\Controllers\Pelatihan\PelatihanUserController as PelatihanPelatihanUserController;
 use App\Http\Controllers\Pendampingan\PendampinganUserController as PendampinganPendampinganUserController;
 use App\Http\Controllers\PendampinganUserController;
-use App\Http\Controllers\SkemaPendampinganController;
+use App\Http\Controllers\Admin\SkemaPendampinganController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\Admin\WebConfigController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -57,68 +50,26 @@ Route::group(['middleware' => ['auth']], function(){
     // middleware role admin and pegawai
     Route::group(['middleware' => ['role:admin|pegawai']], function(){
         // web config
-        Route::get('/webconfig', [App\Http\Controllers\WebConfigController::class, 'index'])->name('webconfig');
-        Route::post('/simpanwebconfig', [App\Http\Controllers\WebConfigController::class, 'simpanwebconfig'])->name('simpanwebconfig');
-
-        // produk
-        Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'])->name('dataproduk');
-
-        // pegawai
-        Route::get('/datapegawai', [App\Http\Controllers\PegawaiController::class, 'index'])->name('datapegawai');
-        Route::post('/tambahdatapegawai', [App\Http\Controllers\PegawaiController::class, 'tambahdata_pegawai'])->name('tambahdatapegawai');
-        Route::delete('/hapuspegawai/{id_pegawai}', [App\Http\Controllers\PegawaiController::class, 'hapuspegawai'])->name('hapuspegawai.destroy');
-        Route::get('/edit_pegawai/{id}', [App\Http\Controllers\PegawaiController::class, 'edit'])->name('Pegawai.edit');
-        Route::patch('/update_pegawai/{id}', [PegawaiController::class, "update"])->name("Pegawai.update");
+        Route::get('/web-config', [WebConfigController::class, 'index'])->name('webconfig.index');
+        Route::put('/web-config', [WebConfigController::class, 'update'])->name('webconfig.update');
 
         // jabatan
-        Route::resource('Jabatan', JabatanController::class);
+        Route::resource('jabatan', JabatanController::class)->except(['show', 'edit']);
 
-        // mbkm
-        Route::get("/mbkmuser", [MbkmUserController::class, 'index'])->name("mbkmuser.index");
-        Route::post("/mbkmuser", [MbkmUserController::class, 'store'])->name("mbkmuser.store");
-        Route::get("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'edit'])->name("mbkmuser.edit");
-        Route::patch("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'update'])->name("mbkmuser.update");
-        Route::delete("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'destroy'])->name("mbkmuser.destroy");
+        // keahlian
+        Route::resource('keahlian', KeahlianController::class)->except(['show', 'edit']);
+
+        // prodi
+        Route::resource('prodi', ProdiController::class)->except(['show', 'edit']);
 
         // Category
         Route::resource('category', CategoryController::class);
 
-        // portofolio
-        Route::get("/dataportofolio", [PortofolioController::class, 'index'])->name("Portofolio.index");
-        Route::post("/tambahportofolio", [PortofolioController::class, 'tambah'])->name("Portofolio.tambah");
-        Route::get("/editportofolio/{id}", [PortofolioController::class, 'edit'])->name("Portofolio.edit");
-        Route::patch("/updateportofolio/{id}", [PortofolioController::class, 'update'])->name("Portofolio.update");
-        Route::delete("/hapusportofolio/{id}", [PortofolioController::class, 'delete'])->name("Portofolio.delete");
+        // skemaPendampingan
+        Route::resource('skemaPendampingan', SkemaPendampinganController::class)->except(['show']);
 
         // pelatihan
-        Route::resource("/pelatihan", PelatihanController::class);
-
-        // benefit
-        Route::get("/databenefit", [BenefitController::class, 'index'])->name("Benefit.index");
-        Route::post("/tambahbenefit", [BenefitController::class, 'tambah'])->name("Benefit.tambah");
-        Route::get("/editbenefit/{id}", [BenefitController::class, 'edit'])->name("Benefit.edit");
-        Route::patch("/updatebenefit/{id}", [BenefitController::class, 'update'])->name("Benefit.update");
-        Route::delete("/hapusbenefit/{id}", [BenefitController::class, 'delete'])->name("Benefit.delete");
-
-        // keahlian
-        Route::get("/datakeahlian", [KeahlianController::class, 'index'])->name("keahlian.index");
-        Route::post("/keahlian", [keahlianController::class, 'store'])->name("keahlian.store");
-        Route::patch("/keahlian/{id}", [keahlianController::class, 'update'])->name("keahlian.update");
-        Route::delete("/keahlian/{id}", [keahlianController::class, 'destroy'])->name("keahlian.destroy");
-
-        // prodi
-        Route::get("/prodi", [ProdiController::class, 'index'])->name("prodi.index");
-        Route::post("/prodi", [ProdiController::class, 'store'])->name("prodi.store");
-        Route::put("/prodi/{prodi}", [ProdiController::class, 'update'])->name("prodi.update");
-        Route::delete("/prodi/{prodi}", [ProdiController::class, 'destroy'])->name("prodi.destroy");
-
-        // skemaPendampingan
-        Route::get("/skemaPendampingan", [SkemaPendampinganController::class, 'index'])->name("skemaPendampingan.index");
-        Route::get("/skemaPendampingan/create", [SkemaPendampinganController::class, 'create'])->name("skemaPendampingan.create");
-        Route::post("/skemaPendampingan", [SkemaPendampinganController::class, 'store'])->name("skemaPendampingan.store");
-        Route::get("/skemaPendampingan/{skemaPendampingan}/edit", [SkemaPendampinganController::class, 'edit'])->name("skemaPendampingan.edit");
-        Route::put("/skemaPendampingan/{skemaPendampingan}", [SkemaPendampinganController::class, 'update'])->name("skemaPendampingan.update");
-        Route::delete("/skemaPendampingan/{skemaPendampingan}", [SkemaPendampinganController::class, 'destroy'])->name("skemaPendampingan.destroy");
+        Route::resource("pelatihan", PelatihanController::class)->except(['show']);
 
         // user
         Route::get("/datauser", [UserController::class, 'index'])->name("User.index");
@@ -127,7 +78,25 @@ Route::group(['middleware' => ['auth']], function(){
         Route::patch("/updateuser/{id}", [UserController::class, 'update'])->name("User.update");
         Route::delete("/hapususer/{id}", [UserController::class, 'delete'])->name("User.delete");
 
-        // peserta
+        // pegawai
+        Route::get('/datapegawai', [App\Http\Controllers\PegawaiController::class, 'index'])->name('datapegawai');
+        Route::post('/tambahdatapegawai', [App\Http\Controllers\PegawaiController::class, 'tambahdata_pegawai'])->name('tambahdatapegawai');
+        Route::delete('/hapuspegawai/{id_pegawai}', [App\Http\Controllers\PegawaiController::class, 'hapuspegawai'])->name('hapuspegawai.destroy');
+        Route::get('/edit_pegawai/{id}', [App\Http\Controllers\PegawaiController::class, 'edit'])->name('Pegawai.edit');
+        Route::patch('/update_pegawai/{id}', [PegawaiController::class, "update"])->name("Pegawai.update");
+        
+        // mbkm
+        Route::get("/mbkmuser", [MbkmUserController::class, 'index'])->name("mbkmuser.index");
+        Route::post("/mbkmuser", [MbkmUserController::class, 'store'])->name("mbkmuser.store");
+        Route::get("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'edit'])->name("mbkmuser.edit");
+        Route::patch("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'update'])->name("mbkmuser.update");
+        Route::delete("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'destroy'])->name("mbkmuser.destroy");
+
+        // instruktur
+        Route::get("/instruktur", [InstrukturUserController::class, 'index'])->name("instruktur.index");
+        Route::delete("/instruktur/{instrukturUser}", [InstrukturUserController::class, 'destroy'])->name("instruktur.destroy");
+
+        // peserta pendampingan
         Route::get("/pendampingan-user", [PendampinganUserController::class, 'index'])->name("pendampinganUser.index");
         Route::delete("/pendampingan-user/{pendampinganUser}", [PendampinganUserController::class, 'destroy'])->name("pendampinganUser.destroy");
 
@@ -135,9 +104,15 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get("/pelatihan-user", [PelatihanUserController::class, 'index'])->name("pelatihanUser.index");
         Route::delete("/pelatihan-user/{pelatihanUser}", [PelatihanUserController::class, 'destroy'])->name("pelatihanUser.destroy");
 
-        // instruktur
-        Route::get("/instruktur", [InstrukturUserController::class, 'index'])->name("instruktur.index");
-        Route::delete("/instruktur/{instrukturUser}", [InstrukturUserController::class, 'destroy'])->name("instruktur.destroy");
+        // produk
+        Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'])->name('dataproduk');
+
+        // portofolio
+        Route::get("/dataportofolio", [PortofolioController::class, 'index'])->name("Portofolio.index");
+        Route::post("/tambahportofolio", [PortofolioController::class, 'tambah'])->name("Portofolio.tambah");
+        Route::get("/editportofolio/{id}", [PortofolioController::class, 'edit'])->name("Portofolio.edit");
+        Route::patch("/updateportofolio/{id}", [PortofolioController::class, 'update'])->name("Portofolio.update");
+        Route::delete("/hapusportofolio/{id}", [PortofolioController::class, 'delete'])->name("Portofolio.delete");
 
         // pembayaran
         Route::get("/datapembayaran", [PembayaranController::class, 'index'])->name("Pembayaran.index");
@@ -149,25 +124,10 @@ Route::group(['middleware' => ['auth']], function(){
 
     // route with middleware mahasiswa-mbkm
     Route::group(['middleware' => ['can:fill-profile']], function(){
-        // route mbkm
+        // fill form
         Route::put('/mahasiswa-mbkm/{mbkmUser}', [MbkmMbkmUserController::class, 'update'])->name('mbkm.mbkmuser.update');
         Route::put('/pendampingan-user/{pendampinganUser}', [PendampinganPendampinganUserController::class, 'update'])->name('pendampingan.pendampinganuser.update');
         Route::put('/pelatihan-user/{pelatihanUser}', [PelatihanPelatihanUserController::class, 'update'])->name('pelatihan.pelatihanuser.update');
+        Route::put('/instruktur-user/{instrukturUser}', [InstrukturInstrukturUserController::class, 'update'])->name('instruktur.instrukturuser.update');
     });
-    Route::put('/instruktur-user/{instrukturUser}', [InstrukturInstrukturUserController::class, 'update'])->name('instruktur.instrukturuser.update');
 });
-
-//route dashboard user
-Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
-
-//route profile user
-Route::get('/user/profile', [UserProfileController::class, 'show'])->name('user.profile.show')->middleware('auth');
-Route::post('/user/profile', [UserProfileController::class, 'update'])->name('user.profile.update')->middleware('auth');
-
-Route::get('/pendaftaran', function () {
-    return view('pendaftaran_ta.index');
-})->name('pendaftaran');
-
-Route::get('/bukti_bayar', function () {
-    return view('bukti_bayar.index');
-})->name('bukti_bayar');

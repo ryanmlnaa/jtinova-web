@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             PelatihanSeeder::class,
             PelatihanUserSeeder::class,
             InstrukturUserSeeder::class,
+            JabatanSeeder::class,
         ]);
     }
 }

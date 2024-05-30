@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
 
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('assets/modules/jqvmap/dist/jqvmap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/modules/weather-icon/css/weather-icons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/modules/weather-icon/css/weather-icons-wind.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote-bs4.css') }}">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -30,11 +26,8 @@
 
     <!-- General JS Scripts -->
     <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/modules/popper.js') }}"></script>
-    <script src="{{ asset('assets/modules/tooltip.js') }}"></script>
     <script src="{{ asset('assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
-    <script src="{{ asset('assets/modules/moment.min.js') }}"></script>
     <script src="{{ asset('assets/js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
