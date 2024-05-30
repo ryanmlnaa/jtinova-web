@@ -34,7 +34,7 @@
                                         <td>{{ $item->deskripsi }}</td>
                                         <td>{{ $item->kategori->name }}</td>
                                         <td>{{ $item->benefit }}</td>
-                                        <td id="hargaCell">{{ $item->harga }}</td>
+                                        <td>@currency($item->harga) </td>
                                         <td>
                                             <a href="{{route('pelatihan.edit', $item)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                             <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>

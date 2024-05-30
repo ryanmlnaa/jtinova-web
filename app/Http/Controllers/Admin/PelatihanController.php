@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Pelatihan;
 use Illuminate\Http\Request;
@@ -15,14 +16,14 @@ class PelatihanController extends Controller
     {
         $title = "Data Pelatihan";
         $data = Pelatihan::all();
-        return view('pelatihan.index', compact('title', 'data'));
+        return view('admin.pelatihan.index', compact('title', 'data'));
     }
 
     public function create()
     {
         $title = "Tambah Pelatihan";
         $kategori = Category::all();
-        return view('pelatihan.create', compact('title', 'kategori'));
+        return view('admin.pelatihan.create', compact('title', 'kategori'));
     }
 
     public function store(Request $req)
@@ -63,7 +64,7 @@ class PelatihanController extends Controller
     {
         $title = "Edit Pelatihan";
         $kategori = Category::all();
-        return view("pelatihan.edit", compact("pelatihan", "title", "kategori"));
+        return view("admin.pelatihan.edit", compact("pelatihan", "title", "kategori"));
     }
 
     public function update(Request $req, Pelatihan $pelatihan)

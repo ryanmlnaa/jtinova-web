@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\JabatanController;
 use App\Http\Controllers\Admin\KeahlianController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PegawaiController;
-use App\Http\Controllers\PelatihanController;
+use App\Http\Controllers\Admin\PelatihanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\Admin\ProdiController;
