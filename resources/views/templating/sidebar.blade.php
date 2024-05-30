@@ -31,17 +31,21 @@
       <li class="menu-header">Data CRUD</li>
       <li class=" {{ Request::is('dataproduk') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('dataproduk') }}"><i class="far fa-square"></i> <span>Data Produk</span></a></li>
+      <li class=" {{ Request::is('category') ? 'active' : '' }} "><a class="nav-link"
+      href="{{ route('category.index') }}"><i class="fas fa-database"></i> <span>Data Kategori</span></a></li>
       <li class=" {{ Request::is('skemaPendampingan') ? 'active' : '' }} "><a class="nav-link"
       href="{{ route('skemaPendampingan.index') }}"><i class="fas fa-database"></i> <span>Data Skema Pendampingan</span></a></li>
       <li class=" {{ Request::is('datapegawai') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('datapegawai') }}"><i class="far fa-square"></i> <span>Data Pegawai</span></a></li>
-      <li class=" {{ Request::is('datapelatihan') ? 'active' : '' }} "><a class="nav-link"
-              href="{{ route('pelatihan.index') }}"><i class="far fa-square"></i> <span>Data Pelatihan</span></a>
+      <li class=" {{ Request::is('pelatihan') ? 'active' : '' }} "><a class="nav-link"
+              href="{{ route('pelatihan.index') }}"><i class="fas fa-book"></i> <span>Data Pelatihan</span></a>
       </li>
       <li class=" {{ Request::is('mbkmuser') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('mbkmuser.index') }}"><i class="fas fa-users"></i> <span>Data Mahasiswa MBKM</span></a></li>
       <li class=" {{ Request::is('pendampingan-user') ? 'active' : '' }} "><a class="nav-link"
       href="{{ route('pendampinganUser.index') }}"><i class="fas fa-users"></i> <span>Data User Pendampingan</span></a></li>
+      <li class=" {{ Request::is('pelatihan-user') ? 'active' : '' }} "><a class="nav-link"
+        href="{{ route('pelatihanUser.index') }}"><i class="fas fa-users"></i> <span>Data User Pelatihan</span></a></li>
       <li class=" {{ Request::is('dataportofolio') ? 'active' : '' }} "><a class="nav-link"
               href="{{ route('Portofolio.index') }}"><i class="far fa-square"></i> <span>Data Proyek</span></a></li>
       <li class=" {{ Request::is('datapembayaran') ? 'active' : '' }} "><a class="nav-link"

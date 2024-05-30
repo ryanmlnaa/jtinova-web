@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BenefitController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InstrukturController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KeahlianController;
@@ -16,6 +17,8 @@ use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\MbkmUser;
 use App\Http\Controllers\MbkmUserController;
 use App\Http\Controllers\Mbkm\MbkmUserController as MbkmMbkmUserController;
+use App\Http\Controllers\PelatihanUserController;
+use App\Http\Controllers\Pelatihan\PelatihanUserController as PelatihanPelatihanUserController;
 use App\Http\Controllers\Pendampingan\PendampinganUserController as PendampinganPendampinganUserController;
 use App\Http\Controllers\PendampinganUserController;
 use App\Http\Controllers\SkemaPendampinganController;
@@ -42,6 +45,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('register-mbkm', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.mbkm');
 Route::get('register-pendampingan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pendampingan');
+Route::get('register-pelatihan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pelatihan');
 
 Route::group(['middleware' => ['auth']], function(){
     // home or dashboard
@@ -73,6 +77,8 @@ Route::group(['middleware' => ['auth']], function(){
         Route::patch("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'update'])->name("mbkmuser.update");
         Route::delete("/mbkmuser/{mbkmUser}", [MbkmUserController::class, 'destroy'])->name("mbkmuser.destroy");
 
+        // Category
+        Route::resource('category', CategoryController::class);
 
         // portofolio
         Route::get("/dataportofolio", [PortofolioController::class, 'index'])->name("Portofolio.index");
@@ -82,11 +88,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::delete("/hapusportofolio/{id}", [PortofolioController::class, 'delete'])->name("Portofolio.delete");
 
         // pelatihan
-        Route::get("/datapelatihan", [PelatihanController::class, 'index'])->name("pelatihan.index");
-        Route::post("/tambahpelatihan", [PelatihanController::class, 'tambah'])->name("Pelatihan.tambah");
-        Route::get("/editpelatihan/{id}", [PelatihanController::class, 'edit'])->name("Pelatihan.edit");
-        Route::patch("/updatepelatihan/{id}", [PelatihanController::class, 'update'])->name("Pelatihan.update");
-        Route::delete("/hapuspelatihan/{id}", [PelatihanController::class, 'delete'])->name("Pelatihan.delete");
+        Route::resource("/pelatihan", PelatihanController::class);
 
         // benefit
         Route::get("/databenefit", [BenefitController::class, 'index'])->name("Benefit.index");
@@ -126,6 +128,10 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get("/pendampingan-user", [PendampinganUserController::class, 'index'])->name("pendampinganUser.index");
         Route::delete("/pendampingan-user/{pendampinganUser}", [PendampinganUserController::class, 'destroy'])->name("pendampinganUser.destroy");
 
+        // peserta pelatihan
+        Route::get("/pelatihan-user", [PelatihanUserController::class, 'index'])->name("pelatihanUser.index");
+        Route::delete("/pelatihan-user/{pelatihanUser}", [PelatihanUserController::class, 'destroy'])->name("pelatihanUser.destroy");
+
         // instruktur
         Route::get("/datainstruktur", [InstrukturController::class, 'index'])->name("Instruktur.index");
         Route::post("/tambahinstruktur", [InstrukturController::class, 'tambah'])->name("Instruktur.tambah");
@@ -146,6 +152,7 @@ Route::group(['middleware' => ['auth']], function(){
         // route mbkm
         Route::put('/mahasiswa-mbkm/{mbkmUser}', [MbkmMbkmUserController::class, 'update'])->name('mbkm.mbkmuser.update');
         Route::put('/pendampingan-user/{pendampinganUser}', [PendampinganPendampinganUserController::class, 'update'])->name('pendampingan.pendampinganuser.update');
+        Route::put('/pelatihan-user/{pelatihanUser}', [PelatihanPelatihanUserController::class, 'update'])->name('pelatihan.pelatihanuser.update');
     });
 });
 

@@ -11,8 +11,8 @@ class LandingPageController extends Controller
 {
     public function index(){
         $portofolio = Portofolio::getData();
-        $pelatihan = Pelatihan::getData();
-        $skemaPendampingans = SkemaPendampingan::all();
+        $pelatihan = Pelatihan::where('status', 'Aktif')->get();
+        $skemaPendampingans = SkemaPendampingan::where('status', 'Aktif')->get();
         return view('welcome', compact('portofolio', 'pelatihan', 'skemaPendampingans'));
     }
 }

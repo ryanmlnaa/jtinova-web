@@ -15,6 +15,11 @@
                 @include('dashboard.pendampingan-user-form')
             @endcan
             @endrole
+            @role('user-pelatihan')
+            @can('fill-profile')
+                @include('dashboard.pelatihan-user-form')
+            @endcan
+            @endrole
         </div>
     </div>
 </div>

@@ -7,9 +7,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{route('pelatihan.create')}}" class="btn btn-primary mb-3">
-                        Tambah Data
-                    </a>
+                    <h4>{{ $title }}</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -17,33 +15,30 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nama Pelatihan</th>
-                                    <th>Deskripsi</th>
-                                    <th>Kategori</th>
-                                    <th>Benefit</th>
-                                    <th>Harga</th>
+                                    <th>Pelatihan</th>
+                                    <th>Nama</th>
+                                    <th>JK</th>
+                                    <th>Pendidikan Terakhir</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            
                             <tbody>
                                 @foreach ($data as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->deskripsi }}</td>
-                                        <td>{{ $item->kategori->name }}</td>
-                                        <td>{{ $item->benefit }}</td>
-                                        <td id="hargaCell">{{ $item->harga }}</td>
-                                        <td>
-                                            <a href="{{route('pelatihan.edit', $item)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                            <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>
-                                            <form action="{{route('pelatihan.destroy', $item->id)}}" method="post" id="form-{{$item->id}}">
-                                                @csrf
-                                                @method('delete')
-                                            </form>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->pelatihan->kode }}</td>
+                                    <td>{{ $item->user->name }}</td>
+                                    <td>{{ $item->jenis_kelamin }}</td>
+                                    <td>{{ $item->pendidikan_terakhir }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$item->id}}"><i class="fas fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>
+                                        <form action="{{route('pelatihanUser.destroy', $item)}}" method="post" id="form-{{$item->id}}">
+                                            @csrf
+                                            @method('delete')
+                                        </form>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

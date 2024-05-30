@@ -8,18 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Pelatihan extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'id_pelatihan';
     protected $table = 'pelatihan';
     protected $fillable = [
-        'id_pelatihan', 
-        'nama_pelatihan',
-        'kategori',
+        'id_kategori',
+        'kode',
+        'nama',
         'deskripsi',
         'benefit',
         'harga',
-        'foto'
+        'foto',
+        'status',
     ];
-    public static function getData(){
-        return self::all();
+
+    public function kategori()
+    {
+        return $this->belongsTo(Category::class, 'id_kategori');
     }
 }

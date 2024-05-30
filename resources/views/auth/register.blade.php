@@ -19,8 +19,10 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <input type="hidden" name="requrlname" value="{{ request()->route()->getName() }}">
-                        @if (request()->get('kodeskema') != '')
-                            <input type="hidden" name="kodeskema" value="{{ request()->get('kodeskema') }}">
+                        @if (request()->get('pendampingan') != '')
+                            <input type="hidden" name="pendampingan" value="{{ request()->get('pendampingan') }}">
+                        @elseif (request()->get('pelatihan') != '')
+                            <input type="hidden" name="pelatihan" value="{{ request()->get('pelatihan') }}">
                         @endif
                         <div class="form-group">
                             <label for="name">Name</label>
