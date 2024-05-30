@@ -3,7 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Instruktur\InstrukturUserController as InstrukturInstrukturUserController;
 use App\Http\Controllers\InstrukturUserController;
-use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\Admin\JabatanController;
 use App\Http\Controllers\KeahlianController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PegawaiController;
@@ -19,7 +19,7 @@ use App\Http\Controllers\Pendampingan\PendampinganUserController as Pendampingan
 use App\Http\Controllers\PendampinganUserController;
 use App\Http\Controllers\SkemaPendampinganController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\WebConfigController;
+use App\Http\Controllers\Admin\WebConfigController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
