@@ -1109,14 +1109,13 @@
                         <div class="mu-single-footer">
                             <img class="mu-footer-logo" src="{{ asset('jti/assets/images/logo.png') }}"
                                 alt="logo">
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                dolor. Aenean massa. Cum sociis natoque penatibus. </p>
+                            <p>{{ $webConfig->introduction }}</p>
                             <div class="mu-social-media">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a class="mu-twitter" href="#"><i class="fa fa-twitter"></i></a>
-                                <a class="mu-pinterest" href="#"><i class="fa fa-pinterest-p"></i></a>
-                                <a class="mu-google-plus" href="#"><i class="fa fa-google-plus"></i></a>
-                                <a class="mu-youtube" href="#"><i class="fa fa-youtube"></i></a>
+                                <a href="{{ $webConfig->facebook }}"><i class="fa fa-facebook"></i></a>
+                                <a class="" href="{{ $webConfig->twitter }}"><i class="fa fa-twitter"></i></a>
+                                {{-- <a class="mu-pinterest" href="#"><i class="fa fa-pinterest-p"></i></a> --}}
+                                {{-- <a class="mu-google-plus" href="#"><i class="fa fa-google-plus"></i></a> --}}
+                                <a class="" href="{{ $webConfig->youtube }}"><i class="fa fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1161,21 +1160,21 @@
                                 <li class="media">
                                     <span class="fa fa-home"></span>
                                     <div class="media-body">
-                                        <p>Jln. Mastrip, Jember State Polytechnic</p>
+                                        <p>{{ $webConfig->location }}</p>
                                     </div>
                                 </li>
                                 <li class="media">
                                     <span class="fa fa-phone"></span>
                                     <div class="media-body">
-                                        <p>+62 8123 6753 8976</p>
-                                        <p>+62 8213 4562 9876</p>
+                                        <p>{{ $webConfig->phone }}</p>
+                                        {{-- <p>+62 8213 4562 9876</p> --}}
                                     </div>
                                 </li>
                                 <li class="media">
                                     <span class="fa fa-envelope"></span>
                                     <div class="media-body">
-                                        <p>jtinova@gmail.com</p>
-                                        <p>jtinoa@polije.ac.id</p>
+                                        <p>{{ $webConfig->email }}</p>
+
                                     </div>
                                 </li>
                             </ul>
