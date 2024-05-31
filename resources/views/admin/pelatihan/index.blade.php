@@ -18,10 +18,11 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nama Pelatihan</th>
-                                    <th>Deskripsi</th>
                                     <th>Kategori</th>
-                                    <th>Benefit</th>
                                     <th>Harga</th>
+                                    <th>Tanggal Mulai</th>
+                                    <th>Tanggal Selesai</th>
+                                    <th>Kuota</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -31,10 +32,11 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->deskripsi }}</td>
                                         <td>{{ $item->kategori->name }}</td>
-                                        <td>{{ $item->benefit }}</td>
                                         <td>@currency($item->harga) </td>
+                                        <td>{{ Carbon\Carbon::parse($item->tanggal_mulai)->format('d-m-Y') }}</td>
+                                        <td>{{ Carbon\Carbon::parse($item->tanggal_selesai)->format('d-m-Y') }}</td>
+                                        <td>{{ $item->kuota }}</td>
                                         <td>
                                             <a href="{{route('pelatihan.edit', $item)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                             <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>

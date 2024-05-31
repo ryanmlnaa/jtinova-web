@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\InstrukturUser;
 use App\Models\MbkmUser;
 use App\Models\Pelatihan;
+use App\Models\PelatihanTeam;
 use App\Models\PelatihanUser;
 use App\Models\PendampinganUser;
 use App\Models\SkemaPendampingan;
@@ -61,6 +62,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'requrlname' => ['required', 'string', 'max:255'],
+            'kode' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -77,33 +79,38 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $user->givePermissionTo('fill-profile');
 
         if ($data['requrlname'] == 'register.mbkm') {
             $user->assignRole('mahasiswa-mbkm');
-            $user->givePermissionTo('fill-profile');
             MbkmUser::create(['user_id' => $user->id]);
+
         } else if ($data['requrlname'] == 'register.pendampingan'){
             $user->assignRole('user-pendampingan');
-            $user->givePermissionTo('fill-profile');
-            $skemaPendampingan = SkemaPendampingan::where('kode', $data['pendampingan'])->where('status', 'Aktif')->first();
+            $skemaPendampingan = SkemaPendampingan::where('kode', $data['kode'])->where('status', 'Aktif')->first();
             if ($skemaPendampingan == null) {
                 PendampinganUser::create(['user_id' => $user->id]);
             } else {
                 PendampinganUser::create(['user_id' => $user->id, 'skema_pendampingan_id' => $skemaPendampingan->id]);
             }
+
         } else if ($data['requrlname'] == 'register.pelatihan'){
             $user->assignRole('user-pelatihan');
-            $user->givePermissionTo('fill-profile');
-            $pelatihan = Pelatihan::where('kode', $data['pelatihan'])->where('status', 'Aktif')->first();
+            $pelatihan = Pelatihan::where('kode', $data['kode'])->where('status', 'Aktif')->first();
             if ($pelatihan == null) {
-                PelatihanUser::create(['user_id' => $user->id]);
+                $teamId = PelatihanTeam::create();
+                PelatihanUser::create(['user_id' => $user->id, 'pelatihan_team_id' => $teamId->id]);
             } else {
-                PelatihanUser::create(['user_id' => $user->id, 'pelatihan_id' => $pelatihan->id]);
+                $teamId = PelatihanTeam::create(['pelatihan_id' => $pelatihan->id]);
+                PelatihanUser::create(['user_id' => $user->id, 'pelatihan_team_id' => $teamId->id]);
             }
+
         } else if ($data['requrlname'] == 'register.instruktur'){
             $user->assignRole('instruktur');
-            $user->givePermissionTo('fill-profile');
             InstrukturUser::create(['user_id' => $user->id]);
+
+        } else {
+            $user->assignRole('user');
         }
 
         return $user;
