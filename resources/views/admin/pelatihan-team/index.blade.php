@@ -7,9 +7,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{route('pelatihan.create')}}" class="btn btn-primary mb-3">
-                        Tambah Data
-                    </a>
+                    <h4>{{ $title }}</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -17,35 +15,30 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nama Pelatihan</th>
-                                    <th>Kategori</th>
-                                    <th>Harga</th>
-                                    <th>Tanggal Mulai</th>
-                                    <th>Tanggal Selesai</th>
-                                    <th>Kuota</th>
+                                    <th>Pelatihan</th>
+                                    <th>Nama</th>
+                                    <th>Jumlah User</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            
                             <tbody>
                                 @foreach ($data as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->kategori->name }}</td>
-                                        <td>@currency($item->harga) </td>
-                                        <td>{{ Carbon\Carbon::parse($item->tanggal_mulai)->format('d-m-Y') }}</td>
-                                        <td>{{ Carbon\Carbon::parse($item->tanggal_selesai)->format('d-m-Y') }}</td>
-                                        <td>{{ $item->kuota }}</td>
-                                        <td>
-                                            <a href="{{route('pelatihan.edit', $item)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                            <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>
-                                            <form action="{{route('pelatihan.destroy', $item->id)}}" method="post" id="form-{{$item->id}}">
-                                                @csrf
-                                                @method('delete')
-                                            </form>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->pelatihan->kode }}</td>
+                                    <td>{{ $item->nama }}</td>
+                                    <td>{{ $item->pelatihanUsers->count() }}</td>
+                                    <td>
+                                        <!-- info detail -->
+                                        <a href="{{route('pelatihanteam.show', $item)}}" class="btn btn-info"><i class="fas fa-info"></i></a>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$item->id}}"><i class="fas fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>
+                                        <form action="{{route('pelatihanteam.destroy', $item)}}" method="post" id="form-{{$item->id}}">
+                                            @csrf
+                                            @method('delete')
+                                        </form>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

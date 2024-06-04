@@ -36,6 +36,11 @@ class PelatihanController extends Controller
             "benefit" => "required|string",
             "harga" => "required|numeric",
             "foto" => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
+            "tanggal_mulai" => "required|date",
+            "tanggal_selesai" => "required|date",
+            "lokasi" => "required|string|max:255",
+            "kuota" => "required|numeric",
+            "kuota_tim" => "required|numeric",
             "status" => "required|in:Aktif,Tidak Aktif"
         ]);
         if ($validator->fails()) {
@@ -45,16 +50,11 @@ class PelatihanController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        Pelatihan::create([
-            "nama" => $req->nama,
-            "kode" => $req->kode,
-            "id_kategori" => $req->id_kategori,
-            "deskripsi" => $req->deskripsi,
-            "benefit" => $req->benefit,
-            "harga" => $req->harga,
-            "foto" => $req->file('foto')->store('images/pelatihan', 'public'),
-            "status" => $req->status
-        ]);
+        $data = $req->all();
+        if ($req->hasFile('foto')) {
+            $data['foto'] = $req->file('foto')->store('images/pelatihan', 'public');
+        }
+        Pelatihan::create($data);
 
         Alert::success("Success", "Berhasil menambahkan data");
         return redirect()->route('pelatihan.index');
@@ -77,6 +77,11 @@ class PelatihanController extends Controller
             "benefit" => "required|string",
             "harga" => "required|numeric",
             "foto" => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
+            "tanggal_mulai" => "required|date",
+            "tanggal_selesai" => "required|date",
+            "lokasi" => "required|string|max:255",
+            "kuota" => "required|numeric",
+            "kuota_tim" => "required|numeric",
             "status" => "required|in:Aktif,Tidak Aktif"
         ]);
 

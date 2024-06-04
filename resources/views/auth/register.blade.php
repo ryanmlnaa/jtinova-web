@@ -20,9 +20,11 @@
                         @csrf
                         <input type="hidden" name="requrlname" value="{{ request()->route()->getName() }}">
                         @if (request()->get('pendampingan') != '')
-                            <input type="hidden" name="pendampingan" value="{{ request()->get('pendampingan') }}">
+                            <input type="hidden" name="kode" value="{{ request()->get('pendampingan') }}">
                         @elseif (request()->get('pelatihan') != '')
-                            <input type="hidden" name="pelatihan" value="{{ request()->get('pelatihan') }}">
+                            <input type="hidden" name="kode" value="{{ request()->get('pelatihan') }}">
+                        @else
+                            <input type="hidden" name="kode" value="user">
                         @endif
                         <div class="form-group">
                             <label for="name">Name</label>

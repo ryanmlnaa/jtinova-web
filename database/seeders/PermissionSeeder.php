@@ -27,11 +27,6 @@ class PermissionSeeder extends Seeder
             'role-edit',
             'role-delete',
 
-            'produk-list',
-            'produk-create',
-            'produk-edit',
-            'produk-delete',
-
             'keahlian-list',
             'keahlian-create',
             'keahlian-edit',

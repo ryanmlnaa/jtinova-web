@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/pelatihan/{pelatihan}', 'App\Http\Controllers\Api\PelatihanController@show');
+Route::post('/presensi', 'App\Http\Controllers\Api\AbsenController@presensi');

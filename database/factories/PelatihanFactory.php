@@ -24,6 +24,11 @@ class PelatihanFactory extends Factory
             'benefit' => $this->faker->sentence,
             'harga' => $this->faker->randomNumber(6),
             'foto' => $this->faker->word,
+            'tanggal_mulai' => $this->faker->date(),
+            'tanggal_selesai' => $this->faker->date(),
+            'lokasi' => $this->faker->word,
+            'kuota' => $this->faker->randomNumber(2),
+            'kuota_tim' => $this->faker->randomNumber(2),
             'status' => $this->faker->randomElement(['Aktif', 'Tidak Aktif']),
         ];
     }

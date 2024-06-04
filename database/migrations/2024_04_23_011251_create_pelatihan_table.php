@@ -20,6 +20,11 @@ return new class extends Migration
             $table->text("benefit");
             $table->integer("harga");
             $table->string("foto");
+            $table->date("tanggal_mulai");
+            $table->date("tanggal_selesai");
+            $table->string("lokasi");
+            $table->integer("kuota");
+            $table->integer("kuota_tim");
             $table->enum("status", ["Aktif", "Tidak Aktif"])->default("Aktif");
             $table->timestamps();
         });

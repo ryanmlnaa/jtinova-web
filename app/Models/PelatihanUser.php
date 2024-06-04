@@ -12,7 +12,7 @@ class PelatihanUser extends Model
     protected $table = 'pelatihan_users';
 
     protected $fillable = [
-        'pelatihan_id',
+        'pelatihan_team_id',
         'user_id',
         'no_hp',
         'alamat',
@@ -22,9 +22,9 @@ class PelatihanUser extends Model
         'foto',
     ];
 
-    public function pelatihan()
+    public function team()
     {
-        return $this->belongsTo(Pelatihan::class);
+        return $this->belongsTo(PelatihanTeam::class, 'pelatihan_team_id', 'id');
     }
 
     public function user()

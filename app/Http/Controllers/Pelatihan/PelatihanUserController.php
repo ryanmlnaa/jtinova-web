@@ -21,6 +21,8 @@ class PelatihanUserController extends Controller
             'pendidikan_terakhir' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'nama.*' => 'required|string|max:255',
+            'email.*' => 'required|email|max:255',
         ]);
 
         if ($validator->fails()) {

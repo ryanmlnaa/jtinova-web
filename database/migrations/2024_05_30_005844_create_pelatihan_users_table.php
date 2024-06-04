@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('pelatihan_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pelatihan_id')->nullable()->constrained('pelatihan')->onDelete('cascade');
+            $table->foreignId('pelatihan_team_id')->nullable()->constrained('pelatihan_teams')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('no_hp', 15)->nullable();
+            $table->string('no_hp', 20)->nullable();
             $table->string('alamat')->nullable();
             $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
             $table->string('pendidikan_terakhir')->nullable();

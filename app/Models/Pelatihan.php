@@ -17,6 +17,11 @@ class Pelatihan extends Model
         'benefit',
         'harga',
         'foto',
+        'tanggal_mulai',
+        'tanggal_selesai',
+        'lokasi',
+        'kuota',
+        'kuota_tim',
         'status',
     ];
 
