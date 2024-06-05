@@ -16,7 +16,10 @@ class Pegawai extends Model
         'nip',
         'nama',
         'jabatan_id',
+        'instagram',
+        'linkedin',
         'foto',
+
     ];
 
     public function jabatan()

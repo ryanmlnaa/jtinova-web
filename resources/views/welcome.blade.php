@@ -2,1253 +2,1121 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>JTI Innovation</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/icon" href="{{ asset('jti/assets/images/logopolije.png') }}" />
-    <!-- Font Awesome -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <!-- Slick slider -->
-    <link href="{{ asset('jti/assets/css/slick.css') }}" rel="stylesheet">
-    <!-- Gallery Lightbox -->
-    <link href="{{ asset('jti/assets/css/magnific-popup.css') }}" rel="stylesheet">
-    <!-- Skills Circle CSS  -->
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/circlebars@1.0.3/dist/circle.css">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>JTI Innovation</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
+  <!-- Favicons -->
+  <link href="{{asset ('assetss/assets/img/favicon.png')}}" rel="icon">
+  <link href="{{asset ('assetss/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-    <!-- Main Style -->
-    <link href="{{ asset('jti/style.css') }}" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <!-- Fonts -->
+  <!-- Vendor CSS Files -->
+  <link href="{{asset ('assetss/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{asset ('assetss/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{asset ('assetss/assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{asset ('assetss/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{asset ('assetss/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
-    <!-- Google Fonts Raleway -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,500i,600,700" rel="stylesheet">
-    <!-- Google Fonts Open sans -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800" rel="stylesheet">
+  <!-- Main CSS File -->
+  <link href="{{asset ('assetss/assets/css/main.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
-    <!-- Template Stylesheet -->
-    <link href="{{ asset('belajar/css/style.css') }}" rel="stylesheet">
-
-
+  <!-- =======================================================
+  * Template Name: Presento
+  * Template URL: https://bootstrapmade.com/presento-bootstrap-corporate-template/
+  * Updated: Jun 02 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
-<body>
+<body class="index-page">
 
-    <!--START SCROLL TOP BUTTON -->
-    <!-- Tambahkan script jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Tambahkan script JavaScript untuk pengguliran halaman -->
-    <script>
-        $(document).ready(function(){
-            // Smooth scrolling when clicking on nav links
-            $('a[href^="#"]').on('click', function(event) {
-                var target = $(this.getAttribute('href'));
-                if( target.length ) {
-                    event.preventDefault();
-                    $('html, body').stop().animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                }
-            });
-        });
-    </script>
-    {{-- <a class="scrollToTop" href="#">
-        <i class="fa fa-angle-up"></i>
-    </a> --}}
-    <!-- END SCROLL TOP BUTTON -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-    <!-- Start Header -->
-    <header id="mu-hero">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light mu-navbar">
-                <!-- Text based logo -->
-                {{-- <a class="navbar-brand mu-logo" href="index.html"><span>JTI-NOVA</span></a> --}}
-                <!-- image based logo -->
-                <a class="navbar-brand mu-logo" href="index.html"><img src="{{ asset('jti/assets/images/logo.png') }}"
-                        alt="logo"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="fa fa-bars"></span>
-                </button>
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="{{ asset('jti/assets/images/logo.png') }}" alt="">
+        {{-- <h1 class="sitename">Presento</h1> --}}
+        <span>.</span>
+      </a>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto mu-navbar-nav">
-                        <li class="nav-item active">
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item"><a href="#work-form">Portofolio</a></li>
-                        <li class="nav-item"><a href="#mu-training">Pelatihan</a></li>
-                        <li class="nav-item"><a href="#mu-pricing">Pendampingan TA</a></li>
-                        <li class="nav-item dropdown">
-                            {{-- <a class="dropdown-toggle" href="blog.html" role="button" id="navbarDropdown"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="blog.html">Blog Archive</a>
-                                <a class="dropdown-item" href="blog-single.html">Blog Single</a>
-                            </div> --}}
-                        </li>
-                        <li class="nav-item"><a href="{{route ('register.mbkm')}}">Daftar MBKM</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <!-- End Header -->
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="">Home<br></a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#pendampingan">Pendampingan</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
-    <!-- Start slider area -->
-    <div id="mu-slider">
-        <div class="mu-slide">
-            <!-- Start single slide  -->
-            <div class="mu-single-slide">
-                <img src="{{ asset('jti/assets/images/slider-img-1.jpg') }}" alt="slider img">
-                <div class="mu-single-slide-content-area">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="mu-single-slide-content">
-                                    <h1>{{ $webConfig->name }}</h1>
-                                    <p>{{ $webConfig->introduction }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End single slide  -->
+      <a class="btn-getstarted" href="{{route ('register.mbkm')}}">Login</a>
+      <a class="btn-getstarted" href="{{route ('register.mbkm')}}">Daftar MBKM</a>
 
-            <!-- Start single slide  -->
-            <div class="mu-single-slide">
-                <img src="{{ asset('jti/assets/images/slider-img-2.jpg') }}" alt="slider img">
-                <div class="mu-single-slide-content-area">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="mu-single-slide-content">
-                                    <h1>{{ $webConfig->name }}</h1>
-                                    <p>{{ $webConfig->introduction }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End single slide  -->
-
-            <!-- Start single slide  -->
-            <div class="mu-single-slide">
-                <img src="{{ asset('jti/assets/images/slider-img-3.jpg') }}" alt="slider img">
-                <div class="mu-single-slide-content-area">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="mu-single-slide-content">
-                                    <h1>{{ $webConfig->name }}</h1>
-                                    <p>{{ $webConfig->introduction }}</p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End single slide  -->
-        </div>
     </div>
-    <!-- End Slider area -->
+  </header>
 
+  <main class="main">
 
-    <!-- Start main content -->
-    <main>
-        <!-- Start About -->
-        <section id="mu-about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-about-area">
-                            <!-- Title -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="mu-title">
-                                        <h2>Inovasi Teaching Factory JTI</h2>
-                                        <p>Teaching Factory (TEFA) merupakan sarana unggulan
-                                            yang dimiliki Politeknik untuk mewujudkansistem
-                                            vokasi berbasis kompetensi, disiplin, terampil, dan
-                                            mandiri. Tefa memiliki konsep pembelajaran
-                                            vokasi berbasis produksi atau jasa yang mengacu pada standar
-                                            dan prosedur yang berlaku di industri.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Start Feature Content -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mu-about-left">
-                                        <img class="" src="{{ asset('jti/assets/images/about-us.jpg') }}"
-                                            alt="img">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mu-about-right">
-                                        <ul>
-                                            <li>
-                                                <h3>Layanan</h3>
-                                                <p>Semakin berkembangnya industri di bidang IT,
-                                                    TEFA JTI menawarkan berbagai produk IT
-                                                    sesuai kebutuhan klien yang dikembangkan
-                                                    dengan tim kami, diantaranya adalah produk multimedia.</p>
-                                            </li>
-                                            <li>
-                                                <h3>Mitra</h3>
-                                                <p>Semakin berkembangnya industri di bidang IT,
-                                                    TEFA JTI menawarkan berbagai produk IT
-                                                    sesuai kebutuhan klien yang dikembangkan
-                                                    dengan tim kami, diantaranya adalah produk multimedia.</p>
-                                            </li>
-                                            <li>
-                                                <h3>Penyelesain Masalah</h3>
-                                                <p>Semakin berkembangnya industri di bidang IT,
-                                                    TEFA JTI menawarkan berbagai produk IT
-                                                    sesuai kebutuhan klien yang dikembangkan
-                                                    dengan tim kami, diantaranya adalah produk multimedia.</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Feature Content -->
-                        </div>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <img src="{{asset ('assetss/assets/img/hero-bg.jpg') }}" alt="" data-aos="fade-in">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h2 data-aos="fade-up" data-aos-delay="100">{{ $webConfig->name }}</h2>
+            <p data-aos="fade-up" data-aos-delay="200">{{ $webConfig->introduction }}</p>
+            <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+              <a href="#about" class="btn-get-started">Get Started</a>
+              <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
             </div>
-        </section>
-        <!-- End About -->
 
-        <!-- Call to Action -->
-        <section id="mu-youtube">
-            <div id="mu-call-to-action">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mu-call-to-action-area">
-                                <div class="mu-call-to-action-left">
-                                    <h2>Ayo Bergabung Dengan Kami</h2>
-                                    <p>Kami mengundang Anda semua untuk bergabung dan bekerja sama di JTI Innovation
-                                        Teaching Factory untuk mewujudkan hubungan simbiosis mutualisme. Mari berbagi
-                                        pengalaman dan pengetahuan agar tercipta inovasi-inovasi yang berdaya saing di
-                                        kancah nasional dan internasional.</p>
-                                </div>
-                                <a href="#" class="mu-primary-btn mu-quote-btn">Register <i
-                                        class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 2,
+                  "spaceBetween": 40
+                },
+                "480": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 60
+                },
+                "640": {
+                  "slidesPerView": 4,
+                  "spaceBetween": 80
+                },
+                "992": {
+                  "slidesPerView": 6,
+                  "spaceBetween": 120
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><img src="{{asset ('assetss/assets/img/clients/client-1.png') }}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset ('assetss/assets/img/clients/client-2.png') }}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset ('assetss/assets/img/clients/client-3.png') }}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset ('assetss/assets/img/clients/client-4.png') }}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset ('assetss/assets/img/clients/client-5.png') }}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset ('assetss/assets/img/clients/client-6.png') }}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset ('assetss/assets/img/clients/client-7.png') }}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset ('assetss/assets/img/clients/client-8.png') }}" class="img-fluid" alt=""></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Clients Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section section-bg">
+
+      <div class="container position-relative">
+
+        <div class="row gy-5">
+
+          <div class="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
+            <h3>{{ $webConfig->name }}</h3>
+            <p>
+              {{ $webConfig->introduction }}
+            </p>
+            <a href="#" class="about-btn align-self-center align-self-xl-start"><span>About us</span> <i class="bi bi-chevron-right"></i></a>
+          </div>
+
+          <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
+            <div class="row gy-4">
+
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-briefcase"></i>
+                <h4><a href="" class="stretched-link">Layanan</a></h4>
+                <p>Semakin berkembangnya industri di bidang IT,
+                  TEFA JTI menawarkan berbagai produk IT
+                  sesuai kebutuhan klien yang dikembangkan
+                  dengan tim kami, diantaranya adalah produk multimedia.</p>
+              </div><!-- Icon-Box -->
+
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-gem"></i>
+                <h4><a href="" class="stretched-link">Mitra</a></h4>
+                <p>Semakin berkembangnya industri di bidang IT,
+                  TEFA JTI menawarkan berbagai produk IT
+                  sesuai kebutuhan klien yang dikembangkan
+                  dengan tim kami, diantaranya adalah produk multimedia.</p>
+              </div><!-- Icon-Box -->
+
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-broadcast"></i>
+                <h4><a href="" class="stretched-link">Penyelesaian Masalah</a></h4>
+                <p>Semakin berkembangnya industri di bidang IT,
+                  TEFA JTI menawarkan berbagai produk IT
+                  sesuai kebutuhan klien yang dikembangkan
+                  dengan tim kami, diantaranya adalah produk multimedia.</p>
+              </div><!-- Icon-Box -->
+
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-easel"></i>
+                <h4><a href="" class="stretched-link">Beatae veritatis</a></h4>
+                <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+              </div><!-- Icon-Box -->
+
             </div>
-        </section>
+          </div>
 
-        {{-- <!-- Start Services -->
-        <section id="mu-service">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-service-area">
-                            <!-- Title -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="mu-title">
-                                        <h2>Our exclusive services</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula eget dolor. Aenean massa cum sociis.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Start Service Content -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="mu-service-content">
-                                        <div class="row">
-                                            <!-- Start single service -->
-                                            <div class="col-md-4">
-                                                <div class="mu-single-service">
-                                                    <div class="mu-single-service-icon"><i class="fa fa-shopping-cart"
-                                                            aria-hidden="true"></i></div>
-                                                    <div class="mu-single-service-content">
-                                                        <h3>E-Commerce</h3>
-                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                                            Aenean commodo ligula eget dolor commodo .</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End single service -->
-                                            <!-- Start single service -->
-                                            <div class="col-md-4">
-                                                <div class="mu-single-service">
-                                                    <div class="mu-single-service-icon"><i class="fa fa-bullhorn"
-                                                            aria-hidden="true"></i></div>
-                                                    <div class="mu-single-service-content">
-                                                        <h3>Online Marketing</h3>
-                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                                            Aenean commodo ligula eget dolor commodo .</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End single service -->
-                                            <!-- Start single service -->
-                                            <div class="col-md-4">
-                                                <div class="mu-single-service">
-                                                    <div class="mu-single-service-icon"><i class="fa fa-laptop"
-                                                            aria-hidden="true"></i></div>
-                                                    <div class="mu-single-service-content">
-                                                        <h3>Web Design</h3>
-                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                                            Aenean commodo ligula eget dolor commodo .</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End single service -->
-                                            <!-- Start single service -->
-                                            <div class="col-md-4">
-                                                <div class="mu-single-service">
-                                                    <div class="mu-single-service-icon"><i class="fa fa-mobile"
-                                                            aria-hidden="true"></i></div>
-                                                    <div class="mu-single-service-content">
-                                                        <h3>Mobile Development</h3>
-                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                                            Aenean commodo ligula eget dolor commodo .</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End single service -->
-                                            <!-- Start single service -->
-                                            <div class="col-md-4">
-                                                <div class="mu-single-service">
-                                                    <div class="mu-single-service-icon"><i class="fa fa-clock-o"
-                                                            aria-hidden="true"></i></div>
-                                                    <div class="mu-single-service-content">
-                                                        <h3>Customer Support</h3>
-                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                                            Aenean commodo ligula eget dolor commodo .</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End single service -->
-                                            <!-- Start single service -->
-                                            <div class="col-md-4">
-                                                <div class="mu-single-service">
-                                                    <div class="mu-single-service-icon"><i class="fa fa-cog"
-                                                            aria-hidden="true"></i></div>
-                                                    <div class="mu-single-service-content">
-                                                        <h3>Customization</h3>
-                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                                            Aenean commodo ligula eget dolor commodo .</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End single service -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Service Content -->
-                        </div>
-                    </div>
-                </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+            <i class="bi bi-emoji-smile"></i>
+            <div class="stats-item">
+              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Happy Clients</p>
             </div>
-        </section>
-        <!-- End Services --> --}}
+          </div><!-- End Stats Item -->
 
-        {{-- <!-- Start Video -->
-        <div id="mu-video">
+          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+            <i class="bi bi-journal-richtext"></i>
+            <div class="stats-item">
+              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Projects</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+            <i class="bi bi-headset"></i>
+            <div class="stats-item">
+              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Hours Of Support</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+            <i class="bi bi-people"></i>
+            <div class="stats-item">
+              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Hard Workers</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+    <!-- Tabs Section -->
+    <section id="tabs" class="tabs section">
+
+      <div class="container">
+
+        <ul class="nav nav-tabs row  d-flex" data-aos="fade-up" data-aos-delay="100">
+          <li class="nav-item col-3">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tabs-tab-1">
+              <i class="bi bi-binoculars"></i>
+              <h4 class="d-none d-lg-block">Modi sit est dela pireda nest</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-2">
+              <i class="bi bi-box-seam"></i>
+              <h4 class="d-none d-lg-block">Unde praesenti mara setra le</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-3">
+              <i class="bi bi-brightness-high"></i>
+              <h4 class="d-none d-lg-block">Pariatur explica nitro dela</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-4">
+              <i class="bi bi-command"></i>
+              <h4 class="d-none d-lg-block">Nostrum qui dile node</h4>
+            </a>
+          </li>
+        </ul><!-- End Tab Nav -->
+
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="tab-pane fade active show" id="tabs-tab-1">
             <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i>
+                    <spab>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</spab>
+                  </li>
+                  <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit</span>.</li>
+                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+                </ul>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{{asset ('assetss/assets/img/working-1.jpg') }}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+
+          <div class="tab-pane fade" id="tabs-tab-2">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Neque exercitationem debitis soluta quos debitis quo mollitia officia est</h3>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{{asset ('assetss/assets/img/working-2.jpg') }}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+
+          <div class="tab-pane fade" id="tabs-tab-3">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Voluptatibus commodi ut accusamus ea repudiandae ut autem dolor ut assumenda</h3>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
+                </ul>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{{asset ('assetss/assets/img/working-3.jpg') }}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+
+          <div class="tab-pane fade" id="tabs-tab-4">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Omnis fugiat ea explicabo sunt dolorum asperiores sequi inventore rerum</h3>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{{asset ('assetss/assets/img/working-4.jpg') }}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Tabs Section -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section section-bg">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Services</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-briefcase icon flex-shrink-0"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">Lorem Ipsum</a></h4>
+                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-card-checklist icon flex-shrink-0"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">Dolor Sitema</a></h4>
+                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-bar-chart icon flex-shrink-0"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">Sed ut perspiciatis</a></h4>
+                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-binoculars icon flex-shrink-0"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">Magni Dolores</a></h4>
+                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-brightness-high icon flex-shrink-0"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">Nemo Enim</a></h4>
+                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-calendar4-week icon flex-shrink-0"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">Eiusmod Tempor</a></h4>
+                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Portfolio</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-app">App</li>
+            <li data-filter=".filter-product">Product</li>
+            <li data-filter=".filter-branding">Branding</li>
+            <li data-filter=".filter-books">Books</li>
+          </ul><!-- End Portfolio Filters -->
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <div class="portfolio-content h-100">
+                <img src="{{asset ('assetss/assets/img/portfolio/app-1.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>App 1</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="{{asset ('assetss/assets/img/portfolio/app-1.jpg') }}" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <div class="portfolio-content h-100">
+                <img src="{{asset ('assetss/assets/img/portfolio/product-1.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Product 1</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="{{asset ('assets/assets/img/portfolio/product-1.jpg') }}" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <div class="portfolio-content h-100">
+                <img src="{{asset ('assetss/assets/img/portfolio/branding-1.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Branding 1</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="{{asset ('assetss/assets/img/portfolio/branding-1.jpg') }}" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
+              <div class="portfolio-content h-100">
+                <img src="{{asset ('assetss/assets/img/portfolio/books-1.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Books 1</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="{{asset ('assetss/assets/img/portfolio/books-1.jpg') }}" title="Branding 1" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <div class="portfolio-content h-100">
+                <img src="{{asset ('assets/assets/img/portfolio/app-2.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>App 2</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="{{asset ('assetss/assets/img/portfolio/app-2.jpg') }}" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <div class="portfolio-content h-100">
+                <img src="{{asset ('assetss/assets/img/portfolio/product-2.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Product 2</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="{{asset ('assetss/assets/img/portfolio/product-2.jpg') }}" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <div class="portfolio-content h-100">
+                <img src="{{asset ('assetss/assets/img/portfolio/branding-2.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Branding 2</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="{{asset ('assetss/assets/img/portfolio/branding-2.jpg') }}" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
+              <div class="portfolio-content h-100">
+                <img src="{{asset ('assetss/assets/img/portfolio/books-2.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Books 2</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="{{asset ('assetss/assets/img/portfolio/books-2.jpg') }}" title="Branding 2" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <div class="portfolio-content h-100">
+                <img src="{{asset ('assetss/assets/img/portfolio/app-3.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>App 3</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="{{asset ('assets/assets/img/portfolio/app-3.jpg') }}" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <div class="portfolio-content h-100">
+                <img src="{{asset ('assetss/assets/img/portfolio/product-3.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Product 3</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="{{asset ('assetss/assets/img/portfolio/product-3.jpg') }}" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <div class="portfolio-content h-100">
+                <img src="{{asset ('assetss/assets/img/portfolio/branding-3.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Branding 3</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="{{asset ('assetss/assets/img/portfolio/branding-3.jpg') }}" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
+              <div class="portfolio-content h-100">
+                <img src="{{asset ('assetss/assets/img/portfolio/books-3.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Books 3</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="{{asset ('assetss/assets/img/portfolio/books-3.jpg') }}" title="Branding 3" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+          </div><!-- End Portfolio Container -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Section -->
+
+    <!-- Testimonials Section -->
+    {{-- <section id="testimonials" class="testimonials section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Testimonials</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 40
+                },
+                "1200": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 10
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{{asset ('assetss/assets/img/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt="">
+                <h3>Saul Goodman</h3>
+                <h4>Ceo &amp; Founder</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{{asset ('assetss/assets/img/testimonials/testimonials-2.jpg') }}" class="testimonial-img" alt="">
+                <h3>Sara Wilsson</h3>
+                <h4>Designer</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{{asset ('assetss/assets/img/testimonials/testimonials-3.jpg') }}" class="testimonial-img" alt="">
+                <h3>Jena Karlis</h3>
+                <h4>Store Owner</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{{asset ('assetss/assets/img/testimonials/testimonials-4.jpg') }}" class="testimonial-img" alt="">
+                <h3>Matt Brandon</h3>
+                <h4>Freelancer</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{{asset ('assetss/assets/img/testimonials/testimonials-5.jpg') }}" class="testimonial-img" alt="">
+                <h3>John Larson</h3>
+                <h4>Entrepreneur</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section --> --}}
+
+    <!-- Pricing Section -->
+    <section id="pendampingan" class="pricing section section-bg">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Pendampingan</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row g-4 g-lg-0">
+
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="pricing-item">
+              <h3>Skripsi</h3>
+              <h4><sup>Rp</sup>100.000<span></span></h4>
+              <ul>
+                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
+                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
+                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
+                <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+              </ul>
+              <div class="text-center"><a href="#" class="buy-btn">Daftar</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-4 featured" data-aos="zoom-in" data-aos-delay="200">
+            <div class="pricing-item">
+              <h3>Business Plan</h3>
+              <h4><sup>$</sup>29<span> / month</span></h4>
+              <ul>
+                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
+                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
+                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
+                <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
+                <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+              </ul>
+              <div class="text-center"><a href="#" class="buy-btn">Buy Now</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="pricing-item">
+              <h3>Developer Plan</h3>
+              <h4><sup>$</sup>49<span> / month</span></h4>
+              <ul>
+                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
+                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
+                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
+                <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
+                <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+              </ul>
+              <div class="text-center"><a href="#" class="buy-btn">Buy Now</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Pricing Section -->
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Frequently Asked Questions</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row justify-content-center">
+
+          <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="faq-container">
+
+              <div class="faq-item faq-active">
+                <h3>Non consectetur a erat nam at lectus urna duis?</h3>
+                <div class="faq-content">
+                  <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>Feugiat scelerisque varius morbi enim nunc faucibus?</h3>
+                <div class="faq-content">
+                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
+                <div class="faq-content">
+                  <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
+                <div class="faq-content">
+                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>Tempus quam pellentesque nec nam aliquam sem et tortor?</h3>
+                <div class="faq-content">
+                  <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
+                <div class="faq-content">
+                  <p>Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed in suscipit sequi. Distinctio ipsam dolore et.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+            </div>
+
+          </div><!-- End Faq Column-->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Faq Section -->
+
+    <!-- Team Section -->
+    <section id="team" class="team section section-bg">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Team</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+          @foreach ($pegawai as $item)
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="team-member">
+              <div class="member-img">
+                <img src="{{ asset('storage/' . $item->foto) }}" class="img-fluid" alt="">
+                <div class="social">
+                  @if ($item->instagram)
+                     <a href="{{ $item->instagram }}"><i class="bi bi-instagram"></i></a>
+                  @endif
+                  @if ($item->linkedin)
+                      <a href="{{ $item->linkedin }}"><i class="bi bi-linkedin"></i></a>
+                  @endif
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>{{ $item->nama }}</h4>
+                <span>{{ $item->jabatan->nama }}</span>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+          @endforeach
+        </div>
+      </div>
+    </section><!-- /Team Section -->
+
+    {{-- <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+          <div class="col-lg-6 ">
+            <div class="row gy-4">
+
+              <div class="col-lg-12">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
+                  <i class="bi bi-geo-alt"></i>
+                  <h3>Address</h3>
+                  <p>A108 Adam Street, New York, NY 535022</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="col-md-6">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bi bi-telephone"></i>
+                  <h3>Call Us</h3>
+                  <p>+1 5589 55488 55</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="col-md-6">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
+                  <i class="bi bi-envelope"></i>
+                  <h3>Email Us</h3>
+                  <p>info@example.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
+              <div class="row gy-4">
+
                 <div class="col-md-6">
-                    <div class="mu-video-left">
-                        <a href="#" class="mu-video-play-btn"><i class="fa fa-play"
-                                aria-hidden="true"></i></a>
-                    </div>
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
                 </div>
-                <div class="col-md-6">
-                    <div class="mu-video-right">
-                        <p>In this video from our "Talking business" series, our expert discusses the role a business
-                            plan can play in the success of your business.</p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Start Video Popup -->
-            <div class="mu-video-popup">
-                <div class="mu-video-iframe-area">
-                    <a class="mu-video-close-btn" href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
-                    <iframe width="854" height="480" src="https://www.youtube.com/embed/n9AVEl9764s"
-                        allowfullscreen></iframe>
+                <div class="col-md-6 ">
+                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
                 </div>
-            </div>
-            <!-- End Video Popup -->
+
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="4" placeholder="Message" required=""></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                  <button type="submit">Send Message</button>
+                </div>
+
+              </div>
+            </form>
+          </div><!-- End Contact Form -->
 
         </div>
-        <!-- End Video --> --}}
 
-        <!-- Start Portfolio -->
-        {{-- <!--/ Section Portfolio Star /-->
-        <section id="work-form" class="portfolio-mf sect-pt4 route">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="title-box text-center">
-                            <h3 class="title-a">
-                                Portfolio
-                            </h3>
-                            <p class="subtitle-a">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                            </p>
-                            <div class="line-mf"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        @foreach ($portofolio as $item)
-                            <div class="work-box">
-                                <img src="{{ url('foto_portofolio/' . $item->foto) }}" data-lightbox="gallery-mf">
-                                <div class="work-content">
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <h2 class="w-title">{{ $item->judul }}</h2>
-                                            <p>{{ $item->deskripsi }}</p>
-                                            <h2 class="w-title">{{ $item->klien }}</h2>
-                                            <div class="w-more">
-                                                <span class="w-ctegory">{{ $item->kategori }}</span> / <span
-                                                    class="w-date">{{ $item->start_date }}</span> - <span
-                                                    class="w-date">{{ $item->end_date }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="w-like">
-                                                <span class="ion-ios-plus-outline"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--/ Section Portfolio End /--> --}}
-        <!-- End Portfolio -->
+      </div>
 
-        <!-- Start Pricing Table -->
-        <section id="work-form">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="title-box text-center">
-                            <h3 class="title-a">
-                                Portofolio
-                            </h3>
-                            <p class="subtitle-a">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                            </p>
-                            <div class="line-mf"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        @foreach ($portofolio as $item)
-                            <div class="work-box">
-                                <img src="{{ url('foto_portofolio/' . $item->foto) }}" data-lightbox="gallery-mf">
-                                <div class="work-content">
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <h2 class="w-title">{{ $item->judul }}</h2>
-                                            <p>{{ $item->deskripsi }}</p>
-                                            <h2 class="w-title">{{ $item->klien }}</h2>
-                                            <div class="w-more">
-                                                <span class="w-ctegory">{{ $item->kategori }}</span> / <span
-                                                    class="w-date">{{ $item->start_date }}</span> - <span
-                                                    class="w-date">{{ $item->end_date }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="w-like">
-                                                <span class="ion-ios-plus-outline"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Pricing Table -->
+    </section><!-- /Contact Section --> --}}
 
-        {{-- <!-- Start Counter -->
-        <section id="mu-counter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-counter-area">
+  </main>
 
-                            <div class="mu-counter-block">
-                                <div class="row">
+  <footer id="footer" class="footer">
 
-                                    <!-- Start Single Counter -->
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="mu-single-counter">
-                                            <span class="fa fa-suitcase"></span>
-                                            <div class="mu-single-counter-content">
-                                                <div class="counter-value" data-count="250">0</div>
-                                                <h5 class="mu-counter-name">Project</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- / Single Counter -->
-
-                                    <!-- Start Single Counter -->
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="mu-single-counter">
-                                            <span class="fa fa-user"></span>
-                                            <div class="mu-single-counter-content">
-                                                <div class="counter-value" data-count="56">0</div>
-                                                <h5 class="mu-counter-name">Clients</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- / Single Counter -->
-
-                                    <!-- Start Single Counter -->
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="mu-single-counter">
-                                            <span class="fa fa-coffee"></span>
-                                            <div class="mu-single-counter-content">
-                                                <div class="counter-value" data-count="15">0</div>
-                                                <h5 class="mu-counter-name">Stuff</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- / Single Counter -->
-
-                                    <!-- Start Single Counter -->
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="mu-single-counter">
-                                            <span class="fa fa-clock-o"></span>
-                                            <div class="mu-single-counter-content">
-                                                <div class="counter-value" data-count="290">0</div>
-                                                <h5 class="mu-counter-name">Day</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- / Single Counter -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Counter --> --}}
-
-        <!-- Start Pricing Table -->
-        {{-- <section id="mu-pricing">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-pricing-area">
-                            <!-- Title -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="mu-title">
-                                        <h2>Pendampingan TA</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula eget dolor. Aenean massa cum sociis.</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="mu-pricing-content">
-                                        <ul class="mu-pricing-table">
-                                            <li>
-                                                <div class="mu-pricing-single">
-                                                    <div class="mu-pricing-single-icon">
-                                                        <span class="fa fa-user"></span>
-                                                    </div>
-                                                    <div class="mu-pricing-single-title">
-                                                        <h3>Pendampingan TA</h3>
-                                                    </div>
-                                                    <div class="mu-pricing-single-content">
-                                                        <ul>
-                                                            <li>Lorem ipsum dolor sit amet.</li>
-                                                            <li>Consectetuer elit aeneaneget dolor.</li>
-                                                            <li>Aenean massa cum sociis natoque.</li>
-                                                            <li>Penatibus.</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="mu-single-pricebox">
-                                                        <h4>29$<span>/month</span></h4>
-                                                    </div>
-                                                    <a class="mu-buy-now-btn" href="{{ route('pendaftaran') }}">Daftar</a>
-                                                </div>
-                                            </li>
-                                            <li class="mu-standard-pricing">
-                                                <div class="mu-pricing-single">
-                                                    <div class="mu-pricing-single-icon">
-                                                        <span class="fa fa-lock"></span>
-                                                    </div>
-                                                    <div class="mu-pricing-single-title">
-                                                        <h3>Pendampingan TA</h3>
-                                                    </div>
-                                                    <div class="mu-pricing-single-content">
-                                                        <ul>
-                                                            <li>Lorem ipsum dolor sit amet.</li>
-                                                            <li>Consectetuer elit aeneaneget dolor.</li>
-                                                            <li>Aenean massa cum sociis natoque.</li>
-                                                            <li>Penatibus.</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="mu-single-pricebox">
-                                                        <h4>99$<span>/month</span></h4>
-                                                    </div>
-                                                    <a class="mu-buy-now-btn" href="#">Daftar</a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="mu-pricing-single">
-                                                    <div class="mu-pricing-single-icon">
-                                                        <span class="fa fa-paper-plane"></span>
-                                                    </div>
-                                                    <div class="mu-pricing-single-title">
-                                                        <h3>Pendampingan TA</h3>
-                                                    </div>
-                                                    <div class="mu-pricing-single-content">
-                                                        <ul>
-                                                            <li>Lorem ipsum dolor sit amet.</li>
-                                                            <li>Consectetuer elit aeneaneget dolor.</li>
-                                                            <li>Aenean massa cum sociis natoque.</li>
-                                                            <li>Penatibus.</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="mu-single-pricebox">
-                                                        <h4>229$<span>/month</span></h4>
-                                                    </div>
-                                                    <a class="mu-buy-now-btn" href="#">Daftar</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
-
-        <!-- Start Pricing Table -->
-        <section id="mu-pricing">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-pricing-area">
-                            <!-- Title -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="mu-title">
-                                        <h2>Pendampingan TA</h2>
-                                        <p>Mau Skripsi / Tugas Akhir kamu cepat selesai? Daftar sekarang juga!</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="mu-pricing-content">
-                                        <div class="mu-pricing-table-wrapper">
-                                            <ul class="mu-pricing-table">
-                                                @foreach ($skemaPendampingans as $skemaPendampingan)
-                                                    <li>
-                                                        <div class="mu-pricing-single">
-                                                            <div class="mu-pricing-single-icon">
-                                                                <span class="fa fa-user"></span>
-                                                            </div>
-                                                            <div class="mu-pricing-single-title">
-                                                                <h3>{{ $skemaPendampingan->nama }}</h3>
-                                                            </div>
-                                                            <div class="mu-pricing-single-content">
-                                                                <ul>
-                                                                    <li>{{ $skemaPendampingan->deskripsi }}</li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="mu-single-pricebox">
-                                                                <h4>{{ $skemaPendampingan->harga }}</h4>
-                                                            </div>
-                                                            {{-- route register pendampingan with parse query param $skemaPendampingan->code --}}
-                                                            <a class="mu-buy-now-btn" href="{{ route('register.pendampingan')}}?pendampingan={{ $skemaPendampingan->kode }}">Daftar</a>
-                                                        </div>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Pricing Table -->
-
-        <section id="mu-newsletter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-newsletter-area">
-                            <!-- Title -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="mu-title">
-                                        <h2>Pengumuman</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula eget dolor. Aenean massa cum sociis.</p>
-                                    </div>
-                                </div>
-                                <table class="table table-bordered">
-                                    <!-- Tambahkan baris dan kolom sesuai kebutuhan -->
-                                    <thead class="bg-light text-center" style="text-align: center">
-                                        <tr>
-                                            <th scope="col" class="px-6 py-3 text-center">Date</th>
-                                            <th scope="col" class="px-6 py-3 text-center">Topic</th>
-                                            <th scope="col" class="px-6 py-3 text-center">File</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="bg-white" style="text-align: start">
-                                        <tr class="align-middle">
-                                            <td class="text-center">2024-05-14</td>
-                                            <td>Jadwal Acara Kegiatan OAV-SNAV 2024 Update (share)</td>
-                                            <td class="text-center"><a
-                                                    href="http://10.10.0.148/storage/pengumuman_files/S50OyHfkYpXbMrh4GmxrlQS4qRwoKwHSPy0eA319.pdf"
-                                                    class="btn btn-sm btn-primary" type="button"><i
-                                                        class="nav-icon bx bx-download"></i></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Start from blog -->
-        <section id="mu-training">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-from-blog-area">
-                            <!-- Title -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="mu-title">
-                                        <h2 style="margin-top : 30px">Informasi Tentang Pelatihan</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula eget dolor. Aenean massa cum sociis.</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="mu-from-blog-content">
-                                        <div class="row">
-                                            @foreach ($pelatihan as $item)
-                                                <div class="col-md-4">
-                                                    <a href="{{route('register.pelatihan')}}?pelatihan={{$item->kode}}">
-                                                    <article class="mu-blog-item">
-                                                        <img src="{{ asset('storage/'. $item->foto) }}" data-lightbox="gallery-mf">
-                                                        <div class="mu-blog-item-content">
-                                                            <h2 class="mu-blog-item-title">{{ $item->nama }}</h2>
-                                                            <p>{{ $item->deskripsi }}</p>
-                                                            <h1>{{ $item->kategori->name }}</h1>
-                                                            <p>{{ $item->benefit }}</p>
-                                                            <h1>Rp.{{ $item->harga }}</h1>
-                                                        </div>
-                                                    </article>
-                                                    </a>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End from blog -->
-
-        <!-- Start Clients -->
-        <div id="mu-clients" class="mt-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-clients-area">
-
-                            <!-- Start Clients brand logo -->
-                            <div class="mu-clients-slider">
-
-                                <div class="mu-clients-single">
-                                    <img src="{{ asset('jti/assets/images/client-brand-1.jpg') }}" alt="Brand Logo">
-                                </div>
-
-                                <div class="mu-clients-single">
-                                    <img src="{{ asset('jti/assets/images/client-brand-2.jpg') }}" alt="Brand Logo">
-                                </div>
-
-                                <div class="mu-clients-single">
-                                    <img src="{{ asset('jti/assets/images/client-brand-3.jpg') }}" alt="Brand Logo">
-                                </div>
-
-                                <div class="mu-clients-single">
-                                    <img src="{{ asset('jti/assets/images/client-brand-4.jpg') }}" alt="Brand Logo">
-                                </div>
-
-                                <div class="mu-clients-single">
-                                    <img src="{{ asset('jti/assets/images/client-brand-5.jpg') }}" alt="Brand Logo">
-                                </div>
-
-                                <div class="mu-clients-single">
-                                    <img src="{{ asset('jti/assets/images/client-brand-6.jpg') }}" alt="Brand Logo">
-                                </div>
-                            </div>
-                            <!-- End Clients brand logo -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Clients -->
-
-        <!-- start tim kami -->
-        <!-- Travel Guide Start -->
-        <div id="mu-guide">
-            <div class="container-fluid guide py-5">
-                <div class="container py-5">
-                    <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-                        <h1 class="mb-0" style="color: #323232">Tim Kami</h1>
-                    </div>
-                    <div id="teamCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="row g-4">
-                                    <div class="col-md-6 col-lg-3">
-                                        <div class="guide-item">
-                                            <div class="guide-img">
-                                                <div class="guide-img-efects">
-                                                    <img src="{{ asset('belajar/img/guide-1.jpg') }}"
-                                                        class="img-fluid w-100 rounded-top" alt="Image">
-                                                </div>
-                                                <div class="guide-icon rounded-pill p-2">
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-facebook-f"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-twitter"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-instagram"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-linkedin-in"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="guide-title text-center rounded-bottom p-4">
-                                                <div class="guide-title-inner">
-                                                    <h4 class="mt-3">Full Name</h4>
-                                                    <p class="mb-0">Designation</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <div class="guide-item">
-                                            <div class="guide-img">
-                                                <div class="guide-img-efects">
-                                                    <img src="{{ asset('belajar/img/guide-1.jpg') }}"
-                                                        class="img-fluid w-100 rounded-top" alt="Image">
-                                                </div>
-                                                <div class="guide-icon rounded-pill p-2">
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-facebook-f"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-twitter"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-instagram"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-linkedin-in"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="guide-title text-center rounded-bottom p-4">
-                                                <div class="guide-title-inner">
-                                                    <h4 class="mt-3">Full Name</h4>
-                                                    <p class="mb-0">Designation</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <div class="guide-item">
-                                            <div class="guide-img">
-                                                <div class="guide-img-efects">
-                                                    <img src="{{ asset('belajar/img/guide-1.jpg') }}"
-                                                        class="img-fluid w-100 rounded-top" alt="Image">
-                                                </div>
-                                                <div class="guide-icon rounded-pill p-2">
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-facebook-f"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-twitter"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-instagram"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-linkedin-in"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="guide-title text-center rounded-bottom p-4">
-                                                <div class="guide-title-inner">
-                                                    <h4 class="mt-3">Full Name</h4>
-                                                    <p class="mb-0">Designation</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <div class="guide-item">
-                                            <div class="guide-img">
-                                                <div class="guide-img-efects">
-                                                    <img src="{{ asset('belajar/img/guide-1.jpg') }}"
-                                                        class="img-fluid w-100 rounded-top" alt="Image">
-                                                </div>
-                                                <div class="guide-icon rounded-pill p-2">
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-facebook-f"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-twitter"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-instagram"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-linkedin-in"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="guide-title text-center rounded-bottom p-4">
-                                                <div class="guide-title-inner">
-                                                    <h4 class="mt-3">Full Name</h4>
-                                                    <p class="mb-0">Designation</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Duplicate and customize the other 3 items here -->
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row g-4">
-                                    <div class="col-md-6 col-lg-3">
-                                        <div class="guide-item">
-                                            <div class="guide-img">
-                                                <div class="guide-img-efects">
-                                                    <img src="{{ asset('belajar/img/guide-2.jpg') }}"
-                                                        class="img-fluid w-100 rounded-top" alt="Image">
-                                                </div>
-                                                <div class="guide-icon rounded-pill p-2">
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-facebook-f"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-twitter"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-instagram"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-linkedin-in"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="guide-title text-center rounded-bottom p-4">
-                                                <div class="guide-title-inner">
-                                                    <h4 class="mt-3">Full Name</h4>
-                                                    <p class="mb-0">Designation</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <div class="guide-item">
-                                            <div class="guide-img">
-                                                <div class="guide-img-efects">
-                                                    <img src="{{ asset('belajar/img/guide-2.jpg') }}"
-                                                        class="img-fluid w-100 rounded-top" alt="Image">
-                                                </div>
-                                                <div class="guide-icon rounded-pill p-2">
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-facebook-f"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-twitter"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-instagram"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-linkedin-in"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="guide-title text-center rounded-bottom p-4">
-                                                <div class="guide-title-inner">
-                                                    <h4 class="mt-3">Full Name</h4>
-                                                    <p class="mb-0">Designation</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <div class="guide-item">
-                                            <div class="guide-img">
-                                                <div class="guide-img-efects">
-                                                    <img src="{{ asset('belajar/img/guide-2.jpg') }}"
-                                                        class="img-fluid w-100 rounded-top" alt="Image">
-                                                </div>
-                                                <div class="guide-icon rounded-pill p-2">
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-facebook-f"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-twitter"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-instagram"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-linkedin-in"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="guide-title text-center rounded-bottom p-4">
-                                                <div class="guide-title-inner">
-                                                    <h4 class="mt-3">Full Name</h4>
-                                                    <p class="mb-0">Designation</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <div class="guide-item">
-                                            <div class="guide-img">
-                                                <div class="guide-img-efects">
-                                                    <img src="{{ asset('belajar/img/guide-2.jpg') }}"
-                                                        class="img-fluid w-100 rounded-top" alt="Image">
-                                                </div>
-                                                <div class="guide-icon rounded-pill p-2">
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-facebook-f"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-twitter"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-instagram"></i></a>
-                                                    <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                                            class="fab fa-linkedin-in"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="guide-title text-center rounded-bottom p-4">
-                                                <div class="guide-title-inner">
-                                                    <h4 class="mt-3">Full Name</h4>
-                                                    <p class="mb-0">Designation</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Duplicate and customize the other 3 items here -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Travel Guide End -->
-        <!-- Map Start -->
-        <div class="container-fluid py-5">
-            <div class="container py-5">
-                <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-                    <h1 class="mb-0" style="color: #323232">Lokasi Kami</h1>
-                </div>
-                <div style="width: 100%; height: 700%;">
-                    <iframe src="{{ $webConfig->map }}" width="100%" height="500" style="border:0;"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </div>
-        <!-- Map End -->
-    </main>
-
-    <!-- End main content -->
-
-
-    <!-- Start footer -->
-    <footer id="mu-footer">
-        <div class="mu-footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="mu-single-footer">
-                            <img class="mu-footer-logo" src="{{ asset('jti/assets/images/logo.png') }}"
-                                alt="logo">
-                            <p>{{ $webConfig->introduction }}</p>
-                            <div class="mu-social-media">
-                                <a href="{{ $webConfig->facebook }}"><i class="fa fa-facebook"></i></a>
-                                <a class="" href="{{ $webConfig->twitter }}"><i class="fa fa-twitter"></i></a>
-                                {{-- <a class="mu-pinterest" href="#"><i class="fa fa-pinterest-p"></i></a> --}}
-                                {{-- <a class="mu-google-plus" href="#"><i class="fa fa-google-plus"></i></a> --}}
-                                <a class="" href="{{ $webConfig->youtube }}"><i class="fa fa-youtube"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mu-single-footer">
-                            <h3>Twitter feed</h3>
-                            <ul class="list-unstyled">
-                                <li class="media">
-                                    <span class="fa fa-twitter"></span>
-                                    <div class="media-body">
-                                        <p><strong>@b_jtinova</strong> Lorem ipsum dolor sit amet, consectetuer
-                                            adipiscing
-                                            elit.</p>
-                                        <a href="#">2 hours ago</a>
-                                    </div>
-                                </li>
-                                <li class="media">
-                                    <span class="fa fa-twitter"></span>
-                                    <div class="media-body">
-                                        <p><strong>@_jtinov</strong> Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                            elit.</p>
-                                        <a href="#">2 hours ago</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mu-single-footer">
-                            <h3>Company</h3>
-                            <ul class="mu-useful-links">
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Training</a></li>
-                                <li><a href="#">Portfolio</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mu-single-footer">
-                            <h3>Contact Information</h3>
-                            <ul class="list-unstyled">
-                                <li class="media">
-                                    <span class="fa fa-home"></span>
-                                    <div class="media-body">
-                                        <p>{{ $webConfig->location }}</p>
-                                    </div>
-                                </li>
-                                <li class="media">
-                                    <span class="fa fa-phone"></span>
-                                    <div class="media-body">
-                                        <p>{{ $webConfig->phone }}</p>
-                                        {{-- <p>+62 8213 4562 9876</p> --}}
-                                    </div>
-                                </li>
-                                <li class="media">
-                                    <span class="fa fa-envelope"></span>
-                                    <div class="media-body">
-                                        <p>{{ $webConfig->email }}</p>
-
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mu-footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mu-footer-bottom-area">
-                            <p class="mu-copy-right">&copy; Copyright <a rel="nofollow" href="http://markups.io">jti
-                                    nova</a>. All right reserved.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <img class="mu-footer-logo" src="{{ asset('jti/assets/images/logo.png') }}"
+              alt="logo">
+          </a>
+          <div class="footer-contact pt-3">
+            <p>A108 Adam Street</p>
+            <p>{{ $webConfig->location }}</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>{{ $webConfig->phone }}</span></p>
+            <p><strong>Email:</strong> <span>{{ $webConfig->email }}</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href="{{ $webConfig->twitter }}"><i class="bi bi-twitter-x"></i></a>
+            <a href="{{ $webConfig->facebook }}"><i class="bi bi-facebook"></i></a>
+            <a href="{{ $webConfig->instagram }}"><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
         </div>
 
-    </footer>
-    <!-- End footer -->
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Portofolio</a></li>
+            <li><a href="#">Pendampingan</a></li>
+          </ul>
+        </div>
 
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
 
-    <!-- JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
-        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous">
-    </script>
-    <!-- Slick slider -->
-    <script type="text/javascript" src="{{ asset('jti/assets/js/slick.min.js') }}"></script>
-    <!-- Progress Bar -->
-    <script src="https://unpkg.com/circlebars@1.0.3/dist/circle.js"></script>
-    <!-- Filterable Gallery js -->
-    <script type="text/javascript" src="{{ asset('jti/assets/js/jquery.filterizr.min.js') }}"></script>
-    <!-- Gallery Lightbox -->
-    <script type="text/javascript" src="{{ asset('jti/assets/js/jquery.magnific-popup.min.js') }}"></script>
-    <!-- Counter js -->
-    <script type="text/javascript" src="{{ asset('jti/assets/js/counter.js') }}"></script>
-    <!-- Ajax contact form  -->
-    <script type="text/javascript" src="{{ asset('jti/assets/js/app.js') }}"></script>
+        <div class="col-lg-4 col-md-12 footer-newsletter">
+          <h4>Tentang JTINova</h4>
+          <p>{{ $webConfig->introduction }}</p>
+          <form action="forms/newsletter.php" method="post" class="php-email-form">
+            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
+          </form>
+        </div>
 
+      </div>
+    </div>
 
-    <!-- Custom js -->
-    <script type="text/javascript" src="{{ asset('jti/assets/js/custom.js') }}"></script>
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">JTInova</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">JTInova</a>
+      </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </footer>
 
-    <!-- About us Skills Circle progress  -->
-    <script>
-        // First circle
-        new Circlebar({
-            element: "#circle-1",
-            type: "progress",
-            maxValue: "90"
-        });
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-        // Second circle
-        new Circlebar({
-            element: "#circle-2",
-            type: "progress",
-            maxValue: "84"
-        });
+  <!-- Vendor JS Files -->
+  <script src="{{asset ('assetss/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{asset ('assetss/assets/vendor/php-email-form/validate.js') }}"></script>
+  <script src="{{asset ('assetss/assets/vendor/aos/aos.js') }}"></script>
+  <script src="{{asset ('assetss/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{asset ('assetss/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{asset ('assetss/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+  <script src="{{asset ('assetss/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+  <script src="{{asset ('assetss/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
 
-        // Third circle
-        new Circlebar({
-            element: "#circle-3",
-            type: "progress",
-            maxValue: "60"
-        });
-
-        // Fourth circle
-        new Circlebar({
-            element: "#circle-4",
-            type: "progress",
-            maxValue: "74"
-        });
-    </script>
+  <!-- Main JS File -->
+  <script src="{{asset ('assetss/assets/js/main.js') }}"></script>
 
 </body>
 

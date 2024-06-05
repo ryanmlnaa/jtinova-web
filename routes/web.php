@@ -76,6 +76,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('user', UserController::class)->except(['show', 'edit']);
 
         // pegawai
+        Route::get('pegawai/{pegawai}', [PegawaiController::class, 'show'])->name('pegawai.show');
         Route::resource('pegawai', PegawaiController::class);
         
         // mbkm

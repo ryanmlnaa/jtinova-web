@@ -60,6 +60,24 @@
                       @enderror
                     </div>
                     <div class="form-group">
+                      <label for="instagram" class="col-form-label">Instagram</label>
+                      <input type="text" class="form-control @error('instagram') is-invalid @enderror" name="instagram" id="instagram" value="{{ old('instagram', $pegawai->instagram) }}">
+                      @error('instagram')
+                          <div class="invalid-feedback">
+                              {{ $message }}
+                          </div>
+                      @enderror
+                  </div>
+                  <div class="form-group">
+                      <label for="linkedin" class="col-form-label">LinkedIn</label>
+                      <input type="text" class="form-control @error('linkedin') is-invalid @enderror" name="linkedin" id="linkedin" value="{{ old('linkedin', $pegawai->linkedin) }}">
+                      @error('linkedin')
+                          <div class="invalid-feedback">
+                              {{ $message }}
+                          </div>
+                      @enderror
+                  </div>
+                    <div class="form-group">
                       <label for="foto" class="col-form-label">Gambar</label> <span class="text-danger">*</span>
                       <img src="{{asset('storage/'.$pegawai->foto)}}" alt="foto" class="img-thumbnail" width="100">
                     </div>

@@ -39,6 +39,8 @@ class PegawaiController extends Controller
             "nip" => "required|string|max:50|unique:pegawai,nip",
             "nama" => "required|string|max:255",
             "jabatan_id" => "required|exists:jabatan,id",
+            "instagram" => "nullable|string",
+            "linkedin" => "nullable|string",
             "foto" => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
         ]);
 
@@ -54,6 +56,8 @@ class PegawaiController extends Controller
             "nip" => $request->nip,
             "nama" => $request->nama,
             "jabatan_id" => $request->jabatan_id,
+            "instagram" => $request->instagram,
+            "linkedin" => $request->linkedin,
             "foto" => $request->file("foto")->store("images/pegawai", "public"),
         ]);
 
@@ -68,16 +72,20 @@ class PegawaiController extends Controller
         $jabatan = Jabatan::all();
         $users = User::all();
 
-        return view('admin.pegawai.edit', compact("title", "jabatan", "users", "pegawai"));
+        return view('admin.pegawai.edit', compact("title", "jabatan", "users", "pegawai",));
     }
 
     public function update(Request $request, Pegawai $pegawai)
     {
+
+        
         $validator = Validator::make($request->all(), [
             "user_id" => "required|exists:users,id",
             "nip" => "required|string|max:50|",
             "nama" => "required|string|max:255",
             "jabatan_id" => "required|exists:jabatan,id",
+            "instagram" => "nullable|string",
+            "linkedin" => "nullable|string",
             "foto" => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
         ]);
 
@@ -93,7 +101,9 @@ class PegawaiController extends Controller
             "nip" => $request->nip,
             "nama" => $request->nama,
             "jabatan_id" => $request->jabatan_id,
-        ];
+            "instagram" => $request->instagram, // Pastikan menggunakan request->instagram di sini
+            "linkedin" => $request->linkedin, // Dan juga request->linkedin di sini
+        ];        
 
         if ($request->hasFile("foto")) {
             Storage::disk('public')->delete($pegawai->foto);

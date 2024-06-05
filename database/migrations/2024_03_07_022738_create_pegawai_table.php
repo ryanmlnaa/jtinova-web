@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('nip', 50)->unique();
             $table->string('nama');
             $table->foreignId('jabatan_id')->constrained('jabatan')->onDelete('cascade');
+            $table->text('instagram')->nullabel();
+            $table->text('linkedin')->nullable();
             $table->string('foto');
             $table->timestamps();
         });

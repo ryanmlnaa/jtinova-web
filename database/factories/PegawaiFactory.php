@@ -22,6 +22,8 @@ class PegawaiFactory extends Factory
             'nama' => $this->faker->name(),
             'jabatan_id' => $this->faker->numberBetween(1, 15),
             'foto' => 'admin.jpg',
+            'instagram' => 'xankxjakxjak',
+            'linkedin'=> 'skskas',
         ];
     }
 }
