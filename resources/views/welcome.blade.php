@@ -791,7 +791,7 @@
           <div class="col-lg-4 @if($item->id == 2) {{"featured"}} @endif" data-aos="zoom-in" data-aos-delay="100">
             <div class="pricing-item">
               <h3>{{$item->nama}}</h3>
-              <h4><sup>Rp</sup>{{$item->harga}}<span></span></h4>
+              <h4>@currency($item->harga)<span></span></h4>
               <p>{{$item->deskripsi}}</p>
               {{-- <ul>
                 <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
