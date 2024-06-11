@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Pendampingan;
 
 use App\Http\Controllers\Controller;
 use App\Models\PendampinganUser;
+use App\Models\Transactions;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -34,8 +36,10 @@ class PendampinganUserController extends Controller
 
         $user = User::find(auth()->user()->id);
         $user->revokePermissionTo('fill-profile');
+        $user->givePermissionTo('bayar');
         
         Alert::success('Berhasil', 'Data berhasil disimpan');
         return redirect()->route('dashboard');
     }
+    
 }

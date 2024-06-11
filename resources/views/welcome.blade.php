@@ -785,22 +785,28 @@
 
         <div class="row g-4 g-lg-0">
 
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+          
+          @foreach($skemaPendampingans as $item)
+          
+          <div class="col-lg-4 @if($item->id == 2) {{"featured"}} @endif" data-aos="zoom-in" data-aos-delay="100">
             <div class="pricing-item">
-              <h3>Skripsi</h3>
-              <h4><sup>Rp</sup>100.000<span></span></h4>
-              <ul>
+              <h3>{{$item->nama}}</h3>
+              <h4><sup>Rp</sup>{{$item->harga}}<span></span></h4>
+              <p>{{$item->deskripsi}}</p>
+              {{-- <ul>
                 <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
                 <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
                 <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
                 <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
                 <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-              </ul>
-              <div class="text-center"><a href="#" class="buy-btn">Daftar</a></div>
+              </ul> --}}
+              <div class="text-center"><a href="{{route('register.pendampingan')}}?pendampingan={{ $item->kode }}" class="buy-btn">Daftar</a></div>
             </div>
           </div><!-- End Pricing Item -->
+          @endforeach
 
-          <div class="col-lg-4 featured" data-aos="zoom-in" data-aos-delay="200">
+
+          {{-- <div class="col-lg-4 featured" data-aos="zoom-in" data-aos-delay="200">
             <div class="pricing-item">
               <h3>Business Plan</h3>
               <h4><sup>$</sup>29<span> / month</span></h4>
@@ -828,7 +834,7 @@
               </ul>
               <div class="text-center"><a href="#" class="buy-btn">Buy Now</a></div>
             </div>
-          </div><!-- End Pricing Item -->
+          </div><!-- End Pricing Item --> --}}
 
         </div>
 

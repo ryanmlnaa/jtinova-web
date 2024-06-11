@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\PendampinganUserController;
 use App\Http\Controllers\Admin\SkemaPendampinganController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WebConfigController;
+use App\Http\Controllers\TransactionsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -97,7 +98,7 @@ Route::group(['middleware' => ['auth']], function(){
         // produk
         Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'])->name('dataproduk');
 
-        // portofolio
+    // portofolio
         Route::get("/dataportofolio", [PortofolioController::class, 'index'])->name("Portofolio.index");
         Route::post("/tambahportofolio", [PortofolioController::class, 'tambah'])->name("Portofolio.tambah");
         Route::get("/editportofolio/{id}", [PortofolioController::class, 'edit'])->name("Portofolio.edit");
@@ -119,5 +120,9 @@ Route::group(['middleware' => ['auth']], function(){
         Route::put('/pendampingan-user/{pendampinganUser}', [PendampinganPendampinganUserController::class, 'update'])->name('pendampingan.pendampinganuser.update');
         Route::put('/pelatihan-user/{pelatihanUser}', [PelatihanPelatihanUserController::class, 'update'])->name('pelatihan.pelatihanuser.update');
         Route::put('/instruktur-user/{instrukturUser}', [InstrukturInstrukturUserController::class, 'update'])->name('instruktur.instrukturuser.update');
+    });
+    Route::group(["middleware" => ['can:bayar']], function() {
+        Route::post('/transaction-pendampingan/{pendampinganUser}', [TransactionsController::class, 'buktiPembayaran'])->name('transaction.pendampingan');
+        Route::post('/transaction-pelatihan/{pelatihanUser}', [TransactionsController::class, 'buktiPembayaran'])->name('transaction.pelatihan');
     });
 });

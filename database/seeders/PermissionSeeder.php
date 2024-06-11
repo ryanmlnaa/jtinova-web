@@ -16,6 +16,7 @@ class PermissionSeeder extends Seeder
     {
         $permissions = [
             'fill-profile',
+            'bayar',
             
             'user-list',
             'user-create',
