@@ -20,8 +20,9 @@ class CategoryController extends Controller
 
     public function create()
     {
-        $title = "Tambah Kategori";
-        return view('category.create', compact('title'));
+        $title = 'Portofolio';
+        $categories = Category::all(); // Retrieve all categories
+        return view('portofolio.create', compact('title', 'categories'));
     }
 
     public function store(Request $request)

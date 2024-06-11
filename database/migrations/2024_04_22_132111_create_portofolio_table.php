@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('portofolio', function (Blueprint $table) {
-            $table->increments("id_portofolio");
+            $table->id();
+            $table->string("slug");
             $table->string("judul", 50);
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('SET NULL');
             $table->string("deskripsi");
             $table->string("klien");
-            $table->string("foto");
-            $table->string("kategori");
+            
             $table->date("start_date");
             $table->date("end_date");
             $table->timestamps();

@@ -37,6 +37,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('lading.page');
 
+Route::get('/portfolio/{id}', [LandingPageController::class, 'show'])->name('portfolio.show');
+
 Auth::routes(['verify' => true]);
 
 Route::get('register-mbkm', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.mbkm');
@@ -98,11 +100,14 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'])->name('dataproduk');
 
         // portofolio
-        Route::get("/dataportofolio", [PortofolioController::class, 'index'])->name("Portofolio.index");
+        Route::get("/portofolio", [PortofolioController::class, 'index'])->name("portofolio.index");
+        Route::get('/portofolio/create', [PortofolioController::class, 'create'])->name('portofolio.create');
         Route::post("/tambahportofolio", [PortofolioController::class, 'tambah'])->name("Portofolio.tambah");
         Route::get("/editportofolio/{id}", [PortofolioController::class, 'edit'])->name("Portofolio.edit");
         Route::patch("/updateportofolio/{id}", [PortofolioController::class, 'update'])->name("Portofolio.update");
         Route::delete("/hapusportofolio/{id}", [PortofolioController::class, 'delete'])->name("Portofolio.delete");
+
+        
 
         // pembayaran
         Route::get("/datapembayaran", [PembayaranController::class, 'index'])->name("Pembayaran.index");
