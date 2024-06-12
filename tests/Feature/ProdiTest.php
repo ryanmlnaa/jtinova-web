@@ -66,7 +66,7 @@ describe('ProdiController', function () {
             $prodi->name = 'updated';
             $response = $this->put(route('prodi.update', $prodi->id), $prodi->toArray());
             $response->assertRedirect(route('prodi.index'));
-            $this->assertDatabaseHas('prodis', $prodi->toArray());
+            expect(Prodi::find($prodi->id)->name)->toBe('updated');
         });
 
         it('should return error when name is empty', function () {
