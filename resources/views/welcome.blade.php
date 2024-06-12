@@ -203,7 +203,7 @@
 
     </section><!-- /About Section -->
 
-    <!-- Stats Section -->
+    {{-- <!-- Stats Section -->
     <section id="stats" class="stats section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -246,9 +246,9 @@
 
       </div>
 
-    </section><!-- /Stats Section -->
+    </section><!-- /Stats Section --> --}}
 
-    <!-- Tabs Section -->
+    {{-- <!-- Tabs Section -->
     <section id="tabs" class="tabs section">
 
       <div class="container">
@@ -389,7 +389,7 @@
 
       </div>
 
-    </section><!-- /Tabs Section -->
+    </section><!-- /Tabs Section --> --}}
 
     <!-- Services Section -->
     <section id="services" class="services section section-bg">
@@ -485,15 +485,14 @@
 
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Product</li>
-            <li data-filter=".filter-branding">Branding</li>
-            <li data-filter=".filter-books">Books</li>
+            @foreach ($kategori as $item)
+            <li data-filter=".filter-{{ $item->name }}"> {{ $item->name }}</li>
+            @endforeach
           </ul><!-- End Portfolio Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
             @foreach($portofolio as $item)
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ $item->category->name}}">
               <div class="portfolio-content h-100">
                 <img src="{{ asset('storage/' .$item->images->first()->image_url)}}" class="img-fluid" alt="">
                 <div class="portfolio-info">

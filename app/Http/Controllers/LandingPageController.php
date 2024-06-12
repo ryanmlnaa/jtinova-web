@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Pegawai;
 use App\Models\Pelatihan;
 use App\Models\Portofolio;
@@ -19,8 +20,9 @@ class LandingPageController extends Controller
         $skemaPendampingans = SkemaPendampingan::where('status', 'Aktif')->get();
         $webConfig = WebConfig::first();
         $pegawai = Pegawai::all();
+        $kategori = Category::all();
 
-        return view('welcome', compact('portofolio', 'pelatihan', 'skemaPendampingans', 'webConfig','pegawai'));
+        return view('welcome', compact('portofolio', 'pelatihan', 'skemaPendampingans', 'webConfig','pegawai', 'kategori'));
     }
 
     public function show($id) {
