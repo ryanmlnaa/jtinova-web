@@ -11,8 +11,8 @@ describe('ProdiController', function () {
         it('should return view with data', function () {
             $response = $this->get(route('prodi.index'));
             $response->assertStatus(200);
-            $response->assertViewIs('prodi.index');
-            $response->assertViewHas('data', Prodi::all());
+            $response->assertViewIs('admin.prodi.index');
+            $response->assertViewHas('data', Prodi::latest()->get());
         });
 
         it('should return 302 when not authenticated', function () {

@@ -11,7 +11,7 @@ describe('KeahlianController', function () {
         it('should return view with data', function () {
             $response = $this->get(route('keahlian.index'));
             $response->assertStatus(200);
-            $response->assertViewIs('keahlian.index');
+            $response->assertViewIs('admin.keahlian.index');
             $response->assertViewHas('data', Keahlian::latest()->get());
         });
 
