@@ -6,7 +6,7 @@
         <div class="col-lg-12">
             <div class="card mx-5 px-3 py-5">
                 <h4 class="text-center">{{ $title }}</h4>
-                <form action="{{ route('Portofolio.update', $data->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('portofolio.update', $data->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
                     <div class="form-group">

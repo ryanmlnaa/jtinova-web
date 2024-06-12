@@ -11,7 +11,7 @@
                         <h4>Tambah {{ $title }}</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('Portofolio.tambah') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('portofolio.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                             <div class="form-group">

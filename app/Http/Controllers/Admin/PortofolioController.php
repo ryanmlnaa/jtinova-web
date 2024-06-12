@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\PortfolioImage;
 use App\Models\Portofolio;
 use Illuminate\Database\QueryException;
@@ -17,13 +18,13 @@ use Illuminate\Support\Facades\Storage;
 class PortofolioController extends Controller
 {
     private $kategori = ["Desktop", "Website", "Mobile"];
-    public function index(Request $request)  {
+    public function index(Request $request)
+    {
         $title = "Data Portofolio";
         $data = Portofolio::with('category')->get();
-        $portfolio_images = PortfolioImage::getdata();
 
         $kat = $this->kategori;
-        return view('Portofolio.index', compact("title", "data", "kat", "portfolio_images"));
+        return view('Portofolio.index', compact("title", "data", "kat",));
     }
 
     public function create()
@@ -33,7 +34,7 @@ class PortofolioController extends Controller
         return view('portofolio.create', compact('categories', 'title'));
     }
 
-    public function tambah(Request $req)
+    public function store(Request $req)
     {
         // Log the request method for debugging
         Log::info('Request Method: ' . $req->method());
@@ -48,7 +49,7 @@ class PortofolioController extends Controller
         ]);
 
         // dd($req->file('foto'));
-        
+
         if ($validator->fails()) {
             $messages = $validator->errors()->all();
             Alert::error($messages[0])->flash();
@@ -61,8 +62,8 @@ class PortofolioController extends Controller
         }
 
         try {
-            
-           
+
+
 
             DB::beginTransaction();
 
@@ -77,12 +78,11 @@ class PortofolioController extends Controller
                 "category_id" => $req->kategori,
             ];
 
-            
+
 
             $portofolio = Portofolio::create($data)->id;
             $index = 0;
-            foreach($req->file('foto') as $item)
-            {
+            foreach ($req->file('foto') as $item) {
                 $fileName = $item->store("images/portofolio", "public");
                 $isPrimary = $index === 0 ? "1" : "0";
                 $images = [
@@ -93,18 +93,18 @@ class PortofolioController extends Controller
                 PortfolioImage::create($images);
                 $index++;
             }
-            
+
 
             DB::commit();
             Alert::success('Success Title', 'Berhasil Tambah Data');
             return redirect()->route('portofolio.index');
         } catch (QueryException $e) {
             DB::rollBack();
-            
-        if ($req->hasFile("foto")) {
-            Storage::disk('public')->delete($req->foto);
-        }
-            dd('gagal' . $e->getMessage());
+
+            if ($req->hasFile("foto")) {
+                Storage::disk('public')->delete($req->foto);
+            }
+            Alert::success('Success Title', 'Gagal Simpan');
             return back();
         }
 
@@ -113,17 +113,23 @@ class PortofolioController extends Controller
     }
 
 
-    public function delete($id)
+    public function destroy($id)
     {
-
         $data = Portofolio::findOrFail($id);
-            Storage::disk('public')->delete($data->foto);
-        
+
+        // Hapus file terkait
+        $images = $data->images;
+        foreach ($images as $image) {
+            Storage::disk('public')->delete($image->image_url);
+            $image->delete();
+        }
+
         $data->delete();
-        // return response()->json(['message' => 'Data berhasil dihapus'], 200);
+
         Alert::success('Success', 'Berhasil hapus Data');
         return redirect()->back();
     }
+
     public function edit($id)
     {
         $data = Portofolio::with('images')->findOrFail($id);
@@ -154,7 +160,7 @@ class PortofolioController extends Controller
         }
         try {
 
-          
+
 
             $data->update([
                 "judul" => $req->judul,
@@ -165,19 +171,20 @@ class PortofolioController extends Controller
                 "end_date"  => $req->end_date,
             ]);
 
-           
-            $index = 0;
-            foreach($req->file('foto') as $item)
-            {
-                $fileName = $item->store("images/portofolio", "public");
-                $isPrimary = $index === 0 ? "1" : "0";
-                $images = [
-                    'portfolio_id' => $pegawai,
-                    'image_url' => $fileName,
-                    'is_primary' => $isPrimary
-                ];
-                PortfolioImage::create($images);
-                $index++;
+
+            if ($req->hasFile('foto')) {
+                $index = 0;
+                foreach ($req->file('foto') as $item) {
+                    $fileName = $item->store("images/portofolio", "public");
+                    $isPrimary = $index === 0 ? "1" : "0";
+                    $images = [
+                        'portfolio_id' => $pegawai,
+                        'image_url' => $fileName,
+                        'is_primary' => $isPrimary
+                    ];
+                    PortfolioImage::create($images);
+                    $index++;
+                }
             }
 
             if ($data) {

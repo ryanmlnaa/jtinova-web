@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Admin\PelatihanController;
 use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\Admin\PortofolioController;
 use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\Admin\MbkmUserController;
 use App\Http\Controllers\Admin\PelatihanTeamController;
@@ -100,12 +100,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'])->name('dataproduk');
 
         // portofolio
-        Route::get("/portofolio", [PortofolioController::class, 'index'])->name("portofolio.index");
-        Route::get('/portofolio/create', [PortofolioController::class, 'create'])->name('portofolio.create');
-        Route::post("/tambahportofolio", [PortofolioController::class, 'tambah'])->name("Portofolio.tambah");
-        Route::get("/editportofolio/{id}", [PortofolioController::class, 'edit'])->name("Portofolio.edit");
-        Route::patch("/updateportofolio/{id}", [PortofolioController::class, 'update'])->name("Portofolio.update");
-        Route::delete("/hapusportofolio/{id}", [PortofolioController::class, 'delete'])->name("Portofolio.delete");
+        Route::resource('/portofolio', PortofolioController::class)->except('show');
 
         
 

@@ -18,10 +18,4 @@ class PortfolioImage extends Model
         return $this->belongsTo(Portofolio::class, 'portfolio_id');
     }
 
-    
-    public static function getdata(){
-
-
-        return self::all();
-    }
 }

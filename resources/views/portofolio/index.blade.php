@@ -37,8 +37,9 @@
                                 <td>{{ $item->start_date }}</td>
                                 <td>{{ $item->end_date }}</td>
                                 <td>
-                                    <form action="/hapusportofolio/{{ $item->id }}" method="post" class="delete-form">
-                                        <a href="{{ route('Portofolio.edit', $item->id) }}"
+                                    <form action="{{ route('portofolio.destroy', $item->id) }}" method="post"
+                                        class="delete-form">
+                                        <a href="{{ route('portofolio.edit', $item->id) }}"
                                             class="btn btn-warning btn-sm m-0 edit-button"> <i
                                                 class="fa-solid fa-trash-can"></i> Edit</a>
                                         @method('DELETE')
@@ -60,30 +61,31 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        const deleteButtons = document.querySelectorAll('.delete-button');
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
-                const id = this.parentNode.querySelector('input[name="id_portofolio"]').value;
-                Swal.fire({
-                    title: 'Hapus Data?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    cancelButtonColor: '#3085d6',
-                    confirmButtonText: 'Hapus',
-                    cancelButtonText: 'Batal',
-                    showCloseButton: false,
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                    customClass: {
-                        container: 'my-swal'
-                    }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        this.parentNode.action = '/hapusportofolio/' + id;
-                        this.parentNode.submit();
-                    }
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteButtons = document.querySelectorAll('.delete-button');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const form = this.closest('form');
+                    Swal.fire({
+                        title: 'Hapus Data?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Hapus',
+                        cancelButtonText: 'Batal',
+                        showCloseButton: false,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        customClass: {
+                            container: 'my-swal'
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
                 });
             });
         });
