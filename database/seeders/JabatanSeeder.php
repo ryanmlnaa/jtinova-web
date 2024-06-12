@@ -13,22 +13,14 @@ class JabatanSeeder extends Seeder
     public function run(): void
     {
         $jabatan = [
-            'Manager',
-            'Chief Technology Officer',
-            'Supervisor',
-            'Staff',
-            'Chief Executive Officer',
-            'Chief Financial Officer',
-            'Chief Operating Officer',
-            'Chief Marketing Officer',
-            'Chief Human Resources Officer',
-            'Chief Information Officer',
-            'Chief Security Officer',
-            'Chief Legal Officer',
-            'Chief Compliance Officer',
-            'Chief Privacy Officer',
-            'Chief Risk Officer',
-            'Chief Strategy Officer',
+            'Manager Tefa',
+            'Dewan Pengarah',
+            'Administrasi',
+            'KADIV Pengembangan Sistem Informasi dan Start Up',
+            'KADIV Layanan Jasa',
+            'KADIV SDM dan Kerjasama',
+            'KADIV Keuangan',
+            'Tim Teknis',
         ];
 
         foreach ($jabatan as $item) {

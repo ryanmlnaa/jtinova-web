@@ -21,7 +21,7 @@
       <li class="menu-header">Data Layanan</li>
       <li class=" {{ Request::is('skemaPendampingan') ? 'active' : '' }} "><a class="nav-link" href="{{ route('skemaPendampingan.index') }}"><i class="fas fa-book"></i> <span>Skema Pendampingan</span></a></li>
       <li class=" {{ Request::is('pelatihan') ? 'active' : '' }} "><a class="nav-link" href="{{ route('pelatihan.index') }}"><i class="fas fa-book"></i> <span>Data Pelatihan</span></a></li>
-      <li class=" {{ Request::is('portofolio') ? 'active' : '' }} "><a class="nav-link" href="{{ route('Portofolio.index') }}"><i class="fas fa-book"></i> <span>Data Portofolio</span></a></li>
+      <li class=" {{ Request::is('portofolio') ? 'active' : '' }} "><a class="nav-link" href="{{ route('portofolio.index') }}"><i class="fas fa-book"></i> <span>Portofolio</span></a></li>
       
       <li class="menu-header">Data Pengguna</li>
       <li class=" {{ Request::is('user') ? 'active' : '' }} "><a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-users"></i> <span>User</span></a></li>

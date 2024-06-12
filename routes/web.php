@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Admin\PelatihanController;
 use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\Admin\PortofolioController;
 use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\Admin\MbkmUserController;
 use App\Http\Controllers\Admin\PelatihanTeamController;
@@ -37,6 +37,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LandingPageController::class, 'index'])->name('lading.page');
+
+Route::get('/portfolio/{id}', [LandingPageController::class, 'show'])->name('portfolio.show');
 
 Auth::routes(['verify' => true]);
 
@@ -98,12 +100,8 @@ Route::group(['middleware' => ['auth']], function(){
         // produk
         Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'])->name('dataproduk');
 
-    // portofolio
-        Route::get("/dataportofolio", [PortofolioController::class, 'index'])->name("Portofolio.index");
-        Route::post("/tambahportofolio", [PortofolioController::class, 'tambah'])->name("Portofolio.tambah");
-        Route::get("/editportofolio/{id}", [PortofolioController::class, 'edit'])->name("Portofolio.edit");
-        Route::patch("/updateportofolio/{id}", [PortofolioController::class, 'update'])->name("Portofolio.update");
-        Route::delete("/hapusportofolio/{id}", [PortofolioController::class, 'delete'])->name("Portofolio.delete");
+        // portofolio
+        Route::resource('/portofolio', PortofolioController::class)->except('show');
 
         // pembayaran
         Route::get("/datapembayaran", [PembayaranController::class, 'index'])->name("Pembayaran.index");

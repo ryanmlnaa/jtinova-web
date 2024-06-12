@@ -20,7 +20,7 @@ class PegawaiFactory extends Factory
             'user_id' => 2,
             'nip' => $this->faker->unique()->numerify('##########'),
             'nama' => $this->faker->name(),
-            'jabatan_id' => $this->faker->numberBetween(1, 15),
+            'jabatan_id' => $this->faker->numberBetween(1, 8),
             'foto' => 'admin.jpg',
             'instagram' => 'xankxjakxjak',
             'linkedin'=> 'skskas',
