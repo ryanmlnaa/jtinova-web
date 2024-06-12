@@ -156,28 +156,7 @@
 
 @push('scripts')
   <script>
-    function getPelatihanDetail(idPelatihan){
-      $.ajax({
-          url: "{{ url('api/pelatihan') }}/" + idPelatihan,
-          type: 'GET',
-          success: function(response) {
-            $('#informasi_pelatihan').show();
-            $('#kode_pelatihan').text(response.data.kode);
-            $('#nama_pelatihan').text(response.data.nama);
-            $('#deskripsi').text(response.data.deskripsi);
-            $('#benefit').text(response.data.benefit);
-            $('#lokasi').text(response.data.lokasi);
-            $('#tanggal_mulai').text(response.data.tanggal_mulai);
-            $('#tanggal_selesai').text(response.data.tanggal_selesai);
-            $('#harga').text(response.data.harga);
-            $('#kuota').text(response.data.kuota);
-            $('#kuota_tim').text(response.data.kuota_tim);
-          }
-        });
-    }
     $(document).ready(function() {
-      getPelatihanDetail($("#pelatihan_id").val());
-     
       $('#skema').on('change', function() {
         if ($(this).val() == 'kelompok') {
           var kuota_tim = parseInt($('#kuota_tim').text());
@@ -187,7 +166,7 @@
             <div class="form-group col-6">
               <label for="nama">Nama</label> <span class="text-danger">*</span>
               <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama[]"
-                   autofocus>
+                  value="{{ old('nama') }}" autofocus>
               @error('nama')
               <div class="invalid-feedback">
                   {{ $message }}
@@ -198,7 +177,7 @@
             <div class="form-group col-6">
                 <label for="email">Email</label> <span class="text-danger">*</span>
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email[]"
-                    >
+                    value="{{ old('email') }}">
                 @error('email')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -226,7 +205,23 @@
           $('#tambah_anggota').hide();
         }
 
-        getPelatihanDetail($(this).val());
+        $.ajax({
+          url: "{{ url('api/pelatihan') }}/" + $(this).val(),
+          type: 'GET',
+          success: function(response) {
+            $('#informasi_pelatihan').show();
+            $('#kode_pelatihan').text(response.data.kode);
+            $('#nama_pelatihan').text(response.data.nama);
+            $('#deskripsi').text(response.data.deskripsi);
+            $('#benefit').text(response.data.benefit);
+            $('#lokasi').text(response.data.lokasi);
+            $('#tanggal_mulai').text(response.data.tanggal_mulai);
+            $('#tanggal_selesai').text(response.data.tanggal_selesai);
+            $('#harga').text(response.data.harga);
+            $('#kuota').text(response.data.kuota);
+            $('#kuota_tim').text(response.data.kuota_tim);
+          }
+        });
       });
     });
   </script>

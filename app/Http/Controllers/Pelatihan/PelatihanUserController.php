@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PelatihanUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,8 +22,8 @@ class PelatihanUserController extends Controller
             'pendidikan_terakhir' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'nama.*' => 'required|string|max:255',
-            'email.*' => 'required|email|max:255',
+            'nama.*' => 'max:255',
+            'email.*' => 'max:255',
         ]);
 
         if ($validator->fails()) {
@@ -30,6 +31,20 @@ class PelatihanUserController extends Controller
             $messages = implode('<br>', $messages);
             Alert::error($messages)->flash();
             return redirect()->back()->withErrors($validator)->withInput();
+        }
+        if($request->skema == "kelompok"){
+            $count = (count(array_filter($request->nama)));
+            for($i = 0; $i < $count; $i++){
+                $user = User::create([
+                    'name' => $request->nama[$i],
+                    'email' => $request->email[$i],
+                    'password' => Hash::make("password"),
+                ]);
+                $user->assignRole('user-pelatihan');
+                $user->givePermissionTo('fill-profile');
+                PelatihanUser::create(['user_id' => $user->id, 'pelatihan_team_id' => $pelatihanUser->pelatihan_team_id]);
+        
+            }
         }
 
         $pelatihanUser->update([
@@ -44,6 +59,7 @@ class PelatihanUserController extends Controller
 
         $user = User::find(auth()->user()->id);
         $user->revokePermissionTo('fill-profile');
+        $user->givePermissionTo('bayar');
         
         Alert::success('Berhasil', 'Data berhasil disimpan');
         return redirect()->route('dashboard');
