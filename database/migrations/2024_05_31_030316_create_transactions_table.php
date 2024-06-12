@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pelatihan_team_id')->nullable()->constrained('pelatihan_teams')->nullOnDelete();
-            $table->foreignId('pendampingan_user_id')->nullable('pendampingan_users')->constrained()->nullOnDelete();
+            $table->foreignId('pelatihan_team_id')->nullable()->constrained('pelatihan_teams')->onDelete('cascade');
+            $table->foreignId('pendampingan_user_id')->nullable()->constrained('pendampingan_users')->onDelete('cascade');
             $table->string('invoice');
             $table->enum('status', ['pending', 'success', 'failed'])->default('pending');
             $table->string('payment_method');

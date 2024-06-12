@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pembayaran;
+use App\Models\PendampinganUser;
 use App\Models\Peserta;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -16,8 +17,8 @@ class PembayaranController extends Controller
     {
         $title = "Data Pembayaran";
         $data = Pembayaran::getData();
-        $peserta = Peserta::getData();
-        return view('Pembayaran.index', compact("title", "data", 'peserta'));
+        // $peserta = Peserta::getData();
+        return view('Pembayaran.index', compact("title", "data"));
     }
     public function tambah(Request $request)
     {
@@ -95,7 +96,7 @@ class PembayaranController extends Controller
     public function edit($id) 
     {
         $data = Pembayaran::findOrFail($id);
-        $peserta = Peserta::getData();
+        $peserta = PendampinganUser::getData();
         $title="Edit Pembayaran";
         return view("pembayaran.edit_pembayaran",compact('data','title', 'peserta'));
     }
