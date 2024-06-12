@@ -19,7 +19,7 @@ abstract class TestCase extends BaseTestCase
     // acting as role mahasiswa mbkm
     public function actingAsUserMbkm()
     {
-        $user = Auth::loginUsingId(3);
+        $user = Auth::loginUsingId(7);
         $this->actingAs($user);
     }
 

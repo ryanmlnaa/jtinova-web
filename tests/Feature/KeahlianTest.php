@@ -11,7 +11,7 @@ describe('KeahlianController', function () {
         it('should return view with data', function () {
             $response = $this->get(route('keahlian.index'));
             $response->assertStatus(200);
-            $response->assertViewIs('keahlian.index');
+            $response->assertViewIs('admin.keahlian.index');
             $response->assertViewHas('data', Keahlian::latest()->get());
         });
 
@@ -66,7 +66,7 @@ describe('KeahlianController', function () {
             $keahlian->nama = 'updated';
             $response = $this->patch(route('keahlian.update', $keahlian->id), $keahlian->toArray());
             $response->assertRedirect(route('keahlian.index'));
-            $this->assertDatabaseHas('keahlian', $keahlian->toArray());
+            expect(Keahlian::find($keahlian->id)->nama)->toBe('updated');
         });
 
         it('should return error when nama is empty', function () {
