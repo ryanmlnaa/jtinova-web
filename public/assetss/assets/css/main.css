@@ -134,6 +134,7 @@ h6 {
   padding: 8px 25px;
   margin: 0 0 0 30px;
   border-radius: 4px;
+  border: 1px solid var(--accent-color);
   transition: 0.3s;
 }
 
@@ -157,6 +158,93 @@ h6 {
 
   .header .navmenu {
     order: 3;
+  }
+}
+
+.header .btn-masuk,
+.header .btn-masuk:focus {
+  /* color: var(--contrast-color); */
+  /* background: var(--accent-color); */
+  font-size: 14px;
+  padding: 8px 25px;
+  margin: 0 0 0 30px;
+  border-radius: 4px;
+  border: 1px solid var(--accent-color);
+  transition: 0.3s;
+}
+
+.header .btn-masuk:hover,
+.header .btn-masuk:focus:hover {
+  color: var(--contrast-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
+@media (max-width: 1200px) {
+  .header .logo {
+    order: 1;
+  }
+
+  .header .btn-masuk,
+  .header .btn-masuk:focus {
+    order: 2;
+    margin: 0 15px 0 0;
+    padding: 6px 15px;
+  }
+
+  .header .navmenu {
+    order: 3;
+  }
+}
+
+.btn-daftar-layanan,
+.btn-daftar-layanan:focus {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  font-size: 14px;
+  padding: 8px 25px;
+  border-radius: 4px;
+  border: 1px solid var(--accent-color);
+  transition: 0.3s;
+}
+
+.btn-daftar-layanan:hover,
+.btn-daftar-layanan:focus:hover {
+  color: var(--contrast-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
+@media (max-width: 1200px) {
+  .btn-daftar-layanan,
+  .btn-daftar-layanan:focus {
+    order: 2;
+    margin: 0 15px 0 0;
+    padding: 6px 15px;
+  }
+}
+
+.btn-lihat-layanan,
+.btn-lihat-layanan:focus {
+  /* color: var(--contrast-color); */
+  /* background: var(--accent-color); */
+  font-size: 14px;
+  padding: 8px 25px;
+  border-radius: 4px;
+  border: 1px solid var(--accent-color);
+  transition: 0.3s;
+}
+
+.btn-lihat-layanan:hover,
+.btn-lihat-layanan:focus:hover {
+  color: var(--contrast-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
+@media (max-width: 1200px) {
+  .btn-lihat-layanan,
+  .btn-lihat-layanan:focus {
+    order: 2;
+    margin: 0 15px 0 0;
+    padding: 6px 15px;
   }
 }
 
