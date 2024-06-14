@@ -22,7 +22,7 @@ class LandingPageController extends Controller
         $pegawai = Pegawai::all();
         $kategori = Category::all();
 
-        return view('welcome', compact('portofolio', 'pelatihan', 'skemaPendampingans', 'webConfig','pegawai', 'kategori'));
+        return view('welcome.index', compact('portofolio', 'pelatihan', 'skemaPendampingans', 'webConfig','pegawai', 'kategori'));
     }
 
     public function show($id) {
