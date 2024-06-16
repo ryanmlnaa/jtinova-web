@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LandingPageController::class, 'index'])->name('lading.page');
+Route::get('/', [LandingPageController::class, 'index'])->name('landing.page');
 
 Route::get('/portfolio/{id}', [LandingPageController::class, 'show'])->name('portfolio.show');
 
@@ -46,6 +46,9 @@ Route::get('register-mbkm', [App\Http\Controllers\Auth\RegisterController::class
 Route::get('register-pendampingan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pendampingan');
 Route::get('register-pelatihan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pelatihan');
 Route::get('register-instruktur', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.instruktur');
+
+Route::get('katalog-pelatihan', [App\Http\Controllers\Pelatihan\LandingPageController::class, 'index'])->name('katalog.pelatihan.index');
+Route::get('katalog-pelatihan/{kode}', [App\Http\Controllers\Pelatihan\LandingPageController::class, 'show'])->name('katalog.pelatihan.show');
 
 Route::group(['middleware' => ['auth']], function(){
     // home or dashboard

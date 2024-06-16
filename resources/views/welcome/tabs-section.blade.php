@@ -59,7 +59,7 @@
                 <p>
                     Pelatihan yang kami tawarkan bertujuan untuk mempersiapkan peserta dengan keterampilan yang dibutuhkan untuk bersaing di dunia kerja, dengan fokus pada penerapan praktis dan pengalaman langsung.
                 </p>
-                <a href="#" class="btn-lihat-layanan">Lihat Detail</a>
+                <a href="{{route('katalog.pelatihan.index')}}" class="btn-lihat-layanan">Lihat Detail</a>
                 <a href="{{route('register.pelatihan')}}" class="btn-daftar-layanan">Daftar</a>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 text-center">

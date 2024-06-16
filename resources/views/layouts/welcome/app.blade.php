@@ -33,7 +33,7 @@
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="{{route('lading.page')}}" class="logo d-flex align-items-center me-auto">
+      <a href="{{route('landing.page')}}" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="{{ asset('static/favicon.png') }}" alt="logo" class="img-fluid">
       </a>
@@ -112,7 +112,7 @@
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">JTInova</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
-        Designed by <a href="{{route('lading.page')}}">JTInova</a>
+        Designed by <a href="{{route('landing.page')}}">JTInova</a>
       </div>
     </div>
 

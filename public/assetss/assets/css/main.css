@@ -2657,3 +2657,14 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+
+.card-item-pub {
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+/* .card-item-pub hovwer */
+.card-item-pub:hover {
+  transform: translateY(-10px);
+  transition: 0.3s;
+  cursor: pointer;
+}
