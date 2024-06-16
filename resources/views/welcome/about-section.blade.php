@@ -9,7 +9,7 @@
         <p>
           {{ $webConfig->introduction }}
         </p>
-        <a href="#" class="about-btn align-self-center align-self-xl-start"><span>Tentang Kami</span> <i class="bi bi-chevron-right"></i></a>
+        {{-- <a href="#" class="about-btn align-self-center align-self-xl-start"><span>Tentang Kami</span> <i class="bi bi-chevron-right"></i></a> --}}
       </div>
 
       <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
