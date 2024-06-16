@@ -168,7 +168,7 @@ a {
 }
 
 a:hover {
-  color: #0056b3;
+  color: #d61416;
   text-decoration: underline;
 }
 
@@ -2883,7 +2883,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-link:hover {
-  color: #0056b3;
+  color: #d61416;
   text-decoration: underline;
   background-color: transparent;
   border-color: transparent;
@@ -4688,7 +4688,7 @@ input[type="button"].btn-block {
 
 .page-link:hover {
   z-index: 2;
-  color: #0056b3;
+  color: #d61416;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;

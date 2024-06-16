@@ -44,12 +44,17 @@
           <li><a href="{{route('landing.page')}}#about" class="">Tentang Kami<br></a></li>
           <li><a href="{{route('landing.page')}}#layanan">Layanan</a></li>
           <li><a href="{{route('landing.page')}}#portfolio">Portofolio</a></li>
+          @auth
+          <li><a href="{{route('dashboard')}}">{{Auth::user()->name}}</a></li>
+          @endauth
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
+      @guest
       <a class="btn-masuk" href="{{route ('login')}}">Masuk</a>
       <a class="btn-getstarted" href="{{route('landing.page')}}#tabs">Daftar</a>
+      @endguest
 
     </div>
   </header>
