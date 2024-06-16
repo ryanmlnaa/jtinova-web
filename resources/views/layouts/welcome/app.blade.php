@@ -40,16 +40,16 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="">Home<br></a></li>
-          <li><a href="#about" class="">Tentang Kami<br></a></li>
-          <li><a href="#layanan">Layanan</a></li>
-          <li><a href="#portfolio">Portofolio</a></li>
+          <li><a href="{{route('landing.page')}}#hero" class="">Home<br></a></li>
+          <li><a href="{{route('landing.page')}}#about" class="">Tentang Kami<br></a></li>
+          <li><a href="{{route('landing.page')}}#layanan">Layanan</a></li>
+          <li><a href="{{route('landing.page')}}#portfolio">Portofolio</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
       <a class="btn-masuk" href="{{route ('login')}}">Masuk</a>
-      <a class="btn-getstarted" href="#tabs">Daftar</a>
+      <a class="btn-getstarted" href="{{route('landing.page')}}#tabs">Daftar</a>
 
     </div>
   </header>
