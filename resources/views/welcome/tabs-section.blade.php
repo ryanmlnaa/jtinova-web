@@ -89,7 +89,7 @@
             <p>
                 Layanan pendampingan kami bertujuan untuk memastikan bahwa mahasiswa mendapatkan dukungan yang mereka butuhkan untuk menghasilkan karya ilmiah yang berkualitas dan memenuhi standar akademik yang tinggi.
             </p>
-            <a href="#" class="btn-lihat-layanan">Lihat Detail</a>
+            <a href="{{route('katalog.pendampingan.index')}}" class="btn-lihat-layanan">Lihat Detail</a>
             <a href="{{route('register.pendampingan')}}" class="btn-daftar-layanan">Daftar</a>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 text-center">
