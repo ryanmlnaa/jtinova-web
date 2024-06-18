@@ -24,14 +24,14 @@ class PortofolioController extends Controller
         $data = Portofolio::with('category')->get();
 
         $kat = $this->kategori;
-        return view('Portofolio.index', compact("title", "data", "kat",));
+        return view('admin.portofolio.index', compact("title", "data", "kat",));
     }
 
     public function create()
     {
         $categories = Category::all();
         $title = 'Tambah Portofolio';
-        return view('portofolio.create', compact('categories', 'title'));
+        return view('admin.portofolio.create', compact('categories', 'title'));
     }
 
     public function store(Request $req)
@@ -135,7 +135,7 @@ class PortofolioController extends Controller
         $data = Portofolio::with('images')->findOrFail($id);
         $title = "Edit Portofolio";
         $kat = $this->kategori;
-        return view("Portofolio.edit_portofolio", compact('data', 'title', 'kat'));
+        return view("admin.portofolio.edit", compact('data', 'title', 'kat'));
     }
     public function update(Request $req, $pegawai)
     {

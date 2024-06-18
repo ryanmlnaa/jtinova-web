@@ -1,5 +1,5 @@
 <!-- resources/views/create-portofolio.blade.php -->
-@extends('templating.main')
+@extends('layouts.admin.app')
 @section('title', $title)
 @section('menu', $title)
 @section('content')

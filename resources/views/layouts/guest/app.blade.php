@@ -30,25 +30,18 @@
     <!-- /END GA -->
 </head>
 
-<body>
+<body class="layout-3">
     @include('sweetalert::alert')
 
     <div id="app">
-        <div class="main-wrapper main-wrapper-1">
+        <div class="main-wrapper container">
             <div class="navbar-bg"></div>
 
-            @include('templating.navbar')
-
-            <div class="main-sidebar sidebar-style-2">
-                @include('templating.sidebar')
-            </div>
+            @include('layouts.guest.navbar')
 
             <!-- Main Content -->
             <div class="main-content">
                 <section class="section">
-                    <div class="section-header">
-                        <h1>@yield('title')</h1>
-                    </div>
                     @yield('content')
                 </section>
             </div>
@@ -62,7 +55,6 @@
             </footer>
         </div>
     </div>
-    @yield('modal')
 
     <!-- General JS Scripts -->
     <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>

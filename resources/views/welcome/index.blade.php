@@ -1,39 +1,39 @@
 @extends('layouts.welcome.app')
 @section('content')
 <!-- Hero Section -->
-@include('welcome.hero-section')
+@include('welcome.section.hero-section')
 <!-- /Hero Section -->
 
 <!-- Clients Section -->
-@include('welcome.client-section')
+@include('welcome.section.client-section')
 <!-- /Clients Section -->
 
 <!-- About Section -->
-@include('welcome.about-section')
+@include('welcome.section.about-section')
 <!-- /About Section -->
 
 <!-- Services Section -->
-@include('welcome.services-section')
+@include('welcome.section.services-section')
 <!-- /Services Section -->
 
 <!-- Portfolio Section -->
-@include('welcome.portfolio-section')
+@include('welcome.section.portfolio-section')
 <!-- /Portfolio Section -->
 
 <!-- Tabs Section -->
-@include('welcome.tabs-section')
+@include('welcome.section.tabs-section')
 <!-- /Tabs Section -->
 
 
 {{-- <!-- Pricing Section -->
-@include('welcome.pricing-section')
+@include('welcome.section.pricing-section')
 <!-- /Pricing Section --> --}}
 
 <!-- Team Section -->
-@include('welcome.team-section')
+@include('welcome.section.team-section')
 <!-- /Team Section -->
 
 <!-- Contact Section -->
-@include('welcome.contact-section')
+@include('welcome.section.contact-section')
 <!-- /Contact Section -->
 @endsection

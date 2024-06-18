@@ -103,18 +103,8 @@ Route::group(['middleware' => ['auth']], function(){
         // peserta pelatihan team
         Route::resource("/pelatihanteam", PelatihanTeamController::class)->except(['create', 'edit']);
 
-        // produk
-        Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'])->name('dataproduk');
-
         // portofolio
         Route::resource('/portofolio', PortofolioController::class)->except('show');
-
-        // pembayaran
-        Route::get("/datapembayaran", [PembayaranController::class, 'index'])->name("Pembayaran.index");
-        Route::post("/tambahpembayaran", [PembayaranController::class, 'tambah'])->name("Pembayaran.tambah");
-        Route::get("/editpembayaran/{id}", [PembayaranController::class, 'edit'])->name("Pembayaran.edit");
-        Route::patch("/updatepembayaran/{id}", [PembayaranController::class, 'update'])->name("Pembayaran.update");
-        Route::delete("/hapuspembayaran/{id}", [PembayaranController::class, 'delete'])->name("Pembayaran.delete");
     });
 
     // route with middleware mahasiswa-mbkm
