@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('tahun_ajaran');
             $table->text('timeline')->nullable();
-            $table->string('status')->default(0);
+            $table->string('status')->default(1);
             $table->timestamps();
         });
     }

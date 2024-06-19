@@ -54,6 +54,9 @@ Route::get('katalog-pelatihan/{kode}', [App\Http\Controllers\Pelatihan\LandingPa
 Route::get('katalog-pendampingan', [App\Http\Controllers\Pendampingan\LandingPageController::class, 'index'])->name('katalog.pendampingan.index');
 Route::get('katalog-pendampingan/{kode}', [App\Http\Controllers\Pendampingan\LandingPageController::class, 'show'])->name('katalog.pendampingan.show');
 
+// 
+Route::get('timeline-pendaftaran-mbkm', [LandingPageController::class, 'mbkmTimeline'])->name('mbkmTimeline.index');
+
 Route::group(['middleware' => ['auth']], function(){
     // home or dashboard
     Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->middleware('verified')->name('dashboard');
@@ -94,6 +97,7 @@ Route::group(['middleware' => ['auth']], function(){
         // mbkm
         Route::resource('mbkmuser', MbkmUserController::class)->except(['create', 'show', 'edit']);
         Route::get('mbkmuser/{timeline}/show-users', [MbkmUserController::class, 'showUsers'])->name('mbkmuser.showUsers');
+        Route::post('mbkmuser/notify-pendaftaran/{mbkmUser}', [MbkmUserController::class, 'notifyPendaftaran'])->name('mbkmuser.notifyPendaftaran');
 
         // instruktur
         Route::resource("instruktur", InstrukturUserController::class)->except(['create', 'show', 'edit']);

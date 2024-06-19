@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string("photo")->nullable();
             $table->string("khs")->nullable();
             $table->enum("status", ['aktif', 'nonaktif'])->default('aktif');
+            $table->enum("status_pendaftaran", ['proses', 'gagal', 'lolos'])->default('proses');
             $table->timestamps();
         });
     }

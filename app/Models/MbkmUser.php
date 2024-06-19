@@ -21,7 +21,8 @@ class MbkmUser extends Model
         'no_hp',
         'photo',
         'khs',
-        'status'
+        'status',
+        'status_pendaftaran',
     ];
 
     public function user()

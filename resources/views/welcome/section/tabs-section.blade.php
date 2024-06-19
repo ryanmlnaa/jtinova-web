@@ -148,6 +148,7 @@
             <p>
                 Program ini dirancang untuk mempersiapkan mahasiswa agar siap menghadapi tantangan di dunia kerja, dengan memberikan pengalaman langsung dan pemahaman mendalam tentang praktik industri.
             </p>
+            <a href="{{route('mbkmTimeline.index')}}" class="btn-lihat-layanan">Lihat Timeline</a>
             <a href="{{route('register.mbkm')}}" class="btn-daftar-layanan">Daftar</a>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 text-center">

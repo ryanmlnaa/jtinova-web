@@ -22,6 +22,7 @@
                                     <th>Gol</th>
                                     <th>Skill</th>
                                     <th>Status</th>
+                                    <th>Status Pend</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -40,15 +41,10 @@
                                             <span class="badge badge-info">{{ $keahlian->nama }}</span>
                                         @endforeach
                                     </td>
+                                    <td>{{$item->status}}</td>
+                                    <td>{{$item->status_pendaftaran}}</td>
                                     <td>
-                                        @if ($item->status == 'aktif')
-                                            <span class="badge badge-info">Aktif</span>
-                                        @else
-                                            <span class="badge badge-danger">Tidak Aktif</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$item->id}}"><i class="fas fa-edit"></i></button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infoModal{{$item->id}}"><i class="fas fa-eye"></i></button>
                                         <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>
                                         <form action="{{route('mbkmuser.destroy', $item->id)}}" method="post" id="form-{{$item->id}}">
                                             @csrf
@@ -66,6 +62,51 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('modal')
+@foreach ($data as $item)
+<div class="modal fade" id="infoModal{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">KHS dan Foto {{$item->user->name}}</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-9">
+                        <embed src="{{asset('storage/'.$item->khs)}}" type="application/pdf" width="100%" height="600px">
+                    </div>
+                    <div class="col-3">
+                        <img src="{{asset('storage/'.$item->photo)}}" alt="Foto {{$item->user->name}}" width="100%" class="img-thumbnail">
+                        <br>
+                        <br>
+                        <form action="{{route('mbkmuser.notifyPendaftaran', $item->id)}}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select name="status" class="form-control">
+                                    <option value="gagal">Gagal</option>
+                                    <option value="proses">Proses Seleksi Selanjutnya</option>
+                                    <option value="lolos">Lolos</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" data-status="ditolak">Ubah Status</button>
+                        </form>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection
 
 @push('scripts')
