@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\MbkmUser;
+use App\Models\Timeline;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -14,8 +15,15 @@ class MbkmUserController extends Controller
     public function index()
     {
         $title = 'Data Mahasiswa MBKM';
-        $data = MbkmUser::with('user', 'prodi', 'keahlian')->get();
+        $data = Timeline::latest()->get();
         return view('admin.mbkm-user.index', compact('data', 'title'));
+    }
+
+    public function showUsers(Timeline $timeline)
+    {
+        $title = 'Detail Mahasiswa MBKM';
+        $data = MbkmUser::where('timeline_id', $timeline->id)->get();
+        return view('admin.mbkm-user.show', compact('data', 'title'));
     }
 
     public function update(Request $request)

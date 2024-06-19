@@ -13,6 +13,7 @@ class MbkmUser extends Model
     protected $fillable = [
         'user_id',
         'prodi_id',
+        'timeline_id',
         'nim',
         'semester',
         'golongan',
@@ -36,5 +37,10 @@ class MbkmUser extends Model
     public function keahlian()
     {
         return $this->belongsToMany(Keahlian::class, 'mbkm_users_keahlian', 'mbkm_user_id', 'keahlian_id');
+    }
+
+    public function timeline()
+    {
+        return $this->belongsTo(Timeline::class);
     }
 }

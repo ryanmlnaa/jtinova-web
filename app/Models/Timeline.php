@@ -15,4 +15,9 @@ class Timeline extends Model
         'tahun_ajaran',
         'status',
     ];
+
+    public function MbkmUser()
+    {
+        return $this->hasMany(MbkmUser::class);
+    }
 }

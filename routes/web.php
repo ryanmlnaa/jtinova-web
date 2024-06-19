@@ -93,6 +93,7 @@ Route::group(['middleware' => ['auth']], function(){
         
         // mbkm
         Route::resource('mbkmuser', MbkmUserController::class)->except(['create', 'show', 'edit']);
+        Route::get('mbkmuser/{timeline}/show-users', [MbkmUserController::class, 'showUsers'])->name('mbkmuser.showUsers');
 
         // instruktur
         Route::resource("instruktur", InstrukturUserController::class)->except(['create', 'show', 'edit']);
