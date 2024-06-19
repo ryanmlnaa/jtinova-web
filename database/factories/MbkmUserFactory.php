@@ -19,6 +19,7 @@ class MbkmUserFactory extends Factory
         return [
             'user_id' => $this->faker->numberBetween(1, 10),
             'prodi_id' => $this->faker->numberBetween(1, 11),
+            'timeline_id' => 1,
             'nim' => 'E411' . $this->faker->randomNumber(5),
             'semester' => $this->faker->numberBetween(1, 8),
             'golongan' => $this->faker->randomElement(['A', 'B', 'C', 'D']),

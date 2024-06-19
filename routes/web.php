@@ -19,6 +19,7 @@ use App\Http\Controllers\Pelatihan\PelatihanUserController as PelatihanPelatihan
 use App\Http\Controllers\Pendampingan\PendampinganUserController as PendampinganPendampinganUserController;
 use App\Http\Controllers\Admin\PendampinganUserController;
 use App\Http\Controllers\Admin\SkemaPendampinganController;
+use App\Http\Controllers\Admin\TimelineController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WebConfigController;
 use App\Http\Controllers\TransactionsController;
@@ -85,8 +86,10 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('user', UserController::class)->except(['show', 'edit']);
 
         // pegawai
-        
         Route::resource('pegawai', PegawaiController::class);
+
+        // timeline
+        Route::resource('timeline', TimelineController::class)->except(['show']);
         
         // mbkm
         Route::resource('mbkmuser', MbkmUserController::class)->except(['create', 'show', 'edit']);
