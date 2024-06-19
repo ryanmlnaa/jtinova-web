@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LandingPageController::class, 'index'])->name('lading.page');
+Route::get('/', [LandingPageController::class, 'index'])->name('landing.page');
 
 Route::get('/portfolio/{id}', [LandingPageController::class, 'show'])->name('portfolio.show');
 
@@ -46,6 +46,12 @@ Route::get('register-mbkm', [App\Http\Controllers\Auth\RegisterController::class
 Route::get('register-pendampingan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pendampingan');
 Route::get('register-pelatihan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pelatihan');
 Route::get('register-instruktur', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.instruktur');
+
+Route::get('katalog-pelatihan', [App\Http\Controllers\Pelatihan\LandingPageController::class, 'index'])->name('katalog.pelatihan.index');
+Route::get('katalog-pelatihan/{kode}', [App\Http\Controllers\Pelatihan\LandingPageController::class, 'show'])->name('katalog.pelatihan.show');
+
+Route::get('katalog-pendampingan', [App\Http\Controllers\Pendampingan\LandingPageController::class, 'index'])->name('katalog.pendampingan.index');
+Route::get('katalog-pendampingan/{kode}', [App\Http\Controllers\Pendampingan\LandingPageController::class, 'show'])->name('katalog.pendampingan.show');
 
 Route::group(['middleware' => ['auth']], function(){
     // home or dashboard
@@ -97,18 +103,8 @@ Route::group(['middleware' => ['auth']], function(){
         // peserta pelatihan team
         Route::resource("/pelatihanteam", PelatihanTeamController::class)->except(['create', 'edit']);
 
-        // produk
-        Route::get('/dataproduk', [App\Http\Controllers\ProdukController::class, 'index'])->name('dataproduk');
-
         // portofolio
         Route::resource('/portofolio', PortofolioController::class)->except('show');
-
-        // pembayaran
-        Route::get("/datapembayaran", [PembayaranController::class, 'index'])->name("Pembayaran.index");
-        Route::post("/tambahpembayaran", [PembayaranController::class, 'tambah'])->name("Pembayaran.tambah");
-        Route::get("/editpembayaran/{id}", [PembayaranController::class, 'edit'])->name("Pembayaran.edit");
-        Route::patch("/updatepembayaran/{id}", [PembayaranController::class, 'update'])->name("Pembayaran.update");
-        Route::delete("/hapuspembayaran/{id}", [PembayaranController::class, 'delete'])->name("Pembayaran.delete");
     });
 
     // route with middleware mahasiswa-mbkm

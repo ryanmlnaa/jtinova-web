@@ -29,6 +29,6 @@ class LandingPageController extends Controller
         $portofolio = Portofolio::with(['category', 'images'])->findOrFail($id);
         $webConfig = WebConfig::first();
 
-        return view('portofolio.portfolio-details', compact('portofolio', 'webConfig'));
+        return view('welcome.portofolio.show', compact('portofolio', 'webConfig'));
     }    
 }

@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ProdiSeeder::class,
             KeahlianSeeder::class,
+            PortofolioSeeder::class,
             SkemaPendampinganSeeder::class,
             PelatihanSeeder::class,
             JabatanSeeder::class,

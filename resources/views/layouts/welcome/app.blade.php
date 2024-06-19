@@ -33,23 +33,28 @@
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="{{route('lading.page')}}" class="logo d-flex align-items-center me-auto">
+      <a href="{{route('landing.page')}}" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="{{ asset('static/favicon.png') }}" alt="logo" class="img-fluid">
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="">Home<br></a></li>
-          <li><a href="#about" class="">Tentang Kami<br></a></li>
-          <li><a href="#layanan">Layanan</a></li>
-          <li><a href="#portfolio">Portofolio</a></li>
+          <li><a href="{{route('landing.page')}}#hero" class="">Home<br></a></li>
+          <li><a href="{{route('landing.page')}}#about" class="">Tentang Kami<br></a></li>
+          <li><a href="{{route('landing.page')}}#layanan">Layanan</a></li>
+          <li><a href="{{route('landing.page')}}#portfolio">Portofolio</a></li>
+          @auth
+          <li><a href="{{route('dashboard')}}">{{Auth::user()->name}}</a></li>
+          @endauth
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
+      @guest
       <a class="btn-masuk" href="{{route ('login')}}">Masuk</a>
-      <a class="btn-getstarted" href="#tabs">Daftar</a>
+      <a class="btn-getstarted" href="{{route('landing.page')}}#tabs">Daftar</a>
+      @endguest
 
     </div>
   </header>
@@ -112,7 +117,7 @@
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">JTInova</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
-        Designed by <a href="{{route('lading.page')}}">JTInova</a>
+        Designed by <a href="{{route('landing.page')}}">JTInova</a>
       </div>
     </div>
 

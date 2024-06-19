@@ -6,7 +6,7 @@
         <div
             class="col-12">
             <div class="login-brand">
-                <img src="{{asset('images/logo-jtinnovation.png')}}" alt="logo" width="500"
+                <img src="{{asset('static/logo.png')}}" alt="logo" width="500"
                     class="shadow-light">
             </div>
 
