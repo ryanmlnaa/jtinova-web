@@ -1,6 +1,24 @@
 @extends('layouts.auth.app')
 @section('title', 'Register')
 @section('content')
+@php
+if (request()->route()->getName() == 'register.mbkm') {
+    $timeline = \App\Models\Timeline::where('status', 1)->first();
+    if ($timeline) {
+        $timelineData = json_decode($timeline->timeline);
+
+        if (Carbon\Carbon::now()->format('Y-m-d') >= $timelineData[0]->start && Carbon\Carbon::now()->format('Y-m-d') <= $timelineData[0]->end) {
+            $disabled = false;
+        } else {
+            $disabled = true;
+        }
+    } else {
+        $disabled = true;
+    }
+} else {
+    $disabled = false;
+}
+@endphp
 <div class="container mt-5">
     <div class="row">
         <div
@@ -12,9 +30,16 @@
 
             <div class="card card-primary">
                 <div class="card-header">
-                    <h4>Register</h4>
+                    <h4>Pendaftaran</h4>
                 </div>
 
+                @if ($disabled)
+                <div class="card-body">
+                    <div class="alert alert-danger">
+                        Pendaftaran sudah ditutup atau belum dibuka
+                    </div>
+                </div>
+                @else
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -85,6 +110,7 @@
                         Have an account? <a href="{{ route('login') }}">Login</a>
                     </div>
                 </div>
+                @endif
             </div>
             <div class="simple-footer">
                 Copyright &copy; JTI Innovation @php echo date('Y'); @endphp

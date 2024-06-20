@@ -7,6 +7,7 @@ use App\Models\Pegawai;
 use App\Models\Pelatihan;
 use App\Models\Portofolio;
 use App\Models\SkemaPendampingan;
+use App\Models\Timeline;
 use App\Models\WebConfig;
 use Illuminate\Http\Request;
 
@@ -30,5 +31,11 @@ class LandingPageController extends Controller
         $webConfig = WebConfig::first();
 
         return view('welcome.portofolio.show', compact('portofolio', 'webConfig'));
-    }    
+    }
+
+    public function mbkmTimeline() {
+        $webConfig = WebConfig::first();
+        $timeline = Timeline::where('status', 1)->first();
+        return view('welcome.mbkm.mbkm-timeline', compact('webConfig', 'timeline'));
+    }
 }

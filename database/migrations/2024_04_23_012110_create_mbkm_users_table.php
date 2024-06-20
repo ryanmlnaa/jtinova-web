@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('prodi_id')->nullable()->constrained('prodis')->onDelete('cascade');
+            $table->foreignId('timeline_id')->nullable()->constrained('timelines')->nullOnDelete();
             $table->string("nim", 10)->nullable()->unique();
             $table->enum("semester", [1, 2, 3, 4, 5, 6, 7, 8])->nullable();
             $table->enum("golongan", ['A', 'B', 'C', 'D', 'E'])->nullable();
@@ -23,7 +24,7 @@ return new class extends Migration
             $table->string("photo")->nullable();
             $table->string("khs")->nullable();
             $table->enum("status", ['aktif', 'nonaktif'])->default('aktif');
-            // $table->enum("is_fill_form", [0,1])->default(0);
+            $table->enum("status_pendaftaran", ['proses', 'gagal', 'lolos'])->default('proses');
             $table->timestamps();
         });
     }

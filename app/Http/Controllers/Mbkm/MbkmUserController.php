@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mbkm;
 
 use App\Http\Controllers\Controller;
 use App\Models\MbkmUser;
+use App\Models\Timeline;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -32,8 +33,10 @@ class MbkmUserController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        $timelineId = Timeline::where('status', 1)->first()->id;
         $mbkmUser->update([
             'prodi_id' => $request->prodi_id,
+            'timeline_id' => $timelineId,
             'nim' => $request->nim,
             'semester' => $request->semester,
             'golongan' => $request->golongan,

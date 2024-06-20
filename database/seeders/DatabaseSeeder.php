@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             WebConfigSeeder::class,
             PermissionSeeder::class,
             RoleSeeder::class,
+            TimelineSeeder::class,
             UserSeeder::class,
         ]);
     }

@@ -36,8 +36,13 @@
     <div class="container">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                <a href="{{route('dashboard')}}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
+            @role('mahasiswa-mbkm')
+            <li class="nav-item">
+                <a href="{{route('mbkmTimeline.index')}}" class="nav-link"><i class="fas fa-calendar"></i><span>Timeline</span></a>
+            </li>
+            @endrole
         </ul>
     </div>
 </nav>
