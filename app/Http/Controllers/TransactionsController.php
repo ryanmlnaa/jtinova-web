@@ -4,19 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Transactions;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class TransactionsController extends Controller
 {
     public function buktiPembayaran(Request $req)
-    {
-       
-        
+    {        
         $validator = Validator::make($req->all(), [
-            'bukti_pembayaran' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -25,25 +23,19 @@ class TransactionsController extends Controller
             Alert::error($messages)->flash();
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        $data = [
-            
-            "invoice" => Str::random(20),
+
+        Transactions::create([
+            "invoice" => 'INV-' . Carbon::now()->getTimestamp() * rand(1, 9),
             "status" => "pending",
             "payment_method" => "transfer",
-        ];
-        $pathSegments = $req->segments();
-        if($pathSegments[0] == "transaction-pendampingan"){
-            $data["pendampingan_user_id"] = auth()->user()->pendampinganUser->id;
-        }
-        if($pathSegments[0] == "transaction-pelatihan"){
-            $data["pelatihan_user_id"] = auth()->user()->pelatihanUser->id;
-        }
-        if ($req->hasFile("bukti_pembayaran")) {
-            $data["payment_proof"] = $req->file("bukti_pembayaran")->store("images/bukti_pembayaran", "public");
-        }
-        Transactions::create($data);   
+            "pelatihan_user_id" => isset(auth()->user()->pelatihanUser->id) ? auth()->user()->pelatihanUser->id : null,
+            "pendampingan_user_id" => isset(auth()->user()->pendampinganUser->id) ? auth()->user()->pendampinganUser->id : null,
+            "payment_proof" => $req->file("bukti_pembayaran")->store("images/bukti_pembayaran", "public"),
+        ]);   
+
         $user = User::find(auth()->user()->id);
         $user->revokePermissionTo('bayar');
+        $user->givePermissionTo('pending');
 
         Alert::success('Berhasil', 'Data berhasil disimpan');
         return redirect()->route('dashboard');

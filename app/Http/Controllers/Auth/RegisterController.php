@@ -98,11 +98,9 @@ class RegisterController extends Controller
             $user->assignRole('user-pelatihan');
             $pelatihan = Pelatihan::where('kode', $data['kode'])->where('status', 'Aktif')->first();
             if ($pelatihan == null) {
-                $teamId = PelatihanTeam::create();
-                PelatihanUser::create(['user_id' => $user->id, 'pelatihan_team_id' => $teamId->id]);
+                PelatihanUser::create(['user_id' => $user->id]);
             } else {
-                $teamId = PelatihanTeam::create(['pelatihan_id' => $pelatihan->id]);
-                PelatihanUser::create(['user_id' => $user->id, 'pelatihan_team_id' => $teamId->id]);
+                PelatihanUser::create(['user_id' => $user->id, 'pelatihan_id' => $pelatihan->id]);
             }
 
         } else if ($data['requrlname'] == 'register.instruktur'){

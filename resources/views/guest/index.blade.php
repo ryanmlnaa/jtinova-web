@@ -27,6 +27,8 @@
             @include('guest.pelatihan.form-biodata')
         @elseif(auth()->user()->can('bayar'))
             @include('guest.form-bukti-bayar.index')
+        @elseif (auth()->user()->can('pending'))
+            @include('guest.form-bukti-bayar.pending')
         @else
             @include('guest.pelatihan.index')
         @endif

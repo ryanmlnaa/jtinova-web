@@ -12,14 +12,9 @@ class PelatihanTeam extends Model
     protected $table = 'pelatihan_teams';
 
     protected $fillable = [
-        'pelatihan_id',
-        'nama'
+        'nama',
+        'jumlah_anggota',
     ];
-
-    public function pelatihan()
-    {
-        return $this->belongsTo(Pelatihan::class, 'pelatihan_id', 'id');
-    }
 
     public function pelatihanUsers()
     {

@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\TimelineController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WebConfigController;
 use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\Admin\TransactionController as AdminTransactionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -113,6 +114,8 @@ Route::group(['middleware' => ['auth']], function(){
 
         // portofolio
         Route::resource('/portofolio', PortofolioController::class)->except('show');
+
+        Route::resource('transaction', AdminTransactionController::class)->only(['index', 'show', 'update']);
     });
 
     // route with middleware mahasiswa-mbkm
