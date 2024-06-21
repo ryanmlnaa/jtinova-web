@@ -30,7 +30,7 @@
         @elseif (auth()->user()->can('pending'))
             @include('guest.form-bukti-bayar.pending')
         @else
-            @include('guest.pelatihan.index')
+            @include('guest.pelatihan.index2')
         @endif
     @endrole
     @role('instruktur')

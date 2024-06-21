@@ -35,8 +35,11 @@
 <nav class="navbar navbar-secondary navbar-expand-lg">
     <div class="container">
         <ul class="navbar-nav">
-            <li class="nav-item active">
+            <li class="nav-item {{ Request::is('home') ? 'active' : '' }}">
                 <a href="{{route('dashboard')}}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+            </li>
+            <li class="nav-item {{ Request::is('dashboard/pelatihan') ? 'active' : '' }}">
+                <a href="{{route('dashboard.pelatihan.index')}}" class="nav-link"><i class="fas fa-book"></i><span>Pelatihan</span></a>
             </li>
             @role('mahasiswa-mbkm')
             <li class="nav-item">

@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WebConfigController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\Admin\TransactionController as AdminTransactionController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -130,4 +131,6 @@ Route::group(['middleware' => ['auth']], function(){
         Route::post('/transaction-pendampingan/{pendampinganUser}', [TransactionsController::class, 'buktiPembayaran'])->name('transaction.pendampingan');
         Route::post('/transaction-pelatihan/{pelatihanUser}', [TransactionsController::class, 'buktiPembayaran'])->name('transaction.pelatihan');
     });
+
+    Route::get('/dashboard/pelatihan', [DashboardController::class, 'indexPelatihan'])->name('dashboard.pelatihan.index');
 });
