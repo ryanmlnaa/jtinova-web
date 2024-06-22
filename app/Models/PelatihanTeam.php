@@ -20,4 +20,9 @@ class PelatihanTeam extends Model
     {
         return $this->hasMany(PelatihanUser::class, 'pelatihan_team_id', 'id');
     }
+
+    public function transaction()
+    {
+        return $this->hasOne(Transactions::class, 'pelatihan_team_id', 'id');
+    }
 }

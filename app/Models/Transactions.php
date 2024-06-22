@@ -11,6 +11,7 @@ class Transactions extends Model
 
     protected $table = 'transactions';
     protected $fillable = [
+        'pelatihan_team_id',
         'pelatihan_user_id',
         'pendampingan_user_id',
         'invoice',
@@ -18,6 +19,11 @@ class Transactions extends Model
         'payment_method',
         'payment_proof',
     ];
+
+    public function pelatihanTeam()
+    {
+        return $this->belongsTo(PelatihanTeam::class, 'pelatihan_team_id');
+    }
 
     public function pelatihanUser()
     {

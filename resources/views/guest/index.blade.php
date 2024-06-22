@@ -23,15 +23,7 @@
         @endif
     @endrole
     @role('user-pelatihan')
-        @if(auth()->user()->can('fill-profile'))
-            @include('guest.pelatihan.form-biodata')
-        @elseif(auth()->user()->can('bayar'))
-            @include('guest.form-bukti-bayar.index')
-        @elseif (auth()->user()->can('pending'))
-            @include('guest.form-bukti-bayar.pending')
-        @else
-            @include('guest.pelatihan.index2')
-        @endif
+        @include('guest.pelatihan.index2')
     @endrole
     @role('instruktur')
         @can('fill-profile')

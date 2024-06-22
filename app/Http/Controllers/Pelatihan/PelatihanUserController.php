@@ -16,20 +16,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class PelatihanUserController extends Controller
 {
-    public function update(Request $request, PelatihanUser $pelatihanUser)
+    public function store(Request $request)
     {
-        if($pelatihanUser->pelatihan_id != null || isset($pelatihanUser->pelatihan_id)){
-            $request['pelatihan_id'] = $pelatihanUser->pelatihan_id;
-        }
-
         $validator = Validator::make($request->all(), [
+            'skema' => 'required|in:individu,kelompok',
             'pelatihan_id' => 'required|exists:pelatihan,id',
-            'no_hp' => 'required|numeric|digits_between:10,15',
-            'alamat' => 'required|string|max:255',
-            'jenis_kelamin' => 'required|in:L,P',
-            'pendidikan_terakhir' => 'required|string|max:255',
-            'pekerjaan' => 'required|string|max:255',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // if request is kelompok, then validate nama and email
@@ -46,6 +37,11 @@ class PelatihanUserController extends Controller
             Alert::error($messages)->flash();
             return redirect()->back()->withErrors($validator)->withInput();
         }
+
+        $pelatihanUser = PelatihanUser::create([
+            'user_id' => auth()->user()->id,
+            'pelatihan_id' => $request->pelatihan_id,
+        ]);
 
         // if kelompok
         if($request->skema == "kelompok"){
@@ -66,7 +62,6 @@ class PelatihanUserController extends Controller
                 }
 
                 $user->assignRole('user-pelatihan');
-                $user->givePermissionTo('fill-profile');
                 $user->givePermissionTo('pending');
 
                 PelatihanUser::create([
@@ -81,57 +76,18 @@ class PelatihanUserController extends Controller
             ]);
         }
 
-        $pelatihanUser->update([
-            'pelatihan_id' => $request->pelatihan_id,
-            'no_hp' => $request->no_hp,
-            'alamat' => $request->alamat,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'pendidikan_terakhir' => $request->pendidikan_terakhir,
-            'pekerjaan' => $request->pekerjaan,
-            'foto' => $request->file('foto')->store('images/pelatihan-user', 'public'),
-        ]);
-
-        $user = User::find(auth()->user()->id);
-        $user->revokePermissionTo('fill-profile');
-        $user->givePermissionTo('bayar');
-
-        if($user->hasPermissionTo('pending')){
-            $user->revokePermissionTo('bayar');
-        }
-
-        Alert::success('Berhasil', 'Data berhasil disimpan');
-        return redirect()->route('dashboard');
-    }
-
-    public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'skema' => 'required|in:individu,kelompok',
-            'pelatihan_id' => 'required|exists:pelatihan,id',
-        ]);
-
-        if ($validator->fails()) {
-            $messages = $validator->errors()->all();
-            $messages = implode('<br>', $messages);
-            Alert::error($messages)->flash();
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $pelatihanUser = PelatihanUser::create([
-            'user_id' => auth()->user()->id,
-            'pelatihan_id' => $request->pelatihan_id,
-        ]);
-
         Transactions::create([
             'invoice' => 'INV-' . Carbon::now()->getTimestamp() * rand(1, 9),
             'status' => 'pending',
             'payment_method' => 'transfer',
-            'pelatihan_user_id' => $pelatihanUser->id,
+            'pelatihan_team_id' => $team_id ?? null,
+            'pelatihan_user_id' => $pelatihanUser->id ?? null,
         ]);
 
-        auth()->user()->givePermissionTo('pending');
+        auth()->user()->assignRole('user-pelatihan');
+        auth()->user()->givePermissionTo('pending', 'bayar');
 
-        Alert::success('Berhasil', 'Data berhasil disimpan');
+        Alert::success('Berhasil', 'Pendaftaran berhasil! Silahkan lakukan pembayaran.');
         return redirect()->route('dashboard');
     }
 }

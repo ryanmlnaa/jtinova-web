@@ -19,7 +19,6 @@
                       <tr>
                         <th>#</th>
                         <th>Nama Pelatihan</th>
-                        <th>Status</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -28,10 +27,16 @@
                         <tr>
                           <td>{{$loop->iteration}}</td>
                           <td>{{$item->pelatihan->nama}}</td>
-                          <td>{{$item->transaction->status}}</td>
                           <td>
-                            @if($item->transaction->status == 'pending' || $item->transaction->payment_proof == null)
-                            <a href="{{route('transaction.bayar.index', Illuminate\Support\Facades\Crypt::encryptString($item->transaction->id))}}" class="btn btn-primary">Upload Bukti Bayar</a>
+                            @php
+                            $status = isset($item->team->transaction->status) ? $item->team->transaction->status : $item->transaction->status;
+                            $id = isset($item->team->transaction->id) ? $item->team->transaction->id : $item->transaction->id;
+                            $pelatihan_user_id_transaction = isset($item->team->transaction->pelatihan_user_id) ? $item->team->transaction->pelatihan_user_id : $item->transaction->pelatihan_user_id;
+                            @endphp
+                            @if($status == 'pending' && $pelatihan_user_id_transaction == $item->id)
+                            <a href="{{route('transaction.bayar.index', Illuminate\Support\Facades\Crypt::encryptString($id))}}" class="btn btn-primary">Upload Bukti Bayar</a>
+                            @elseif($status == 'pending')
+                            Status pembayaran: <span class="badge badge-warning">Menunggu Konfirmasi</span>
                             @else
                             <a href="#" class="btn btn-primary">Koridor Kelas</a>
                             @endif
