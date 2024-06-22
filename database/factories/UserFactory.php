@@ -19,6 +19,12 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
+            'no_hp' => $this->faker->phoneNumber,
+            'alamat' => $this->faker->address,
+            'jenis_kelamin' => $this->faker->randomElement(['L', 'P']),
+            'pendidikan_terakhir' => $this->faker->randomElement(['S1', 'S2', 'S3']),
+            'pekerjaan' => $this->faker->jobTitle,
+            'foto' => $this->faker->imageUrl(640, 480, 'people', true),
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
         ];

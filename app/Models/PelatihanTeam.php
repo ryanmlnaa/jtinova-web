@@ -12,17 +12,17 @@ class PelatihanTeam extends Model
     protected $table = 'pelatihan_teams';
 
     protected $fillable = [
-        'pelatihan_id',
-        'nama'
+        'nama',
+        'jumlah_anggota',
     ];
-
-    public function pelatihan()
-    {
-        return $this->belongsTo(Pelatihan::class, 'pelatihan_id', 'id');
-    }
 
     public function pelatihanUsers()
     {
         return $this->hasMany(PelatihanUser::class, 'pelatihan_team_id', 'id');
+    }
+
+    public function transaction()
+    {
+        return $this->hasOne(Transactions::class, 'pelatihan_team_id', 'id');
     }
 }

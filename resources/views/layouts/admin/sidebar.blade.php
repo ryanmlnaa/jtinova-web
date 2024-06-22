@@ -18,6 +18,7 @@
       <li class=" {{ Request::is('prodi') ? 'active' : '' }} "><a class="nav-link" href="{{ route('prodi.index') }}"><i class="fas fa-graduation-cap"></i> <span>Prodi</span></a></li>
       <li class=" {{ Request::is('category') ? 'active' : '' }} "><a class="nav-link" href="{{ route('category.index') }}"><i class="fas fa-database"></i> <span>Data Kategori</span></a></li>
       <li class=" {{ Request::is('timeline') ? 'active' : '' }} "><a class="nav-link" href="{{ route('timeline.index') }}"><i class="fas fa-stream"></i> <span>Data Timeline</span></a></li>
+      <li class=" {{ Request::is('transaction') ? 'active' : '' }} "><a class="nav-link" href="{{ route('transaction.index') }}"><i class="fas fa-dollar-sign"></i> <span>Data Transaksi</span></a></li>
       
       <li class="menu-header">Data Layanan</li>
       <li class=" {{ Request::is('skemaPendampingan') ? 'active' : '' }} "><a class="nav-link" href="{{ route('skemaPendampingan.index') }}"><i class="fas fa-book"></i> <span>Skema Pendampingan</span></a></li>

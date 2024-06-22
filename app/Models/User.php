@@ -16,6 +16,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'no_hp',
+        'alamat',
+        'jenis_kelamin',
+        'pendidikan_terakhir',
+        'pekerjaan',
+        'foto',
         'email_verified_at',
     ];
 
@@ -31,7 +37,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function pelatihanUser()
     {
-        return $this->hasOne(PelatihanUser::class);
+        return $this->hasMany(PelatihanUser::class);
     }
 
     public function instrukturUser()

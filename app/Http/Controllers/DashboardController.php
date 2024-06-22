@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Keahlian;
+use App\Models\PelatihanUser;
 use App\Models\Prodi;
 use App\Models\SkemaPendampingan;
 
@@ -22,5 +23,12 @@ class DashboardController extends Controller
             // Kirim data ke view dashboard
             return view('guest.index', compact('title', 'prodis', 'keahlians', 'skemaPendampingans'));
         }
+    }
+
+    public function indexPelatihan()
+    {
+        $title = 'Pelatihan';
+        $pelatihan = PelatihanUser::where('user_id', auth()->id())->get();
+        return view('guest.pelatihan.index', compact('pelatihan', 'title'));
     }
 }

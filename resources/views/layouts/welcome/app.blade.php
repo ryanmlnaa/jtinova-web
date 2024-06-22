@@ -139,6 +139,7 @@
   <!-- Main JS File -->
   <script src="{{asset ('assetss/assets/js/main.js') }}"></script>
 
+  @stack('scripts')
 </body>
 
 </html>

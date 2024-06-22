@@ -3,20 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transactions;
-use App\Models\User;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class TransactionsController extends Controller
 {
-    public function buktiPembayaran(Request $req)
+    public function index($id)
     {
-       
-        
+        $title = 'Bukti Pembayaran';
+        return view('guest.form-bukti-bayar.index', compact('title'));
+    }
+
+    public function update(Request $req, $id)
+    {
         $validator = Validator::make($req->all(), [
-            'bukti_pembayaran' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -25,25 +29,19 @@ class TransactionsController extends Controller
             Alert::error($messages)->flash();
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        $data = [
-            
-            "invoice" => Str::random(20),
-            "status" => "pending",
-            "payment_method" => "transfer",
-        ];
-        $pathSegments = $req->segments();
-        if($pathSegments[0] == "transaction-pendampingan"){
-            $data["pendampingan_user_id"] = auth()->user()->pendampinganUser->id;
+
+        try {
+            $decrypted = Crypt::decryptString($id);
+        } catch (DecryptException $e) {
+            Alert::error($e->getMessage())->flash();
+            return redirect()->back();
         }
-        if($pathSegments[0] == "transaction-pelatihan"){
-            $data["pelatihan_user_id"] = auth()->user()->pelatihanUser->id;
-        }
-        if ($req->hasFile("bukti_pembayaran")) {
-            $data["payment_proof"] = $req->file("bukti_pembayaran")->store("images/bukti_pembayaran", "public");
-        }
-        Transactions::create($data);   
-        $user = User::find(auth()->user()->id);
-        $user->revokePermissionTo('bayar');
+
+        $transaction = Transactions::where('id', $decrypted)->first();
+
+        $transaction->update([
+            "payment_proof" => $req->file("bukti_pembayaran")->store("images/bukti_pembayaran", "public"),
+        ]);
 
         Alert::success('Berhasil', 'Data berhasil disimpan');
         return redirect()->route('dashboard');

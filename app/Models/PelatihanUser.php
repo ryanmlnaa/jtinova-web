@@ -13,13 +13,8 @@ class PelatihanUser extends Model
 
     protected $fillable = [
         'pelatihan_team_id',
+        'pelatihan_id',
         'user_id',
-        'no_hp',
-        'alamat',
-        'jenis_kelamin',
-        'pendidikan_terakhir',
-        'pekerjaan',
-        'foto',
     ];
 
     public function team()
@@ -27,8 +22,18 @@ class PelatihanUser extends Model
         return $this->belongsTo(PelatihanTeam::class, 'pelatihan_team_id', 'id');
     }
 
+    public function pelatihan()
+    {
+        return $this->belongsTo(Pelatihan::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function transaction()
+    {
+        return $this->hasOne(Transactions::class, 'pelatihan_user_id');
     }
 }

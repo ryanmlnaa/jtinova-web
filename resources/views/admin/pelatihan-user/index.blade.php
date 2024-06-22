@@ -26,7 +26,7 @@
                                 @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->pelatihan->kode }}</td>
+                                    <td>{{ isset($item->pelatihan->kode) ? $item->pelatihan->kode : '' }}</td>
                                     <td>{{ $item->user->name }}</td>
                                     <td>{{ $item->jenis_kelamin }}</td>
                                     <td>{{ $item->pendidikan_terakhir }}</td>

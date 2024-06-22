@@ -13,7 +13,7 @@
             <div class="form-group col-6">
               <label for="no_hp">No HP / WA</label> <span class="text-danger">*</span>
               <input id="no_hp" type="text" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp"
-                  value="{{ old('no_hp') }}">
+                  value="{{ old('no_hp') }}" required>
               @error('no_hp')
               <div class="invalid-feedback">
                   {{ $message }}
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group col-6">
               <label for="jenis_kelamin">Jenis Kelamin</label> <span class="text-danger">*</span>
-              <select name="jenis_kelamin" id="jenis_kelamin" class="form-control @error('jenis_kelamin') is-invalid @enderror">
+              <select name="jenis_kelamin" id="jenis_kelamin" class="form-control @error('jenis_kelamin') is-invalid @enderror" required>
                   <option value="L" {{ old('jenis_kelamin') == 'L' ? 'selected' : '' }}>Laki-laki</option>
                   <option value="P" {{ old('jenis_kelamin') == 'P' ? 'selected' : '' }}>Perempuan</option>
               </select>
@@ -36,7 +36,7 @@
 
           <div class="form-group">
             <label for="alamat">Alamat</label> <span class="text-danger">*</span>
-            <textarea id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat">{{ old('alamat') }}</textarea>
+            <textarea id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" required>{{ old('alamat') }}</textarea>
             @error('alamat')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -47,7 +47,7 @@
           <div class="row">
             <div class="form-group col-6">
               <label for="pendidikan_terakhir">Pendidikan Terakhir</label> <span class="text-danger">*</span>
-              <select name="pendidikan_terakhir" id="pendidikan_terakhir" class="form-control @error('pendidikan_terakhir') is-invalid @enderror">
+              <select name="pendidikan_terakhir" id="pendidikan_terakhir" class="form-control @error('pendidikan_terakhir') is-invalid @enderror" required>
                   <option value="SD" {{ old('pendidikan_terakhir') == 'SD' ? 'selected' : '' }}>SD</option>
                   <option value="SMP" {{ old('pendidikan_terakhir') == 'SMP' ? 'selected' : '' }}>SMP</option>
                   <option value="SMA" {{ old('pendidikan_terakhir') == 'SMA' ? 'selected' : '' }}>SMA / SMK</option>
@@ -66,7 +66,7 @@
             <div class="form-group col-6">
               <label for="pekerjaan">Pekerjaan</label> <span class="text-danger">*</span>
               <input id="pekerjaan" type="text" class="form-control @error('pekerjaan') is-invalid @enderror" name="pekerjaan"
-                  value="{{ old('pekerjaan') }}">
+                  value="{{ old('pekerjaan') }}" required>
               @error('pekerjaan')
               <div class="invalid-feedback">
                   {{ $message }}
@@ -78,7 +78,7 @@
           <div class="form-group">
             <label for="foto">Upload Foto Terbaru</label>
             <input id="foto" type="file" class="form-control @error('foto') is-invalid @enderror" name="foto"
-                value="{{ old('foto') }}">
+                value="{{ old('foto') }}" required>
             @error('foto')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -86,10 +86,11 @@
             @enderror
           </div>
 
+          @cannot('pending')
           <div class="row">
             <div class="form-group col-6">
               <label for="pelatihan_id">Pelatihan yang Dipilih</label> <span class="text-danger">*</span>
-              <select name="pelatihan_id" id="pelatihan_id" class="form-control @error('pelatihan_id') is-invalid @enderror">
+              <select name="pelatihan_id" id="pelatihan_id" class="form-control @error('pelatihan_id') is-invalid @enderror" required>
               <option value="">Pilih Pelatihan</option>
               @foreach ($pelatihans as $pelatihan)
                   <option value="{{ $pelatihan->id }}" {{ old('pelatihan_id', auth()->user()->pelatihanUser->id) == $pelatihan->id ? 'selected' : '' }}>{{ $pelatihan->nama }}</option>
@@ -103,7 +104,7 @@
             </div>
             <div class="form-group col-6">
               <label for="skema">Skema</label> <span class="text-danger">*</span>
-              <select name="skema" id="skema" class="form-control @error('skema') is-invalid @enderror">
+              <select name="skema" id="skema" class="form-control @error('skema') is-invalid @enderror" required>
                 <option value="individu">Individu</option>
                 <option value="kelompok">Kelompok</option>
               </select>
@@ -141,9 +142,25 @@
             </div>
           </div>
 
-          <div class="row" id="tambah_anggota" style="display: none;">
-
+          <div class="row input-copy-here form-kelompok" style="display: none;">
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+              <div class="form-group">
+                <input type="text" class="form-control form-anggota" name="nama[]" id="nama" placeholder="Nama Anggota" required>
+              </div>
+            </div>
+            <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8">
+              <div class="row">
+                <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-10 col-sm-10">
+                  <input type="email" class="form-control form-anggota" name="email[]" id="email" placeholder="Email Anggota" required>
+                </div>
+                <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                  {{-- add tooltip --}}
+                  <button type="button" class="btn btn-outline-primary btn-add" data-toggle="tooltip" data-placement="top" title="Tambah Anggota"><i class="fas fa-plus-square"></i></button>
+                </div>
+              </div>
+            </div>
           </div>
+          @endcannot
 
           <div class="form-group">
               <button type="submit" class="btn btn-primary btn-lg btn-block">
@@ -151,10 +168,31 @@
               </button>
           </div>
       </form>
+
+      <div class="row form-group input-copy" style="display: none;">
+        <div class="input-group">
+          <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+            <div class="form-group">
+              <input type="text" class="form-control form-anggota" name="nama[]" id="nama" placeholder="Nama Anggota" required>
+            </div>
+          </div>
+          <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8">
+            <div class="row">
+              <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-10 col-sm-10">
+                <input type="email" class="form-control form-anggota" name="email[]" id="email" placeholder="Email Anggota" required>
+              </div>
+              <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                <button type="button" class="btn btn-outline-primary btn-remove" data-toggle="tooltip" data-placement="top" title="Hapus Anggota"><i class="fas fa-minus-square"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
 
 @push('scripts')
+  <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
   <script>
     function getPelatihanDetail(idPelatihan){
       $.ajax({
@@ -177,53 +215,45 @@
     }
     $(document).ready(function() {
       getPelatihanDetail($("#pelatihan_id").val());
-     
+      let kuota_tim = 0;
+      // max click btn-add based on kuota_tim
+      $('body').on('click', '.btn-add', function () {
+          if ($('.input-copy-here .input-group').length >= kuota_tim - 1) {
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Maksimal anggota tim adalah ' + kuota_tim + ' orang!',
+              });
+              return;
+          }
+          var input = $('.input-copy').html();
+          $('.input-copy-here').append(input);
+      });
+
+      $("body").on('click', '.btn-remove', function () {
+          $(this).parents('.input-group').remove();
+      });
+
       $('#skema').on('change', function() {
         if ($(this).val() == 'kelompok') {
-          var kuota_tim = parseInt($('#kuota_tim').text());
-          console.log(kuota_tim);
-          for (var i = 0; i < kuota_tim; i++) {
-            $('#tambah_anggota').append(`
-            <div class="form-group col-6">
-              <label for="nama">Nama</label> <span class="text-danger">*</span>
-              <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama[]"
-                   autofocus>
-              @error('nama')
-              <div class="invalid-feedback">
-                  {{ $message }}
-              </div>
-              @enderror
-            </div>
+          kuota_tim = parseInt($('#kuota_tim').text());
 
-            <div class="form-group col-6">
-                <label for="email">Email</label> <span class="text-danger">*</span>
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email[]"
-                    >
-                @error('email')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
-          `);
-          }
-
-          $('#tambah_anggota').show();
+          $('.form-kelompok').show();
         } else {
-          $('#tambah_anggota').empty();
-          $('#tambah_anggota').hide();
+          $('.form-anggota').val('');
+          $('.form-kelompok').hide();
         }
       });
 
       $('#pelatihan_id').on('change', function() {
         if ($(this).val() == '') {
           $('#skema').val('');
-          $('#tambah_anggota').empty();
-          $('#tambah_anggota').hide();
+          $('.form-anggota').val('');
+          $('.form-kelompok').hide();
         } else {
           $('#skema').val('individu');
-          $('#tambah_anggota').empty();
-          $('#tambah_anggota').hide();
+          $('.form-anggota').val('');
+          $('.form-kelompok').hide();
         }
 
         getPelatihanDetail($(this).val());
