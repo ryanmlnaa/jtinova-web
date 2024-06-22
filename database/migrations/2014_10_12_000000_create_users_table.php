@@ -21,6 +21,9 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
             $table->string('pendidikan_terakhir')->nullable();
             $table->string('pekerjaan')->nullable();
+            $table->string("portofolio")->nullable();
+            $table->string("cv")->nullable();
+            $table->string("linkedin")->nullable();
             $table->string('foto')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
