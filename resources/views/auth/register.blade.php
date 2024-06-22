@@ -43,16 +43,8 @@ if (request()->route()->getName() == 'register.mbkm') {
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-                        <input type="hidden" name="requrlname" value="{{ request()->route()->getName() }}">
-                        @if (request()->get('pendampingan') != '')
-                            <input type="hidden" name="kode" value="{{ request()->get('pendampingan') }}">
-                        @elseif (request()->get('pelatihan') != '')
-                            <input type="hidden" name="kode" value="{{ request()->get('pelatihan') }}">
-                        @else
-                            <input type="hidden" name="kode" value="user">
-                        @endif
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Nama Lengkap</label>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                                 value="{{ old('name') }}" autofocus>
                             @error('name')
@@ -89,7 +81,7 @@ if (request()->route()->getName() == 'register.mbkm') {
                                 @enderror
                             </div>
                             <div class="form-group col-6">
-                                <label for="password2" class="d-block">Password Confirmation</label>
+                                <label for="password2" class="d-block">Konfirmasi Password</label>
                                 <input id="password2" type="password" class="form-control"
                                     name="password_confirmation">
                             </div>
@@ -97,7 +89,7 @@ if (request()->route()->getName() == 'register.mbkm') {
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                Register
+                                Daftar
                             </button>
                         </div>
                         @if (session('success'))
@@ -107,7 +99,7 @@ if (request()->route()->getName() == 'register.mbkm') {
                         @endif
                     </form>
                     <div class="mt-5 text-muted text-center">
-                        Have an account? <a href="{{ route('login') }}">Login</a>
+                        Sudah Punya Akun? <a href="{{ route('login') }}">Login</a>
                     </div>
                 </div>
                 @endif

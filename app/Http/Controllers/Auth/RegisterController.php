@@ -61,8 +61,6 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'requrlname' => ['required', 'string', 'max:255'],
-            'kode' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -79,37 +77,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        $user->givePermissionTo('fill-profile');
-
-        if ($data['requrlname'] == 'register.mbkm') {
-            $user->assignRole('mahasiswa-mbkm');
-            MbkmUser::create(['user_id' => $user->id]);
-
-        } else if ($data['requrlname'] == 'register.pendampingan'){
-            $user->assignRole('user-pendampingan');
-            $skemaPendampingan = SkemaPendampingan::where('kode', $data['kode'])->where('status', 'Aktif')->first();
-            if ($skemaPendampingan == null) {
-                PendampinganUser::create(['user_id' => $user->id]);
-            } else {
-                PendampinganUser::create(['user_id' => $user->id, 'skema_pendampingan_id' => $skemaPendampingan->id]);
-            }
-
-        } else if ($data['requrlname'] == 'register.pelatihan'){
-            $user->assignRole('user-pelatihan');
-            $pelatihan = Pelatihan::where('kode', $data['kode'])->where('status', 'Aktif')->first();
-            if ($pelatihan == null) {
-                PelatihanUser::create(['user_id' => $user->id]);
-            } else {
-                PelatihanUser::create(['user_id' => $user->id, 'pelatihan_id' => $pelatihan->id]);
-            }
-
-        } else if ($data['requrlname'] == 'register.instruktur'){
-            $user->assignRole('instruktur');
-            InstrukturUser::create(['user_id' => $user->id]);
-
-        } else {
-            $user->assignRole('user');
-        }
 
         return $user;
     }

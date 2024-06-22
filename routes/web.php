@@ -46,8 +46,6 @@ Route::get('/portfolio/{id}', [LandingPageController::class, 'show'])->name('por
 Auth::routes(['verify' => true]);
 
 Route::get('register-mbkm', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.mbkm');
-Route::get('register-pendampingan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pendampingan');
-Route::get('register-pelatihan', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.pelatihan');
 Route::get('register-instruktur', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.instruktur');
 
 Route::get('katalog-pelatihan', [App\Http\Controllers\Pelatihan\LandingPageController::class, 'index'])->name('katalog.pelatihan.index');
