@@ -24,18 +24,6 @@ class TransactionController extends Controller
         $data->status = 'success';
         $data->save();
 
-        $pelatihan_team_id = $data->pelatihanUser->pelatihan_team_id;
-        if ($pelatihan_team_id != null) {
-            $userPelatihan = PelatihanUser::where('pelatihan_team_id', $pelatihan_team_id)->get();
-            foreach ($userPelatihan as $user) {
-                $user->user->revokePermissionTo('bayar');
-                $user->user->revokePermissionTo('pending');
-            }
-        } else {
-            $data->pelatihanUser->user->revokePermissionTo('bayar');
-            $data->pelatihanUser->user->revokePermissionTo('pending');
-        }
-
         Alert::success("Success", "Berhasil Menambahkan Data");
         return redirect()->route('transaction.index');
     }

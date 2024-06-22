@@ -123,13 +123,18 @@ Route::group(['middleware' => ['auth']], function(){
     Route::group(['middleware' => ['can:fill-profile']], function(){
         // fill form
         Route::put('/mahasiswa-mbkm/{mbkmUser}', [MbkmMbkmUserController::class, 'update'])->name('mbkm.mbkmuser.update');
-        Route::put('/pendampingan-user/{pendampinganUser}', [PendampinganPendampinganUserController::class, 'update'])->name('pendampingan.pendampinganuser.update');
         Route::put('/pelatihan-user/{pelatihanUser}', [PelatihanPelatihanUserController::class, 'update'])->name('pelatihan.pelatihanuser.update');
         Route::put('/instruktur-user/{instrukturUser}', [InstrukturInstrukturUserController::class, 'update'])->name('instruktur.instrukturuser.update');
     });
-
+    
     Route::get('/dashboard/pelatihan', [DashboardController::class, 'indexPelatihan'])->name('dashboard.pelatihan.index');
     Route::post('/pelatihan-user', [PelatihanPelatihanUserController::class, 'store'])->name('pelatihan.pelatihanuser.store');
+    
+    Route::get('/dashboard/pendampingan', [DashboardController::class, 'indexPendampingan'])->name('dashboard.pendampingan.index');
+    Route::get('/dashboard/pendampingan/show-form', [PendampinganPendampinganUserController::class, 'showForm'])->name('pendampingan.showForm');
+    Route::post('/pendampingan-user', [PendampinganPendampinganUserController::class, 'store'])->name('pendampingan.pendampingan.store');
+    Route::put('/pendampingan-user/{id}', [PendampinganPendampinganUserController::class, 'update'])->name('pendampingan.pendampinganuser.update');
+    
     Route::get('/transaction-user/bayar/{id}', [TransactionsController::class, 'index'])->name('transaction.bayar.index');
     Route::put('/transaction-user/bayar/{id}', [TransactionsController::class, 'update'])->name('transaction.bayar.update');
 });

@@ -14,16 +14,10 @@
         @endcan
     @endrole
     @role('user-pendampingan')
-        @if(auth()->user()->can('fill-profile'))
-            @include('guest.pendampingan.form-biodata')
-        @elseif(auth()->user()->can('bayar'))
-            @include('guest.form-bukti-bayar.index')
-        @else
-            @include('guest.pendampingan.index')
-        @endif
+        @include('guest.pendampingan.dashboard')
     @endrole
     @role('user-pelatihan')
-        @include('guest.pelatihan.index2')
+        @include('guest.pelatihan.dashboard')
     @endrole
     @role('instruktur')
         @can('fill-profile')

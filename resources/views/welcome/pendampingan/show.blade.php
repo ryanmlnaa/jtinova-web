@@ -37,7 +37,18 @@
             <div class="content">
               <p>{{$training->deskripsi}}</p>
             </div><!-- End post content -->
-            <a href="{{route('register.pendampingan')}}?pendampingan={{$training->kode}}" class="btn-daftar-layanan">Daftar</a>
+            
+            @auth
+            <form action="{{route('pendampingan.pendampingan.store')}}" method="post">
+              @csrf
+              <input type="hidden" name="pendampingan_id" value="{{$training->id}}">
+              <div class="form-group">
+                <button type="submit" class="btn-daftar-layanan">Daftar</button>
+              </div>
+            </form>
+            @else
+            <a href="{{route('register')}}" class="btn-daftar-layanan mt-3">Daftar</a>
+            @endauth
           </article>
 
         </div>
@@ -47,3 +58,8 @@
 </div>
 
 @endsection
+
+@push('scripts')
+<script src="{{ asset('assets/modules/jquery.min.js') }}"></script>
+<script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
+@endpush
