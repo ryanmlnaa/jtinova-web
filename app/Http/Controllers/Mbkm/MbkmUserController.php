@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Mbkm;
 
 use App\Http\Controllers\Controller;
+use App\Models\Keahlian;
 use App\Models\MbkmUser;
+use App\Models\Prodi;
 use App\Models\Timeline;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,7 +14,15 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class MbkmUserController extends Controller
 {
-    public function update(Request $request, MbkmUser $mbkmUser)
+    public function formMbkm()
+    {
+        $title = 'Formulir MBKM';
+        $prodis = Prodi::all();
+        $keahlians = Keahlian::all();
+        return view('guest.mbkm.form-biodata', compact('title', 'prodis', 'keahlians'));
+    }
+
+    public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'prodi_id' => 'required',
@@ -34,24 +44,25 @@ class MbkmUserController extends Controller
         }
 
         $timelineId = Timeline::where('status', 1)->first()->id;
-        $mbkmUser->update([
+        $mbkmUser = MbkmUser::create([
+            'user_id' => auth()->user()->id,
             'prodi_id' => $request->prodi_id,
             'timeline_id' => $timelineId,
             'nim' => $request->nim,
             'semester' => $request->semester,
             'golongan' => $request->golongan,
             'tahun_masuk' => $request->tahun_masuk,
-            'no_hp' => $request->no_hp,
-            'photo' => $request->file('photo')->store('images/mbkm-user', 'public'),
             'khs' => $request->file('khs')->store('pdffile/mbkm-user', 'public'),
         ]);
         
-        // attach keahlian
         $mbkmUser->keahlian()->attach($request->keahlian_id);
+        
+        User::find(auth()->user()->id)->update([
+            'no_hp' => $request->no_hp,
+            'foto' => $request->file('photo')->store('images/mbkm-user', 'public'),
+        ]);
 
-        // remove permission fill-profile
-        $user = User::find(auth()->user()->id);
-        $user->revokePermissionTo('fill-profile');
+        auth()->user()->assignRole('mahasiswa-mbkm');
 
         Alert::success('Berhasil', 'Data berhasil disimpan');
         return redirect()->back();

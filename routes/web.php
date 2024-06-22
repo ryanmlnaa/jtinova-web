@@ -45,7 +45,6 @@ Route::get('/portfolio/{id}', [LandingPageController::class, 'show'])->name('por
 
 Auth::routes(['verify' => true]);
 
-Route::get('register-mbkm', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.mbkm');
 Route::get('register-instruktur', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.instruktur');
 
 Route::get('katalog-pelatihan', [App\Http\Controllers\Pelatihan\LandingPageController::class, 'index'])->name('katalog.pelatihan.index');
@@ -60,7 +59,7 @@ Route::get('timeline-pendaftaran-mbkm', [LandingPageController::class, 'mbkmTime
 Route::group(['middleware' => ['auth']], function(){
     // home or dashboard
     Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->middleware('verified')->name('dashboard');
-
+    
     // middleware role admin and pegawai
     Route::group(['middleware' => ['role:admin|pegawai']], function(){
         // web config
@@ -120,10 +119,12 @@ Route::group(['middleware' => ['auth']], function(){
     // route with middleware mahasiswa-mbkm
     Route::group(['middleware' => ['can:fill-profile']], function(){
         // fill form
-        Route::put('/mahasiswa-mbkm/{mbkmUser}', [MbkmMbkmUserController::class, 'update'])->name('mbkm.mbkmuser.update');
         Route::put('/pelatihan-user/{pelatihanUser}', [PelatihanPelatihanUserController::class, 'update'])->name('pelatihan.pelatihanuser.update');
         Route::put('/instruktur-user/{instrukturUser}', [InstrukturInstrukturUserController::class, 'update'])->name('instruktur.instrukturuser.update');
     });
+
+    Route::post('/mahasiswa-mbkm', [MbkmMbkmUserController::class, 'store'])->name('mbkm.mbkmuser.store');
+    Route::get('/mahasiswa-mbkm/register', [MbkmMbkmUserController::class, 'formMbkm'])->name('register.mbkm');
     
     Route::get('/dashboard/pelatihan', [DashboardController::class, 'indexPelatihan'])->name('dashboard.pelatihan.index');
     Route::post('/pelatihan-user', [PelatihanPelatihanUserController::class, 'store'])->name('pelatihan.pelatihanuser.store');

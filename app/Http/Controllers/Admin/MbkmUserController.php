@@ -79,6 +79,10 @@ class MbkmUserController extends Controller
             'status_pendaftaran' => $request->status,
         ]);
 
+        if ($request->status == 'gagal') {
+            $user->removeRole('mahasiswa-mbkm');
+        }
+
         Alert::success('Berhasil', 'Notifikasi berhasil dikirim');
         return redirect()->back();
     }

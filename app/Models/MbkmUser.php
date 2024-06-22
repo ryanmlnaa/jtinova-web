@@ -18,8 +18,6 @@ class MbkmUser extends Model
         'semester',
         'golongan',
         'tahun_masuk',
-        'no_hp',
-        'photo',
         'khs',
         'status',
         'status_pendaftaran',

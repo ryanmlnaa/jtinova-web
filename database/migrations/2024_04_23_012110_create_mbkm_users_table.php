@@ -20,8 +20,6 @@ return new class extends Migration
             $table->enum("semester", [1, 2, 3, 4, 5, 6, 7, 8])->nullable();
             $table->enum("golongan", ['A', 'B', 'C', 'D', 'E'])->nullable();
             $table->string("tahun_masuk", 4)->nullable();
-            $table->string("no_hp", 15)->nullable();
-            $table->string("photo")->nullable();
             $table->string("khs")->nullable();
             $table->enum("status", ['aktif', 'nonaktif'])->default('aktif');
             $table->enum("status_pendaftaran", ['proses', 'gagal', 'lolos'])->default('proses');
