@@ -1,40 +1,38 @@
-<div class="card">
-    <div class="card-header">
-        <h4>Upload Bukti Pembayaran</h4>
-    </div>
-    <div class="card-body">
-
-        <!-- Start Form Bukti Pembayaran -->
-        @role('user-pendampingan') 
-        @php $url = 'transaction.pendampingan'; @endphp
-        @endrole    
-        @role('user-pelatihan') 
-            @php $url = 'transaction.pelatihan'; @endphp
-        @endrole
-        <!-- Nomor Rekening (Statis) -->
-        <div class="alert alert-light">
-            <p>Silakan transfer ke rekening berikut:</p>
-            <p><strong>Bank BNI</strong></p>
-            <p><strong>No. Rekening: 1234567890</strong></p>
-            <p><strong>Atas Nama: PT. Pendidikan Teknologi Informasi</strong></p>
+@extends('layouts.guest.app')
+@section('content')
+<div class="section-header">
+    <h1>Selamat Datang {{ Auth::user()->name }}</h1>
+</div>
+<div class="section-body">
+    <div class="card">
+        <div class="card-header">
+            <h4>Upload Bukti Pembayaran</h4>
         </div>
-        <form action="{{ route($url, auth()->user()->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group">
-                <label for="bukti_pembayaran">Upload Bukti Pembayaran:</label>
-                <input type="file" class="form-control-file" name="bukti_pembayaran" id="foto_profile"
-                    onchange="previewImage(this);" readonly>
-                <img id="gambar-preview" src="#" alt="Gambar Pratinjau"
-                    style="max-width: 50%; margin-top:10px; display: none;">
+        <div class="card-body">
+            <div class="alert alert-light">
+                <p>Silakan transfer ke rekening berikut:</p>
+                <p><strong>Bank BNI</strong></p>
+                <p><strong>No. Rekening: 1234567890</strong></p>
+                <p><strong>Atas Nama: PT. Pendidikan Teknologi Informasi</strong></p>
             </div>
+            <form action="{{ route('transaction.bayar.update', Request::segment(3)) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="form-group">
+                    <label for="bukti_pembayaran">Upload Bukti Pembayaran:</label>
+                    <input type="file" class="form-control-file" name="bukti_pembayaran" id="foto_profile"
+                        onchange="previewImage(this);" readonly>
+                    <img id="gambar-preview" src="#" alt="Gambar Pratinjau"
+                        style="max-width: 50%; margin-top:10px; display: none;">
+                </div>
 
-            <!-- Button Simpan -->
-            <button type="submit" class="btn btn-primary btn-block">Simpan</button>
-        </form>
+                <!-- Button Simpan -->
+                <button type="submit" class="btn btn-primary btn-block">Simpan</button>
+            </form>
+        </div>
     </div>
 </div>
-<!-- End Form Bukti Pembayaran -->
-
+@endsection
 
 @push('scripts')
     <script>

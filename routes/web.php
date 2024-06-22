@@ -127,10 +127,9 @@ Route::group(['middleware' => ['auth']], function(){
         Route::put('/pelatihan-user/{pelatihanUser}', [PelatihanPelatihanUserController::class, 'update'])->name('pelatihan.pelatihanuser.update');
         Route::put('/instruktur-user/{instrukturUser}', [InstrukturInstrukturUserController::class, 'update'])->name('instruktur.instrukturuser.update');
     });
-    Route::group(["middleware" => ['can:bayar']], function() {
-        Route::post('/transaction-pendampingan/{pendampinganUser}', [TransactionsController::class, 'buktiPembayaran'])->name('transaction.pendampingan');
-        Route::post('/transaction-pelatihan/{pelatihanUser}', [TransactionsController::class, 'buktiPembayaran'])->name('transaction.pelatihan');
-    });
 
     Route::get('/dashboard/pelatihan', [DashboardController::class, 'indexPelatihan'])->name('dashboard.pelatihan.index');
+    Route::post('/pelatihan-user', [PelatihanPelatihanUserController::class, 'store'])->name('pelatihan.pelatihanuser.store');
+    Route::get('/transaction-user/bayar/{id}', [TransactionsController::class, 'index'])->name('transaction.bayar.index');
+    Route::put('/transaction-user/bayar/{id}', [TransactionsController::class, 'update'])->name('transaction.bayar.update');
 });

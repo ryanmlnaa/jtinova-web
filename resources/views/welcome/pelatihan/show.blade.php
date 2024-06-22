@@ -43,9 +43,29 @@
               <h3>Benefit</h3>
               <p>{{$training->benefit}}</p>
 
-              
+              <h3>Gabung Pelatihan Sekarang</h3>
             </div><!-- End post content -->
-            <a href="{{route('register.pelatihan')}}?pelatihan={{$training->kode}}" class="btn-daftar-layanan">Daftar</a>
+
+            <form action="{{route('pelatihan.pelatihanuser.store')}}" method="post">
+              @csrf
+              <input type="hidden" name="pelatihan_id" value="{{$training->id}}">
+              <div class="mb-3">
+                <label for="skema" class="form-label">Skema</label> <span class="text-danger">*</span>
+                <select name="skema" id="skema" class="form-select @error('skema') is-invalid @enderror" required>
+                  <option value="individu">Individu</option>
+                  <option value="kelompok">Kelompok</option>
+                </select>
+                @error('skema')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn-daftar-layanan">Daftar</button>
+              </div>
+            </form>
+
           </article>
 
         </div>
@@ -55,3 +75,12 @@
 </div>
 
 @endsection
+
+@push('scripts')
+<script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
+<script>
+  $(document).ready(function() {
+    
+  });
+</script>
+@endpush

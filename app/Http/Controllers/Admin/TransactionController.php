@@ -32,6 +32,10 @@ class TransactionController extends Controller
                 $user->user->revokePermissionTo('pending');
                 $user->user->givePermissionTo('success');
             }
+        } else {
+            $data->pelatihanUser->user->revokePermissionTo('bayar');
+            $data->pelatihanUser->user->revokePermissionTo('pending');
+            $data->pelatihanUser->user->givePermissionTo('success');
         }
 
         Alert::success("Success", "Berhasil Menambahkan Data");

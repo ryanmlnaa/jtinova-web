@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Pelatihan;
 use App\Http\Controllers\Controller;
 use App\Models\PelatihanTeam;
 use App\Models\PelatihanUser;
+use App\Models\Transactions;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -96,6 +98,38 @@ class PelatihanUserController extends Controller
         if($user->hasPermissionTo('pending')){
             $user->revokePermissionTo('bayar');
         }
+
+        Alert::success('Berhasil', 'Data berhasil disimpan');
+        return redirect()->route('dashboard');
+    }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'skema' => 'required|in:individu,kelompok',
+            'pelatihan_id' => 'required|exists:pelatihan,id',
+        ]);
+
+        if ($validator->fails()) {
+            $messages = $validator->errors()->all();
+            $messages = implode('<br>', $messages);
+            Alert::error($messages)->flash();
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $pelatihanUser = PelatihanUser::create([
+            'user_id' => auth()->user()->id,
+            'pelatihan_id' => $request->pelatihan_id,
+        ]);
+
+        Transactions::create([
+            'invoice' => 'INV-' . Carbon::now()->getTimestamp() * rand(1, 9),
+            'status' => 'pending',
+            'payment_method' => 'transfer',
+            'pelatihan_user_id' => $pelatihanUser->id,
+        ]);
+
+        auth()->user()->givePermissionTo('pending');
 
         Alert::success('Berhasil', 'Data berhasil disimpan');
         return redirect()->route('dashboard');

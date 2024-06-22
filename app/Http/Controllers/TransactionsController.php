@@ -3,16 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transactions;
-use App\Models\User;
-use Carbon\Carbon;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class TransactionsController extends Controller
 {
-    public function buktiPembayaran(Request $req)
-    {        
+    public function index($id)
+    {
+        $title = 'Bukti Pembayaran';
+        return view('guest.form-bukti-bayar.index', compact('title'));
+    }
+
+    public function update(Request $req, $id)
+    {
         $validator = Validator::make($req->all(), [
             'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -24,18 +30,18 @@ class TransactionsController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        Transactions::create([
-            "invoice" => 'INV-' . Carbon::now()->getTimestamp() * rand(1, 9),
-            "status" => "pending",
-            "payment_method" => "transfer",
-            "pelatihan_user_id" => isset(auth()->user()->pelatihanUser->id) ? auth()->user()->pelatihanUser->id : null,
-            "pendampingan_user_id" => isset(auth()->user()->pendampinganUser->id) ? auth()->user()->pendampinganUser->id : null,
-            "payment_proof" => $req->file("bukti_pembayaran")->store("images/bukti_pembayaran", "public"),
-        ]);   
+        try {
+            $decrypted = Crypt::decryptString($id);
+        } catch (DecryptException $e) {
+            Alert::error($e->getMessage())->flash();
+            return redirect()->back();
+        }
 
-        $user = User::find(auth()->user()->id);
-        $user->revokePermissionTo('bayar');
-        $user->givePermissionTo('pending');
+        $transaction = Transactions::where('id', $decrypted)->first();
+
+        $transaction->update([
+            "payment_proof" => $req->file("bukti_pembayaran")->store("images/bukti_pembayaran", "public"),
+        ]);
 
         Alert::success('Berhasil', 'Data berhasil disimpan');
         return redirect()->route('dashboard');

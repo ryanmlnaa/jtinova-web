@@ -16,12 +16,6 @@ return new class extends Migration
             $table->foreignId('pelatihan_team_id')->nullable()->constrained('pelatihan_teams')->onDelete('cascade');
             $table->foreignId('pelatihan_id')->nullable()->constrained('pelatihan')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('no_hp', 20)->nullable();
-            $table->string('alamat')->nullable();
-            $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
-            $table->string('pendidikan_terakhir')->nullable();
-            $table->string('pekerjaan')->nullable();
-            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }
