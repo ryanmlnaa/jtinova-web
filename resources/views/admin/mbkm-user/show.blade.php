@@ -81,7 +81,7 @@
                         <embed src="{{asset('storage/'.$item->khs)}}" type="application/pdf" width="100%" height="600px">
                     </div>
                     <div class="col-3">
-                        <img src="{{asset('storage/'.$item->photo)}}" alt="Foto {{$item->user->name}}" width="100%" class="img-thumbnail">
+                        <img src="{{asset('storage/'.$item->user->foto)}}" alt="Foto {{$item->user->name}}" width="100%" class="img-thumbnail">
                         <br>
                         <br>
                         <form action="{{route('mbkmuser.notifyPendaftaran', $item->id)}}" method="post">

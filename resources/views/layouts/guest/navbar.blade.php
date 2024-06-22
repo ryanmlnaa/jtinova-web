@@ -1,3 +1,18 @@
+@php
+$timeline = \App\Models\Timeline::where('status', 1)->first();
+if ($timeline) {
+    $timelineData = json_decode($timeline->timeline);
+
+    if (Carbon\Carbon::now()->format('Y-m-d') >= $timelineData[0]->start && Carbon\Carbon::now()->format('Y-m-d') <= $timelineData[0]->end) {
+        $disabled = false;
+    } else {
+        $disabled = true;
+    }
+} else {
+    $disabled = true;
+}
+@endphp
+
 <nav class="navbar navbar-expand-lg main-navbar">
     <a href="{{route('dashboard')}}" class="navbar-brand sidebar-gone-hide">JTINOVA</a>
     <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
@@ -7,6 +22,9 @@
       </a>
       <ul class="navbar-nav">
         <li class="nav-item"><a href="{{route('dashboard')}}" class="nav-link">Dashboard</a></li>
+        @if (!$disabled)
+        <li class="nav-item"><a href="{{route('register.mbkm')}}" class="nav-link">Daftar MBKM</a></li>
+        @endif
       </ul>
     </div>
     <div class="ml-auto"></div>

@@ -7,11 +7,7 @@
     </div>
     <div class="section-body">
     @role('mahasiswa-mbkm')
-        @can('fill-profile')
-            @include('guest.mbkm.form-biodata')
-        @else
-            @include('guest.mbkm.index')
-        @endcan
+        @include('guest.mbkm.index')
     @endrole
     @role('user-pendampingan')
         @include('guest.pendampingan.dashboard')

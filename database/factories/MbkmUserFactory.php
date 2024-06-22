@@ -24,8 +24,6 @@ class MbkmUserFactory extends Factory
             'semester' => $this->faker->numberBetween(1, 8),
             'golongan' => $this->faker->randomElement(['A', 'B', 'C', 'D']),
             'tahun_masuk' => $this->faker->year,
-            'no_hp' => '08' . $this->faker->randomNumber(9),
-            'photo' => 'photo.jpg',
             'khs' => 'khs.pdf',
             'status' => $this->faker->randomElement(['aktif', 'nonaktif']),
         ];
