@@ -16,7 +16,6 @@ class PendampinganUser extends Model
         'nim',
         'judul',
         'dosen_pembimbing',
-        'no_hp',
         'kendala',
         'skema_pendampingan_id',
     ];
@@ -34,5 +33,10 @@ class PendampinganUser extends Model
     public function skemaPendampingan()
     {
         return $this->belongsTo(SkemaPendampingan::class);
+    }
+
+    public function transaction()
+    {
+        return $this->hasOne(Transactions::class);
     }
 }

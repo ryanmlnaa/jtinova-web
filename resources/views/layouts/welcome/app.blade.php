@@ -26,9 +26,11 @@
 
   <!-- Main CSS File -->
   <link href="{{asset ('assetss/assets/css/main.css') }}" rel="stylesheet">
+
 </head>
 
 <body class="index-page">
+  @include('sweetalert::alert')
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">

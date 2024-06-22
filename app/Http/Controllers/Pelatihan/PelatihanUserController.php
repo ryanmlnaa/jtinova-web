@@ -85,9 +85,8 @@ class PelatihanUserController extends Controller
         ]);
 
         auth()->user()->assignRole('user-pelatihan');
-        auth()->user()->givePermissionTo('pending', 'bayar');
 
         Alert::success('Berhasil', 'Pendaftaran berhasil! Silahkan lakukan pembayaran.');
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard.pelatihan.index');
     }
 }

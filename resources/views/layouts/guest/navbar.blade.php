@@ -41,6 +41,9 @@
             <li class="nav-item {{ Request::is('dashboard/pelatihan') ? 'active' : '' }}">
                 <a href="{{route('dashboard.pelatihan.index')}}" class="nav-link"><i class="fas fa-book"></i><span>Pelatihan</span></a>
             </li>
+            <li class="nav-item {{ Request::is('dashboard/pendampingan') ? 'active' : '' }}">
+                <a href="{{route('dashboard.pendampingan.index')}}" class="nav-link"><i class="fas fa-hands-helping"></i><span>Pendampingan</span></a>
+            </li>
             @role('mahasiswa-mbkm')
             <li class="nav-item">
                 <a href="{{route('mbkmTimeline.index')}}" class="nav-link"><i class="fas fa-calendar"></i><span>Timeline</span></a>

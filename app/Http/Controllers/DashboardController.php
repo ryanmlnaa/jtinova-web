@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Keahlian;
 use App\Models\PelatihanUser;
+use App\Models\PendampinganUser;
 use App\Models\Prodi;
 use App\Models\SkemaPendampingan;
 
@@ -18,10 +19,8 @@ class DashboardController extends Controller
         } else {
             $prodis = Prodi::all();
             $keahlians = Keahlian::all();
-            $skemaPendampingans = SkemaPendampingan::all();
     
-            // Kirim data ke view dashboard
-            return view('guest.index', compact('title', 'prodis', 'keahlians', 'skemaPendampingans'));
+            return view('guest.index', compact('title', 'prodis', 'keahlians'));
         }
     }
 
@@ -30,5 +29,12 @@ class DashboardController extends Controller
         $title = 'Pelatihan';
         $pelatihan = PelatihanUser::where('user_id', auth()->id())->get();
         return view('guest.pelatihan.index', compact('pelatihan', 'title'));
+    }
+
+    public function indexPendampingan()
+    {
+        $title = 'Pendampingan';
+        $pendampingan = PendampinganUser::where('user_id', auth()->id())->first();
+        return view('guest.pendampingan.index', compact('pendampingan', 'title'));
     }
 }

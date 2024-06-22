@@ -60,7 +60,7 @@
                     Pelatihan yang kami tawarkan bertujuan untuk mempersiapkan peserta dengan keterampilan yang dibutuhkan untuk bersaing di dunia kerja, dengan fokus pada penerapan praktis dan pengalaman langsung.
                 </p>
                 <a href="{{route('katalog.pelatihan.index')}}" class="btn-lihat-layanan">Lihat Detail</a>
-                <a href="{{route('register.pelatihan')}}" class="btn-daftar-layanan">Daftar</a>
+                <a href="{{route('register')}}" class="btn-daftar-layanan">Daftar</a>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 text-center">
                 <img src="{{asset('static/sementara.jpg')}}" alt="" class="img-fluid">
@@ -90,7 +90,7 @@
                 Layanan pendampingan kami bertujuan untuk memastikan bahwa mahasiswa mendapatkan dukungan yang mereka butuhkan untuk menghasilkan karya ilmiah yang berkualitas dan memenuhi standar akademik yang tinggi.
             </p>
             <a href="{{route('katalog.pendampingan.index')}}" class="btn-lihat-layanan">Lihat Detail</a>
-            <a href="{{route('register.pendampingan')}}" class="btn-daftar-layanan">Daftar</a>
+            <a href="{{route('register')}}" class="btn-daftar-layanan">Daftar</a>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 text-center">
             <img src="{{asset('static/sementara.jpg')}}" alt="" class="img-fluid">
