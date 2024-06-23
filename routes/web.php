@@ -115,6 +115,8 @@ Route::group(['middleware' => ['auth']], function(){
         Route::post('/portofolio/delete-image', [PortofolioController::class, 'deleteImage'])->name('portofolio.deleteImage');
 
         Route::resource('transaction', AdminTransactionController::class)->only(['index', 'show', 'update']);
+
+        Route::get('/admin/profile', [DashboardController::class, 'profileAdmin'])->name('dashboard.profileAdmin.index');
     });
 
     Route::post('/mahasiswa-mbkm', [MbkmMbkmUserController::class, 'store'])->name('mbkm.mbkmuser.store');
@@ -130,4 +132,7 @@ Route::group(['middleware' => ['auth']], function(){
     
     Route::get('/transaction-user/bayar/{id}', [TransactionsController::class, 'index'])->name('transaction.bayar.index');
     Route::put('/transaction-user/bayar/{id}', [TransactionsController::class, 'update'])->name('transaction.bayar.update');
+    
+    Route::get('/dashboard/profile', [DashboardController::class, 'profileGuest'])->name('dashboard.profileGuest.index');
+    Route::put('/dashboard/profile', [DashboardController::class, 'profileGuestUpdate'])->name('dashboard.profileGuest.update');
 });
