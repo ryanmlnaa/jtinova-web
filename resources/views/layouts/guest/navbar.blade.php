@@ -38,6 +38,9 @@ if ($timeline) {
                 <a href="{{route('dashboard.profileGuest.index')}}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
+                <a href="{{route('dashboard.passwordGuest.index')}}" class="dropdown-item has-icon">
+                    <i class="fas fa-cog"></i> Ubah Password
+                </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item has-icon text-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt"></i> Logout

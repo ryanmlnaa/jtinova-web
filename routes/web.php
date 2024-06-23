@@ -117,6 +117,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('transaction', AdminTransactionController::class)->only(['index', 'show', 'update']);
 
         Route::get('/admin/profile', [DashboardController::class, 'profileAdmin'])->name('dashboard.profileAdmin.index');
+        Route::get('/admin/password', [DashboardController::class, 'updatePasswordAdmin'])->name('dashboard.updatePasswordAdmin.index');
     });
 
     Route::post('/mahasiswa-mbkm', [MbkmMbkmUserController::class, 'store'])->name('mbkm.mbkmuser.store');
@@ -135,4 +136,6 @@ Route::group(['middleware' => ['auth']], function(){
     
     Route::get('/dashboard/profile', [DashboardController::class, 'profileGuest'])->name('dashboard.profileGuest.index');
     Route::put('/dashboard/profile', [DashboardController::class, 'profileGuestUpdate'])->name('dashboard.profileGuest.update');
+    Route::get('/dashboard/password', [DashboardController::class, 'passwordGuest'])->name('dashboard.passwordGuest.index');
+    Route::put('/dashboard/password', [DashboardController::class, 'passwordGuestUpdate'])->name('dashboard.passwordGuest.update');
 });

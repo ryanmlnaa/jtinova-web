@@ -9,6 +9,7 @@ use App\Models\Prodi;
 use App\Models\SkemaPendampingan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -108,6 +109,46 @@ class DashboardController extends Controller
         ]);
 
         Alert::success('Berhasil', 'Data berhasil disimpan');
+        return redirect()->back();
+    }
+
+    public function updatePasswordAdmin()
+    {
+        $title = 'Ubah Password';
+        return view('admin.profile.password', compact('title'));
+    }
+
+    public function passwordGuest()
+    {
+        $title = 'Ubah Password';
+        return view('guest.profile.password', compact('title'));
+    }
+
+    public function passwordGuestUpdate(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'old_password' => 'required|string|min:8',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // validasi password lama
+        if (!Hash::check($request->old_password, auth()->user()->password)) {
+            Alert::error('Password lama salah')->flash();
+            return redirect()->back();
+        }
+
+        if ($validator->fails()) {
+            $messages = $validator->errors()->all();
+            $messages = implode('<br>', $messages);
+            Alert::error($messages)->flash();
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        User::where('id', auth()->id())->update([
+            'password' => bcrypt($request->password),
+        ]);
+
+        Alert::success('Berhasil', 'Password berhasil diubah');
         return redirect()->back();
     }
 }
