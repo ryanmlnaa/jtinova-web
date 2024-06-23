@@ -32,8 +32,10 @@
                   <td>
                   @if($pendampingan->status == 'pending')
                     <a href="{{route('pendampingan.showForm')}}" class="btn btn-primary">Lengkapi Profile</a>
-                  @elseif($pendampingan->status == 'progress' && $pendampingan->transaction->status == 'pending')
+                  @elseif($pendampingan->status == 'progress' && $pendampingan->transaction->status == 'pending' && $pendampingan->transaction->payment_proof == null)
                     <a href="{{route('transaction.bayar.index', Illuminate\Support\Facades\Crypt::encryptString($pendampingan->transaction->id))}}" class="btn btn-primary">Upload Bukti Bayar</a>
+                  @elseif($pendampingan->status == 'progress' && $pendampingan->transaction->status == 'pending' && $pendampingan->transaction->payment_proof != null)
+                    {{$pendampingan->status}}
                   @else
                     {{$pendampingan->status}}
                   @endif
