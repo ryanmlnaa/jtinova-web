@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string("portofolio")->nullable();
             $table->string("cv")->nullable();
             $table->string("linkedin")->nullable();
+            $table->text('instagram')->nullable();
             $table->string('foto')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();

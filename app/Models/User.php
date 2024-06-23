@@ -24,6 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'portofolio',
         'cv',
         'linkedin',
+        'instagram',
         'foto',
         'email_verified_at',
     ];

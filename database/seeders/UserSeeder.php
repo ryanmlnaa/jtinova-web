@@ -54,9 +54,9 @@ class UserSeeder extends Seeder
             PendampinganUser::factory(1)->create(['user_id' => $user->id]);
         });
 
-        User::factory(5)->create()->each(function ($user) {
-            $user->assignRole('instruktur');
-            InstrukturUser::factory(1)->create(['user_id' => $user->id]);
-        });
+        // User::factory(5)->create()->each(function ($user) {
+        //     $user->assignRole('instruktur');
+        //     InstrukturUser::factory(1)->create(['user_id' => $user->id]);
+        // });
     }
 }

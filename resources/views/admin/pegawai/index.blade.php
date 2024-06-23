@@ -31,13 +31,13 @@
                                     @foreach ($data as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->user->name }}</td>
                                             <td>{{ $item->nip }}</td>
                                             <td>{{ $item->jabatan->nama }}</td>
                                             <td>{{ $item->instagram }}</td>
                                             <td>{{ $item->linkedin }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/' . $item->foto) }}" alt="foto"
+                                                <img src="{{ asset('storage/' . $item->user->foto) }}" alt="foto"
                                                     width="100" class="img-thumbnail">
                                             </td>
                                             <td>
