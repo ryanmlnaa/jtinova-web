@@ -2,94 +2,167 @@
 @section('title', $title)
 @section('menu', $title)
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card mx-5 px-3 py-5">
-                <h4 class="text-center">{{ $title }}</h4>
-                <form action="{{ route('portofolio.update', $data->id) }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    @method('patch')
-                    <div class="form-group">
-                        <label for="nip" class="col-form-label">Judul</label>
-                        <input type="text" class="form-control" name="judul" value="{{ $data->judul }}"
-                            id="nip">
+    <div class="section-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Tambah {{ $title }}</h4>
                     </div>
-                    <div class="form-group">
-                        <label for="nip" class="col-form-label">Deskripsi</label>
-                        <textarea type="number" class="form-control" name="deskripsi" id="nip">{{ $data->deskripsi }}</textarea>
+                    <div class="card-body">
+                        <form action="{{ route('portofolio.update', $data) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="judul" class="col-form-label">Judul<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('judul') is-invalid @enderror"
+                                    name="judul" id="judul" value="{{ old('judul', $data->judul) }}">
+                                @error('judul')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="klien" class="col-form-label">klien<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('klien') is-invalid @enderror"
+                                    name="klien" id="klien" value="{{ old('klien', $data->klien) }}">
+                                @error('klien')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="kategori">Kategori</label> <span class="text-danger">*</span>
+                                <select name="kategori" id="kategori" class="form-control">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{ $category->id == $data->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="deskripsi" class="col-form-label">Deskripsi<span
+                                        class="text-danger">*</span></label>
+                                <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" id="deskripsi">{{ old('deskripsi', $data->deskripsi) }}</textarea>
+                                @error('deskripsi')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Tanggal Mulai<span class="text-danger">*</span></label>
+                                <input type="date" name="start_date"
+                                    class="form-control @error('start_date') is-invalid @enderror"
+                                    value="{{ old('start_date', $data->start_date) }}">
+                                @error('start_date')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Tanggal Selesai<span class="text-danger">*</span></label>
+                                <input type="date" name="end_date"
+                                    class="form-control @error('end_date') is-invalid @enderror"
+                                    value="{{ old('end_date', $data->end_date) }}">
+                                @error('end_date')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <!-- display images and button delete on top right -->
+                                @foreach ($data->images as $photo)
+                                    <div class="d-inline-block mr-2">
+                                        <img src="{{ asset('storage/' . $photo->image_url) }}" alt="photo" class="img-thumbnail"
+                                            style="width: 100px; height: 100px;">
+                                        <!-- button with icon font awesome on top right of image-->
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                            data-id="{{ $photo->id }}" id="deleteImage" title="Delete"
+                                            >
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="form-group increment">
+                                <label for="">Photo</label>
+                                <div class="input-group">
+                                    <input type="file" name="foto[]" class="form-control">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-outline-primary btn-add"><i class="fas fa-plus-square"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a href="{{ route('portofolio.index') }}" class="btn btn-danger">Batal</a>
+                            </div>
+                        </form>
+                        <div class="clone invisible" style="display: none;">
+                            <div class="input-group mb-3">
+                                <input type="file" name="foto[]" class="form-control">
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-outline-danger btn-remove"><i class="fas fa-minus-square"></i></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="nama_pegawaai" class="col-form-label">Nama Klien</label>
-                        <input type="text" class="form-control" name="klien"
-                            value="{{ $data->klien }}"id="nama_pegawaai">
-                    </div>
-                    <div class="form-group">
-                        <label for="kedudukan" class="col-form-label">Kategori</label>
-                        <select class="form-control" name="kategori" id="kedudukan">
-                            <option value="0" hidden>-- Pilih Kategori --</option>
-                            @foreach ($kat as $k)
-                                <option @if ($k == $data->kategori) {{ 'selected' }} @endif>{{ $k }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Tanggal Mulai</label>
-                        <input type="date" name="start_date" value="{{ $data->start_date }}"
-                            class="form-control datepicker">
-                    </div>
-                    <div class="form-group">
-                        <label>Tanggal Selesai</label>
-                        <input type="date" name="end_date" value="{{ $data->end_date }}"class="form-control datepicker">
-                    </div>
-                    <div class="form-group">
-                        <label for="foto_profile" class="col-form-label">Foto Portofolio</label>
-                        <input type="hidden" name="old_file" value="{{ $data->foto }}">
-                        <input type="file" id="foto" class="form-control" name="foto[]" multiple>
-                            <div id="multi_preview" style="max-width: 50%; display: flex; flex-wrap: wrap;">
-                              @foreach ($data->images as $item)
-                            <img id="gambar-preview" src="{{ asset('storage/' . $item->image_url) }}" alt="Gambar Pratinjau"
-                                style="max-width: 50%; margin:10px; display: block;">
-                        @endforeach
-                          </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary float-right">Save changes</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 @endsection
 
-
 @push('scripts')
-    
+<script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
 <script>
     $(document).ready(function() {
-        $('#foto').on('change', function(){
-            var files = $(this)[0].files;
-            $('#multi_preview').html(''); // Clear previous previews
+        $(".btn-add").click(function(){ 
+            var html = $(".clone").html();
+            $(".increment").after(html);
+        });
+        $("body").on("click",".btn-remove",function(){ 
+            $(this).parents(".input-group").remove();
+        });
 
-            for(var i = 0; i < files.length; i++) {
-                var file = files[i];
-                var reader = new FileReader();
-
-                reader.onloadend = (function(fileIndex) {
-                    return function(e) {
-                        var img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.style.maxWidth = '200px';
-                        img.style.margin = '5px';
-                        img.style.display = 'block';
-                        $('#multi_preview').append(img);
-                    };
-                })(i);
-
-                if (file) {
-                    reader.readAsDataURL(file);
+        function deleteImage(id) {
+            $.ajax({
+                url: "{{ route('portofolio.deleteImage') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: id
+                },
+                success: function(response) {
+                    if (response.status == 'success') {
+                        Swal.fire({
+                            title: 'Success',
+                            text: response.message,
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        }).then((result) => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Error',
+                            text: response.message,
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    }
                 }
-            }
+            });
+        }
+
+        $("body").on("click", "#deleteImage", function() {
+            var id = $(this).data('id');
+            deleteImage(id);
         });
     });
 </script>
 @endpush
-

@@ -36,19 +36,15 @@ class PortofolioController extends Controller
 
     public function store(Request $req)
     {
-        // Log the request method for debugging
-        Log::info('Request Method: ' . $req->method());
-
         $validator = Validator::make($req->all(), [
-            'judul' => 'required|unique:portofolio',
-            'deskripsi' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
             'foto.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'kategori' => 'required|exists:categories,id',
+            'klien' => 'required|string|max:255',
         ]);
-
-        // dd($req->file('foto'));
 
         if ($validator->fails()) {
             $messages = $validator->errors()->all();
@@ -56,59 +52,29 @@ class PortofolioController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        if ($req->start_date > $req->end_date) {
-            Alert::error("Tanggal mulai harus lebih dulu")->flash();
-            return back()->withError()->withInput();
-        }
+        $data = Portofolio::create([
+            'slug' => Str::slug($req->judul),
+            'judul' => $req->judul,
+            'category_id' => $req->kategori,
+            'deskripsi' => $req->deskripsi,
+            'klien' => $req->klien,
+            'start_date' => $req->start_date,
+            'end_date' => $req->end_date,
+        ]);
 
-        try {
-
-
-
-            DB::beginTransaction();
-
-            $data = [
-                "judul" => $req->judul,
-                "slug" => Str::slug($req->judul),
-                "deskripsi" => $req->deskripsi,
-                "klien" => $req->klien,
-                "kategori" => $req->kategori,
-                "start_date"  => $req->start_date,
-                "end_date"  => $req->end_date,
-                "category_id" => $req->kategori,
-            ];
-
-
-
-            $portofolio = Portofolio::create($data)->id;
+        if ($req->hasFile('foto')) {
             $index = 0;
             foreach ($req->file('foto') as $item) {
-                $fileName = $item->store("images/portofolio", "public");
-                $isPrimary = $index === 0 ? "1" : "0";
-                $images = [
-                    'portfolio_id' => $portofolio,
-                    'image_url' => $fileName,
-                    'is_primary' => $isPrimary
-                ];
-                PortfolioImage::create($images);
+                PortfolioImage::create([
+                    'portfolio_id' => $data->id,
+                    'image_url' => $item->store("images/portofolio", "public"),
+                    'is_primary' => $index === 0 ? "1" : "0"
+                ]);
                 $index++;
             }
-
-
-            DB::commit();
-            Alert::success('Success Title', 'Berhasil Tambah Data');
-            return redirect()->route('portofolio.index');
-        } catch (QueryException $e) {
-            DB::rollBack();
-
-            if ($req->hasFile("foto")) {
-                Storage::disk('public')->delete($req->foto);
-            }
-            Alert::success('Success Title', 'Gagal Simpan');
-            return back();
         }
 
-        Alert::success('Success Title', 'Berhasil Tambah Data');
+        Alert::success('Success', 'Berhasil Tambah Data');
         return redirect()->route('portofolio.index');
     }
 
@@ -134,74 +100,61 @@ class PortofolioController extends Controller
     {
         $data = Portofolio::with('images')->findOrFail($id);
         $title = "Edit Portofolio";
-        $kat = $this->kategori;
-        return view("admin.portofolio.edit", compact('data', 'title', 'kat'));
+        $categories = Category::all();
+        return view("admin.portofolio.edit", compact('data', 'title', 'categories'));
     }
     public function update(Request $req, $pegawai)
     {
-        $data = Portofolio::findOrFail($pegawai);
         $validator = Validator::make($req->all(), [
-            'judul' => 'required', // Tambahkan aturan unik di sini
-            'deskripsi' => 'required',
-            'klien' => 'required',
-            'kategori' => 'required',
-            'start_date' => 'required',
-            'foto.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'end_date' => 'required',
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
+            'foto.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'kategori' => 'required|exists:categories,id',
+            'klien' => 'required|string|max:255',
         ]);
+
         if ($validator->fails()) {
             $messages = $validator->errors()->all();
             Alert::error($messages[0])->flash();
             return back()->withErrors($validator)->withInput();
         }
-        if ($req->start_date > $req->end_date) {
-            Alert::error("Tanggal mulai harus lebih dulu")->flash();
-            return back()->withInput();
+
+        $data = Portofolio::findOrFail($pegawai);
+        $data->update([
+            'slug' => Str::slug($req->judul),
+            'judul' => $req->judul,
+            'category_id' => $req->kategori,
+            'deskripsi' => $req->deskripsi,
+            'klien' => $req->klien,
+            'start_date' => $req->start_date,
+            'end_date' => $req->end_date,
+        ]);
+
+        if ($req->hasFile('foto')) {
+            $index = 0;
+            foreach ($req->file('foto') as $item) {
+                PortfolioImage::create([
+                    'portfolio_id' => $data->id,
+                    'image_url' => $item->store("images/portofolio", "public"),
+                    'is_primary' => $index === 0 ? "1" : "0"
+                ]);
+
+                $index++;
+            }
         }
-        try {
 
+        Alert::success('Success', 'Berhasil Update Data');
+        return redirect()->route('portofolio.index');   
+    }
 
+    public function deleteImage(Request $req)
+    {
 
-            $data->update([
-                "judul" => $req->judul,
-                "deskripsi" => $req->deskripsi,
-                "klien" => $req->klien,
-                "kategori" => $req->kategori,
-                "start_date"  => $req->start_date,
-                "end_date"  => $req->end_date,
-            ]);
-
-
-            if ($req->hasFile('foto')) {
-                $index = 0;
-                foreach ($req->file('foto') as $item) {
-                    $fileName = $item->store("images/portofolio", "public");
-                    $isPrimary = $index === 0 ? "1" : "0";
-                    $images = [
-                        'portfolio_id' => $pegawai,
-                        'image_url' => $fileName,
-                        'is_primary' => $isPrimary
-                    ];
-                    PortfolioImage::create($images);
-                    $index++;
-                }
-            }
-
-            if ($data) {
-                return redirect()->route("portofolio.index");
-            } else {
-                return redirect()->back()->withInput();
-            }
-        } catch (QueryException $x) {
-
-
-            // Hapus file foto jika ada
-            if ($fileName == $req->old_file) {
-                Storage::disk('public')->delete($req->foto);
-            }
-
-
-            return back();
-        }
+        $data = PortfolioImage::findOrFail($req->id);
+        Storage::disk('public')->delete($data->image_url);
+        $data->delete();
+        return response()->json(['message' => 'Berhasil hapus gambar', 'status' => 'success']);
     }
 }

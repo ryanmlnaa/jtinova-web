@@ -21,11 +21,11 @@
         @foreach($portofolio as $item)
         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ $item->category->name}}">
           <div class="portfolio-content h-100">
-            <img src="{{ asset('storage/' .$item->images->first()->image_url)}}" class="img-fluid" alt="">
+            <img src="{{ asset('storage/' .$item->images->first()->image_url)}}" class="img-fluid" alt="{{ $item->judul }}">
             <div class="portfolio-info">
               <h4>{{ $item->judul }}</h4>
-              <p>{{ $item->deskripsi }}</p>
-              <a href="{{ asset('storage/' .$item->images->first()->image_url)}}" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+              <p>{{ Illuminate\Support\Str::limit($item->deskripsi, 50) }}</p>
+              <a href="{{ asset('storage/' . $item->images->first()->image_url)}}" title="{{ $item->judul }}" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
               <a href="{{ route('portfolio.show', $item->id) }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
             </div>
           </div>

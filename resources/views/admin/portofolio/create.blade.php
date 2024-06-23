@@ -1,4 +1,3 @@
-<!-- resources/views/create-portofolio.blade.php -->
 @extends('layouts.admin.app')
 @section('title', $title)
 @section('menu', $title)
@@ -35,7 +34,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="kategori">Kategori</label>
+                                <label for="kategori">Kategori</label> <span class="text-danger">*</span>
                                 <select name="kategori" id="kategori" class="form-control">
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -74,23 +73,28 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="foto" class="col-form-label">Foto Portofolio<span
-                                        class="text-danger">*</span></label>
-                                <input type="file" class="form-control @error('foto') is-invalid @enderror"
-                                    name="foto[]" id="foto" multiple>
-                                @error('foto')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                            <div class="form-group increment">
+                                <label for="">Photo</label>
+                                <div class="input-group">
+                                    <input type="file" name="foto[]" class="form-control">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-outline-primary btn-add"><i class="fas fa-plus-square"></i></button>
                                     </div>
-                                @enderror
-                                <div id="multi_preview" style="max-width: 50%; display: flex; flex-wrap: wrap;">
-                                    <!-- Image previews will be appended here -->
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('portofolio.index') }}" class="btn btn-danger">Batal</a>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a href="{{ route('portofolio.index') }}" class="btn btn-danger">Batal</a>
+                            </div>
                         </form>
+                        <div class="clone invisible" style="display: none;">
+                            <div class="input-group mb-3">
+                                <input type="file" name="foto[]" class="form-control">
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-outline-danger btn-remove"><i class="fas fa-minus-square"></i></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,29 +106,12 @@
     
 <script>
     $(document).ready(function() {
-        $('#foto').on('change', function(){
-            var files = $(this)[0].files;
-            $('#multi_preview').html(''); // Clear previous previews
-
-            for(var i = 0; i < files.length; i++) {
-                var file = files[i];
-                var reader = new FileReader();
-
-                reader.onloadend = (function(fileIndex) {
-                    return function(e) {
-                        var img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.style.maxWidth = '200px';
-                        img.style.margin = '5px';
-                        img.style.display = 'block';
-                        $('#multi_preview').append(img);
-                    };
-                })(i);
-
-                if (file) {
-                    reader.readAsDataURL(file);
-                }
-            }
+        $(".btn-add").click(function(){ 
+            var html = $(".clone").html();
+            $(".increment").after(html);
+        });
+        $("body").on("click",".btn-remove",function(){ 
+            $(this).parents(".input-group").remove();
         });
     });
 </script>

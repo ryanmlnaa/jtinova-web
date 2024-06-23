@@ -112,6 +112,7 @@ Route::group(['middleware' => ['auth']], function(){
 
         // portofolio
         Route::resource('/portofolio', PortofolioController::class)->except('show');
+        Route::post('/portofolio/delete-image', [PortofolioController::class, 'deleteImage'])->name('portofolio.deleteImage');
 
         Route::resource('transaction', AdminTransactionController::class)->only(['index', 'show', 'update']);
     });
