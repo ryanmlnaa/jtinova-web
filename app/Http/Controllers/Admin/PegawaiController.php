@@ -17,7 +17,7 @@ class PegawaiController extends Controller
     {
         $title = "Data Pegawai";
 
-        $data = Pegawai::latest()->get();
+        $data = Pegawai::all();
 
         return view('admin.pegawai.index', compact("title", "data"));
     }

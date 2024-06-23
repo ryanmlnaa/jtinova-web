@@ -40,6 +40,7 @@ class TransactionsController extends Controller
         $transaction = Transactions::where('id', $decrypted)->first();
 
         $transaction->update([
+            "status" => "pending",
             "payment_proof" => $req->file("bukti_pembayaran")->store("images/bukti_pembayaran", "public"),
         ]);
 

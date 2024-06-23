@@ -38,7 +38,7 @@ class PendampinganUserController extends Controller
             'prodi_id' => 'required|exists:prodis,id',
             'nim' => 'required|string|max:15',
             'judul' => 'required|string|max:255',
-            'no_hp' => 'required|string|max:15',
+            'no_hp' => 'required|string|max:15|regex:/^([0-9\s\-\+\(\)]*)$/',
             'dosen_pembimbing' => 'required|string|max:255',
             'kendala' => 'required|string|max:255',
         ]);

@@ -30,11 +30,14 @@
                           <td>
                             @php
                             $status = isset($item->team->transaction->status) ? $item->team->transaction->status : $item->transaction->status;
+                            $payment_proof = isset($item->team->transaction->payment_proof) ? $item->team->transaction->payment_proof : $item->transaction->payment_proof;
                             $id = isset($item->team->transaction->id) ? $item->team->transaction->id : $item->transaction->id;
                             $pelatihan_user_id_transaction = isset($item->team->transaction->pelatihan_user_id) ? $item->team->transaction->pelatihan_user_id : $item->transaction->pelatihan_user_id;
                             @endphp
-                            @if($status == 'pending' && $pelatihan_user_id_transaction == $item->id)
+                            @if(($status == 'pending' && $pelatihan_user_id_transaction == $item->id && $payment_proof == null) || ($status == 'failed' && $pelatihan_user_id_transaction == $item->id))
                             <a href="{{route('transaction.bayar.index', Illuminate\Support\Facades\Crypt::encryptString($id))}}" class="btn btn-primary">Upload Bukti Bayar</a>
+                            @elseif($status == 'pending' && $payment_proof != null)
+                            Status pembayaran: <span class="badge badge-warning">Menunggu Konfirmasi</span>
                             @elseif($status == 'pending')
                             Status pembayaran: <span class="badge badge-warning">Menunggu Konfirmasi</span>
                             @else

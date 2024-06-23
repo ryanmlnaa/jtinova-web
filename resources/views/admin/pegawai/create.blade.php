@@ -61,8 +61,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="nip" class="col-form-label">Instagram</label> <span
-                                    class="text-danger">*</span>
+                                <label for="nip" class="col-form-label">Instagram</label>
                                 <input type="text" class="form-control @error('instagram') is-invalid @enderror"
                                     name="instagram" id="instagram" value="{{ old('instagram') }}">
                                 @error('instagram')
@@ -72,8 +71,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="nip" class="col-form-label">linkedin</label> <span
-                                    class="text-danger">*</span>
+                                <label for="nip" class="col-form-label">linkedin</label>
                                 <input type="text" class="form-control @error('linkedin') is-invalid @enderror"
                                     name="linkedin" id="linkedin" value="{{ old('linkedin') }}">
                                 @error('linkedin')
