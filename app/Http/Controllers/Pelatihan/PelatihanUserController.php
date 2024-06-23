@@ -43,8 +43,11 @@ class PelatihanUserController extends Controller
             'pelatihan_id' => $request->pelatihan_id,
         ]);
 
+        $invoice = 'INVPEL';
+
         // if kelompok
         if($request->skema == "kelompok"){
+            $invoice .= 'TEAM';
             $count = (count(array_filter($request->nama)));
             $team_id = PelatihanTeam::create([
                 'nama' => 'Tim ' . Str::random(7),
@@ -77,7 +80,7 @@ class PelatihanUserController extends Controller
         }
 
         Transactions::create([
-            'invoice' => 'INV-' . Carbon::now()->getTimestamp() * rand(1, 9),
+            'invoice' => $invoice . Carbon::now()->getTimestamp() * rand(1, 9),
             'status' => 'pending',
             'payment_method' => 'transfer',
             'pelatihan_team_id' => $team_id ?? null,

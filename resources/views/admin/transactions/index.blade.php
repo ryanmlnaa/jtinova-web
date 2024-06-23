@@ -25,11 +25,19 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->invoice }}</td>
                                     <td>{{ isset($item->pelatihanUser->user->name) ? $item->pelatihanUser->user->name : $item->pendampinganUser->user->name }}</td>
-                                    <td>{{ $item->status }}</td>
+                                    <td> 
+                                        @if ($item->status == 'pending')
+                                            <span class="badge badge-warning">{{ $item->status }}</span>
+                                        @elseif ($item->status == 'success')
+                                            <span class="badge badge-success">{{ $item->status }}</span>
+                                        @else
+                                            <span class="badge badge-danger">{{ $item->status }}</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $item->payment_method }}</td>
                                     <td>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infoModal{{$item->id}}"><i class="fas fa-eye"></i></button>
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$item->id}}"><i class="fas fa-edit"></i></button>
+                                        {{-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$item->id}}"><i class="fas fa-edit"></i></button> --}}
                                     </td>
                                 </tr>
                                 @endforeach
