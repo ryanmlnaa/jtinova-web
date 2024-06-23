@@ -14,16 +14,16 @@ class Pegawai extends Model
     protected $fillable = [
         'user_id',
         'nip',
-        'nama',
         'jabatan_id',
-        'instagram',
-        'linkedin',
-        'foto',
-
     ];
 
     public function jabatan()
     {
         return $this->belongsTo(Jabatan::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

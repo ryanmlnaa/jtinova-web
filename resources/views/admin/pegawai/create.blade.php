@@ -13,26 +13,20 @@
                         <form action="{{ route('pegawai.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="user_id" class="col-form-label">User</label> <span class="text-danger">*</span>
-                                <select class="form-control @error('user_id') is-invalid @enderror" name="user_id"
-                                    id="user_id">
-                                    <option value="">Pilih User</option>
-                                    @foreach ($users as $item)
-                                        <option value="{{ $item->id }}"
-                                            {{ old('user_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('user_id')
+                                <label for="nama" class="col-form-label">Nama</label> <span class="text-danger">*</span>
+                                <input type="text" class="form-control @error('nama') is-invalid @enderror"
+                                    name="nama" id="nama" value="{{ old('nama') }}">
+                                @error('nama')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="nama" class="col-form-label">Nama</label> <span class="text-danger">*</span>
-                                <input type="text" class="form-control @error('nama') is-invalid @enderror"
-                                    name="nama" id="nama" value="{{ old('nama') }}">
-                                @error('nama')
+                                <label for="email" class="col-form-label">Email</label> <span class="text-danger">*</span>
+                                <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" id="email" value="{{ old('email') }}">
+                                @error('email')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>

@@ -91,7 +91,7 @@ class PendampinganUserController extends Controller
         ]);
 
         Transactions::create([
-            'invoice' => 'INVPEN-' . Carbon::now()->getTimestamp() * rand(1, 9),
+            'invoice' => 'INVPEN' . Carbon::now()->getTimestamp() * rand(1, 9),
             'status' => 'pending',
             'payment_method' => 'transfer',
             'pendampingan_user_id' => $pendampinganUser->id,

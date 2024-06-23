@@ -25,17 +25,15 @@ class PegawaiController extends Controller
     public function create()
     {
         $title = "Tambah Pegawai";
-
         $jabatan = Jabatan::all();
-        $users = User::all();
 
-        return view('admin.pegawai.create', compact("title", "jabatan", "users"));
+        return view('admin.pegawai.create', compact("title", "jabatan"));
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "user_id" => "required|exists:users,id",
+            "email" => "required|email|unique:users,email",
             "nip" => "required|string|max:50|unique:pegawai,nip",
             "nama" => "required|string|max:255",
             "jabatan_id" => "required|exists:jabatan,id",
@@ -50,16 +48,23 @@ class PegawaiController extends Controller
             Alert::error($message)->flash();
             return back()->withErrors($validator)->withInput();
         }
-
-        Pegawai::create([
-            "user_id" => $request->user_id,
-            "nip" => $request->nip,
-            "nama" => $request->nama,
-            "jabatan_id" => $request->jabatan_id,
-            "instagram" => $request->instagram,
+        
+        $user = User::create([
+            "name" => $request->nama,
+            "email" => $request->email,
+            "password" => bcrypt("password"),
             "linkedin" => $request->linkedin,
+            "instagram" => $request->instagram,
             "foto" => $request->file("foto")->store("images/pegawai", "public"),
         ]);
+
+        Pegawai::create([
+            "user_id" => $user->id,
+            "nip" => $request->nip,
+            "jabatan_id" => $request->jabatan_id,
+        ]);
+
+        $user->assignRole("pegawai");
 
         Alert::success('Berhasil', 'Data Pegawai berhasil ditambahkan');
         return redirect()->route('pegawai.index');
@@ -68,11 +73,9 @@ class PegawaiController extends Controller
     public function edit(Pegawai $pegawai)
     {
         $title = "Edit Pegawai";
-
         $jabatan = Jabatan::all();
-        $users = User::all();
 
-        return view('admin.pegawai.edit', compact("title", "jabatan", "users", "pegawai",));
+        return view('admin.pegawai.edit', compact("title", "jabatan", "pegawai",));
     }
 
     public function update(Request $request, Pegawai $pegawai)
@@ -80,7 +83,6 @@ class PegawaiController extends Controller
 
         
         $validator = Validator::make($request->all(), [
-            "user_id" => "required|exists:users,id",
             "nip" => "required|string|max:50|",
             "nama" => "required|string|max:255",
             "jabatan_id" => "required|exists:jabatan,id",
@@ -96,21 +98,23 @@ class PegawaiController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $data = [
-            "user_id" => $request->user_id,
+        $pegawai->user->update([
+            "name" => $request->nama,
+            "linkedin" => $request->linkedin,
+            "instagram" => $request->instagram,
+        ]);
+
+        $pegawai->update([
             "nip" => $request->nip,
-            "nama" => $request->nama,
             "jabatan_id" => $request->jabatan_id,
-            "instagram" => $request->instagram, // Pastikan menggunakan request->instagram di sini
-            "linkedin" => $request->linkedin, // Dan juga request->linkedin di sini
-        ];        
+        ]);
 
         if ($request->hasFile("foto")) {
-            Storage::disk('public')->delete($pegawai->foto);
-            $data["foto"] = $request->file("foto")->store("images/pegawai", "public");
+            Storage::disk('public')->delete($pegawai->user->foto);
+            $pegawai->user->update([
+                "foto" => $request->file("foto")->store("images/pegawai", "public"),
+            ]);
         }
-
-        $pegawai->update($data);
 
         Alert::success('Berhasil', 'Data Pegawai berhasil diubah');
         return redirect()->route('pegawai.index');
@@ -118,7 +122,7 @@ class PegawaiController extends Controller
 
     public function destroy(Pegawai $pegawai)
     {
-        Storage::disk('public')->delete($pegawai->foto);
+        Storage::disk('public')->delete($pegawai->user->foto);
         $pegawai->delete();
 
         Alert::success('Berhasil', 'Data Pegawai berhasil dihapus');

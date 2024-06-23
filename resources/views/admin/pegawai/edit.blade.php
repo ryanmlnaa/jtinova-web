@@ -14,20 +14,6 @@
                     @csrf
                     @method('put')
                     <div class="form-group">
-                      <label for="user_id" class="col-form-label">User</label> <span class="text-danger">*</span>
-                      <select class="form-control @error('user_id') is-invalid @enderror" name="user_id" id="user_id">
-                        <option value="">Pilih User</option>
-                        @foreach ($users as $item)
-                          <option value="{{$item->id}}" {{old('user_id', $pegawai->user_id) == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
-                        @endforeach
-                      </select>
-                      @error('user_id')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                      @enderror
-                    </div>
-                    <div class="form-group">
                       <label for="nama" class="col-form-label">Nama</label> <span class="text-danger">*</span>
                       <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" value="{{old('nama', $pegawai->nama)}}">
                       @error('nama')
@@ -61,25 +47,25 @@
                     </div>
                     <div class="form-group">
                       <label for="instagram" class="col-form-label">Instagram</label>
-                      <input type="text" class="form-control @error('instagram') is-invalid @enderror" name="instagram" id="instagram" value="{{ old('instagram', $pegawai->instagram) }}">
+                      <input type="text" class="form-control @error('instagram') is-invalid @enderror" name="instagram" id="instagram" value="{{ old('instagram', $pegawai->user->instagram) }}">
                       @error('instagram')
                           <div class="invalid-feedback">
                               {{ $message }}
                           </div>
                       @enderror
-                  </div>
-                  <div class="form-group">
-                      <label for="linkedin" class="col-form-label">LinkedIn</label>
-                      <input type="text" class="form-control @error('linkedin') is-invalid @enderror" name="linkedin" id="linkedin" value="{{ old('linkedin', $pegawai->linkedin) }}">
-                      @error('linkedin')
-                          <div class="invalid-feedback">
-                              {{ $message }}
-                          </div>
-                      @enderror
-                  </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin" class="col-form-label">LinkedIn</label>
+                        <input type="text" class="form-control @error('linkedin') is-invalid @enderror" name="linkedin" id="linkedin" value="{{ old('linkedin', $pegawai->user->linkedin) }}">
+                        @error('linkedin')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
                     <div class="form-group">
                       <label for="foto" class="col-form-label">Gambar</label> <span class="text-danger">*</span>
-                      <img src="{{asset('storage/'.$pegawai->foto)}}" alt="foto" class="img-thumbnail" width="100">
+                      <img src="{{asset('storage/'.$pegawai->user->foto)}}" alt="foto" class="img-thumbnail" width="100">
                     </div>
                     <div class="form-group">
                       <label for="foto" class="col-form-label">Foto</label> <span class="text-danger">*</span>

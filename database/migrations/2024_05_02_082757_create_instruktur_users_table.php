@@ -14,16 +14,7 @@ return new class extends Migration
         Schema::create('instruktur_users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('no_hp', 15)->nullable();
-            $table->string('alamat')->nullable();
-            $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
-            $table->string('pendidikan_terakhir')->nullable();
-            $table->string('pekerjaan')->nullable();
-            $table->string('foto')->nullable();
-            $table->string("portofolio")->nullable();
-            $table->string("cv")->nullable();
-            $table->string("linkedin")->nullable();
-            $table->enum('status', ["Aktif", "Tidak Aktif"])->default("Aktif");
+            $table->foreignId('pelatihan_id')->nullable()->constrained('pelatihan')->onDelete('cascade');
             $table->timestamps();
         });
     }

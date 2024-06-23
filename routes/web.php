@@ -116,13 +116,6 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('transaction', AdminTransactionController::class)->only(['index', 'show', 'update']);
     });
 
-    // route with middleware mahasiswa-mbkm
-    Route::group(['middleware' => ['can:fill-profile']], function(){
-        // fill form
-        Route::put('/pelatihan-user/{pelatihanUser}', [PelatihanPelatihanUserController::class, 'update'])->name('pelatihan.pelatihanuser.update');
-        Route::put('/instruktur-user/{instrukturUser}', [InstrukturInstrukturUserController::class, 'update'])->name('instruktur.instrukturuser.update');
-    });
-
     Route::post('/mahasiswa-mbkm', [MbkmMbkmUserController::class, 'store'])->name('mbkm.mbkmuser.store');
     Route::get('/mahasiswa-mbkm/register', [MbkmMbkmUserController::class, 'formMbkm'])->name('register.mbkm');
     

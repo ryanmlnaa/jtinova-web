@@ -21,6 +21,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'jenis_kelamin',
         'pendidikan_terakhir',
         'pekerjaan',
+        'portofolio',
+        'cv',
+        'linkedin',
+        'instagram',
         'foto',
         'email_verified_at',
     ];

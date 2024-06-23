@@ -13,16 +13,7 @@ class InstrukturUser extends Model
 
     protected $fillable = [
         'user_id',
-        'no_hp',
-        'alamat',
-        'jenis_kelamin',
-        'pendidikan_terakhir',
-        'pekerjaan',
-        'foto',
-        'portofolio',
-        'cv',
-        'linkedin',
-        'status',
+        'pelatihan_id',
     ];
 
     public function user()
