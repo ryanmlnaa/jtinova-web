@@ -15,7 +15,7 @@
                     @method('put')
                     <div class="form-group">
                       <label for="nama" class="col-form-label">Nama</label> <span class="text-danger">*</span>
-                      <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" value="{{old('nama', $pegawai->nama)}}">
+                      <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" value="{{old('nama', $pegawai->user->name)}}">
                       @error('nama')
                         <div class="invalid-feedback">
                             {{ $message }}

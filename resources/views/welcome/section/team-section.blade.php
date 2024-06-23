@@ -14,18 +14,18 @@
 
         <div class="team-member">
           <div class="member-img">
-            <img src="{{ asset('storage/' . $item->foto) }}" class="img-fluid" alt="">
+            <img src="{{ asset('storage/' . $item->user->foto) }}" class="img-fluid" alt="">
             <div class="social">
-              @if ($item->instagram)
-                <a href="{{ $item->instagram }}"><i class="bi bi-instagram"></i></a>
+              @if ($item->user->instagram)
+                <a href="{{ $item->user->instagram }}" target="_blank"><i class="bi bi-instagram"></i></a>
               @endif
-              @if ($item->linkedin)
-                  <a href="{{ $item->linkedin }}"><i class="bi bi-linkedin"></i></a>
+              @if ($item->user->linkedin)
+                  <a href="{{ $item->user->linkedin }}" target="_blank"><i class="bi bi-linkedin"></i></a>
               @endif
             </div>
           </div>
           <div class="member-info">
-            <h4>{{ $item->nama }}</h4>
+            <h4>{{ $item->user->name }}</h4>
             <span>{{ $item->jabatan->nama }}</span>
           </div>
         </div>
