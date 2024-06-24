@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
   <meta charset="utf-8">
@@ -102,10 +102,10 @@
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Layanan Kami</h4>
           <ul>
-            <li><a href="#">Pelatihan</a></li>
-            <li><a href="#">Pendampingan</a></li>
-            <li><a href="#">Instruktur</a></li>
-            <li><a href="#">Mahasiswa MBKM</a></li>
+            <li><a href="#tabs" class="pelatihan-tabs">Pelatihan</a></li>
+            <li><a href="#tabs" class="pendampingan-tabs">Pendampingan</a></li>
+            <li><a href="#tabs" class="instruktur-tabs">Instruktur</a></li>
+            <li><a href="#tabs" class="mbkm-tabs">Mahasiswa MBKM</a></li>
           </ul>
         </div>
 
