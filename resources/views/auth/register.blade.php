@@ -1,24 +1,6 @@
 @extends('layouts.auth.app')
-@section('title', 'Register')
+@section('title', 'Daftar')
 @section('content')
-@php
-if (request()->route()->getName() == 'register.mbkm') {
-    $timeline = \App\Models\Timeline::where('status', 1)->first();
-    if ($timeline) {
-        $timelineData = json_decode($timeline->timeline);
-
-        if (Carbon\Carbon::now()->format('Y-m-d') >= $timelineData[0]->start && Carbon\Carbon::now()->format('Y-m-d') <= $timelineData[0]->end) {
-            $disabled = false;
-        } else {
-            $disabled = true;
-        }
-    } else {
-        $disabled = true;
-    }
-} else {
-    $disabled = false;
-}
-@endphp
 <div class="container mt-5">
     <div class="row">
         <div
@@ -30,23 +12,16 @@ if (request()->route()->getName() == 'register.mbkm') {
 
             <div class="card card-primary">
                 <div class="card-header">
-                    <h4>Pendaftaran</h4>
+                    <h4>Daftar</h4>
                 </div>
 
-                @if ($disabled)
-                <div class="card-body">
-                    <div class="alert alert-danger">
-                        Pendaftaran sudah ditutup atau belum dibuka
-                    </div>
-                </div>
-                @else
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group">
                             <label for="name">Nama Lengkap</label>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                                value="{{ old('name') }}" autofocus>
+                                value="{{ old('name') }}" required autofocus>
                             @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -55,9 +30,9 @@ if (request()->route()->getName() == 'register.mbkm') {
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Surel</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                                value="{{ old('email') }}">
+                                value="{{ old('email') }}" required autofocus>
                             @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -67,9 +42,9 @@ if (request()->route()->getName() == 'register.mbkm') {
 
                         <div class="row">
                             <div class="form-group col-6">
-                                <label for="password" class="d-block">Password</label>
+                                <label for="password" class="d-block">Kata Sandi</label>
                                 <input id="password" type="password" class="form-control pwstrength @error('password') is-invalid @enderror"
-                                    data-indicator="pwindicator" name="password">
+                                    data-indicator="pwindicator" name="password" required autofocus>
                                 <div id="pwindicator" class="pwindicator">
                                     <div class="bar"></div>
                                     <div class="label"></div>
@@ -81,9 +56,9 @@ if (request()->route()->getName() == 'register.mbkm') {
                                 @enderror
                             </div>
                             <div class="form-group col-6">
-                                <label for="password2" class="d-block">Konfirmasi Password</label>
+                                <label for="password2" class="d-block">Konfirmasi Kata Sandi</label>
                                 <input id="password2" type="password" class="form-control"
-                                    name="password_confirmation">
+                                    name="password_confirmation" required>
                             </div>
                         </div>
 
@@ -102,7 +77,6 @@ if (request()->route()->getName() == 'register.mbkm') {
                         Sudah Punya Akun? <a href="{{ route('login') }}">Login</a>
                     </div>
                 </div>
-                @endif
             </div>
             <div class="simple-footer">
                 Copyright &copy; JTI Innovation @php echo date('Y'); @endphp
