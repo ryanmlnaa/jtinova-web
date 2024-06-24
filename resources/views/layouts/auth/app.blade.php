@@ -42,7 +42,29 @@
     <!-- Template JS File -->
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.toggle-password').on('click', function () {
+                $(this).toggleClass('fa-eye fa-eye-slash');
+                let input = $('.password');
+                if (input.attr('type') == 'password') {
+                    input.attr('type', 'text');
+                } else {
+                    input.attr('type', 'password');
+                }
+            });
 
+            $('.toggle-password2').on('click', function () {
+                $(this).toggleClass('fa-eye fa-eye-slash');
+                let input = $('#password2');
+                if (input.attr('type') == 'password') {
+                    input.attr('type', 'text');
+                } else {
+                    input.attr('type', 'password');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

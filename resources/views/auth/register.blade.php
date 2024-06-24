@@ -43,12 +43,9 @@
                         <div class="row">
                             <div class="form-group col-6">
                                 <label for="password" class="d-block">Kata Sandi</label>
-                                <input id="password" type="password" class="form-control pwstrength @error('password') is-invalid @enderror"
-                                    data-indicator="pwindicator" name="password" required autofocus>
-                                <div id="pwindicator" class="pwindicator">
-                                    <div class="bar"></div>
-                                    <div class="label"></div>
-                                </div>
+                                <input id="password" type="password" class="form-control pwstrength @error('password') is-invalid @enderror password"
+                                    name="password" required autofocus>
+                                    <i class="fa fa-fw fa-eye field-icon toggle-password" style="float: right; margin-top: -28px; margin-right: 10px; cursor: pointer;"></i>
                                 @error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -59,6 +56,7 @@
                                 <label for="password2" class="d-block">Konfirmasi Kata Sandi</label>
                                 <input id="password2" type="password" class="form-control"
                                     name="password_confirmation" required>
+                                <i class="fa fa-fw fa-eye field-icon toggle-password2" style="float: right; margin-top: -28px; margin-right: 10px; cursor: pointer;"></i>
                             </div>
                         </div>
 
