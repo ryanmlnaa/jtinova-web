@@ -46,6 +46,8 @@
           <li><a href="{{route('landing.page')}}#about" class="">Tentang Kami<br></a></li>
           <li><a href="{{route('landing.page')}}#layanan">Layanan</a></li>
           <li><a href="{{route('landing.page')}}#portfolio">Portofolio</a></li>
+          <li><a href="{{route('landing.page')}}#team">Tim</a></li>
+          <li><a href="{{route('landing.page')}}#contact">Hubungi Kami</a></li>
           @auth
           <li><a href="{{route('dashboard')}}">{{Auth::user()->name}}</a></li>
           @endauth
@@ -55,7 +57,6 @@
 
       @guest
       <a class="btn-masuk" href="{{route ('login')}}">Masuk</a>
-      <a class="btn-getstarted" href="{{route('landing.page')}}#tabs">Daftar</a>
       @endguest
 
     </div>

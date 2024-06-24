@@ -13,13 +13,13 @@
       <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
         <li data-filter="*" class="filter-active">All</li>
         @foreach ($kategori as $item)
-        <li data-filter=".filter-{{ $item->name }}"> {{ $item->name }}</li>
+        <li data-filter=".filter-{{ $item->id }}"> {{ $item->name }}</li>
         @endforeach
       </ul><!-- End Portfolio Filters -->
 
       <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
         @foreach($portofolio as $item)
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ $item->category->name}}">
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ $item->category->id}}">
           <div class="portfolio-content h-100">
             <img src="{{ asset('storage/' .$item->images->first()->image_url)}}" class="img-fluid" alt="{{ $item->judul }}">
             <div class="portfolio-info">
