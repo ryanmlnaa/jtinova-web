@@ -56,6 +56,9 @@ Route::get('katalog-pendampingan/{kode}', [App\Http\Controllers\Pendampingan\Lan
 // 
 Route::get('timeline-pendaftaran-mbkm', [LandingPageController::class, 'mbkmTimeline'])->name('mbkmTimeline.index');
 
+// contact message
+Route::post('contact-message', [App\Http\Controllers\Admin\ContactMessageController::class, 'store'])->middleware('hasValidCaptcha')->name('contact-message.store');
+
 Route::group(['middleware' => ['auth']], function(){
     // home or dashboard
     Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->middleware('verified')->name('dashboard');
@@ -77,6 +80,11 @@ Route::group(['middleware' => ['auth']], function(){
 
         // Category
         Route::resource('category', CategoryController::class);
+
+        // contact message
+        Route::get('contact-message', [App\Http\Controllers\Admin\ContactMessageController::class, 'index'])->name('contact-message.index');
+        Route::get('contact-message/{message}', [App\Http\Controllers\Admin\ContactMessageController::class, 'show'])->name('contact-message.show');
+        Route::delete('contact-message/{message}', [App\Http\Controllers\Admin\ContactMessageController::class, 'destroy'])->name('contact-message.destroy');
 
         // skemaPendampingan
         Route::resource('skemaPendampingan', SkemaPendampinganController::class)->except(['show']);

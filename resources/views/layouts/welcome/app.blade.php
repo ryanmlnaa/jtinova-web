@@ -27,6 +27,9 @@
   <!-- Main CSS File -->
   <link href="{{asset ('assetss/assets/css/main.css') }}" rel="stylesheet">
 
+  <!-- cloudflare -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 </head>
 
 <body class="index-page">
@@ -42,7 +45,7 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="{{route('landing.page')}}#hero" class="">Home<br></a></li>
+          <li><a href="{{route('landing.page')}}#hero" class="">Beranda<br></a></li>
           <li><a href="{{route('landing.page')}}#about" class="">Tentang Kami<br></a></li>
           <li><a href="{{route('landing.page')}}#layanan">Layanan</a></li>
           <li><a href="{{route('landing.page')}}#portfolio">Portofolio</a></li>
@@ -92,7 +95,7 @@
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Menu</h4>
           <ul>
-            <li><a href="#hero">Home</a></li>
+            <li><a href="#hero">Beranda</a></li>
             <li><a href="#about">Tentang Kami</a></li>
             <li><a href="#layanan">Layanan</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
