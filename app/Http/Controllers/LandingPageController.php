@@ -35,7 +35,13 @@ class LandingPageController extends Controller
 
     public function mbkmTimeline() {
         $webConfig = WebConfig::first();
-        $timeline = Timeline::where('status', 1)->first();
+        $timeline = Timeline::where('status', 1)->where('jenis', 'mbkm')->first();
         return view('welcome.mbkm.mbkm-timeline', compact('webConfig', 'timeline'));
+    }
+
+    public function instrukturTimeline() {
+        $webConfig = WebConfig::first();
+        $timeline = Timeline::where('status', 1)->where('jenis', 'instruktur')->first();
+        return view('welcome.instruktur.instruktur-timeline', compact('webConfig', 'timeline'));
     }
 }

@@ -16,7 +16,7 @@ class MbkmUserController extends Controller
     public function index()
     {
         $title = 'Data Mahasiswa MBKM';
-        $data = Timeline::latest()->get();
+        $data = Timeline::where('jenis', 'mbkm')->latest()->get();
         return view('admin.mbkm-user.index', compact('data', 'title'));
     }
 
@@ -81,6 +81,8 @@ class MbkmUserController extends Controller
 
         if ($request->status == 'gagal') {
             $user->removeRole('mahasiswa-mbkm');
+        } else {
+            $user->assignRole('mahasiswa-mbkm');
         }
 
         Alert::success('Berhasil', 'Notifikasi berhasil dikirim');

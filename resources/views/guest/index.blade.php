@@ -9,18 +9,14 @@
     @role('mahasiswa-mbkm')
         @include('guest.mbkm.index')
     @endrole
+    @role('instruktur')
+        @include('guest.instruktur.index')
+    @endrole
     @role('user-pendampingan')
         @include('guest.pendampingan.dashboard')
     @endrole
     @role('user-pelatihan')
         @include('guest.pelatihan.dashboard')
-    @endrole
-    @role('instruktur')
-        @can('fill-profile')
-            @include('guest.instruktur.form-biodata')
-        @else
-            @include('guest.instruktur.index')
-        @endcan
     @endrole
     </div>
 @endsection

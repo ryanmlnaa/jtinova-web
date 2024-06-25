@@ -1,32 +1,6 @@
-@php
-$timeline = \App\Models\Timeline::where('status', 1)->first();
-if ($timeline) {
-    $timelineData = json_decode($timeline->timeline);
-
-    if (Carbon\Carbon::now()->format('Y-m-d') >= $timelineData[0]->start && Carbon\Carbon::now()->format('Y-m-d') <= $timelineData[0]->end) {
-        $disabled = false;
-    } else {
-        $disabled = true;
-    }
-} else {
-    $disabled = true;
-}
-@endphp
-
 <nav class="navbar navbar-expand-lg main-navbar">
-    <a href="{{route('dashboard')}}" class="navbar-brand sidebar-gone-hide">JTINOVA</a>
+    <a href="{{route('landing.page')}}" class="navbar-brand sidebar-gone-hide">JTINOVA</a>
     <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
-    <div class="nav-collapse">
-      <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
-        <i class="fas fa-ellipsis-v"></i>
-      </a>
-      <ul class="navbar-nav">
-        <li class="nav-item"><a href="{{route('dashboard')}}" class="nav-link">Dashboard</a></li>
-        @if (!$disabled)
-        <li class="nav-item"><a href="{{route('register.mbkm')}}" class="nav-link">Daftar MBKM</a></li>
-        @endif
-      </ul>
-    </div>
     <div class="ml-auto"></div>
     <ul class="navbar-nav navbar-right">
         <li class="dropdown"><a href="#" data-toggle="dropdown"
@@ -65,11 +39,12 @@ if ($timeline) {
             <li class="nav-item {{ Request::is('dashboard/pendampingan') ? 'active' : '' }}">
                 <a href="{{route('dashboard.pendampingan.index')}}" class="nav-link"><i class="fas fa-hands-helping"></i><span>Pendampingan</span></a>
             </li>
-            @role('mahasiswa-mbkm')
             <li class="nav-item">
-                <a href="{{route('mbkmTimeline.index')}}" class="nav-link"><i class="fas fa-calendar"></i><span>Timeline</span></a>
+                <a href="{{route('mbkmTimeline.index')}}" class="nav-link"><i class="fas fa-calendar"></i><span>Timeline MBKM</span></a>
             </li>
-            @endrole
+            <li class="nav-item">
+                <a href="{{route('instrukturTimeline.index')}}" class="nav-link"><i class="fas fa-calendar"></i><span>Timeline Instruktur</span></a>
+            </li>
         </ul>
     </div>
 </nav>

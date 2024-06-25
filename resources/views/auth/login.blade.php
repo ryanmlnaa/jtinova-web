@@ -1,24 +1,23 @@
 @extends('layouts.auth.app')
-@section('title', 'Login')
+@section('title', 'Masuk')
 @section('content')
 <div class="container mt-5">
     <div class="row">
-        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+        <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
             <div class="login-brand">
-                <img src="{{asset('static/logo.png')}}" alt="logo" width="200"
+                <img src="{{asset('static/logo.png')}}" alt="logo" width="500"
                     class="shadow-light">
             </div>
             <div class="card card-primary">
                 <div class="card-header">
-                    <h4>Login</h4>
+                    <h4>Masuk</h4>
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}" class="needs-validation"
-                        novalidate="">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Surel</label>
                             <input id="email" type="email"
                                 class="form-control @error('email') is-invalid @enderror" name="email"
                                 tabindex="1" required autofocus>
@@ -33,7 +32,7 @@
 
                         <div class="form-group">
                             <div class="d-block">
-                                <label for="password" class="control-label">Password</label>
+                                <label for="password" class="control-label">Kata Sandi</label>
                                 <div class="float-right">
                                     @if (Route::has('password.request'))
                                         <a href="{{ route('password.request') }}">
@@ -42,33 +41,37 @@
                                     @endif
                                 </div>
                             </div>
-                            <input id="password" type="password" class="form-control" name="password"
+                            <!-- add eye icon for show password -->
+                            <input id="password" type="password" class="form-control password" name="password"
                                 tabindex="2" required>
-                            <div class="invalid-feedback">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            <i class="fa fa-fw fa-eye field-icon toggle-password" style="float: right; margin-top: -28px; margin-right: 10px; cursor: pointer;"></i>
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" name="remember" class="custom-control-input"
                                     tabindex="3" id="remember-me">
-                                <label class="custom-control-label" for="remember-me">Remember Me</label>
+                                <label class="custom-control-label" for="remember-me">Ingat Saya</label>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                Login
+                            <div class="cf-turnstile" data-sitekey="{{ config('services.cloudflare.turnstile.site_key') }}" data-theme="light" data-callback="onTurnstileSuccess"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4" disabled="true">
+                                Masuk
                             </button>
                         </div>
                     </form>
                     <div class="mt-5 text-muted text-center">
-                        Don't have an account? <a href="{{ route('register') }}">Create One</a>
+                        Belum punya akun? <a href="{{ route('register') }}">Buat Akun</a>
                     </div>
                 </div>
             </div>

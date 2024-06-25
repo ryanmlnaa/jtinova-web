@@ -33,26 +33,26 @@ class UserSeeder extends Seeder
         $user1 = User::find(1);
         $user1->assignRole('admin');
 
-        User::factory(5)->create()->each(function ($user) {
-            $user->assignRole('pegawai');
-            Pegawai::factory(1)->create(['user_id' => $user->id]);
-        });
+        // User::factory(5)->create()->each(function ($user) {
+        //     $user->assignRole('pegawai');
+        //     Pegawai::factory(1)->create(['user_id' => $user->id]);
+        // });
 
-        User::factory(5)->create()->each(function ($user) {
-            $user->assignRole('mahasiswa-mbkm');
-            MbkmUser::factory(1)->create(['user_id' => $user->id])->each(function ($mbkmUser) {
-                $mbkmUser->keahlian()->attach([rand(1, 30), rand(1, 30), rand(1, 30), rand(1, 30), rand(1, 30)]);
-            });
-        });
+        // User::factory(5)->create()->each(function ($user) {
+        //     $user->assignRole('mahasiswa-mbkm');
+        //     MbkmUser::factory(1)->create(['user_id' => $user->id])->each(function ($mbkmUser) {
+        //         $mbkmUser->keahlian()->attach([rand(1, 30), rand(1, 30), rand(1, 30), rand(1, 30), rand(1, 30)]);
+        //     });
+        // });
 
-        User::factory(5)->create()->each(function ($user) {
-            $user->assignRole('user-pelatihan');
-        });
+        // User::factory(5)->create()->each(function ($user) {
+        //     $user->assignRole('user-pelatihan');
+        // });
 
-        User::factory(5)->create()->each(function ($user) {
-            $user->assignRole('user-pendampingan');
-            PendampinganUser::factory(1)->create(['user_id' => $user->id]);
-        });
+        // User::factory(5)->create()->each(function ($user) {
+        //     $user->assignRole('user-pendampingan');
+        //     PendampinganUser::factory(1)->create(['user_id' => $user->id]);
+        // });
 
         // User::factory(5)->create()->each(function ($user) {
         //     $user->assignRole('instruktur');

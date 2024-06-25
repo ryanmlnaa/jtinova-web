@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
   <meta charset="utf-8">
@@ -27,6 +27,9 @@
   <!-- Main CSS File -->
   <link href="{{asset ('assetss/assets/css/main.css') }}" rel="stylesheet">
 
+  <!-- cloudflare -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 </head>
 
 <body class="index-page">
@@ -42,10 +45,12 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="{{route('landing.page')}}#hero" class="">Home<br></a></li>
+          <li><a href="{{route('landing.page')}}#hero" class="">Beranda<br></a></li>
           <li><a href="{{route('landing.page')}}#about" class="">Tentang Kami<br></a></li>
           <li><a href="{{route('landing.page')}}#layanan">Layanan</a></li>
           <li><a href="{{route('landing.page')}}#portfolio">Portofolio</a></li>
+          <li><a href="{{route('landing.page')}}#team">Tim</a></li>
+          <li><a href="{{route('landing.page')}}#contact">Hubungi Kami</a></li>
           @auth
           <li><a href="{{route('dashboard')}}">{{Auth::user()->name}}</a></li>
           @endauth
@@ -55,7 +60,6 @@
 
       @guest
       <a class="btn-masuk" href="{{route ('login')}}">Masuk</a>
-      <a class="btn-getstarted" href="{{route('landing.page')}}#tabs">Daftar</a>
       @endguest
 
     </div>
@@ -91,7 +95,7 @@
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Menu</h4>
           <ul>
-            <li><a href="#hero">Home</a></li>
+            <li><a href="#hero">Beranda</a></li>
             <li><a href="#about">Tentang Kami</a></li>
             <li><a href="#layanan">Layanan</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
@@ -101,10 +105,10 @@
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Layanan Kami</h4>
           <ul>
-            <li><a href="#">Pelatihan</a></li>
-            <li><a href="#">Pendampingan</a></li>
-            <li><a href="#">Instruktur</a></li>
-            <li><a href="#">Mahasiswa MBKM</a></li>
+            <li><a href="#tabs" class="pelatihan-tabs">Pelatihan</a></li>
+            <li><a href="#tabs" class="pendampingan-tabs">Pendampingan</a></li>
+            <li><a href="#tabs" class="instruktur-tabs">Instruktur</a></li>
+            <li><a href="#tabs" class="mbkm-tabs">Mahasiswa MBKM</a></li>
           </ul>
         </div>
 
@@ -130,7 +134,6 @@
 
   <!-- Vendor JS Files -->
   <script src="{{asset ('assetss/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{asset ('assetss/assets/vendor/php-email-form/validate.js') }}"></script>
   <script src="{{asset ('assetss/assets/vendor/aos/aos.js') }}"></script>
   <script src="{{asset ('assetss/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
   <script src="{{asset ('assetss/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>

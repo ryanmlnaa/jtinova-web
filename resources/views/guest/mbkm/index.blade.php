@@ -2,7 +2,7 @@
   $data = App\Models\MbkmUser::where('user_id', Auth::user()->id)->first();
 @endphp
 
-@if ($data->status_pendaftaran == 'proses')
+@if ($data && $data->status_pendaftaran == 'proses')
 <div class="card">
   <div class="card-header">
     <h4>Status Pendaftaran MBKM</h4>
@@ -11,7 +11,7 @@
     <h5>Pendaftaran sedang diproses, pantau terus email dan dashboard untuk informasi lebih lanjut.</h5>
   </div>
 </div>
-@elseif ($data->status_pendaftaran == 'gagal')
+@elseif ($data && $data->status_pendaftaran == 'gagal')
 <div class="card">
   <div class="card-header">
     <h4>Status Pendaftaran MBKM</h4>

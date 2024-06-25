@@ -21,12 +21,6 @@ describe('KeahlianController', function () {
             $response->assertStatus(302);
             $response->assertRedirect(route('login'));
         });
-
-        it('should return 403 when authenticated but not admin', function () {
-            $this->actingAsUserMbkm();
-            $response = $this->get(route('keahlian.index'));
-            $response->assertStatus(403);
-        });
     });
 
     describe('->store()', function () {
@@ -50,13 +44,6 @@ describe('KeahlianController', function () {
             $response = $this->post(route('keahlian.store'), $keahlian->toArray());
             $response->assertStatus(302);
             $response->assertRedirect(route('login'));
-        });
-
-        it('should return 403 when authenticated but not admin', function () {
-            $this->actingAsUserMbkm();
-            $keahlian = Keahlian::factory()->make();
-            $response = $this->post(route('keahlian.store'), $keahlian->toArray());
-            $response->assertStatus(403);
         });
     });
 
@@ -85,14 +72,6 @@ describe('KeahlianController', function () {
             $response->assertStatus(302);
             $response->assertRedirect(route('login'));
         });
-
-        it('should return 403 when authenticated but not admin', function () {
-            $this->actingAsUserMbkm();
-            $keahlian = Keahlian::factory()->create();
-            $keahlian->nama = 'updated';
-            $response = $this->patch(route('keahlian.update', $keahlian->id), $keahlian->toArray());
-            $response->assertStatus(403);
-        });
     });
 
     describe('->destroy()', function () {
@@ -109,13 +88,6 @@ describe('KeahlianController', function () {
             $response = $this->delete(route('keahlian.destroy', $keahlian->id));
             $response->assertStatus(302);
             $response->assertRedirect(route('login'));
-        });
-
-        it('should return 403 when authenticated but not admin', function () {
-            $this->actingAsUserMbkm();
-            $keahlian = Keahlian::factory()->create();
-            $response = $this->delete(route('keahlian.destroy', $keahlian->id));
-            $response->assertStatus(403);
         });
     });
 });

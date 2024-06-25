@@ -22,6 +22,19 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                      <label for="title" class="col-form-label">Judul</label> <span class="text-danger">*</span>
+                      <select class="form-control @error('jenis') is-invalid @enderror" name="jenis" id="jenis">
+                        <option value="">Pilih Jenis</option>
+                        <option value="mbkm">MBKM</option>
+                        <option value="instruktur">Instruktur</option>
+                      </select>
+                        @error('jenis')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                       <label for="tahun_ajaran" class="col-form-label">Tahun Ajaran</label> <span class="text-danger">* (Contoh: 2021/2022 Genap)</span>
                       <input type="text" class="form-control @error('tahun_ajaran') is-invalid @enderror" name="tahun_ajaran" id="tahun_ajaran" value="{{old('tahun_ajaran')}}">
                         @error('tahun_ajaran')

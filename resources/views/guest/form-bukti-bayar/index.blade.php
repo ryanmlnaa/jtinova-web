@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label for="bukti_pembayaran">Upload Bukti Pembayaran:</label>
                     <input type="file" class="form-control-file" name="bukti_pembayaran" id="foto_profile"
-                        onchange="previewImage(this);" readonly>
+                        onchange="previewImage(this);" required>
                     <img id="gambar-preview" src="#" alt="Gambar Pratinjau"
                         style="max-width: 50%; margin-top:10px; display: none;">
                 </div>

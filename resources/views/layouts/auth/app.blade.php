@@ -20,9 +20,12 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+    <!-- cloudflare -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div id="app">
         <section class="section">
             @yield('content')
@@ -42,7 +45,37 @@
     <!-- Template JS File -->
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.toggle-password').on('click', function () {
+                $(this).toggleClass('fa-eye fa-eye-slash');
+                let input = $('.password');
+                if (input.attr('type') == 'password') {
+                    input.attr('type', 'text');
+                } else {
+                    input.attr('type', 'password');
+                }
+            });
 
+            $('.toggle-password2').on('click', function () {
+                $(this).toggleClass('fa-eye fa-eye-slash');
+                let input = $('#password2');
+                if (input.attr('type') == 'password') {
+                    input.attr('type', 'text');
+                } else {
+                    input.attr('type', 'password');
+                }
+            });
+
+            // callback turnstile
+            window.onTurnstileSuccess = function (code) {
+                document.querySelector('form button[type="submit"]').disabled = false;
+            }
+
+            // disable submit button
+            document.querySelector('form button[type="submit"]').disabled = true;
+        });
+    </script>
 </body>
 
 </html>

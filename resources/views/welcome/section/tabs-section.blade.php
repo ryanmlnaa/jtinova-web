@@ -10,25 +10,25 @@
 
     <ul class="nav nav-tabs row d-flex aos-init" data-aos="fade-up" data-aos-delay="100" role="tablist">
       <li class="nav-item col-3" role="presentation">
-        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabs-tab-4" aria-selected="true" role="tab">
+        <a class="nav-link layanans active" id="layanan-mbkm" data-bs-toggle="tab" data-bs-target="#tabs-tab-4" aria-selected="true" role="tab">
           <i class="bi bi-binoculars"></i>
           <h4 class="d-none d-lg-block">Magang Mahasiswa MBKM</h4>
         </a>
       </li>
       <li class="nav-item col-3" role="presentation">
-        <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tabs-tab-1" aria-selected="false" role="tab"  tabindex="-1">
+        <a class="nav-link layanans" id="layanan-pelatihan" data-bs-toggle="tab" data-bs-target="#tabs-tab-1" aria-selected="false" role="tab"  tabindex="-1">
           <i class="bi bi-briefcase"></i>
           <h4 class="d-none d-lg-block">Pelatihan</h4>
         </a>
       </li>
       <li class="nav-item col-3" role="presentation">
-        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-2" aria-selected="false" role="tab" tabindex="-1">
+        <a class="nav-link layanans" id="layanan-pendampingan" data-bs-toggle="tab" data-bs-target="#tabs-tab-2" aria-selected="false" role="tab" tabindex="-1">
           <i class="bi bi-card-checklist"></i>
           <h4 class="d-none d-lg-block">Pendampingan</h4>
         </a>
       </li>
       <li class="nav-item col-3" role="presentation">
-        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-3" aria-selected="false" role="tab" tabindex="-1">
+        <a class="nav-link layanans" id="layanan-instruktur" data-bs-toggle="tab" data-bs-target="#tabs-tab-3" aria-selected="false" role="tab" tabindex="-1">
           <i class="bi bi-bar-chart"></i>
           <h4 class="d-none d-lg-block">Instruktur</h4>
         </a>
@@ -119,7 +119,8 @@
             <p>
                 Sebagai instruktur di TEFA, Anda akan memiliki kesempatan untuk berkontribusi pada pengembangan keterampilan dan pengetahuan peserta, serta membantu mereka siap menghadapi tantangan di dunia industri.
             </p>
-            <a href="#" class="btn-daftar-layanan">Daftar</a>
+            <a href="{{route('instrukturTimeline.index')}}" class="btn-lihat-layanan">Lihat Timeline</a>
+            <a href="{{route('register.instruktur')}}" class="btn-daftar-layanan">Daftar</a>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 text-center">
             <img src="{{asset('static/sementara.jpg')}}" alt="" class="img-fluid">
@@ -162,3 +163,39 @@
   </div>
 
 </section>
+
+@push('scripts')
+<script src="{{ asset('assets/modules/jquery.min.js') }}"></script>
+<script>
+  $(document).ready(function() {
+    function clickTabs(idLayanan, idTab) {
+      $('.layanans').removeClass('active');
+      $('.layanans').attr('aria-selected', 'false');
+      $('.layanans').attr('tabindex', '-1');
+      $('.tab-pane').removeClass('active');
+      $('.tab-pane').removeClass('show');
+      $(idLayanan).addClass('active');
+      $(idLayanan).attr('aria-selected', 'true');
+      $(idLayanan).attr('tabindex', '0');
+      $(idTab).addClass('active');
+      $(idTab).addClass('show');
+    }
+
+    $('.pelatihan-tabs').click(function() {
+      clickTabs('#layanan-pelatihan', '#tabs-tab-1');
+    });
+
+    $('.pendampingan-tabs').click(function() {
+      clickTabs('#layanan-pendampingan', '#tabs-tab-2');
+    });
+
+    $('.instruktur-tabs').click(function() {
+      clickTabs('#layanan-instruktur', '#tabs-tab-3');
+    });
+
+    $('.mbkm-tabs').click(function() {
+      clickTabs('#layanan-mbkm', '#tabs-tab-4');
+    });
+  });
+</script>
+@endpush

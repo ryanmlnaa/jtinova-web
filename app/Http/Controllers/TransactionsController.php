@@ -6,6 +6,7 @@ use App\Models\Transactions;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -38,6 +39,10 @@ class TransactionsController extends Controller
         }
 
         $transaction = Transactions::where('id', $decrypted)->first();
+
+        if ($transaction->payment_proof) {
+            Storage::disk('public')->delete($transaction->payment_proof);
+        }
 
         $transaction->update([
             "status" => "pending",

@@ -15,6 +15,12 @@
 
 <section id="layanan" class="services section">
 
+  @if (!$timeline)
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Timeline Pendaftaran MBKM</h2>
+    <p>Belum ada timeline pendaftaran MBKM</p>
+  </div>
+  @else
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
     <h2>{{$timeline->title}}</h2>
@@ -43,6 +49,7 @@
       <a href="{{route('register.mbkm')}}" class="btn-daftar-layanan">Daftar</a>
     </div><!-- End Section Title -->
   </div>
+  @endif
 
 </section>
 

@@ -27,6 +27,7 @@ class TimelineController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
+            'jenis' => 'required|max:255|in:mbkm,instruktur',
             'description.*' => 'required|max:255',
             'tahun_ajaran' => 'required|max:255',
             'start_at.*' => 'required|date',
@@ -50,6 +51,7 @@ class TimelineController extends Controller
 
         Timeline::create([
             'title' => $request->title,
+            'jenis' => $request->jenis,
             'tahun_ajaran' => $request->tahun_ajaran,
             'timeline' => json_encode($convertedData),
         ]);
@@ -69,6 +71,7 @@ class TimelineController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
+            'jenis' => 'required|max:255|in:mbkm,instruktur',
             'description.*' => 'required|max:255',
             'tahun_ajaran' => 'required|max:255',
             'status' => 'required|in:0,1',
@@ -94,6 +97,7 @@ class TimelineController extends Controller
         $timeline = Timeline::findOrFail($id);
         $timeline->update([
             'title' => $request->title,
+            'jenis' => $request->jenis,
             'tahun_ajaran' => $request->tahun_ajaran,
             'status' => $request->status,
             'timeline' => json_encode($convertedData),
