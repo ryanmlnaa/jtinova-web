@@ -1291,15 +1291,15 @@ h6 .badge {
   color: #fff !important; }
 
 .btn-info, .btn-info.disabled {
-  box-shadow: 0 2px 6px #82d3f8;
+  box-shadow: 0 2px 6px #ff7e80;
   background-color: #d62224;
   border-color: #d62224;
   color: #fff; }
   .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.disabled:hover, .btn-info.disabled:focus, .btn-info.disabled:active {
-    background-color: #0da8ee !important; }
+    background-color: #af0003 !important; }
 
 .btn-outline-info:hover, .btn-outline-info:focus, .btn-outline-info:active, .btn-outline-info.disabled:hover, .btn-outline-info.disabled:focus, .btn-outline-info.disabled:active {
-  background-color: #0da8ee !important;
+  background-color: #af0003 !important;
   color: #fff !important; }
 
 .btn-primary, .btn-primary.disabled {
