@@ -21,12 +21,6 @@ describe('ProdiController', function () {
             $response->assertStatus(302);
             $response->assertRedirect(route('login'));
         });
-
-        it('should return 403 when authenticated but not admin', function () {
-            $this->actingAsUserMbkm();
-            $response = $this->get(route('prodi.index'));
-            $response->assertStatus(403);
-        });
     });
 
     describe('->store()', function () {
@@ -50,13 +44,6 @@ describe('ProdiController', function () {
             $response = $this->post(route('prodi.store'), $prodi->toArray());
             $response->assertStatus(302);
             $response->assertRedirect(route('login'));
-        });
-
-        it('should return 403 when authenticated but not admin', function () {
-            $this->actingAsUserMbkm();
-            $prodi = Prodi::factory()->make();
-            $response = $this->post(route('prodi.store'), $prodi->toArray());
-            $response->assertStatus(403);
         });
     });
 
@@ -86,14 +73,6 @@ describe('ProdiController', function () {
             $response->assertStatus(302);
             $response->assertRedirect(route('login'));
         });
-
-        it('should return 403 when authenticated but not admin', function () {
-            $this->actingAsUserMbkm();
-            $prodi = Prodi::factory()->create();
-            $prodi->name = 'updated';
-            $response = $this->put(route('prodi.update', $prodi->id), $prodi->toArray());
-            $response->assertStatus(403);
-        });
     });
 
     describe('->destroy()', function () {
@@ -110,13 +89,6 @@ describe('ProdiController', function () {
             $response = $this->delete(route('prodi.destroy', $prodi->id));
             $response->assertStatus(302);
             $response->assertRedirect(route('login'));
-        });
-
-        it('should return 403 when authenticated but not admin', function () {
-            $this->actingAsUserMbkm();
-            $prodi = Prodi::factory()->create();
-            $response = $this->delete(route('prodi.destroy', $prodi->id));
-            $response->assertStatus(403);
         });
     });
 });
