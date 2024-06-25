@@ -69,7 +69,8 @@
                 <img src="{{asset('storage/'.$item->payment_proof)}}" alt="Bukti pembayaran" width="100%" class="img-thumbnail">
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Konfirmasi</button>
+                <button type="submit" class="btn btn-primary" name="status" value="success">Konfirmasi</button>
+                <button type="submit" class="btn btn-danger" name="status" value="failed">Tolak</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
             </form>

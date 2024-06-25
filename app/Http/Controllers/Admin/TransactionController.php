@@ -21,7 +21,7 @@ class TransactionController extends Controller
     public function update(Request $request, $id)
     {
         $data = Transactions::find($id);
-        $data->status = 'success';
+        $data->status = $request->status;
         $data->save();
 
         Alert::success("Success", "Berhasil Menambahkan Data");

@@ -47,6 +47,8 @@
                             Status pembayaran: <span class="badge badge-warning">Menunggu Konfirmasi</span>
                             @elseif($status == 'pending')
                             Status pembayaran: <span class="badge badge-warning">Menunggu Konfirmasi</span>
+                            @elseif($status == 'failed')
+                            Status pembayaran: <span class="badge badge-danger">Pembayaran Gagal</span>
                             @else
                             <a href="#" class="btn btn-primary">Koridor Kelas</a>
                             @endif
