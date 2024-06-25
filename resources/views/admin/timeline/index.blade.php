@@ -18,6 +18,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Judul</th>
+                                    <th>Jenis</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -27,6 +28,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->title }}</td>
+                                    <td>{{ $item->jenis }}</td>
                                     <td>{{ $item->status == 1 ? 'Aktif' : 'Tidak Aktif' }}</td>
                                     <td>
                                         <a href="{{route('timeline.edit', $item)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>

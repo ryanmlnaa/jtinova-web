@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InstrukturUser;
 use App\Models\Keahlian;
 use App\Models\PelatihanUser;
 use App\Models\PendampinganUser;

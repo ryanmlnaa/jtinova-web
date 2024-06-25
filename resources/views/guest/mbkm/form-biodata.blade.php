@@ -1,7 +1,7 @@
 @extends('layouts.auth.app')
 @section('title', $title)
 @php
-$timeline = \App\Models\Timeline::where('status', 1)->first();
+$timeline = \App\Models\Timeline::where('status', 1)->where('jenis', 'mbkm')->first();
 if ($timeline) {
     $timelineData = json_decode($timeline->timeline);
 
@@ -35,20 +35,40 @@ if (auth()->check()) {
                 <h4 class="alert-heading">Pendaftaran MBKM</h4>
                 <p>Pendaftaran sedang diproses, pantau terus email dan dashboard untuk informasi lebih lanjut.</p>
             </div>
+            <div class="form-group text-center">
+                <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg">
+                    Kembali ke Dashboard
+                </a>
+            </div>
             @elseif ($data && $data->status_pendaftaran == 'gagal')
             <div class="alert alert-light">
                 <h4 class="alert-heading">Pendaftaran MBKM</h4>
                 <p><span class="text-info">Mohon maaf</span>, anda <span class="text-info">tidak lolos</span> seleksi MBKM. Silahkan coba lagi di periode berikutnya.</p>
+            </div>
+            <div class="form-group text-center">
+                <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg">
+                    Kembali ke Dashboard
+                </a>
             </div>
             @elseif ($data && $data->status_pendaftaran == 'lolos')
             <div class="alert alert-light">
                 <h4 class="alert-heading">Pendaftaran MBKM</h4>
                 <p>Selamat, anda <span class="text-success">lolos</span> seleksi MBKM. Silahkan cek email dan dashboard untuk informasi lebih lanjut.</p>
             </div>
+            <div class="form-group text-center">
+                <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg">
+                    Kembali ke Dashboard
+                </a>
+            </div>
             @elseif ($disabled)
             <div class="alert alert-light">
                 <h4 class="alert-heading">Pendaftaran MBKM</h4>
                 <p>Pendaftaran MBKM belum dibuka atau sudah ditutup. Pantau terus informasi di website ini atau di email anda.</p>
+            </div>
+            <div class="form-group text-center">
+                <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg">
+                    Kembali ke Dashboard
+                </a>
             </div>
             @else
             <div class="card card-primary">
@@ -196,7 +216,7 @@ if (auth()->check()) {
                                 <div class="col-4">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="keahlian-{{ $keahlian->id }}"
-                                            name="keahlian_id[]" value="{{ $keahlian->id }}" @if (is_array(old('keahlian_id')) && in_array($keahlian->id, old('keahlian_id'))) checked @endif required autofocus>
+                                            name="keahlian_id[]" value="{{ $keahlian->id }}" @if (is_array(old('keahlian_id')) && in_array($keahlian->id, old('keahlian_id'))) checked @endif>
                                         <label class="custom-control-label" for="keahlian-{{ $keahlian->id }}">
                                             {{ $keahlian->nama }}
                                         </label>
@@ -228,6 +248,10 @@ if (auth()->check()) {
                                 </div>
                                 @enderror
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="cf-turnstile" data-sitekey="{{ config('services.cloudflare.turnstile.site_key') }}" data-theme="light" data-callback="onTurnstileSuccess"></div>
                         </div>
 
                         <div class="form-group">

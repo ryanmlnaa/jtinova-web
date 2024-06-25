@@ -11,6 +11,7 @@ class Timeline extends Model
 
     protected $fillable = [
         'title',
+        'jenis',
         'timeline',
         'tahun_ajaran',
         'status',
@@ -19,5 +20,10 @@ class Timeline extends Model
     public function MbkmUser()
     {
         return $this->hasMany(MbkmUser::class);
+    }
+
+    public function InstrukturUser()
+    {
+        return $this->hasMany(InstrukturUser::class);
     }
 }

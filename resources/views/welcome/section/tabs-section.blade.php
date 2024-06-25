@@ -119,7 +119,8 @@
             <p>
                 Sebagai instruktur di TEFA, Anda akan memiliki kesempatan untuk berkontribusi pada pengembangan keterampilan dan pengetahuan peserta, serta membantu mereka siap menghadapi tantangan di dunia industri.
             </p>
-            <a href="#" class="btn-daftar-layanan">Daftar</a>
+            <a href="{{route('instrukturTimeline.index')}}" class="btn-lihat-layanan">Lihat Timeline</a>
+            <a href="{{route('register.instruktur')}}" class="btn-daftar-layanan">Daftar</a>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 text-center">
             <img src="{{asset('static/sementara.jpg')}}" alt="" class="img-fluid">

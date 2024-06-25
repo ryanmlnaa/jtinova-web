@@ -49,8 +49,6 @@ class MbkmUserController extends Controller
                     'name' => $request->name,
                     'email' => $request->email,
                     'password' => bcrypt($request->password),
-                    'no_hp' => $request->no_hp,
-                    'foto' => $request->file('photo')->store('images/mbkm-user', 'public'),
                 ]);
             }
 
@@ -61,7 +59,7 @@ class MbkmUserController extends Controller
             }
         }
 
-        $timelineId = Timeline::where('status', 1)->first()->id;
+        $timelineId = Timeline::where('status', 1)->where('jenis', 'mbkm')->first()->id;
         $mbkmUser = MbkmUser::create([
             'user_id' => auth()->user()->id,
             'prodi_id' => $request->prodi_id,

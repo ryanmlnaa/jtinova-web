@@ -1,20 +1,5 @@
-@php
-$timeline = \App\Models\Timeline::where('status', 1)->first();
-if ($timeline) {
-    $timelineData = json_decode($timeline->timeline);
-
-    if (Carbon\Carbon::now()->format('Y-m-d') >= $timelineData[0]->start && Carbon\Carbon::now()->format('Y-m-d') <= $timelineData[0]->end) {
-        $disabled = false;
-    } else {
-        $disabled = true;
-    }
-} else {
-    $disabled = true;
-}
-@endphp
-
 <nav class="navbar navbar-expand-lg main-navbar">
-    <a href="{{route('dashboard')}}" class="navbar-brand sidebar-gone-hide">JTINOVA</a>
+    <a href="{{route('landing.page')}}" class="navbar-brand sidebar-gone-hide">JTINOVA</a>
     <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
     <div class="ml-auto"></div>
     <ul class="navbar-nav navbar-right">
@@ -56,6 +41,9 @@ if ($timeline) {
             </li>
             <li class="nav-item">
                 <a href="{{route('mbkmTimeline.index')}}" class="nav-link"><i class="fas fa-calendar"></i><span>Timeline MBKM</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('instrukturTimeline.index')}}" class="nav-link"><i class="fas fa-calendar"></i><span>Timeline Instruktur</span></a>
             </li>
         </ul>
     </div>

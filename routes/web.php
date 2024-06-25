@@ -45,8 +45,6 @@ Route::get('/portfolio/{id}', [LandingPageController::class, 'show'])->name('por
 
 Auth::routes(['verify' => true]);
 
-Route::get('register-instruktur', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.instruktur');
-
 Route::get('katalog-pelatihan', [App\Http\Controllers\Pelatihan\LandingPageController::class, 'index'])->name('katalog.pelatihan.index');
 Route::get('katalog-pelatihan/{kode}', [App\Http\Controllers\Pelatihan\LandingPageController::class, 'show'])->name('katalog.pelatihan.show');
 
@@ -56,6 +54,11 @@ Route::get('katalog-pendampingan/{kode}', [App\Http\Controllers\Pendampingan\Lan
 Route::get('/mahasiswa-mbkm/register', [MbkmMbkmUserController::class, 'formMbkm'])->name('register.mbkm');
 Route::post('/mahasiswa-mbkm/register', [MbkmMbkmUserController::class, 'store'])->name('mbkm.mbkmuser.store');
 Route::get('/mahasiswa-mbkm/timeline', [LandingPageController::class, 'mbkmTimeline'])->name('mbkmTimeline.index');
+
+// instruktur
+Route::get('/instruktur/register', [InstrukturInstrukturUserController::class, 'formInstruktur'])->name('register.instruktur');
+Route::post('/instruktur/register', [InstrukturInstrukturUserController::class, 'store'])->name('instruktur.instrukturUser.store');
+Route::get('/instruktur/timeline', [LandingPageController::class, 'instrukturTimeline'])->name('instrukturTimeline.index');
 
 // contact message
 Route::post('contact-message', [App\Http\Controllers\Admin\ContactMessageController::class, 'store'])->middleware('hasValidCaptcha')->name('contact-message.store');
@@ -106,10 +109,12 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('mbkmuser', MbkmUserController::class)->except(['create', 'show', 'edit']);
         Route::get('mbkmuser/{timeline}/show-users', [MbkmUserController::class, 'showUsers'])->name('mbkmuser.showUsers');
         Route::post('mbkmuser/notify-pendaftaran/{mbkmUser}', [MbkmUserController::class, 'notifyPendaftaran'])->name('mbkmuser.notifyPendaftaran');
-
+        
         // instruktur
         Route::resource("instruktur", InstrukturUserController::class)->except(['create', 'show', 'edit']);
-
+        Route::get('instruktur/{timeline}/show-users', [InstrukturUserController::class, 'showUsers'])->name('instruktur.showUsers');
+        Route::post('instruktur/notify-pendaftaran/{instrukturUser}', [InstrukturUserController::class, 'notifyPendaftaran'])->name('instruktur.notifyPendaftaran');
+        
         // peserta pendampingan
         Route::resource("/pendampinganuser", PendampinganUserController::class)->except(['create', 'show', 'edit']);
 
@@ -128,6 +133,8 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('/admin/profile', [DashboardController::class, 'profileAdmin'])->name('dashboard.profileAdmin.index');
         Route::get('/admin/password', [DashboardController::class, 'updatePasswordAdmin'])->name('dashboard.updatePasswordAdmin.index');
     });
+
+    Route::get('/dashboard/instruktur', [DashboardController::class, 'indexInstruktur'])->name('dashboard.instruktur.index');
 
     Route::get('/dashboard/pelatihan', [DashboardController::class, 'indexPelatihan'])->name('dashboard.pelatihan.index');
     Route::post('/pelatihan-user', [PelatihanPelatihanUserController::class, 'store'])->name('pelatihan.pelatihanuser.store');
