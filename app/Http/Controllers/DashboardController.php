@@ -22,10 +22,9 @@ class DashboardController extends Controller
         if(auth()->user()->hasRole(['admin', 'pegawai'])) {
             return view('admin.index', compact('title'));
         } else {
-            $prodis = Prodi::all();
-            $keahlians = Keahlian::all();
+            $aktivitas_pelatihans = PelatihanUser::where('user_id', auth()->id())->latest()->limit(5)->get();
     
-            return view('guest.index', compact('title', 'prodis', 'keahlians'));
+            return view('guest.index', compact('title', 'aktivitas_pelatihans'));
         }
     }
 

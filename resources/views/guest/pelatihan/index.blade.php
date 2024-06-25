@@ -19,6 +19,7 @@
                       <tr>
                         <th>#</th>
                         <th>Nama Pelatihan</th>
+                        <th>Individu / Tim</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -28,9 +29,15 @@
                           <td>{{$loop->iteration}}</td>
                           <td>{{$item->pelatihan->nama}}</td>
                           <td>
+                            @if($item->pelatihan_team_id == null)
+                              Individu
+                            @else
+                              {{$item->team->nama}} ({{$item->team->jumlah_anggota}} Orang)
+                            @endif
+                          <td>
                             @php
                             $status = isset($item->team->transaction->status) ? $item->team->transaction->status : $item->transaction->status;
-                            $payment_proof = isset($item->team->transaction->payment_proof) ? $item->team->transaction->payment_proof : $item->transaction->payment_proof;
+                            $payment_proof = isset($item->team->transaction->payment_proof) ? $item->team->transaction->payment_proof : (isset($item->transaction->payment_proof) ? $item->transaction->payment_proof : null);
                             $id = isset($item->team->transaction->id) ? $item->team->transaction->id : $item->transaction->id;
                             $pelatihan_user_id_transaction = isset($item->team->transaction->pelatihan_user_id) ? $item->team->transaction->pelatihan_user_id : $item->transaction->pelatihan_user_id;
                             @endphp
