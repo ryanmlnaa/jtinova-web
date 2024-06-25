@@ -20,6 +20,8 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+    <!-- cloudflare -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -64,6 +66,14 @@
                     input.attr('type', 'password');
                 }
             });
+
+            // callback turnstile
+            window.onTurnstileSuccess = function (code) {
+                document.querySelector('form button[type="submit"]').disabled = false;
+            }
+
+            // disable submit button
+            document.querySelector('form button[type="submit"]').disabled = true;
         });
     </script>
 </body>

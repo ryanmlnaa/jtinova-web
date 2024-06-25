@@ -25,9 +25,12 @@
 
                     <form method="POST" action="{{ route('verification.resend') }}">
                         @csrf
+                        <div class="form-group">
+                            <div class="cf-turnstile" data-sitekey="{{ config('services.cloudflare.turnstile.site_key') }}" data-theme="light" data-callback="onTurnstileSuccess"></div>
+                        </div>
 
                         <div class="form-group mb-0">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" disabled="true">
                                 Kirim Ulang Surel Verifikasi
                             </button>
                         </div>
