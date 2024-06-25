@@ -30,7 +30,7 @@ class MbkmUserController extends Controller
             'semester' => 'required|numeric|min:1|max:8',
             'golongan' => 'required|max:1',
             'tahun_masuk' => 'required|numeric|min:2010|max:'.(date('Y')),
-            'no_hp' => 'required|numeric',
+            'no_hp' => 'required|string|max:15|regex:/^([0-9\s\-\+\(\)]*)$/',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'khs' => 'required|mimes:pdf|max:2048',
             'keahlian_id' => 'required',
@@ -41,6 +41,24 @@ class MbkmUserController extends Controller
             $messages = implode('<br>', $messages);
             Alert::error($messages)->flash();
             return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        if (!auth()->check()) {
+            if (!User::where('email', $request->email)->exists()) {
+                User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                    'no_hp' => $request->no_hp,
+                    'foto' => $request->file('photo')->store('images/mbkm-user', 'public'),
+                ]);
+            }
+
+            $checkLogin = auth()->attempt(['email' => $request->email, 'password' => $request->password]);
+            if (!$checkLogin) {
+                Alert::error('Gagal', 'Email atau password salah');
+                return redirect()->back();
+            }
         }
 
         $timelineId = Timeline::where('status', 1)->first()->id;

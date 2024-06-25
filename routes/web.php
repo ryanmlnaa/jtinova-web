@@ -53,8 +53,9 @@ Route::get('katalog-pelatihan/{kode}', [App\Http\Controllers\Pelatihan\LandingPa
 Route::get('katalog-pendampingan', [App\Http\Controllers\Pendampingan\LandingPageController::class, 'index'])->name('katalog.pendampingan.index');
 Route::get('katalog-pendampingan/{kode}', [App\Http\Controllers\Pendampingan\LandingPageController::class, 'show'])->name('katalog.pendampingan.show');
 
-// 
-Route::get('timeline-pendaftaran-mbkm', [LandingPageController::class, 'mbkmTimeline'])->name('mbkmTimeline.index');
+Route::get('/mahasiswa-mbkm/register', [MbkmMbkmUserController::class, 'formMbkm'])->name('register.mbkm');
+Route::post('/mahasiswa-mbkm/register', [MbkmMbkmUserController::class, 'store'])->name('mbkm.mbkmuser.store');
+Route::get('/mahasiswa-mbkm/timeline', [LandingPageController::class, 'mbkmTimeline'])->name('mbkmTimeline.index');
 
 // contact message
 Route::post('contact-message', [App\Http\Controllers\Admin\ContactMessageController::class, 'store'])->middleware('hasValidCaptcha')->name('contact-message.store');
@@ -128,9 +129,6 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('/admin/password', [DashboardController::class, 'updatePasswordAdmin'])->name('dashboard.updatePasswordAdmin.index');
     });
 
-    Route::post('/mahasiswa-mbkm', [MbkmMbkmUserController::class, 'store'])->name('mbkm.mbkmuser.store');
-    Route::get('/mahasiswa-mbkm/register', [MbkmMbkmUserController::class, 'formMbkm'])->name('register.mbkm');
-    
     Route::get('/dashboard/pelatihan', [DashboardController::class, 'indexPelatihan'])->name('dashboard.pelatihan.index');
     Route::post('/pelatihan-user', [PelatihanPelatihanUserController::class, 'store'])->name('pelatihan.pelatihanuser.store');
     

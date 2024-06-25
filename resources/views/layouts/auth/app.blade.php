@@ -23,6 +23,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div id="app">
         <section class="section">
             @yield('content')
