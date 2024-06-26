@@ -1,0 +1,36 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://10.10.0.67:3100/loki/api/v1/push
+
+scrape_configs:
+- job_name: apache2_jtinova_log
+  static_configs:
+  - targets:
+      - apache2_jtinova_log
+    labels:
+      job: apache2_jtinova_log
+      __path__: /var/log/jtinova/apache2/*log
+
+- job_name: var_log_vm_log
+  static_configs:
+  - targets:
+      - var_log_vm_log
+    labels:
+      job: var_log_vm_log
+      __path__: /var/log/jtinova/*log
+
+- job_name: laravel_jtinova_log
+  static_configs:
+  - targets:
+      - laravel_jtinova_log
+    labels:
+      job: laravel_jtinova_log
+      __path__: /var/log/jtinova/laravel_jtinova/*log
+
+# docker run --name jtinova_promtail -d -v $(pwd):/mnt/config -v /var/log/apache2:/var/log/jtinova/apache2 -v /var/log:/var/log/jtinova -v /var/www/html/jtinova-web/storage/logs:/var/log/jtinova/laravel_jtinova grafana/promtail:3.0.0 --config.file=/mnt/config/promtail-config.yaml
