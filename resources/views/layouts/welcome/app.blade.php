@@ -40,7 +40,7 @@
 
       <a href="{{route('landing.page')}}" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="{{ asset('static/favicon.png') }}" alt="logo" class="img-fluid">
+        <img src="{{ asset('static/logo-full.png') }}" alt="logo" class="img-fluid">
       </a>
 
       <nav id="navmenu" class="navmenu">

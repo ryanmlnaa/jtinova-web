@@ -1,9 +1,9 @@
 <aside id="sidebar-wrapper">
   <div class="sidebar-brand">
-    <a href="#">JTINOVA</a>
+    <a href="{{route('landing.page')}}">JTINOVA</a>
   </div>
   <div class="sidebar-brand sidebar-brand-sm">
-      <a href="#">NOVA</a>
+      <a href="{{route('landing.page')}}">NOVA</a>
   </div>
   <ul class="sidebar-menu">
     <li class="menu-header">Dashboard</li>
