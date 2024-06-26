@@ -39,14 +39,17 @@ jobs:
     runs-on: self-hosted
     needs: tests
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    - name: Go to the directory update the repository and restart the services
-      run: |
-        cd ~/jtinova-web
-        pwd
-        git pull origin main
-        docker compose -f docker-compose.staging.yml restart
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Deploy to production
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd /var/www/html/jtinova-web-staging
+            git pull origin main
 
 
 
