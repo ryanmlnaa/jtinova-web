@@ -11,7 +11,7 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-        $trainings = Pelatihan::where('status', 'aktif')->get();
+        $trainings = Pelatihan::where('status', 'Aktif')->get();
         $webConfig = WebConfig::first();
         return view('welcome.pelatihan.index', compact('trainings', 'webConfig'));
     }

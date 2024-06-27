@@ -30,17 +30,17 @@ class PelatihanController extends Controller
     {
         $validator = Validator::make($req->all(), [
             "nama" => "required|string|max:255",
-            "kode" => "required|string|max:255",
+            "kode" => "required|string|max:255|unique:pelatihan,kode",
             "id_kategori" => "required",
             "deskripsi" => "required|string",
             "benefit" => "required|string",
-            "harga" => "required|numeric",
+            "harga" => "required|numeric|regex:/^[0-9]+$/u",
             "foto" => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
             "tanggal_mulai" => "required|date",
-            "tanggal_selesai" => "required|date",
+            "tanggal_selesai" => "required|date|after:tanggal_mulai",
             "lokasi" => "required|string|max:255",
-            "kuota" => "required|numeric",
-            "kuota_tim" => "required|numeric",
+            "kuota" => "required|numeric|regex:/^[0-9]+$/u",
+            "kuota_tim" => "required|numeric|regex:/^[0-9]+$/u",
             "status" => "required|in:Aktif,Tidak Aktif"
         ]);
         if ($validator->fails()) {
@@ -71,17 +71,17 @@ class PelatihanController extends Controller
     {
         $validator = Validator::make($req->all(), [
             "nama" => "required|string|max:255",
-            "kode" => "required|string|max:255",
+            "kode" => "required|string|max:255|unique:pelatihan,kode,$pelatihan->kode,kode",
             "id_kategori" => "required",
             "deskripsi" => "required|string",
             "benefit" => "required|string",
-            "harga" => "required|numeric",
+            "harga" => "required|numeric|regex:/^[0-9]+$/u",
             "foto" => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
             "tanggal_mulai" => "required|date",
-            "tanggal_selesai" => "required|date",
+            "tanggal_selesai" => "required|date|after:tanggal_mulai",
             "lokasi" => "required|string|max:255",
-            "kuota" => "required|numeric",
-            "kuota_tim" => "required|numeric",
+            "kuota" => "required|numeric|regex:/^[0-9]+$/u",
+            "kuota_tim" => "required|numeric|regex:/^[0-9]+$/u",
             "status" => "required|in:Aktif,Tidak Aktif"
         ]);
 

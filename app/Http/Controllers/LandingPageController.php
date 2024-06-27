@@ -17,13 +17,12 @@ class LandingPageController extends Controller
         $portofolio = Portofolio::with(['category', 'images' => function ($query) {
             $query->where('is_primary', true);
         }])->get();
-        $pelatihan = Pelatihan::where('status', 'Aktif')->get();
-        $skemaPendampingans = SkemaPendampingan::where('status', 'Aktif')->get();
+
         $webConfig = WebConfig::first();
         $pegawai = Pegawai::all();
         $kategori = Category::all();
 
-        return view('welcome.index', compact('portofolio', 'pelatihan', 'skemaPendampingans', 'webConfig','pegawai', 'kategori'));
+        return view('welcome.index', compact('portofolio', 'webConfig','pegawai', 'kategori'));
     }
 
     public function show($id) {
