@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\FreelanceUserController;
+use App\Http\Controllers\Freelance\FreelanceUserController as FreelanceFreelanceUserController;
 use App\Http\Controllers\Instruktur\InstrukturUserController as InstrukturInstrukturUserController;
 use App\Http\Controllers\Admin\InstrukturUserController;
 use App\Http\Controllers\Admin\JabatanController;
@@ -60,6 +62,11 @@ Route::get('/instruktur/register', [InstrukturInstrukturUserController::class, '
 Route::post('/instruktur/register', [InstrukturInstrukturUserController::class, 'store'])->name('instruktur.instrukturUser.store');
 Route::get('/instruktur/timeline', [LandingPageController::class, 'instrukturTimeline'])->name('instrukturTimeline.index');
 
+// freelance
+Route::get('/freelance/register', [FreelanceFreelanceUserController::class, 'formFreelance'])->name('register.freelance');
+Route::post('/freelance/register', [FreelanceFreelanceUserController::class, 'store'])->name('freelance.freelanceuser.store');
+Route::get('/freelance/timeline', [LandingPageController::class, 'freelanceTimeline'])->name('freelanceTimeline.index');
+
 // contact message
 Route::post('contact-message', [App\Http\Controllers\Admin\ContactMessageController::class, 'store'])->middleware('hasValidCaptcha')->name('contact-message.store');
 
@@ -114,7 +121,12 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource("instruktur", InstrukturUserController::class)->except(['create', 'show', 'edit']);
         Route::get('instruktur/{timeline}/show-users', [InstrukturUserController::class, 'showUsers'])->name('instruktur.showUsers');
         Route::post('instruktur/notify-pendaftaran/{instrukturUser}', [InstrukturUserController::class, 'notifyPendaftaran'])->name('instruktur.notifyPendaftaran');
-        
+
+        // freelance
+        Route::resource('freelanceuser', FreelanceUserController::class)->except(['create', 'show', 'edit']);
+        Route::get('freelanceuser/{timeline}/show-users', [FreelanceUserController::class, 'showUsers'])->name('freelanceuser.showUsers');
+        Route::post('freelanceuser/notify-pendaftaran/{freelanceUser}', [FreelanceUserController::class, 'notifyPendaftaran'])->name('freelanceuser.notifyPendaftaran');
+
         // peserta pendampingan
         Route::resource("/pendampinganuser", PendampinganUserController::class)->except(['create', 'show', 'edit']);
 

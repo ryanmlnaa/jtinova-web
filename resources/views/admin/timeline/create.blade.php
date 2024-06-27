@@ -27,6 +27,7 @@
                         <option value="">Pilih Jenis</option>
                         <option value="mbkm">MBKM</option>
                         <option value="instruktur">Instruktur</option>
+                        <option value="freelance">Freelance</option>
                       </select>
                         @error('jenis')
                         <div class="invalid-feedback">

@@ -26,4 +26,9 @@ class Timeline extends Model
     {
         return $this->hasMany(InstrukturUser::class);
     }
+
+    public function FreelanceUser()
+    {
+        return $this->hasMany(FreelanceUser::class);
+    }
 }

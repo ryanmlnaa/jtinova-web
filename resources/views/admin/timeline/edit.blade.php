@@ -28,6 +28,7 @@
                         <option value="">Pilih Jenis</option>
                         <option value="mbkm" {{old('jenis', $timeline->jenis) == 'mbkm' ? 'selected' : ''}}>MBKM</option>
                         <option value="instruktur" {{old('jenis', $timeline->jenis) == 'instruktur' ? 'selected' : ''}}>Instruktur</option>
+                        <option value="freelance" {{old('jenis', $timeline->jenis) == 'freelance' ? 'selected' : ''}}>Freelance</option>
                       </select>
                         @error('jenis')
                         <div class="invalid-feedback">

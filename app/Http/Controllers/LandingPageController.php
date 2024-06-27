@@ -43,4 +43,10 @@ class LandingPageController extends Controller
         $timeline = Timeline::where('status', 1)->where('jenis', 'instruktur')->first();
         return view('welcome.instruktur.instruktur-timeline', compact('webConfig', 'timeline'));
     }
+
+    public function freelanceTimeline() {
+        $webConfig = WebConfig::first();
+        $timeline = Timeline::where('status', 1)->where('jenis', 'freelance')->first();
+        return view('welcome.freelance.freelance-timeline', compact('webConfig', 'timeline'));
+    }
 }

@@ -27,7 +27,7 @@ class TimelineController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'jenis' => 'required|string|max:255|in:mbkm,instruktur',
+            'jenis' => 'required|string|max:255|in:mbkm,instruktur,freelance',
             'description.*' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'start_at.*' => 'required|date',
@@ -71,7 +71,7 @@ class TimelineController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'jenis' => 'required|string|max:255|in:mbkm,instruktur',
+            'jenis' => 'required|string|max:255|in:mbkm,instruktur,freelance',
             'description.*' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'status' => 'required|in:0,1',

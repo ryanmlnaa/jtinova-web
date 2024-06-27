@@ -30,6 +30,7 @@
       <li class=" {{ Request::is('user') ? 'active' : '' }} "><a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-users"></i> <span>User</span></a></li>
       <li class=" {{ Request::is('pegawai') ? 'active' : '' }} "><a class="nav-link" href="{{ route('pegawai.index') }}"><i class="fas fa-users"></i> <span>Pegawai</span></a></li>
       <li class=" {{ Request::is('mbkmuser') ? 'active' : '' }} "><a class="nav-link" href="{{ route('mbkmuser.index') }}"><i class="fas fa-users"></i> <span>Mahasiswa MBKM</span></a></li>
+      <li class=" {{ Request::is('freelanceuser') ? 'active' : '' }} "><a class="nav-link" href="{{ route('freelanceuser.index') }}"><i class="fas fa-users"></i> <span>Magang Freelance</span></a></li>
       <li class=" {{ Request::is('instruktur') ? 'active' : '' }} "><a class="nav-link" href="{{ route('instruktur.index') }}"><i class="fas fa-users"></i> <span>Instruktur</span></a></li>
       <li class=" {{ Request::is('pendampinganuser') ? 'active' : '' }} "><a class="nav-link" href="{{ route('pendampinganuser.index') }}"><i class="fas fa-users"></i> <span>Pendampingan</span></a></li>
       <li class=" {{ Request::is('pelatihanteam') ? 'active' : '' }} "><a class="nav-link" href="{{ route('pelatihanteam.index') }}"><i class="fas fa-users"></i> <span>Tim Pelatihan</span></a></li>
