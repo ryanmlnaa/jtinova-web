@@ -11,7 +11,7 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-        $trainings = SkemaPendampingan::where('status', 'aktif')->get();
+        $trainings = SkemaPendampingan::where('status', 'Aktif')->get();
         $webConfig = WebConfig::first();
         return view('welcome.pendampingan.index', compact('trainings', 'webConfig'));
     }

@@ -36,16 +36,17 @@ class SkemaPendampinganController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'kode' => 'required|max:255',
+            'kode' => 'required|max:255|unique:skema_pendampingans,kode',
             'nama' => 'required|max:255',
             'deskripsi' => 'required|max:255',
-            'harga' => 'required|max:255',
+            'harga' => 'required|numeric|regex:/^[0-9]+$/u',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'status' => 'required|max:255',
+            'status' => 'required|max:255|in:Aktif,Tidak Aktif',
         ]);
         if($validator->fails()){
             $messages = $validator->errors()->all();
-            Alert::error($messages[0])->flash();
+            $message = implode('<br>', $messages);
+            Alert::error($message)->flash();
             return redirect()->back()->withErrors($validator)->withInput();
         }
         
@@ -77,17 +78,18 @@ class SkemaPendampinganController extends Controller
     public function update(Request $request, SkemaPendampingan $skemaPendampingan)
     {
         $validator = Validator::make($request->all(), [
-            'kode' => 'required|max:255',
+            'kode' => 'required|max:255|unique:skema_pendampingans,kode,'.$skemaPendampingan->kode.',kode',
             'nama' => 'required|max:255',
             'deskripsi' => 'required|max:255',
-            'harga' => 'required|max:255',
-            'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'status' => 'required|max:255',
+            'harga' => 'required|numeric|regex:/^[0-9]+$/u',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'status' => 'required|max:255|in:Aktif,Tidak Aktif',
         ]);
 
         if($validator->fails()){
             $messages = $validator->errors()->all();
-            Alert::error($messages[0])->flash();
+            $message = implode('<br>', $messages);
+            Alert::error($message)->flash();
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
