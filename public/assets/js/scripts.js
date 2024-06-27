@@ -342,12 +342,15 @@ $(function() {
       minHeight: 250,
     });
     $(".summernote-simple").summernote({
-       dialogsInBody: true,
-      minHeight: 150,
+      tabsize: 2,
+      height: 200,
       toolbar: [
         ['style', ['bold', 'italic', 'underline', 'clear']],
-        ['font', ['strikethrough']],
-        ['para', ['paragraph']]
+        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']]
       ]
     });
   }
