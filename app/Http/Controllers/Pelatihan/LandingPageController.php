@@ -19,6 +19,9 @@ class LandingPageController extends Controller
     public function show($kode)
     {
         $training = Pelatihan::where('kode', $kode)->first();
+        if (!$training) {
+            return abort(404);
+        }
         $webConfig = WebConfig::first();
         return view('welcome.pelatihan.show', compact('training', 'webConfig'));
     }
