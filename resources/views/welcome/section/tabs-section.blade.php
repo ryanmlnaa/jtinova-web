@@ -10,13 +10,7 @@
 
     <ul class="nav nav-tabs row d-flex aos-init" data-aos="fade-up" data-aos-delay="100" role="tablist">
       <li class="nav-item col-3" role="presentation">
-        <a class="nav-link layanans active" id="layanan-mbkm" data-bs-toggle="tab" data-bs-target="#tabs-tab-4" aria-selected="true" role="tab">
-          <i class="bi bi-binoculars"></i>
-          <h4 class="d-none d-lg-block">Magang Mahasiswa MBKM</h4>
-        </a>
-      </li>
-      <li class="nav-item col-3" role="presentation">
-        <a class="nav-link layanans" id="layanan-pelatihan" data-bs-toggle="tab" data-bs-target="#tabs-tab-1" aria-selected="false" role="tab"  tabindex="-1">
+        <a class="nav-link layanans active" id="layanan-pelatihan" data-bs-toggle="tab" data-bs-target="#tabs-tab-1" aria-selected="false" role="tab">
           <i class="bi bi-briefcase"></i>
           <h4 class="d-none d-lg-block">Pelatihan</h4>
         </a>
@@ -33,11 +27,17 @@
           <h4 class="d-none d-lg-block">Instruktur</h4>
         </a>
       </li>
+      <li class="nav-item col-3" role="presentation">
+        <a class="nav-link layanans" id="layanan-mbkm" data-bs-toggle="tab" data-bs-target="#tabs-tab-4" aria-selected="true" role="tab" tabindex="-1">
+          <i class="bi bi-binoculars"></i>
+          <h4 class="d-none d-lg-block">Magang</h4>
+        </a>
+      </li>
     </ul><!-- End Tab Nav -->
 
     <div class="tab-content aos-init" data-aos="fade-up" data-aos-delay="200">
 
-      <div class="tab-pane fade" id="tabs-tab-1" role="tabpanel">
+      <div class="tab-pane fade active show" id="tabs-tab-1" role="tabpanel">
         <div class="row">
             <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
                 <h3>Pelatihan Guru SMK / Karyawan / Umum</h3>
@@ -128,13 +128,14 @@
         </div>
       </div><!-- End Tab Content Item -->
 
-      <div class="tab-pane fade active show" id="tabs-tab-4" role="tabpanel">
+      <div class="tab-pane fade" id="tabs-tab-4" role="tabpanel">
         <div class="row">
           <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
             <h3>Magang Mahasiswa MBKM (Merdeka Belajar Kampus Merdeka)</h3>
             <p class="fst-italic">
-                Program magang ini memberikan kesempatan bagi mahasiswa untuk mendapatkan pengalaman kerja nyata di industri. Melalui Magang MBKM, mahasiswa dapat mengembangkan keterampilan praktis, memahami dinamika industri, dan membangun jaringan profesional yang akan mendukung karir mereka di masa depan.
+              Teaching Factory JTI Innovation menyediakan dua jenis program magang: Magang MBKM khusus Mahasiswa Polije dan Magang Freelance. Kedua program ini dirancang untuk memberikan pengalaman kerja nyata dan keterampilan praktis yang relevan dengan kebutuhan industri.
             </p>
+            <h4>Magang MBKM (Merdeka Belajar Kampus Merdeka)</h4>
             <ul>
                 <li><i class="bi bi-check2-all"></i>
                     <span>Kesempatan untuk bekerja langsung dengan profesional di bidang terkait.</span>
@@ -146,11 +147,26 @@
                     <span>Pengembangan keterampilan soft skills seperti komunikasi dan kerja tim.</span>
                 </li>
             </ul>
-            <p>
-                Program ini dirancang untuk mempersiapkan mahasiswa agar siap menghadapi tantangan di dunia kerja, dengan memberikan pengalaman langsung dan pemahaman mendalam tentang praktik industri.
-            </p>
             <a href="{{route('mbkmTimeline.index')}}" class="btn-lihat-layanan">Lihat Timeline</a>
             <a href="{{route('register.mbkm')}}" class="btn-daftar-layanan">Daftar</a>
+
+            <h4 class="mt-3">Magang Freelance</h4>
+            <ul>
+                <li><i class="bi bi-check2-all"></i>
+                    <span>Fleksibilitas untuk bekerja dari mana saja dan mengatur waktu kerja secara mandiri.</span>
+                </li>
+                <li><i class="bi bi-check2-all"></i> 
+                    <span>Kesempatan untuk mengerjakan proyek nyata dan mendapatkan portofolio yang kuat.</span>
+                </li>
+                <li><i class="bi bi-check2-all"></i> 
+                    <span>Pengembangan keterampilan teknis dan manajerial melalui pengalaman kerja freelance.</span>
+                </li>
+            </ul>
+            <p>
+                Program ini dirancang untuk mempersiapkan peserta agar siap menghadapi tantangan di dunia kerja, dengan memberikan pengalaman langsung dan pemahaman mendalam tentang praktik industri.
+            </p>
+            <a href="{{route('freelanceTimeline.index')}}" class="btn-lihat-layanan">Lihat Timeline</a>
+            <a href="{{route('register.freelance')}}" class="btn-daftar-layanan">Daftar</a>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 text-center">
             <img src="{{asset('static/sementara.jpg')}}" alt="" class="img-fluid">

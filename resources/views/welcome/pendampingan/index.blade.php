@@ -1,6 +1,8 @@
 @extends('layouts.welcome.app')
 @section('content')
-
+@php
+  use Illuminate\Support\Str;
+@endphp
 <div class="page-title">
   <div class="container">
     <nav class="breadcrumbs">
@@ -23,7 +25,7 @@
             <img src="{{asset('storage/'.$training->foto)}}" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title">{{$training->nama}}</h5>
-              <p class="card-text">{{$training->deskripsi}}</p>
+              <p class="card-text">{{ Str::limit(Str::of($training->deskripsi)->stripTags(), 100) }}</p>
             </div>
           </a>
         </div>

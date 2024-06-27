@@ -43,6 +43,9 @@
                 <a href="{{route('mbkmTimeline.index')}}" class="nav-link"><i class="fas fa-calendar"></i><span>Timeline MBKM</span></a>
             </li>
             <li class="nav-item">
+                <a href="{{route('freelanceTimeline.index')}}" class="nav-link"><i class="fas fa-calendar"></i><span>Timeline Magang Freelance</span></a>
+            </li>
+            <li class="nav-item">
                 <a href="{{route('instrukturTimeline.index')}}" class="nav-link"><i class="fas fa-calendar"></i><span>Timeline Instruktur</span></a>
             </li>
         </ul>

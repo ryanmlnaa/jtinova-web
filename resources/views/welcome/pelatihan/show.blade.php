@@ -39,9 +39,9 @@
 
             <div class="content">
               <h3>Deskripsi</h3>
-              <p>{{$training->deskripsi}}</p>
+              <p>{!!$training->deskripsi!!}</p>
               <h3>Benefit</h3>
-              <p>{{$training->benefit}}</p>
+              <p>{!! $training->benefit !!}</p>
 
               <h3>Gabung Pelatihan Sekarang</h3>
             </div><!-- End post content -->

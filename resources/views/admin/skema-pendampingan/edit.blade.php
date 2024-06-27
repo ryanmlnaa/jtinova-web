@@ -15,7 +15,7 @@
                     @method('put')
                     <div class="form-group">
                       <label for="kode" class="col-form-label">Kode</label> <span class="text-danger">*</span>
-                      <input type="text" class="form-control @error('kode') is-invalid @enderror" name="kode" id="kode" value="{{old('kode', $skemaPendampingan->kode)}}">
+                      <input type="text" class="form-control @error('kode') is-invalid @enderror" name="kode" id="kode" value="{{old('kode', $skemaPendampingan->kode)}}" required>
                       @error('kode')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                       <label for="nama" class="col-form-label">Nama</label> <span class="text-danger">*</span>
-                      <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" value="{{old('nama', $skemaPendampingan->nama)}}">
+                      <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" value="{{old('nama', $skemaPendampingan->nama)}}" required>
                       @error('nama')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                       <label for="harga" class="col-form-label">Harga</label> <span class="text-danger">*</span>
-                      <input type="number" class="form-control @error('harga') is-invalid @enderror" name="harga" id="harga" value="{{old('harga', $skemaPendampingan->harga)}}">
+                      <input type="number" class="form-control @error('harga') is-invalid @enderror" name="harga" id="harga" value="{{old('harga', $skemaPendampingan->harga)}}" required>
                       @error('harga')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -42,9 +42,9 @@
                     </div>
                     <div class="form-group">
                       <label for="status" class="col-form-label">Status</label> <span class="text-danger">*</span>
-                      <select class="form-control @error('status') is-invalid @enderror" name="status" id="status">
-                        <option value="1" {{old('status', $skemaPendampingan->status) == 'Aktif' ? 'selected' : ''}}>Aktif</option>
-                        <option value="0" {{old('status', $skemaPendampingan->status) == 'Tidak Aktif' ? 'selected' : ''}}>Tidak Aktif</option>
+                      <select class="form-control @error('status') is-invalid @enderror" name="status" id="status" required>
+                        <option value="Aktif" {{old('status', $skemaPendampingan->status) == 'Aktif' ? 'selected' : ''}}>Aktif</option>
+                        <option value="Tidak Aktif" {{old('status', $skemaPendampingan->status) == 'Tidak Aktif' ? 'selected' : ''}}>Tidak Aktif</option>
                       </select>
                       @error('status')
                         <div class="invalid-feedback">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group">
                       <label for="deskripsi" class="col-form-label">Deskripsi</label> <span class="text-danger">*</span>
-                      <textarea type="number" class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" id="deskripsi">{{old('deskripsi', $skemaPendampingan->deskripsi)}}</textarea>
+                      <textarea type="number" class="summernote-simple @error('deskripsi') is-invalid @enderror" name="deskripsi" id="deskripsi" required>{{old('deskripsi', $skemaPendampingan->deskripsi)}}</textarea>
                       @error('deskripsi')
                         <div class="invalid-feedback">
                             {{ $message }}

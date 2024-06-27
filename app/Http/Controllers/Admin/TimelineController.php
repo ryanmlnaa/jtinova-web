@@ -26,10 +26,10 @@ class TimelineController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'jenis' => 'required|max:255|in:mbkm,instruktur',
-            'description.*' => 'required|max:255',
-            'tahun_ajaran' => 'required|max:255',
+            'title' => 'required|string|max:255',
+            'jenis' => 'required|string|max:255|in:mbkm,instruktur,freelance',
+            'description.*' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
             'start_at.*' => 'required|date',
             'end_at.*' => 'required|date',
         ]);
@@ -52,7 +52,7 @@ class TimelineController extends Controller
         Timeline::create([
             'title' => $request->title,
             'jenis' => $request->jenis,
-            'tahun_ajaran' => $request->tahun_ajaran,
+            'tahun_ajaran' => $request->deskripsi,
             'timeline' => json_encode($convertedData),
         ]);
 
@@ -70,10 +70,10 @@ class TimelineController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'jenis' => 'required|max:255|in:mbkm,instruktur',
-            'description.*' => 'required|max:255',
-            'tahun_ajaran' => 'required|max:255',
+            'title' => 'required|string|max:255',
+            'jenis' => 'required|string|max:255|in:mbkm,instruktur,freelance',
+            'description.*' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
             'status' => 'required|in:0,1',
             'start_at.*' => 'required|date',
             'end_at.*' => 'required|date',
@@ -98,7 +98,7 @@ class TimelineController extends Controller
         $timeline->update([
             'title' => $request->title,
             'jenis' => $request->jenis,
-            'tahun_ajaran' => $request->tahun_ajaran,
+            'tahun_ajaran' => $request->deskripsi,
             'status' => $request->status,
             'timeline' => json_encode($convertedData),
         ]);

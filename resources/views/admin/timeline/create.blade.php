@@ -14,7 +14,7 @@
                     @csrf
                     <div class="form-group">
                       <label for="title" class="col-form-label">Judul</label> <span class="text-danger">*</span>
-                      <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{old('title')}}">
+                      <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{old('title')}}" required>
                         @error('title')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -23,10 +23,11 @@
                     </div>
                     <div class="form-group">
                       <label for="title" class="col-form-label">Judul</label> <span class="text-danger">*</span>
-                      <select class="form-control @error('jenis') is-invalid @enderror" name="jenis" id="jenis">
+                      <select class="form-control @error('jenis') is-invalid @enderror" name="jenis" id="jenis" required>
                         <option value="">Pilih Jenis</option>
                         <option value="mbkm">MBKM</option>
                         <option value="instruktur">Instruktur</option>
+                        <option value="freelance">Freelance</option>
                       </select>
                         @error('jenis')
                         <div class="invalid-feedback">
@@ -35,9 +36,9 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                      <label for="tahun_ajaran" class="col-form-label">Tahun Ajaran</label> <span class="text-danger">* (Contoh: 2021/2022 Genap)</span>
-                      <input type="text" class="form-control @error('tahun_ajaran') is-invalid @enderror" name="tahun_ajaran" id="tahun_ajaran" value="{{old('tahun_ajaran')}}">
-                        @error('tahun_ajaran')
+                      <label for="deskripsi" class="col-form-label">Deskripsi</label> <span class="text-danger">*</span>
+                      <textarea class="summernote-simple @error('deskripsi') is-invalid @enderror" name="deskripsi" id="deskripsi" required>{{old('deskripsi')}}</textarea>
+                        @error('deskripsi')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -51,16 +52,16 @@
                     <div class="row form-group input-copy-here">
                       <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3">
                         <div class="form-group">
-                          <input type="text" class="form-control" name="description[]" id="description">
+                          <input type="text" class="form-control" name="description[]" id="description" required>
                         </div>
                       </div>
                       <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3">
-                        <input type="date" class="form-control" name="start_at[]" id="start_at">
+                        <input type="date" class="form-control" name="start_at[]" id="start_at" required>
                       </div>
                       <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                         <div class="row">
                           <div class="col-xxl-11 col-xl-11 col-lg-11 col-md-11 col-sm-11">
-                            <input type="date" class="form-control" name="end_at[]" id="end_at">
+                            <input type="date" class="form-control" name="end_at[]" id="end_at" required>
                           </div>
                           <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-sm-11">
                             <button type="button" class="btn btn-outline-primary btn-add"><i class="fas fa-plus-square"></i></button>
@@ -75,16 +76,16 @@
                     <div class="input-group">
                       <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3">
                         <div class="form-group">
-                          <input type="text" class="form-control" name="description[]" id="description">
+                          <input type="text" class="form-control" name="description[]" id="description" required>
                         </div>
                       </div>
                       <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3">
-                        <input type="date" class="form-control" name="start_at[]" id="start_at">
+                        <input type="date" class="form-control" name="start_at[]" id="start_at" required>
                       </div>
                       <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                         <div class="row">
                           <div class="col-xxl-11 col-xl-11 col-lg-11 col-md-11 col-sm-11">
-                            <input type="date" class="form-control" name="end_at[]" id="end_at">
+                            <input type="date" class="form-control" name="end_at[]" id="end_at" required>
                           </div>
                           <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-sm-11">
                             <button type="button" class="btn btn-outline-primary btn-remove"><i class="fas fa-minus-square"></i></button>

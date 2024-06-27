@@ -24,7 +24,7 @@
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
     <h2>{{$timeline->title}}</h2>
-    <p>{{$timeline->tahun_ajaran}}</p>
+    <p>{!! $timeline->tahun_ajaran !!}</p>
   </div><!-- End Section Title -->
 
   <div class="container">

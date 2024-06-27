@@ -50,7 +50,4 @@ jobs:
           script: |
             cd /var/www/html/jtinova-web-staging
             git pull origin main
-
-
-
-
+            php artisan migrate --force

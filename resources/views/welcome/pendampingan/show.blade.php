@@ -35,7 +35,7 @@
             </div><!-- End meta top -->
 
             <div class="content">
-              <p>{{$training->deskripsi}}</p>
+              <p>{!! $training->deskripsi !!}</p>
             </div><!-- End post content -->
             
             @auth

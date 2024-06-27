@@ -9,6 +9,9 @@
     @role('mahasiswa-mbkm')
         @include('guest.mbkm.index')
     @endrole
+    @role('freelance')
+        @include('guest.freelance.index')
+    @endrole
     @role('instruktur')
         @include('guest.instruktur.index')
     @endrole

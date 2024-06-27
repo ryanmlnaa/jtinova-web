@@ -16,6 +16,7 @@
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('assets/modules/datatables/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote-bs4.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')}}">
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -70,6 +71,8 @@
 
     <!-- General JS Scripts -->
     <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/popper.js') }}"></script>
+    <script src="{{ asset('assets/modules/tooltip.js') }}"></script>
     <script src="{{ asset('assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('assets/js/stisla.js') }}"></script>
@@ -77,6 +80,7 @@
     <!-- JS Libraies -->
     <script src="{{ asset('assets/modules/datatables/datatables.min.js')}}"></script>
     <script src="{{ asset('assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/summernote/summernote-bs4.min.js')}}"></script>
 
     <!-- Template JS File -->
     <script src="{{ asset('assets/js/scripts.js') }}"></script>

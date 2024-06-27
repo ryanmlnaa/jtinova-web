@@ -19,7 +19,6 @@
                                     <th>#</th>
                                     <th>Kode</th>
                                     <th>Nama</th>
-                                    <th>Deskripsi</th>
                                     <th>Harga</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -31,7 +30,6 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->kode }}</td>
                                     <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->deskripsi }}</td>
                                     <td>@currency($item->harga)</td>
                                     <td>{{ $item->status }}</td>
                                     <td>
