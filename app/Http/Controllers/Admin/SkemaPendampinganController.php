@@ -38,7 +38,7 @@ class SkemaPendampinganController extends Controller
         $validator = Validator::make($request->all(), [
             'kode' => 'required|max:255|unique:skema_pendampingans,kode',
             'nama' => 'required|max:255',
-            'deskripsi' => 'required|max:255',
+            'deskripsi' => 'required|string',
             'harga' => 'required|numeric|regex:/^[0-9]+$/u',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required|max:255|in:Aktif,Tidak Aktif',
@@ -80,7 +80,7 @@ class SkemaPendampinganController extends Controller
         $validator = Validator::make($request->all(), [
             'kode' => 'required|max:255|unique:skema_pendampingans,kode,'.$skemaPendampingan->kode.',kode',
             'nama' => 'required|max:255',
-            'deskripsi' => 'required|max:255',
+            'deskripsi' => 'required|string',
             'harga' => 'required|numeric|regex:/^[0-9]+$/u',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required|max:255|in:Aktif,Tidak Aktif',
