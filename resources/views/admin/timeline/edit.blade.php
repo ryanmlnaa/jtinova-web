@@ -15,7 +15,7 @@
                     @method('PUT')
                     <div class="form-group">
                       <label for="title" class="col-form-label">Judul</label> <span class="text-danger">*</span>
-                      <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{old('title', $timeline->title)}}">
+                      <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{old('title', $timeline->title)}}" required>
                         @error('title')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                       <label for="title" class="col-form-label">Judul</label> <span class="text-danger">*</span>
-                      <select class="form-control @error('jenis') is-invalid @enderror" name="jenis" id="jenis">
+                      <select class="form-control @error('jenis') is-invalid @enderror" name="jenis" id="jenis" required>
                         <option value="">Pilih Jenis</option>
                         <option value="mbkm" {{old('jenis', $timeline->jenis) == 'mbkm' ? 'selected' : ''}}>MBKM</option>
                         <option value="instruktur" {{old('jenis', $timeline->jenis) == 'instruktur' ? 'selected' : ''}}>Instruktur</option>
@@ -36,9 +36,9 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                      <label for="tahun_ajaran" class="col-form-label">Tahun Ajaran</label> <span class="text-danger">* (Contoh: 2021/2022 Genap)</span>
-                      <input type="text" class="form-control @error('tahun_ajaran') is-invalid @enderror" name="tahun_ajaran" id="tahun_ajaran" value="{{old('tahun_ajaran', $timeline->tahun_ajaran)}}">
-                        @error('tahun_ajaran')
+                      <label for="deskripsi" class="col-form-label">Deskripsi</label> <span class="text-danger">*</span>
+                      <textarea class="summernote-simple @error('deskripsi') is-invalid @enderror" name="deskripsi" id="deskripsi" required>{{old('tahun_ajaran', $timeline->tahun_ajaran)}}</textarea>
+                        @error('deskripsi')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group">
                       <label for="status" class="col-form-label">Status</label> <span class="text-danger">*</span>
-                      <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
+                      <select name="status" id="status" class="form-control @error('status') is-invalid @enderror" required>
                         <option value="">Pilih Status</option>
                         <option value="1" {{old('status', $timeline->status) == 1 ? 'selected' : ''}}>Aktif</option>
                         <option value="0" {{old('status', $timeline->status) == 0 ? 'selected' : ''}}>Tidak Aktif</option>
@@ -69,16 +69,16 @@
                       @endif
                       <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3">
                         <div class="form-group">
-                          <input type="text" class="form-control" name="description[]" id="description" value="{{$item->title}}">
+                          <input type="text" class="form-control" name="description[]" id="description" value="{{$item->title}}" required>
                         </div>
                       </div>
                       <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3">
-                        <input type="date" class="form-control" name="start_at[]" id="start_at" value="{{$item->start}}">
+                        <input type="date" class="form-control" name="start_at[]" id="start_at" value="{{$item->start}}" required>
                       </div>
                       <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                         <div class="row">
                           <div class="col-xxl-11 col-xl-11 col-lg-11 col-md-11 col-sm-11">
-                            <input type="date" class="form-control" name="end_at[]" id="end_at" value="{{$item->end}}">
+                            <input type="date" class="form-control" name="end_at[]" id="end_at" value="{{$item->end}}" required>
                           </div>
                           <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-sm-11">
                             <button type="button" class="btn btn-outline-primary {{ $loop->first ? 'btn-add' : 'btn-remove' }}"><i class="fas fa-{{ $loop->first ? 'plus' : 'minus' }}-square"></i></button>
@@ -97,16 +97,16 @@
                     <div class="input-group">
                       <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3">
                         <div class="form-group">
-                          <input type="text" class="form-control" name="description[]" id="description">
+                          <input type="text" class="form-control" name="description[]" id="description" required>
                         </div>
                       </div>
                       <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3">
-                        <input type="date" class="form-control" name="start_at[]" id="start_at">
+                        <input type="date" class="form-control" name="start_at[]" id="start_at" required>
                       </div>
                       <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                         <div class="row">
                           <div class="col-xxl-11 col-xl-11 col-lg-11 col-md-11 col-sm-11">
-                            <input type="date" class="form-control" name="end_at[]" id="end_at">
+                            <input type="date" class="form-control" name="end_at[]" id="end_at" required>
                           </div>
                           <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-sm-11">
                             <button type="button" class="btn btn-outline-primary btn-remove"><i class="fas fa-minus-square"></i></button>

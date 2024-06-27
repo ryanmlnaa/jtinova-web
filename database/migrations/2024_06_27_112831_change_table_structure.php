@@ -20,6 +20,10 @@ return new class extends Migration
         Schema::table('pelatihan', function (Blueprint $table) {
             $table->string('kode')->unique()->change();
         });
+
+        Schema::table('timelines', function (Blueprint $table) {
+            $table->text('tahun_ajaran')->change();
+        });
     }
 
     /**
@@ -27,6 +31,17 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('skema_pendampingans', function (Blueprint $table) {
+            $table->string('deskripsi')->change();
+            $table->string('kode')->change();
+        });
+
+        Schema::table('pelatihan', function (Blueprint $table) {
+            $table->string('kode')->change();
+        });
+
+        Schema::table('timelines', function (Blueprint $table) {
+            $table->string('tahun_ajaran')->change();
+        });
     }
 };
