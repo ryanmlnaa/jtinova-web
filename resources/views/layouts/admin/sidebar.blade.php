@@ -14,6 +14,7 @@
       <li class=" {{ Request::is('web-config') ? 'active' : '' }} "><a class="nav-link" href="{{ route('webconfig.index') }}"><i class="fas fa-cog"></i> <span>Konfigurasi Web</span></a></li>
       <li class="menu-header">Data Master</li>
       <li class=" {{ Request::is('role') ? 'active' : '' }} "><a class="nav-link" href="{{ route('role.index') }}"><i class="fas fa-user-tag"></i> <span>Role</span></a></li>
+      <li class=" {{ Request::is('permission') ? 'active' : '' }} "><a class="nav-link" href="{{ route('permission.index') }}"><i class="fas fa-user-lock"></i> <span>Permission</span></a></li>
       <li class=" {{ Request::is('jabatan') ? 'active' : '' }} "><a class="nav-link" href="{{ route('jabatan.index') }}"><i class="fas fa-user-tie"></i> <span>Data Jabatan</span></a></li>
       <li class=" {{ Request::is('keahlian') ? 'active' : '' }} "><a class="nav-link" href="{{ route('keahlian.index') }}"><i class="fas fa-tasks"></i> <span>Keahlian / Skill</span></a></li>
       <li class=" {{ Request::is('prodi') ? 'active' : '' }} "><a class="nav-link" href="{{ route('prodi.index') }}"><i class="fas fa-graduation-cap"></i> <span>Prodi</span></a></li>

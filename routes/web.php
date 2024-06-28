@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\PelatihanUserController;
 use App\Http\Controllers\Pelatihan\PelatihanUserController as PelatihanPelatihanUserController;
 use App\Http\Controllers\Pendampingan\PendampinganUserController as PendampinganPendampinganUserController;
 use App\Http\Controllers\Admin\PendampinganUserController;
+use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SkemaPendampinganController;
 use App\Http\Controllers\Admin\TimelineController;
@@ -112,6 +113,9 @@ Route::group(['middleware' => ['auth']], function(){
 
         // Role
         Route::resource('role', RoleController::class);
+
+        // permission
+        Route::resource('permission', PermissionController::class);
 
         // timeline
         Route::resource('timeline', TimelineController::class)->except(['show']);
