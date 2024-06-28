@@ -106,7 +106,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource("pelatihan", PelatihanController::class)->except(['show']);
 
         // user
-        Route::resource('user', UserController::class)->except(['show', 'edit']);
+        Route::resource('user', UserController::class)->except(['show']);
 
         // pegawai
         Route::resource('pegawai', PegawaiController::class);

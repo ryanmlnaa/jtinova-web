@@ -1,16 +1,10 @@
 @extends('layouts.admin.app')
-@section('title', $title)
-@section('menu', $title)
+@section('title', 'Data Semua Pengguna')
 @section('content')
 <div class="section-body">
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
-                    <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
-                        Tambah Data
-                    </button>
-                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped" id="table-1">
@@ -20,7 +14,8 @@
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Role</th>
-                                    <th>Action</th>
+                                    <th>Permission Langsung</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,10 +24,27 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->getRoleNames()->implode(', ') }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$item->id}}"><i class="fas fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>
+                                        @if ($item->getRoleNames()->count() == 0)
+                                            <span class="badge badge-light">Tidak ada Role</span>
+                                        @else
+                                        @foreach ($item->getRoleNames() as $role)
+                                            <span class="badge badge-secondary">{{$role}}</span>
+                                        @endforeach
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($item->getDirectPermissions()->count() == 0)
+                                            <span class="badge badge-light">Tidak ada permission</span>
+                                        @else
+                                        @foreach ($item->getDirectPermissions() as $permission)
+                                            <span class="badge badge-secondary">{{$permission->name}}</span>
+                                        @endforeach
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{route('user.edit', $item)}}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                        <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
                                         <form action="{{route('user.destroy', $item)}}" method="post" id="form-{{$item->id}}">
                                             @csrf
                                             @method('delete')
@@ -48,72 +60,6 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('modal')
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog">
-        <form action="{{route('user.store')}}" method="post">
-            @csrf
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah {{ $title }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="name" class="col-form-label">Nama User  <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="name" id="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="col-form-label">Email  <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" name="email" id="email">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-{{-- modal edit --}}
-@foreach ($data as $item)
-<div class="modal fade" id="editModal{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog">
-        <form action="{{route('user.update', $item)}}" method="post">
-            @csrf
-            @method('put')
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit {{ $title }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="name" class="col-form-label">Nama User  <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="name" id="name" value="{{$item->name}}">
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="col-form-label">Email  <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" name="email" id="email" value="{{$item->email}}">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-@endforeach
 @endsection
 
 @push('scripts')

@@ -29,7 +29,7 @@
       <li class=" {{ Request::is('portofolio') ? 'active' : '' }} "><a class="nav-link" href="{{ route('portofolio.index') }}"><i class="fas fa-book"></i> <span>Portofolio</span></a></li>
       
       <li class="menu-header">Data Pengguna</li>
-      <li class=" {{ Request::is('user') ? 'active' : '' }} "><a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-users"></i> <span>User</span></a></li>
+      <li class=" {{ Request::segment(1) == 'user' ? 'active' : '' }} "><a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-users"></i> <span>Semua Pengguna</span></a></li>
       <li class=" {{ Request::is('pegawai') ? 'active' : '' }} "><a class="nav-link" href="{{ route('pegawai.index') }}"><i class="fas fa-users"></i> <span>Pegawai</span></a></li>
       <li class=" {{ Request::is('mbkmuser') ? 'active' : '' }} "><a class="nav-link" href="{{ route('mbkmuser.index') }}"><i class="fas fa-users"></i> <span>Mahasiswa MBKM</span></a></li>
       <li class=" {{ Request::is('freelanceuser') ? 'active' : '' }} "><a class="nav-link" href="{{ route('freelanceuser.index') }}"><i class="fas fa-users"></i> <span>Magang Freelance</span></a></li>
