@@ -16,7 +16,7 @@
                             <div class="form-group">
                                 <label for="name" class="col-form-label">Nama Role<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    name="name" id="name" value="{{ old('name', $role->name) }}">
+                                    name="name" id="name" value="{{ old('name', $role->name) }}" required>
                                 @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
