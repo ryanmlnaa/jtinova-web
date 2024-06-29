@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('pelatihan_user_id')->nullable()->constrained('pelatihan_users')->onDelete('cascade');
             $table->foreignId('pendampingan_user_id')->nullable()->constrained('pendampingan_users')->onDelete('cascade');
             $table->string('invoice');
-            $table->enum('status', ['pending', 'success', 'failed'])->default('pending');
+            $table->enum('status', ['need_confirm', 'pending', 'success', 'failed'])->default('pending');
             $table->string('payment_method');
             $table->string('payment_proof')->nullable();
             $table->timestamps();
