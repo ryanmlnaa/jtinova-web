@@ -13,13 +13,12 @@ class PelatihanUserController extends Controller
 {
     public function index(Request $request)
     {
-        $title = "Data Peserta";
+        $title = "Data Peserta Pelatihan";
         $data = PelatihanUser::all();
         return view('admin.pelatihan-user.index', compact("title", "data"));
     }
     public function destroy(PelatihanUser $pelatihanUser) {
-        Storage::disk('public')->delete($pelatihanUser->foto);
-        User::where('id', $pelatihanUser->user_id)->delete();
+        $pelatihanUser->delete();
 
         Alert::success('Success', 'Berhasil hapus Data');
         return redirect()->back();

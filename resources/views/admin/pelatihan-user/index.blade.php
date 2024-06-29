@@ -1,6 +1,5 @@
 @extends('layouts.admin.app')
 @section('title', $title)
-@section('menu', $title)
 @section('content')
 <div class="section-body">
     <div class="row">
@@ -15,29 +14,33 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Pelatihan</th>
-                                    <th>Nama</th>
-                                    <th>JK</th>
-                                    <th>Pendidikan Terakhir</th>
-                                    <th>Action</th>
+                                    <th>Kode Pelatihan</th>
+                                    <th>Nama Pelatihan</th>
+                                    <th>Nama Peserta</th>
+                                    {{-- <th>Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ isset($item->pelatihan->kode) ? $item->pelatihan->kode : '' }}</td>
-                                    <td>{{ $item->user->name }}</td>
-                                    <td>{{ $item->jenis_kelamin }}</td>
-                                    <td>{{ $item->pendidikan_terakhir }}</td>
                                     <td>
+                                        @if (isset($item->pelatihan->kode))
+                                        <a href="{{route('katalog.pelatihan.show', $item->pelatihan->kode)}}" target="_blank">{{ $item->pelatihan->kode }}</a>
+                                        @else
+                                        -
+                                        @endif
+                                    </td>
+                                    <td>{{ isset($item->pelatihan->nama) ? $item->pelatihan->nama : '' }}</td>
+                                    <td>{{ $item->user->name }}</td>
+                                    {{-- <td>
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$item->id}}"><i class="fas fa-edit"></i></button>
                                         <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>
                                         <form action="{{route('pelatihanuser.destroy', $item)}}" method="post" id="form-{{$item->id}}">
                                             @csrf
                                             @method('delete')
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>
