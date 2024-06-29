@@ -66,7 +66,11 @@
                 </button>
             </div>
             <div class="modal-body">
+                @if($item->payment_proof)
                 <img src="{{asset('storage/'.$item->payment_proof)}}" alt="Bukti pembayaran" width="100%" class="img-thumbnail">
+                @else
+                <p class="text-center">Belum ada bukti pembayaran</p>
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary" name="status" value="success">Konfirmasi</button>
