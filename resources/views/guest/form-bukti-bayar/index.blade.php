@@ -11,9 +11,9 @@
         <div class="card-body">
             <div class="alert alert-light">
                 <p>Silakan transfer ke rekening berikut:</p>
-                <p><strong>Bank BNI</strong></p>
-                <p><strong>No. Rekening: 1234567890</strong></p>
-                <p><strong>Atas Nama: PT. Pendidikan Teknologi Informasi</strong></p>
+                <p><strong>Bank Mandiri</strong></p>
++               <p><strong>No. Rekening: 1430029775978</strong></p>
++               <p><strong>Atas Nama: JTI Polije</strong></p>
             </div>
             <form action="{{ route('transaction.bayar.update', Request::segment(3)) }}" method="POST" enctype="multipart/form-data">
                 @csrf
