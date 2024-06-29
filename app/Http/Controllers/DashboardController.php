@@ -32,7 +32,7 @@ class DashboardController extends Controller
     public function indexPelatihan()
     {
         $title = 'Pelatihan';
-        $pelatihan = PelatihanUser::where('user_id', auth()->id())->get();
+        $pelatihan = PelatihanUser::where('user_id', auth()->id())->latest()->get();
         return view('guest.pelatihan.index', compact('pelatihan', 'title'));
     }
 

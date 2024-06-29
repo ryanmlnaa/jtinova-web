@@ -36,7 +36,7 @@
                                     </td>
                                     <td>{{ $item->payment_method }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infoModal{{$item->id}}"><i class="fas fa-eye"></i></button>
+                                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Lihat Bukti Bayar" onclick="$('#infoModal{{$item->id}}').modal('show')"><i class="fas fa-eye"></i></button>
                                         {{-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$item->id}}"><i class="fas fa-edit"></i></button> --}}
                                     </td>
                                 </tr>
@@ -73,7 +73,11 @@
                 @endif
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" name="status" value="success">Konfirmasi</button>
+                @if($item->status == 'need_confirm')
+                <button type="submit" class="btn btn-primary" name="status" value="pending">Lanjut ke Upload Bukti TF</button>
+                @else
+                <button type="submit" class="btn btn-primary" name="status" value="success">Konfirmasi Bukti TF</button>
+                @endif
                 <button type="submit" class="btn btn-danger" name="status" value="failed">Tolak</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>

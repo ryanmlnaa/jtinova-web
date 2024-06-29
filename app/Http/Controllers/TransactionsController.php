@@ -49,7 +49,7 @@ class TransactionsController extends Controller
             "payment_proof" => $req->file("bukti_pembayaran")->store("images/bukti_pembayaran", "public"),
         ]);
 
-        Alert::success('Berhasil', 'Data berhasil disimpan');
+        Alert::success('Berhasil', 'Bukti pembayaran berhasil diunggah')->flash();
         return redirect()->route('dashboard');
     }
 }

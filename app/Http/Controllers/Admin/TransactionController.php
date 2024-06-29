@@ -13,7 +13,7 @@ class TransactionController extends Controller
     public function index()
     {
         $title = 'Transactions';
-        $data = Transactions::all();
+        $data = Transactions::all()->sortByDesc('created_at');
 
         return view('admin.transactions.index', compact('data', 'title'));
     }
@@ -24,7 +24,7 @@ class TransactionController extends Controller
         $data->status = $request->status;
         $data->save();
 
-        Alert::success("Success", "Berhasil Menambahkan Data");
+        Alert::success("Success", "Status transaksi berhasil diubah");
         return redirect()->route('transaction.index');
     }
 }
