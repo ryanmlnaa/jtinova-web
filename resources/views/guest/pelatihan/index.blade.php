@@ -45,6 +45,8 @@
                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#konfirmModal">Konfirmasi ke Admin</button>
                             @elseif(($status == 'pending' && $pelatihan_user_id_transaction == $item->id && $payment_proof == null) || ($status == 'failed' && $pelatihan_user_id_transaction == $item->id))
                             <a href="{{route('transaction.bayar.index', Illuminate\Support\Facades\Crypt::encryptString($id))}}" class="btn btn-warning">Upload Bukti Bayar</a>
+                            @elseif($status == 'need_confirm' && $payment_proof == null)
+                            Status pembayaran: <span class="badge badge-warning">Menunggu Konfirmasi</span>
                             @elseif($status == 'pending' && $payment_proof != null)
                             Status pembayaran: <span class="badge badge-warning">Menunggu Konfirmasi</span>
                             @elseif($status == 'pending')
