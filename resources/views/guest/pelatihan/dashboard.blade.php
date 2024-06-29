@@ -1,3 +1,6 @@
+@php
+  use Illuminate\Support\Str;
+@endphp
 <div class="row">
   <div class="col-12">
     <div class="card">
@@ -11,7 +14,7 @@
             <img class="mr-3 rounded-circle" width="50" src="{{asset('storage/'.$aktivitas_pelatihan->pelatihan->foto)}}" alt="{{$aktivitas_pelatihan->pelatihan->kode}}">
             <div class="media-body">
               <div class="media-title">{{$aktivitas_pelatihan->pelatihan->nama}}</div>
-              <span class="text-small text-muted">{{Illuminate\Support\Str::limit($aktivitas_pelatihan->pelatihan->deskripsi, 50)}}</span>
+              <span class="text-small text-muted">{{ Str::limit(Str::of($aktivitas_pelatihan->pelatihan->deskripsi)->stripTags(), 50) }}</span>
             </div>
           </li>
           @endforeach
