@@ -81,7 +81,6 @@ class PelatihanUserController extends Controller
 
         Transactions::create([
             'invoice' => $invoice . Carbon::now()->getTimestamp() * rand(1, 9),
-            'status' => 'pending',
             'payment_method' => 'transfer',
             'pelatihan_team_id' => $team_id ?? null,
             'pelatihan_user_id' => $pelatihanUser->id ?? null,
@@ -89,7 +88,7 @@ class PelatihanUserController extends Controller
 
         auth()->user()->assignRole('user-pelatihan');
 
-        Alert::success('Berhasil', 'Pendaftaran berhasil! Silahkan lakukan pembayaran.');
+        Alert::success('Berhasil', 'Pendaftaran berhasil! Silahkan konfirmasi ke admin dan lakukan pembayaran.');
         return redirect()->route('dashboard.pelatihan.index');
     }
 }

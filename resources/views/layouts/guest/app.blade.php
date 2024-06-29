@@ -59,6 +59,7 @@
             </footer>
         </div>
     </div>
+    @stack('modal')
 
     <!-- General JS Scripts -->
     <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>

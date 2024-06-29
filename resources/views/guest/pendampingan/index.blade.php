@@ -32,6 +32,8 @@
                   <td>
                   @if($pendampingan->status == 'pending')
                     <a href="{{route('pendampingan.showForm')}}" class="btn btn-primary">Lengkapi Profile</a>
+                  @elseif($pendampingan->status == 'progress' && $pendampingan->transaction->status == 'need_confirm' && $pendampingan->transaction->payment_proof == null)
+                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#konfirmModal">Konfirmasi ke Admin</button>
                   @elseif(($pendampingan->status == 'progress' && $pendampingan->transaction->status == 'pending' && $pendampingan->transaction->payment_proof == null) || ($pendampingan->status == 'progress' && $pendampingan->transaction->status == 'failed'))
                     <a href="{{route('transaction.bayar.index', Illuminate\Support\Facades\Crypt::encryptString($pendampingan->transaction->id))}}" class="btn btn-primary">Upload Bukti Bayar</a>
                   @elseif($pendampingan->status == 'progress' && $pendampingan->transaction->status == 'pending' && $pendampingan->transaction->payment_proof != null)
@@ -54,3 +56,29 @@
   </div>
 </div>
 @endsection
+
+@push('modal')
+<div class="modal fade" id="konfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi ke Admin by WA</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-light">
+                  <p>Silakan Konfirmasi ke salah satu admin berikut untuk lanjut ke pembayaran: </p>
+                  <a href="https://wa.me/6281330558918"><strong>Arvita: +62 813-3055-8918</strong></a>
+                  <br>
+                  <a href="https://wa.me/6287757636646"><strong>Lukie: +62 877-5763-6646</strong></a>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endpush
