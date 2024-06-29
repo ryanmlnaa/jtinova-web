@@ -36,7 +36,7 @@ class PendampinganUserController extends Controller
         
         $validator = Validator::make($request->all(), [
             'prodi_id' => 'required|exists:prodis,id',
-            'nim' => 'required|string|max:15',
+            'nim' => 'required|string|max:15|unique:pendampingan_users,nim,' . $decrypted . ',id',
             'judul' => 'required|string|max:255',
             'no_hp' => 'required|string|max:15|regex:/^([0-9\s\-\+\(\)]*)$/',
             'dosen_pembimbing' => 'required|string|max:255',
@@ -92,14 +92,13 @@ class PendampinganUserController extends Controller
 
         Transactions::create([
             'invoice' => 'INVPEN' . Carbon::now()->getTimestamp() * rand(1, 9),
-            'status' => 'pending',
             'payment_method' => 'transfer',
             'pendampingan_user_id' => $pendampinganUser->id,
         ]);
         
         auth()->user()->assignRole('user-pendampingan');
         
-        Alert::success('Berhasil', 'Pendaftaran berhasil! Silahkan lengkapi profil dan lakukan pembayaran.');
+        Alert::success('Berhasil', 'Pendaftaran berhasil! Silahkan lengkapi profil, konfirmasi admin, dan lakukan pembayaran.');
         return redirect()->route('dashboard.pendampingan.index');
     }
 }
