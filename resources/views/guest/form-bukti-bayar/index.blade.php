@@ -12,8 +12,13 @@
             <div class="alert alert-light">
                 <p>Silakan transfer ke rekening berikut:</p>
                 <p><strong>Bank Mandiri</strong></p>
-+               <p><strong>No. Rekening: 1430029775978</strong></p>
-+               <p><strong>Atas Nama: JTI Polije</strong></p>
+                <p><strong>No. Rekening: 1430029775978</strong></p>
+                <p><strong>Atas Nama: JTI Polije</strong></p>
+                <br>
+                <p>Perlu Bantuan? Hubungi Kami: </p>
+                <a href="https://wa.me/6281330558918"><strong>Arvita: +62 813-3055-8918</strong></a>
+                <br>
+                <a href="https://wa.me/6287757636646"><strong>Lukie: +62 877-5763-6646</strong></a>
             </div>
             <form action="{{ route('transaction.bayar.update', Request::segment(3)) }}" method="POST" enctype="multipart/form-data">
                 @csrf
