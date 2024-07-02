@@ -68,12 +68,12 @@
             });
 
             // callback turnstile
-            window.onTurnstileSuccess = function (code) {
-                document.querySelector('form button[type="submit"]').disabled = false;
-            }
+            // window.onTurnstileSuccess = function (code) {
+            //     document.querySelector('form button[type="submit"]').disabled = false;
+            // }
 
             // disable submit button
-            document.querySelector('form button[type="submit"]').disabled = true;
+            // document.querySelector('form button[type="submit"]').disabled = true;
         });
     </script>
 </body>

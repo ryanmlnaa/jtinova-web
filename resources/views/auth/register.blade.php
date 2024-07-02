@@ -7,7 +7,7 @@
             class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
             <div class="login-brand">
                 <img src="{{asset('static/logo.png')}}" alt="logo" width="500"
-                    class="shadow-light">
+                    class="shadow-light img-fluid">
             </div>
 
             <div class="card card-primary">
@@ -40,6 +40,17 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <label for="no_hp">No Telp / WA</label>
+                            <input id="no_hp" type="email" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp"
+                                value="{{ old('no_hp') }}" required autofocus>
+                            @error('no_hp')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
                         <div class="row">
                             <div class="form-group col-6">
                                 <label for="password" class="d-block">Kata Sandi</label>
@@ -60,9 +71,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <div class="cf-turnstile" data-sitekey="{{ config('services.cloudflare.turnstile.site_key') }}" data-theme="light" data-callback="onTurnstileSuccess"></div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg btn-block" disabled="true">
