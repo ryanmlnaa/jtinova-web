@@ -15,8 +15,10 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Kode Pelatihan</th>
+                                    <th>INV</th>
                                     <th>Nama Pelatihan</th>
                                     <th>Nama Peserta</th>
+                                    <th>Nama Tim</th>
                                     {{-- <th>Action</th> --}}
                                 </tr>
                             </thead>
@@ -31,8 +33,24 @@
                                         -
                                         @endif
                                     </td>
+                                    <td>
+                                        @if(isset($item->transaction->invoice))
+                                        {{ $item->transaction->invoice }}
+                                        @else
+                                            @if (isset($item->team))
+                                                {{ $item->team->transaction->invoice }}
+                                            @endif
+                                        @endif
+                                    </td>
                                     <td>{{ isset($item->pelatihan->nama) ? $item->pelatihan->nama : '' }}</td>
                                     <td>{{ $item->user->name }}</td>
+                                    <td>
+                                        @if (isset($item->team))
+                                            {{ $item->team->nama }}
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
                                     {{-- <td>
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$item->id}}"><i class="fas fa-edit"></i></button>
                                         <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>

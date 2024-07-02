@@ -15,29 +15,31 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>INV</th>
                                     <th>NIM</th>
                                     <th>Nama</th>
                                     <th>Prodi</th>
                                     <th>Judul</th>
-                                    <th>Action</th>
+                                    {{-- <th>Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->transaction->invoice }}</td>
                                     <td>{{ $item->nim }}</td>
                                     <td>{{ $item->user->name }}</td>
                                     <td>{{ isset($item->prodi->code) ? $item->prodi->code : '' }}</td>
                                     <td>{{ $item->judul }}</td>
-                                    <td>
+                                    {{-- <td>
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$item->id}}"><i class="fas fa-edit"></i></button>
                                         <button type="button" class="btn btn-danger button-delete" data-id="{{$item->id}}"><i class="fas fa-trash"></i></button>
                                         <form action="{{route('pendampinganuser.destroy', $item->id)}}" method="post" id="form-{{$item->id}}">
                                             @csrf
                                             @method('delete')
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>

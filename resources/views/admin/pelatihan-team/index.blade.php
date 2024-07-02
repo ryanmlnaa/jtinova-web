@@ -15,6 +15,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>INV</th>
                                     <th>Nama</th>
                                     <th>Jumlah User</th>
                                     <th>Action</th>
@@ -24,6 +25,7 @@
                                 @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->transaction->invoice }}</td>
                                     <td>{{ $item->nama }}</td>
                                     <td>{{ $item->pelatihanUsers->count() }}</td>
                                     <td>
