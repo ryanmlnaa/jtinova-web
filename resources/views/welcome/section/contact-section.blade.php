@@ -101,13 +101,3 @@
   </div>
 
 </section>
-
-@push('scripts')
-<script>
-  window.onTurnstileSuccess = function (code) {
-    document.querySelector('form button[type="submit"]').disabled = false;
-  }
-
-  document.querySelector('form button[type="submit"]').disabled = true;
-</script>
-@endpush

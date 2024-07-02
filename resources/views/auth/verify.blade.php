@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="form-group mb-0">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block" disabled="true">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">
                                 Kirim Ulang Surel Verifikasi
                             </button>
                         </div>

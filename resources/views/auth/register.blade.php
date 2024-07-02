@@ -19,7 +19,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="name">Nama Lengkap</label>
+                            <label for="name">Nama Lengkap</label> <span class="text-danger">*</span></label>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                                 value="{{ old('name') }}" required autofocus>
                             @error('name')
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Surel</label>
+                            <label for="email">Surel</label> <span class="text-danger">*</span></label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
                                 value="{{ old('email') }}" required autofocus>
                             @error('email')
@@ -41,8 +41,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="no_hp">No Telp / WA</label>
-                            <input id="no_hp" type="email" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp"
+                            <label for="no_hp">No Telp / WA</label> <span class="text-danger">* (Contoh: 6281232654789)</span></label>
+                            <input id="no_hp" type="number" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp"
                                 value="{{ old('no_hp') }}" required autofocus>
                             @error('no_hp')
                             <div class="invalid-feedback">
@@ -53,7 +53,7 @@
 
                         <div class="row">
                             <div class="form-group col-6">
-                                <label for="password" class="d-block">Kata Sandi</label>
+                                <label for="password" class="d-block">Kata Sandi <span class="text-danger">*</span></label></label>
                                 <input id="password" type="password" class="form-control pwstrength @error('password') is-invalid @enderror password"
                                     name="password" required autofocus>
                                     <i class="fa fa-fw fa-eye field-icon toggle-password" style="float: right; margin-top: -28px; margin-right: 10px; cursor: pointer;"></i>
@@ -64,19 +64,19 @@
                                 @enderror
                             </div>
                             <div class="form-group col-6">
-                                <label for="password2" class="d-block">Konfirmasi Kata Sandi</label>
+                                <label for="password2" class="d-block">Konfirmasi Kata Sandi <span class="text-danger">*</span></label></label>
                                 <input id="password2" type="password" class="form-control"
                                     name="password_confirmation" required>
                                 <i class="fa fa-fw fa-eye field-icon toggle-password2" style="float: right; margin-top: -28px; margin-right: 10px; cursor: pointer;"></i>
                             </div>
                         </div>
 
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <div class="cf-turnstile" data-sitekey="{{ config('services.cloudflare.turnstile.site_key') }}" data-theme="light" data-callback="onTurnstileSuccess"></div>
-                        </div> --}}
+                        </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block" disabled="true">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">
                                 Daftar
                             </button>
                         </div>

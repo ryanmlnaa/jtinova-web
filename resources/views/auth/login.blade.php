@@ -17,7 +17,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="email">Surel</label>
+                            <label for="email">Surel</label> <span class="text-danger">*</span></label>
                             <input id="email" type="email"
                                 class="form-control @error('email') is-invalid @enderror" name="email"
                                 tabindex="1" required autofocus>
@@ -32,7 +32,7 @@
 
                         <div class="form-group">
                             <div class="d-block">
-                                <label for="password" class="control-label">Kata Sandi</label>
+                                <label for="password" class="control-label">Kata Sandi</label> <span class="text-danger">*</span></label>
                                 <div class="float-right">
                                     @if (Route::has('password.request'))
                                         <a href="{{ route('password.request') }}">
