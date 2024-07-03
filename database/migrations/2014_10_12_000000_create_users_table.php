@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string("linkedin")->nullable();
             $table->text('instagram')->nullable();
             $table->string('foto')->nullable();
+            $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
