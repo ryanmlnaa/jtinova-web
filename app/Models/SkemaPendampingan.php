@@ -17,4 +17,9 @@ class SkemaPendampingan extends Model
         'foto',
         'status',
     ];
+
+    public function pendampinganUsers()
+    {
+        return $this->hasMany(PendampinganUser::class, 'skema_pendampingan_id');
+    }
 }

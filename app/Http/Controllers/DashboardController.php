@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactMessage;
 use App\Models\InstrukturUser;
 use App\Models\Keahlian;
+use App\Models\Pelatihan;
 use App\Models\PelatihanUser;
 use App\Models\PendampinganUser;
 use App\Models\Prodi;
 use App\Models\SkemaPendampingan;
+use App\Models\Timeline;
+use App\Models\Transactions;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -21,7 +25,29 @@ class DashboardController extends Controller
         // Ambil data pelatihan dari database
         $title = 'Dashboard';
         if(auth()->user()->hasRole(['admin', 'pegawai'])) {
-            return view('admin.index', compact('title'));
+            $newUsersCountToday = User::whereDate('created_at', today())->count();
+            $totalUserPelatihanCount = PelatihanUser::distinct('user_id')->count('user_id');
+            $totalUserPendampinganCount = PendampinganUser::distinct('user_id')->count('user_id');
+            $transactions = Transactions::latest()->limit(5)->get();
+            $contactMessagesCount = ContactMessage::where('is_read', false)->count();
+            $contactMessages = ContactMessage::latest()->limit(5)->get();
+            $timeline = Timeline::latest()->where('status', '1')->get();
+            $pelatihan = Pelatihan::where('status', 'Aktif')->latest()->get();
+            $pendampingan = SkemaPendampingan::where('status', 'Aktif')->latest()->get();
+
+            $dataCard = [
+                'newUsersCountToday' => $newUsersCountToday,
+                'totalUserPelatihanCount' => $totalUserPelatihanCount,
+                'totalUserPendampinganCount' => $totalUserPendampinganCount,
+                'transactions' => $transactions,
+                'contactMessagesCount' => $contactMessagesCount,
+                'contactMessages' => $contactMessages,
+                'timeline' => $timeline,
+                'pelatihan' => $pelatihan,
+                'pendampingan' => $pendampingan,
+            ];
+
+            return view('admin.index', compact('title', 'dataCard'));
         } else {
             $aktivitas_pelatihans = PelatihanUser::where('user_id', auth()->id())->latest()->limit(5)->get();
     

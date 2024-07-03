@@ -29,4 +29,9 @@ class Pelatihan extends Model
     {
         return $this->belongsTo(Category::class, 'id_kategori');
     }
+
+    public function pelatihanUsers()
+    {
+        return $this->hasMany(PelatihanUser::class, 'pelatihan_id');
+    }
 }
