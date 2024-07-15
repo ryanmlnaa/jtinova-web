@@ -23,6 +23,7 @@ class Pelatihan extends Model
         'kuota',
         'kuota_tim',
         'status',
+        'syllabus_link'
     ];
 
     public function kategori()
