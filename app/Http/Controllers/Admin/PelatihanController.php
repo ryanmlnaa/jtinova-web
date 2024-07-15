@@ -36,6 +36,7 @@ class PelatihanController extends Controller
             "benefit" => "required|string",
             "harga" => "required|numeric|regex:/^[0-9]+$/u",
             "foto" => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
+            "syllabus_link" => "required|file|mimes:pdf|max:2048",
             "tanggal_mulai" => "required|date",
             "tanggal_selesai" => "required|date|after:tanggal_mulai",
             "lokasi" => "required|string|max:255",
@@ -54,6 +55,11 @@ class PelatihanController extends Controller
         if ($req->hasFile('foto')) {
             $data['foto'] = $req->file('foto')->store('images/pelatihan', 'public');
         }
+
+        if ($req->hasFile('syllabus_link')) {
+            $data['syllabus_link'] = $req->file('syllabus_link')->store('pdffile/syllabus', 'public');
+        }
+
         Pelatihan::create($data);
 
         Alert::success("Success", "Berhasil menambahkan data");
@@ -77,6 +83,7 @@ class PelatihanController extends Controller
             "benefit" => "required|string",
             "harga" => "required|numeric|regex:/^[0-9]+$/u",
             "foto" => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
+            "syllabus_link" => "nullable|file|mimes:pdf|max:2048",
             "tanggal_mulai" => "required|date",
             "tanggal_selesai" => "required|date|after:tanggal_mulai",
             "lokasi" => "required|string|max:255",
@@ -97,13 +104,23 @@ class PelatihanController extends Controller
             Storage::disk('public')->delete($pelatihan->foto);
             $data['foto'] = $req->file('foto')->store('images/pelatihan', 'public');
         }
+
+        if ($req->hasFile('syllabus_link')) {
+            if ($pelatihan->syllabus_link) {
+                Storage::disk('public')->delete($pelatihan->syllabus_link);
+            }
+            $data['syllabus_link'] = $req->file('syllabus_link')->store('pdffile/syllabus', 'public');
+        }
+
         $pelatihan->update($data);
         Alert::success("Success", "Berhasil mengubah data");
         return redirect()->route('pelatihan.index');
     }
+
     public function destroy(Pelatihan $pelatihan)
     {
         Storage::disk('public')->delete($pelatihan->foto);
+        Storage::disk('public')->delete($pelatihan->syllabus_link);
         $pelatihan->delete();
         Alert::success("Success", "Berhasil menghapus data");
         return redirect()->back();
