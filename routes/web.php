@@ -69,6 +69,9 @@ Route::get('/freelance/register', [FreelanceFreelanceUserController::class, 'for
 Route::post('/freelance/register', [FreelanceFreelanceUserController::class, 'store'])->name('freelance.freelanceuser.store');
 Route::get('/freelance/timeline', [LandingPageController::class, 'freelanceTimeline'])->name('freelanceTimeline.index');
 
+// gform sementara
+Route::get('/sertifikasi-jwd-kominfo', [LandingPageController::class, 'gform'])->name('gform.index');
+
 // contact message
 Route::post('contact-message', [App\Http\Controllers\Admin\ContactMessageController::class, 'store'])->middleware('hasValidCaptcha')->name('contact-message.store');
 
