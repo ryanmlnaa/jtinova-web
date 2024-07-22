@@ -70,7 +70,7 @@ Route::post('/freelance/register', [FreelanceFreelanceUserController::class, 'st
 Route::get('/freelance/timeline', [LandingPageController::class, 'freelanceTimeline'])->name('freelanceTimeline.index');
 
 // gform sementara
-Route::get('/sertifikasi-jwd-kominfo', [LandingPageController::class, 'gform'])->name('gform.index');
+Route::get('/sertifikasi-jwd', [LandingPageController::class, 'gform'])->name('gform.index');
 
 // contact message
 Route::post('contact-message', [App\Http\Controllers\Admin\ContactMessageController::class, 'store'])->middleware('hasValidCaptcha')->name('contact-message.store');

@@ -8,7 +8,7 @@
                     <li class="current">Sertifikasi</li>
                 </ol>
             </nav>
-            <h1>Form Sertifikasi Junior Web Developer Kominfo</h1>
+            <h1>Form Sertifikasi Junior Web Developer</h1>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Form Sertifikasi Junior Web Developer Kominfo</h2>
+            <h2>Form Sertifikasi Junior Web Developer</h2>
             <p>Silakan isi form berikut</p>
         </div><!-- End Section Title -->
 
