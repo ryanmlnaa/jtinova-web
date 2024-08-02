@@ -15,6 +15,7 @@ class Timeline extends Model
         'timeline',
         'tahun_ajaran',
         'status',
+        'syllabus_link'
     ];
 
     public function MbkmUser()

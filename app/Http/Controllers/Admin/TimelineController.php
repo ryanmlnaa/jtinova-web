@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Timeline;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -30,6 +31,7 @@ class TimelineController extends Controller
             'jenis' => 'required|string|max:255|in:mbkm,instruktur,freelance',
             'description.*' => 'required|string|max:255',
             'deskripsi' => 'required|string',
+            "syllabus_link" => "nullable|file|mimes:pdf|max:2048",
             'start_at.*' => 'required|date',
             'end_at.*' => 'required|date',
         ]);
@@ -54,6 +56,7 @@ class TimelineController extends Controller
             'jenis' => $request->jenis,
             'tahun_ajaran' => $request->deskripsi,
             'timeline' => json_encode($convertedData),
+            'syllabus_link' => $request->hasFile('syllabus_link') ? $request->file('syllabus_link')->store('pdffile/syllabus', 'public') : null,
         ]);
 
         Alert::success("Success", "Berhasil Menambahkan Data");
@@ -75,6 +78,7 @@ class TimelineController extends Controller
             'description.*' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'status' => 'required|in:0,1',
+            "syllabus_link" => "nullable|file|mimes:pdf|max:2048",
             'start_at.*' => 'required|date',
             'end_at.*' => 'required|date',
         ]);
@@ -95,12 +99,20 @@ class TimelineController extends Controller
         }
 
         $timeline = Timeline::findOrFail($id);
+
+        if ($request->hasFile('syllabus_link')) {
+            if ($timeline->syllabus_link) {
+                Storage::disk('public')->delete($timeline->syllabus_link);
+            }
+        }
+
         $timeline->update([
             'title' => $request->title,
             'jenis' => $request->jenis,
             'tahun_ajaran' => $request->deskripsi,
             'status' => $request->status,
             'timeline' => json_encode($convertedData),
+            'syllabus_link' => $request->hasFile('syllabus_link') ? $request->file('syllabus_link')->store('pdffile/syllabus', 'public') : $timeline->syllabus_link,
         ]);
 
         Alert::success("Success", "Berhasil Mengubah Data");
@@ -110,6 +122,10 @@ class TimelineController extends Controller
     public function destroy($id)
     {
         $timeline = Timeline::findOrFail($id);
+        if ($timeline->syllabus_link) {
+            Storage::disk('public')->delete($timeline->syllabus_link);
+        }
+
         $timeline->delete();
 
         Alert::success("Success", "Berhasil Menghapus Data");
