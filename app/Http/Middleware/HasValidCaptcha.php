@@ -19,10 +19,10 @@ class HasValidCaptcha
     {
         $turnstileCode = $request->input('cf-turnstile-response') ?? '';
 
-        if (!$this->turnstileCodeIsValid($turnstileCode)) {
-            Alert::error('Error', 'Captcha tidak valid');
-            return redirect()->back();
-        }
+        // if (!$this->turnstileCodeIsValid($turnstileCode)) {
+        //     Alert::error('Error', 'Captcha tidak valid');
+        //     return redirect()->back();
+        // }
 
         return $next($request);
     }
